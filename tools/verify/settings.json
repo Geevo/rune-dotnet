@@ -1,0 +1,4 @@
+[{"t":0.1,"type":"click","key":"Light"},{"t":0.3,"type":"click","key":"pink"},{"t":0.5,"type":"click","key":"login"},{"t":0.7,"type":"click","key":"reduce"},
+ {"t":0.9,"type":"click","key":"reduce"},{"t":1.0,"type":"tap","key":"slider"},
+ {"t":1.2,"type":"drag","key":"slider","dx":40,"dy":0},
+ {"t":1.6,"type":"key","name":"Tab"},{"t":1.7,"type":"key","name":"Tab"},{"t":1.8,"type":"key","name":"Enter"},{"t":1.9,"type":"key","name":" "},{"t":2.0,"type":"key","name":"Right"}]

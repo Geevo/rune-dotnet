@@ -1,0 +1,81 @@
+[package]
+name = "rune-capi"
+version = "0.0.1"
+edition = "2024"
+license = "MIT"
+build = "build.rs"
+
+[lib]
+name = "rune_capi"
+crate-type = ["staticlib"]
+
+[[bin]]
+name = "hello_rust"
+path = "src/bin/hello_rust.rs"
+
+[[bin]]
+name = "kit_rust"
+path = "src/bin/kit_rust.rs"
+
+[[bin]]
+name = "spec_rust"
+path = "src/bin/spec_rust.rs"
+
+[[bin]]
+name = "rt_rust"
+path = "src/bin/rt_rust.rs"
+
+[[bin]]
+name = "gen_rust"
+path = "src/bin/gen_rust.rs"
+
+[[bin]]
+name = "todo_rust"
+path = "src/twins/todo_rust.rs"
+
+[[bin]]
+name = "settings_rust"
+path = "src/twins/settings_rust.rs"
+
+[[bin]]
+name = "shapes_rust"
+path = "src/twins/shapes_rust.rs"
+
+[[bin]]
+name = "matched_rust"
+path = "src/twins/matched_rust.rs"
+
+[[bin]]
+name = "odometer_rust"
+path = "src/twins/odometer_rust.rs"
+
+[[bin]]
+name = "texts_rust"
+path = "src/twins/texts_rust.rs"
+
+[dependencies]
+rune = { path = "../../rune/crates/rune", default-features = false }
+rune-motion = { path = "../../rune/crates/rune-motion" }
+rune-kit = { path = "../../rune/crates/rune-kit" }
+rune-ext = { path = "../rune-ext" }
+wgpu = { version = "~30.0.1", default-features = false }
+parley = { version = "0.12", default-features = false }
+serde_json = { version = "1", default-features = false, features = ["std"] }
+image = { version = "0.25", default-features = false }
+zeroize = { version = "1.8", default-features = false, features = ["alloc"] }
+
+# `full` is Rune's own default set, so the wrapper behaves like a plain Rust app.
+# `--no-default-features` drops accessibility, D-Bus services, SVG and Ogg audio to save size.
+[features]
+default = ["full"]
+full = ["rune/accessibility", "rune/dbus", "rune/embedded-fonts", "rune/metal-backend", "rune/ogg-audio", "rune/svg"]
+
+[workspace]
+
+# panic stays "unwind": Rune catches panics internally (image decode, the present worker).
+[profile.release]
+opt-level = "s"
+lto = "fat"
+codegen-units = 1
+strip = true
+incremental = false

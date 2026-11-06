@@ -1,0 +1,42 @@
+<!-- Imported by an app: links the Rust static library straight into the NativeAOT executable.
+     NativeAOT only builds for the OS it runs on, so the host decides. The library lists come from
+     rustc's native-static-libs note; only the Linux one has been linked so far. -->
+<Project>
+  <PropertyGroup>
+    <RuneRoot>$(MSBuildThisFileDirectory)../../</RuneRoot>
+    <RuneIsWindows>$([MSBuild]::IsOSPlatform('Windows'))</RuneIsWindows>
+    <RuneIsLinux>$([MSBuild]::IsOSPlatform('Linux'))</RuneIsLinux>
+    <RuneIsMac>$([MSBuild]::IsOSPlatform('OSX'))</RuneIsMac>
+    <RuneLib Condition="'$(RuneLib)' == '' And '$(RuneIsWindows)' == 'true'">$(RuneRoot)target/release/rune_capi.lib</RuneLib>
+    <RuneLib Condition="'$(RuneLib)' == ''">$(RuneRoot)target/release/librune_capi.a</RuneLib>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- P/Invokes become direct calls resolved at link time: no dlopen, no .so beside the app. -->
+    <DirectPInvoke Include="rune_capi" />
+    <NativeLibrary Include="$(RuneLib)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(RuneIsLinux)' == 'true'">
+    <LinkerArg Include="-L$(RuneRoot)native/linkshim" />
+    <!-- Only keep the DT_NEEDED entry if the app reaches xkbcommon, as a plain Rust link does. -->
+    <LinkerArg Include="-Wl,--as-needed" />
+    <LinkerArg Include="-lxkbcommon" />
+    <LinkerArg Include="-lgcc_s;-lutil;-lrt;-lpthread;-lm;-ldl;-lc" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(RuneIsMac)' == 'true'">
+    <LinkerArg Include="-framework AppKit;-framework ApplicationServices;-framework AVFoundation;-framework Carbon" />
+    <LinkerArg Include="-framework CoreAudio;-framework CoreFoundation;-framework CoreGraphics;-framework CoreMedia" />
+    <LinkerArg Include="-framework CoreServices;-framework CoreVideo;-framework Foundation;-framework IOSurface" />
+    <LinkerArg Include="-framework Metal;-framework QuartzCore;-lobjc;-liconv" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(RuneIsWindows)' == 'true'">
+    <RuneCargoHome>$(CARGO_HOME)</RuneCargoHome>
+    <RuneCargoHome Condition="'$(RuneCargoHome)' == ''">$(USERPROFILE)/.cargo</RuneCargoHome>
+    <RuneWindowsArch>x86_64</RuneWindowsArch>
+    <RuneWindowsArch Condition="$(RuntimeIdentifier.EndsWith('arm64'))">aarch64</RuneWindowsArch>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(RuneIsWindows)' == 'true'">
+    <NativeLibrary Include="user32.lib;shell32.lib;gdi32.lib;advapi32.lib;ntdll.lib;userenv.lib;ws2_32.lib;dbghelp.lib" />
+    <!-- The import library of the `windows-targets` crate, which only Cargo knows the path of. -->
+    <NativeLibrary Include="$(RuneCargoHome)/registry/src/*/windows_$(RuneWindowsArch)_msvc-0.52.*/lib/windows.0.52.0.lib" />
+  </ItemGroup>
+</Project>

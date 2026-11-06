@@ -1,0 +1,63 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+env:
+  RUNE_COMMIT: 4ca683561a100e16b1ce32f3576f4ade61bd2924
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: anomalyco/rune
+          ref: ${{ env.RUNE_COMMIT }}
+          path: rune
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: rustup update stable && rustup default stable
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            target
+          key: ${{ runner.os }}-${{ env.RUNE_COMMIT }}-${{ hashFiles('native/rune-capi/Cargo.lock') }}
+      # The NativeAOT linker, xkbcommon, and software Vulkan and X, as the runners have no GPU or display.
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y clang zlib1g-dev libxkbcommon-dev mesa-vulkan-drivers xvfb
+      - if: runner.os == 'Linux'
+        run: xvfb-run -a dotnet run -c Release --project tools/Rune.Verify -- --build --window
+      - if: runner.os != 'Linux'
+        run: dotnet run -c Release --project tools/Rune.Verify -- --build --window
+
+  # The bindings must match Rune, and nothing may go unbound. Generation exits non-zero if it does.
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: anomalyco/rune
+          ref: ${{ env.RUNE_COMMIT }}
+          path: rune
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: rustup update stable && rustup default stable
+      - run: |
+          for toolchain in stable "$(sed -n 's/^channel = "\(.*\)"/\1/p' rune/rust-toolchain.toml)"; do
+            rustup toolchain install "$toolchain" --profile minimal
+            rustup target add x86_64-unknown-linux-gnu aarch64-apple-darwin --toolchain "$toolchain"
+          done
+      - run: dotnet run -c Release --project tools/Rune.BindGen
+      - run: git diff --exit-code -- native/rune-capi/src/generated.rs src/Rune/Generated.cs native/rune-capi/COVERAGE.md
