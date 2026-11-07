@@ -5,7 +5,7 @@ on:
   pull_request:
 
 env:
-  RUNE_COMMIT: 4ca683561a100e16b1ce32f3576f4ade61bd2924
+  RUNE_COMMIT: 53c7f60f51ce12bd5da53145d9d86ce1552324e4
 
 jobs:
   build:

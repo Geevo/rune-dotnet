@@ -240,14 +240,29 @@ sealed partial class Generator
     {
         var fn = item.GetProperty("inner").GetProperty("function");
         var name = item.GetProperty("name").GetString()!;
+        // A free function has no impl: its generics come from its own signature, never from the last impl emitted.
+        _implSubst = null;
         try
         {
             var sig = fn.GetProperty("sig");
-            EmitFunction(path, null, Recv.None, doc, fn, sig, sig.GetProperty("inputs").EnumerateArray().ToList(), "rune_gen_" + Names.Ident(path), ClassFor(module), Names.Pascal(name), path, name);
+            foreach (var (subst, suffix) in MethodInstances(fn))
+            {
+                // Only `S` is the app's state. Another unbounded parameter (`with_blend<R>`) is the caller's choice, which rune-ext pins.
+                foreach (var key in subst?.Where(p => p.Key != "S" && p.Value == HostKey).Select(p => p.Key).ToList() ?? [])
+                {
+                    subst!.Remove(key);
+                }
+                _fnSubst = subst;
+                EmitFunction(path, null, Recv.None, doc, fn, sig, sig.GetProperty("inputs").EnumerateArray().ToList(), "rune_gen_" + Names.Ident(path) + suffix.ToLowerInvariant(), ClassFor(module), Names.Pascal(name) + suffix, path, name);
+            }
         }
         catch (Skip e)
         {
             _skipped.Add((path, e.Message));
+        }
+        finally
+        {
+            _fnSubst = null;
         }
     }
 
@@ -721,7 +736,8 @@ sealed partial class Generator
         Ty? ret = null;
         if (output.ValueKind != JsonValueKind.Null && !(output.TryGetProperty("tuple", out var unit) && unit.GetArrayLength() == 0))
         {
-            if (recv is Recv.HandleMut or Recv.HandleRef && IsSelf(doc, output, owner!))
+            // `-> &mut Self` hands back the receiver. An owned `Self` from `&self` is a new value (`Cx::retype`).
+            if (recv is Recv.HandleMut or Recv.HandleRef && output.TryGetProperty("borrowed_ref", out _) && IsSelf(doc, output, owner!))
             {
                 fluent = true;
             }
@@ -790,15 +806,16 @@ sealed partial class Generator
             names.Add($"a_{p.Name}");
         }
         var args = string.Join(", ", names);
+        var turbofish = Turbofish(fn, sig);
         var call = recv switch
         {
-            Recv.None => $"{rustPath}({args})",
-            Recv.ElOwned => $"e.{RawIdent(rustName)}({args})",
-            Recv.ElRef => $"el(id).{RawIdent(rustName)}({args})",
-            Recv.HandleMut => $"(&mut *(h as *mut {owner!.RustType})).{RawIdent(rustName)}({args})",
-            Recv.HandleRef => $"(&*(h as *const {owner!.RustType})).{RawIdent(rustName)}({args})",
-            Recv.HandleOwned => $"unown::<{owner!.RustType}>(h).{RawIdent(rustName)}({args})",
-            _ => $"({RustArg(new Value(owner!), "this_")}).{RawIdent(rustName)}({args})",
+            Recv.None => $"{rustPath}{turbofish}({args})",
+            Recv.ElOwned => $"e.{RawIdent(rustName)}{turbofish}({args})",
+            Recv.ElRef => $"el(id).{RawIdent(rustName)}{turbofish}({args})",
+            Recv.HandleMut => $"(&mut *(h as *mut {owner!.RustType})).{RawIdent(rustName)}{turbofish}({args})",
+            Recv.HandleRef => $"(&*(h as *const {owner!.RustType})).{RawIdent(rustName)}{turbofish}({args})",
+            Recv.HandleOwned => $"unown::<{owner!.RustType}>(h).{RawIdent(rustName)}{turbofish}({args})",
+            _ => $"({RustArg(new Value(owner!), "this_")}).{RawIdent(rustName)}{turbofish}({args})",
         };
 
         string rustRet = "", body;
@@ -922,6 +939,32 @@ sealed partial class Generator
         }
         AddMember(cls, csName, n => $"    public {isStatic}{csRet} {n}{generic}({parms}){where} {{ {sb}{fixedPrefix}{{ {stmt} }} }}");
         _bound++;
+    }
+
+    /// <summary>
+    /// `::<Host>` for a type parameter Rust can't infer because only the output names it (`Cx::retype<T>() -> Cx<T>`).
+    /// Empty when inference works, or when Rust forbids explicit arguments (an `impl Trait` parameter) or needs a const.
+    /// </summary>
+    string Turbofish(JsonElement fn, JsonElement sig)
+    {
+        var generics = fn.GetProperty("generics").GetProperty("params").EnumerateArray().ToList();
+        if (generics.Any(p => p.GetProperty("kind").TryGetProperty("const", out _)))
+        {
+            return "";
+        }
+        var types = generics.Where(p => p.GetProperty("kind").TryGetProperty("type", out _)).ToList();
+        if (types.Count == 0 || types.Any(p => p.GetProperty("kind").GetProperty("type").GetProperty("is_synthetic").GetBoolean()))
+        {
+            return "";
+        }
+        var inputs = sig.GetProperty("inputs").GetRawText();
+        var names = types.Select(p => p.GetProperty("name").GetString()!).ToList();
+        if (names.All(n => inputs.Contains($"\"generic\":\"{n}\"")))
+        {
+            return "";
+        }
+        var keys = names.Select(n => _fnSubst is { } s && s.TryGetValue(n, out var k) ? RustOfKey(k) : null).ToList();
+        return keys.Any(k => k is null) ? "" : $"::<{string.Join(", ", keys)}>";
     }
 
     static string RawIdent(string name) => name is "type" or "match" or "move" or "loop" or "ref" or "in" or "box" or "use" or "fn" or "impl" or "trait" or "where" or "async" or "await" or "dyn" or "gen" ? "r#" + name : name;

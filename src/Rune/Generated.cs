@@ -311,10 +311,10 @@ public readonly unsafe partial struct AnimationStore
     public global::Rune.TrackId PlayKeyframesBlur(global::Rune.NodeId node, global::Rune.PropBlur prop, global::Rune.KeyframesBlur kf) { { return new global::Rune.TrackId(N.rune_gen_animationstore_play_keyframesblur(P, node.O, prop.O, kf.P)); } }
     public global::Rune.TrackId PlayKeyframesSides(global::Rune.NodeId node, global::Rune.PropSides prop, global::Rune.KeyframesSides kf) { { return new global::Rune.TrackId(N.rune_gen_animationstore_play_keyframessides(P, node.O, prop.O, kf.P)); } }
     public global::Rune.TrackId PlayKeyframesTransform(global::Rune.NodeId node, global::Rune.PropTransform prop, global::Rune.KeyframesTransform kf) { { return new global::Rune.TrackId(N.rune_gen_animationstore_play_keyframestransform(P, node.O, prop.O, kf.P)); } }
-    public (global::Rune.NodeId, global::Rune.PropId)[] Touched() { { return WireReader.Read<(global::Rune.NodeId, global::Rune.PropId)[]>(N.rune_gen_animationstore_touched(P), static q1579 => q1579.List<(global::Rune.NodeId, global::Rune.PropId)>(static q1580 => (new global::Rune.NodeId(q1580.Raw<nint>()), new global::Rune.PropId(q1580.Raw<nint>())))); } }
-    public (global::Rune.NodeId, global::Rune.PropId)[] Active() { { return WireReader.Read<(global::Rune.NodeId, global::Rune.PropId)[]>(N.rune_gen_animationstore_active(P), static q1590 => q1590.List<(global::Rune.NodeId, global::Rune.PropId)>(static q1591 => (new global::Rune.NodeId(q1591.Raw<nint>()), new global::Rune.PropId(q1591.Raw<nint>())))); } }
+    public (global::Rune.NodeId, global::Rune.PropId)[] Touched() { { return WireReader.Read<(global::Rune.NodeId, global::Rune.PropId)[]>(N.rune_gen_animationstore_touched(P), static q1616 => q1616.List<(global::Rune.NodeId, global::Rune.PropId)>(static q1617 => (new global::Rune.NodeId(q1617.Raw<nint>()), new global::Rune.PropId(q1617.Raw<nint>())))); } }
+    public (global::Rune.NodeId, global::Rune.PropId)[] Active() { { return WireReader.Read<(global::Rune.NodeId, global::Rune.PropId)[]>(N.rune_gen_animationstore_active(P), static q1627 => q1627.List<(global::Rune.NodeId, global::Rune.PropId)>(static q1628 => (new global::Rune.NodeId(q1628.Raw<nint>()), new global::Rune.PropId(q1628.Raw<nint>())))); } }
     public double? WaitingUntil() { double o0; { return N.rune_gen_animationstore_waiting_until(P, &o0) ? o0 : null; } }
-    public (global::Rune.TrackId, global::Rune.NodeId, global::Rune.PropId)[] TouchedTracks() { { return WireReader.Read<(global::Rune.TrackId, global::Rune.NodeId, global::Rune.PropId)[]>(N.rune_gen_animationstore_touched_tracks(P), static q1602 => q1602.List<(global::Rune.TrackId, global::Rune.NodeId, global::Rune.PropId)>(static q1603 => (new global::Rune.TrackId(q1603.Raw<nint>()), new global::Rune.NodeId(q1603.Raw<nint>()), new global::Rune.PropId(q1603.Raw<nint>())))); } }
+    public (global::Rune.TrackId, global::Rune.NodeId, global::Rune.PropId)[] TouchedTracks() { { return WireReader.Read<(global::Rune.TrackId, global::Rune.NodeId, global::Rune.PropId)[]>(N.rune_gen_animationstore_touched_tracks(P), static q1639 => q1639.List<(global::Rune.TrackId, global::Rune.NodeId, global::Rune.PropId)>(static q1640 => (new global::Rune.TrackId(q1640.Raw<nint>()), new global::Rune.NodeId(q1640.Raw<nint>()), new global::Rune.PropId(q1640.Raw<nint>())))); } }
     public global::Rune.TrackId SetF32(global::Rune.NodeId node, global::Rune.PropF32 prop, float value) { { return new global::Rune.TrackId(N.rune_gen_animationstore_setf32(P, node.O, prop.O, value)); } }
     public global::Rune.TrackId SetColor(global::Rune.NodeId node, global::Rune.PropColor prop, global::Rune.Color value) { { return new global::Rune.TrackId(N.rune_gen_animationstore_setcolor(P, node.O, prop.O, value)); } }
     public global::Rune.TrackId SetVec2(global::Rune.NodeId node, global::Rune.PropVec2 prop, global::Rune.Vec2 value) { { return new global::Rune.TrackId(N.rune_gen_animationstore_setvec2(P, node.O, prop.O, value)); } }
@@ -428,7 +428,7 @@ public readonly unsafe partial struct AnimationStore
     public bool IsSettled(global::Rune.TrackId id) { { return N.rune_gen_animationstore_is_settled(P, id.O); } }
     public uint? Epoch(global::Rune.TrackId id) { uint o0; { return N.rune_gen_animationstore_epoch(P, id.O, &o0) ? o0 : null; } }
     public double? LogicalEnd(global::Rune.TrackId id) { double o0; { return N.rune_gen_animationstore_logical_end(P, id.O, &o0) ? o0 : null; } }
-    public (global::Rune.NodeId, global::Rune.PropId)? Owner(global::Rune.TrackId id) { { return WireReader.Read<(global::Rune.NodeId, global::Rune.PropId)?>(N.rune_gen_animationstore_owner(P, id.O), static q1614 => (q1614.Tag() ? (new global::Rune.NodeId(q1614.Raw<nint>()), new global::Rune.PropId(q1614.Raw<nint>())) : ((global::Rune.NodeId, global::Rune.PropId)?)null)); } }
+    public (global::Rune.NodeId, global::Rune.PropId)? Owner(global::Rune.TrackId id) { { return WireReader.Read<(global::Rune.NodeId, global::Rune.PropId)?>(N.rune_gen_animationstore_owner(P, id.O), static q1651 => (q1651.Tag() ? (new global::Rune.NodeId(q1651.Raw<nint>()), new global::Rune.PropId(q1651.Raw<nint>())) : ((global::Rune.NodeId, global::Rune.PropId)?)null)); } }
     public void RemoveF32(global::Rune.NodeId node, global::Rune.PropF32 prop) { { N.rune_gen_animationstore_removef32(P, node.O, prop.O); } }
     public void RemoveColor(global::Rune.NodeId node, global::Rune.PropColor prop) { { N.rune_gen_animationstore_removecolor(P, node.O, prop.O); } }
     public void RemoveVec2(global::Rune.NodeId node, global::Rune.PropVec2 prop) { { N.rune_gen_animationstore_removevec2(P, node.O, prop.O); } }
@@ -455,8 +455,8 @@ public readonly unsafe partial struct AnimationStore
     public void SetReducedMotion(bool on) { { N.rune_gen_animationstore_set_reduced_motion(P, on); } }
     public bool ReducedMotion() { { return N.rune_gen_animationstore_reduced_motion(P); } }
     public void Tick() { { N.rune_gen_animationstore_tick(P); } }
-    public global::Rune.MotionEvent[] Events() { { return WireReader.Read<global::Rune.MotionEvent[]>(N.rune_gen_animationstore_events(P), static q1622 => q1622.List<global::Rune.MotionEvent>(static q1623 => new global::Rune.MotionEvent(q1623.Raw<nint>()))); } }
-    public float[]? ValuesOf(global::Rune.TrackId id) { { return WireReader.Read<float[]?>(N.rune_gen_animationstore_values_of(P, id.O), static q1627 => (q1627.Tag() ? q1627.Prims<float>() : (float[]?)null)); } }
+    public global::Rune.MotionEvent[] Events() { { return WireReader.Read<global::Rune.MotionEvent[]>(N.rune_gen_animationstore_events(P), static q1659 => q1659.List<global::Rune.MotionEvent>(static q1660 => new global::Rune.MotionEvent(q1660.Raw<nint>()))); } }
+    public float[]? ValuesOf(global::Rune.TrackId id) { { return WireReader.Read<float[]?>(N.rune_gen_animationstore_values_of(P, id.O), static q1664 => (q1664.Tag() ? q1664.Prims<float>() : (float[]?)null)); } }
     public bool IsActive(global::Rune.TrackId id) { { return N.rune_gen_animationstore_is_active(P, id.O); } }
     public nuint ActiveLen() { { return N.rune_gen_animationstore_active_len(P); } }
     public bool Running() { { return N.rune_gen_animationstore_running(P); } }
@@ -504,6 +504,7 @@ public readonly unsafe partial struct App
     public global::Rune.App SrgbBlend(bool enabled) { { return new global::Rune.App(N.rune_gen_app_srgb_blend(O, enabled)); } }
     public global::Rune.App FontSmoothing(global::Rune.FontSmoothing mode) { { return new global::Rune.App(N.rune_gen_app_font_smoothing(O, mode)); } }
     public global::Rune.App Chrome(global::Rune.Chrome chrome) { { return new global::Rune.App(N.rune_gen_app_chrome(O, chrome.O)); } }
+    public global::Rune.App Titlebar(global::Rune.Titlebar titlebar) { { return new global::Rune.App(N.rune_gen_app_titlebar(O, titlebar.O)); } }
     public global::Rune.App WindowOptions(global::Rune.WindowOptions options) { { return new global::Rune.App(N.rune_gen_app_window_options(O, options.O)); } }
     public global::Rune.App FitContentHeight() { { return new global::Rune.App(N.rune_gen_app_fit_content_height(O)); } }
     public global::Rune.App FloatOnOpen() { { return new global::Rune.App(N.rune_gen_app_float_on_open(O)); } }
@@ -514,9 +515,9 @@ public readonly unsafe partial struct App
     public global::Rune.App OnFocus<S>(global::System.Action<S, bool, global::Rune.Tx> f) where S : class { { return new global::Rune.App(N.rune_gen_app_on_focus(O, Interop.Slot(0, f, () => { global::System.Action<object, bool, global::Rune.Tx> f__0e = (x0, x1, x2) => f((S)x0, x1, x2); return Interop.Keep(f__0e); }, static (i, h) => N.rune_gen_fp_0_set(i, h)))); } }
     public global::Rune.App OnIme<S>(global::System.Func<S, global::Rune.Ime, global::Rune.Tx, bool> f) where S : class { { return new global::Rune.App(N.rune_gen_app_on_ime(O, Interop.Slot(1, f, () => { global::System.Func<object, global::Rune.Ime, global::Rune.Tx, bool> f__0e = (x0, x1, x2) => f((S)x0, x1, x2); return Interop.Keep(f__0e); }, static (i, h) => N.rune_gen_fp_1_set(i, h)))); } }
     public global::Rune.OverlayHandle Overlay<S>(global::Rune.ConfiguredOverlay spec, S state) where S : class { { return new global::Rune.OverlayHandle(N.rune_gen_app_overlay(P, spec.O, Interop.Keep(state))); } }
-    public (global::Rune.AppHandle, global::Rune.WindowHandle) Window(global::Rune.WindowSpec spec) { { return WireReader.Read<(global::Rune.AppHandle, global::Rune.WindowHandle)>(N.rune_gen_app_window(P, spec.O), static q1633 => (new global::Rune.AppHandle(q1633.Raw<nint>()), new global::Rune.WindowHandle(q1633.Raw<nint>()))); } }
+    public (global::Rune.AppHandle, global::Rune.WindowHandle) Window(global::Rune.WindowSpec spec) { { return WireReader.Read<(global::Rune.AppHandle, global::Rune.WindowHandle)>(N.rune_gen_app_window(P, spec.O), static q1670 => (new global::Rune.AppHandle(q1670.Raw<nint>()), new global::Rune.WindowHandle(q1670.Raw<nint>()))); } }
     public global::Rune.App Init<S>(global::System.Func<S> f) where S : class { global::System.Func<object> f__1e = () => f(); { return new global::Rune.App(N.rune_gen_app_init(O, Interop.Keep(f__1e))); } }
-    public global::Rune.App Args(string[] argv) { var argv__1w = new WireWriter(); argv__1w.Len(argv.Length); foreach (var e1637 in argv) { argv__1w.Str(e1637); } byte[] argv__1b = argv__1w.ToArray(); fixed (byte* argv__1p = argv__1b) { return new global::Rune.App(N.rune_gen_app_args(O, argv__1p, (nuint)argv__1b.Length)); } }
+    public global::Rune.App Args(string[] argv) { var argv__1w = new WireWriter(); argv__1w.Len(argv.Length); foreach (var e1674 in argv) { argv__1w.Str(e1674); } byte[] argv__1b = argv__1w.ToArray(); fixed (byte* argv__1p = argv__1b) { return new global::Rune.App(N.rune_gen_app_args(O, argv__1p, (nuint)argv__1b.Length)); } }
     public global::Rune.App Windowless() { { return new global::Rune.App(N.rune_gen_app_windowless(O)); } }
     public global::Rune.App KeepRunning() { { return new global::Rune.App(N.rune_gen_app_keep_running(O)); } }
     public global::Rune.App ReleaseGpuWhenClosed() { { return new global::Rune.App(N.rune_gen_app_release_gpu_when_closed(O)); } }
@@ -540,6 +541,28 @@ public readonly unsafe partial struct App
     public global::Rune.App GlobalShortcut<S>(string accelerator, global::System.Action<S, global::Rune.Tx> handler) where S : class { byte[] accelerator__1b = Interop.Utf8(accelerator); fixed (byte* accelerator__1p = accelerator__1b) { return new global::Rune.App(N.rune_gen_app_global_shortcut(O, accelerator__1p, (nuint)accelerator__1b.Length, Interop.Slot(2, handler, () => { global::System.Action<object, global::Rune.Tx> handler__0e = (x0, x1) => handler((S)x0, x1); return Interop.Keep(handler__0e); }, static (i, h) => N.rune_gen_fp_2_set(i, h)))); } }
     public global::Rune.App AllowUnmodifiedShortcuts() { { return new global::Rune.App(N.rune_gen_app_allow_unmodified_shortcuts(O)); } }
     public global::Rune.Runtime HeadlessRuntime((float, float) size, global::Rune.Env env) { { return new global::Rune.Runtime(N.rune_gen_app_headless_runtime(O, size.Item1, size.Item2, env)); } }
+}
+public readonly unsafe partial struct AppDirs
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal AppDirs(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_appdirs_free(O);
+    public static global::Rune.AppDirs? New(string app_id) { byte[] app_id__0b = Interop.Utf8(app_id); nint o0; fixed (byte* app_id__0p = app_id__0b) { return N.rune_gen_appdirs_new(app_id__0p, (nuint)app_id__0b.Length, &o0) ? new global::Rune.AppDirs(o0) : null; } }
+    public static global::Rune.AppDirs Rooted(string root, string app_id) { byte[] root__0b = Interop.Utf8(root); byte[] app_id__2b = Interop.Utf8(app_id); fixed (byte* root__0p = root__0b) fixed (byte* app_id__2p = app_id__2b) { return new global::Rune.AppDirs(N.rune_gen_appdirs_rooted(root__0p, (nuint)root__0b.Length, app_id__2p, (nuint)app_id__2b.Length)); } }
+    public global::Rune.AppDirs Sibling(string app_id) { byte[] app_id__1b = Interop.Utf8(app_id); fixed (byte* app_id__1p = app_id__1b) { return new global::Rune.AppDirs(N.rune_gen_appdirs_sibling(P, app_id__1p, (nuint)app_id__1b.Length)); } }
+    public string Id() { { return Interop.FromUtf8(N.rune_gen_appdirs_id(P)); } }
+    public string Config() { { return Interop.FromUtf8(N.rune_gen_appdirs_config(P)); } }
+    public string Data() { { return Interop.FromUtf8(N.rune_gen_appdirs_data(P)); } }
+    public string Cache() { { return Interop.FromUtf8(N.rune_gen_appdirs_cache(P)); } }
+    public string State() { { return Interop.FromUtf8(N.rune_gen_appdirs_state(P)); } }
+    public string Logs() { { return Interop.FromUtf8(N.rune_gen_appdirs_logs(P)); } }
+    public string? Home() { Utf8Ref o0; { return N.rune_gen_appdirs_home(P, &o0) ? Interop.FromUtf8(o0) : null; } }
+    public string? Downloads() { Utf8Ref o0; { return N.rune_gen_appdirs_downloads(P, &o0) ? Interop.FromUtf8(o0) : null; } }
+    public bool IsRooted() { { return N.rune_gen_appdirs_is_rooted(P); } }
 }
 public readonly unsafe partial struct AppHandle
 {
@@ -567,11 +590,11 @@ public readonly unsafe partial struct AppHandle
     public void Update<S>(global::System.Action<S, global::Rune.Tx> f) where S : class { global::System.Action<object, global::Rune.Tx> f__1e = (x0, x1) => f((S)x0, x1); { N.rune_gen_apphandle_update(P, Interop.Keep(f__1e)); } }
     public void UpdateIf<S>(global::System.Func<S, global::Rune.Tx, bool> f) where S : class { global::System.Func<object, global::Rune.Tx, bool> f__1e = (x0, x1) => f((S)x0, x1); { N.rune_gen_apphandle_update_if(P, Interop.Keep(f__1e)); } }
     public void SetMenu(global::System.ReadOnlySpan<global::Rune.MenuItem> items) { var items__1h = new nint[items.Length]; for (int items__1i = 0; items__1i < items__1h.Length; items__1i++) items__1h[items__1i] = items[items__1i].O; fixed (nint* items__1p = items__1h) { WireReader.Check(N.rune_gen_apphandle_set_menu(P, items__1p, (nuint)items.Length)); } }
-    public global::Rune.MenuError[] TakeMenuErrors() { { return WireReader.Read<global::Rune.MenuError[]>(N.rune_gen_apphandle_take_menu_errors(P), static q1644 => q1644.List<global::Rune.MenuError>(static q1645 => new global::Rune.MenuError(q1645.Raw<nint>()))); } }
-    public global::Rune.ShortcutId RegisterShortcut<S>(global::Rune.Shortcut shortcut, global::System.Action<S, global::Rune.Tx> handler) where S : class { global::System.Action<object, global::Rune.Tx> handler__2e = (x0, x1) => handler((S)x0, x1); { return WireReader.Read<global::Rune.ShortcutId>(N.rune_gen_apphandle_register_shortcut(P, shortcut.O, Interop.Keep(handler__2e)), static q1649 => q1649.Checked<global::Rune.ShortcutId>(static q1650 => new global::Rune.ShortcutId(q1650.Raw<nint>()))); } }
+    public global::Rune.MenuError[] TakeMenuErrors() { { return WireReader.Read<global::Rune.MenuError[]>(N.rune_gen_apphandle_take_menu_errors(P), static q1681 => q1681.List<global::Rune.MenuError>(static q1682 => new global::Rune.MenuError(q1682.Raw<nint>()))); } }
+    public global::Rune.ShortcutId RegisterShortcut<S>(global::Rune.Shortcut shortcut, global::System.Action<S, global::Rune.Tx> handler) where S : class { global::System.Action<object, global::Rune.Tx> handler__2e = (x0, x1) => handler((S)x0, x1); { return WireReader.Read<global::Rune.ShortcutId>(N.rune_gen_apphandle_register_shortcut(P, shortcut.O, Interop.Keep(handler__2e)), static q1686 => q1686.Checked<global::Rune.ShortcutId>(static q1687 => new global::Rune.ShortcutId(q1687.Raw<nint>()))); } }
     public void UnregisterShortcut(global::Rune.ShortcutId id) { { WireReader.Check(N.rune_gen_apphandle_unregister_shortcut(P, id.O)); } }
     public string? ShortcutOwner(global::Rune.Shortcut shortcut) { Utf8Ref o0; { return N.rune_gen_apphandle_shortcut_owner(P, shortcut.P, &o0) ? Interop.FromUtf8(o0) : null; } }
-    public global::Rune.ShortcutError[] TakeShortcutErrors() { { return WireReader.Read<global::Rune.ShortcutError[]>(N.rune_gen_apphandle_take_shortcut_errors(P), static q1655 => q1655.List<global::Rune.ShortcutError>(static q1656 => new global::Rune.ShortcutError(q1656.Raw<nint>()))); } }
+    public global::Rune.ShortcutError[] TakeShortcutErrors() { { return WireReader.Read<global::Rune.ShortcutError[]>(N.rune_gen_apphandle_take_shortcut_errors(P), static q1692 => q1692.List<global::Rune.ShortcutError>(static q1693 => new global::Rune.ShortcutError(q1693.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct AppSpec
 {
@@ -630,7 +653,7 @@ public readonly unsafe partial struct Args
     public bool ChromeOverlay { get => N.rune_gen_args_field_get_chrome_overlay(P); set { { N.rune_gen_args_field_set_chrome_overlay(P, value); } } }
     public static global::Rune.Args CreateDefault() => new(N.rune_gen_args_default());
     public static global::Rune.Args Parse() { { return new global::Rune.Args(N.rune_gen_args_parse()); } }
-    public static global::Rune.Args ParseFrom(string[] argv) { var argv__0w = new WireWriter(); argv__0w.Len(argv.Length); foreach (var e1658 in argv) { argv__0w.Str(e1658); } byte[] argv__0b = argv__0w.ToArray(); fixed (byte* argv__0p = argv__0b) { return new global::Rune.Args(N.rune_gen_args_parse_from(argv__0p, (nuint)argv__0b.Length)); } }
+    public static global::Rune.Args ParseFrom(string[] argv) { var argv__0w = new WireWriter(); argv__0w.Len(argv.Length); foreach (var e1695 in argv) { argv__0w.Str(e1695); } byte[] argv__0b = argv__0w.ToArray(); fixed (byte* argv__0p = argv__0b) { return new global::Rune.Args(N.rune_gen_args_parse_from(argv__0p, (nuint)argv__0b.Length)); } }
     public bool Headless() { { return N.rune_gen_args_headless(P); } }
 }
 public readonly unsafe partial struct Atlas
@@ -647,7 +670,7 @@ public readonly unsafe partial struct Atlas
     public (uint, uint)? Dirty { get => WireReader.Read<(uint, uint)?>(N.rune_gen_atlas_field_get_dirty(P), static q143 => (q143.Tag() ? (q143.Raw<uint>(), q143.Raw<uint>()) : ((uint, uint)?)null)); set { { N.rune_gen_atlas_field_set_dirty(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
     public void Invalidate() { { N.rune_gen_atlas_invalidate(P); } }
     public nuint PageCount() { { return N.rune_gen_atlas_page_count(P); } }
-    public byte[]? PageData(nuint page) { { return WireReader.Read<byte[]?>(N.rune_gen_atlas_page_data(P, page), static q1662 => (q1662.Tag() ? q1662.Prims<byte>() : (byte[]?)null)); } }
+    public byte[]? PageData(nuint page) { { return WireReader.Read<byte[]?>(N.rune_gen_atlas_page_data(P, page), static q1699 => (q1699.Tag() ? q1699.Prims<byte>() : (byte[]?)null)); } }
     public ulong Resets() { { return N.rune_gen_atlas_resets(P); } }
     public ulong Rasterized() { { return N.rune_gen_atlas_rasterized(P); } }
 }
@@ -789,8 +812,8 @@ public readonly unsafe partial struct Bundle
     public void Free() => N.rune_gen_bundle_free(O);
     public string Dir() { { return Interop.FromUtf8(N.rune_gen_bundle_dir(P)); } }
     public string Summary() { { return Interop.FromUtf8(N.rune_gen_bundle_summary(P)); } }
-    public (nuint, nuint) Frames() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_bundle_frames(P), static q1669 => (q1669.Raw<nuint>(), q1669.Raw<nuint>())); } }
-    public (string, string, string) Files() { { return WireReader.Read<(string, string, string)>(N.rune_gen_bundle_files(P), static q1678 => (q1678.Str(), q1678.Str(), q1678.Str())); } }
+    public (nuint, nuint) Frames() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_bundle_frames(P), static q1706 => (q1706.Raw<nuint>(), q1706.Raw<nuint>())); } }
+    public (string, string, string) Files() { { return WireReader.Read<(string, string, string)>(N.rune_gen_bundle_files(P), static q1715 => (q1715.Str(), q1715.Str(), q1715.Str())); } }
 }
 public readonly unsafe partial struct Button
 {
@@ -846,7 +869,7 @@ public readonly unsafe partial struct Card
     public static global::Rune.Card CreateDefault() => new(N.rune_gen_card_default());
     public static global::Rune.Card New() { { return new global::Rune.Card(N.rune_gen_card_new()); } }
     public global::Rune.Card Accent(global::Rune.Color c) { { return new global::Rune.Card(N.rune_gen_card_accent(O, c)); } }
-    public global::Rune.Card Title(string t, global::Rune.Icon? i) { byte[] t__1b = Interop.Utf8(t); var i__3w = new WireWriter(); if (i is { } e1683) { i__3w.Tag(true); i__3w.Raw<nint>(e1683.P); } else i__3w.Tag(false); byte[] i__3b = i__3w.ToArray(); fixed (byte* t__1p = t__1b) fixed (byte* i__3p = i__3b) { return new global::Rune.Card(N.rune_gen_card_title(O, t__1p, (nuint)t__1b.Length, i__3p, (nuint)i__3b.Length)); } }
+    public global::Rune.Card Title(string t, global::Rune.Icon? i) { byte[] t__1b = Interop.Utf8(t); var i__3w = new WireWriter(); if (i is { } e1720) { i__3w.Tag(true); i__3w.Raw<nint>(e1720.P); } else i__3w.Tag(false); byte[] i__3b = i__3w.ToArray(); fixed (byte* t__1p = t__1b) fixed (byte* i__3p = i__3b) { return new global::Rune.Card(N.rune_gen_card_title(O, t__1p, (nuint)t__1b.Length, i__3p, (nuint)i__3b.Length)); } }
     public global::Rune.Card Description(string d) { byte[] d__1b = Interop.Utf8(d); fixed (byte* d__1p = d__1b) { return new global::Rune.Card(N.rune_gen_card_description(O, d__1p, (nuint)d__1b.Length)); } }
     public global::Rune.Card Action(global::Rune.El a) { { return new global::Rune.Card(N.rune_gen_card_action(O, a.Id)); } }
     public global::Rune.Card Child(global::Rune.El c) { { return new global::Rune.Card(N.rune_gen_card_child(O, c.Id)); } }
@@ -916,6 +939,75 @@ public readonly unsafe partial struct Checkbox
     public global::Rune.Checkbox OnToggleTx<S>(global::System.Action<S, global::Rune.Tx> f) where S : class { global::System.Action<object, global::Rune.Tx> f__1e = (x0, x1) => f((S)x0, x1); { return new global::Rune.Checkbox(N.rune_gen_checkbox_on_toggle_tx(O, Interop.Keep(f__1e))); } }
     public global::Rune.El Build(global::Rune.Kit k) { { return new global::Rune.El(N.rune_gen_checkbox_build(O, k.P)); } }
 }
+public readonly unsafe partial struct Chord
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal Chord(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_chord_free(O);
+    public static global::Rune.Chord New(global::Rune.ChordKey key) { { return new global::Rune.Chord(N.rune_gen_chord_new(key.O)); } }
+    public global::Rune.Chord With(global::Rune.ChordMod m) { { return new global::Rune.Chord(N.rune_gen_chord_with(O, m)); } }
+    public static global::Rune.Chord Parse(string s) { byte[] s__0b = Interop.Utf8(s); fixed (byte* s__0p = s__0b) { return WireReader.Read<global::Rune.Chord>(N.rune_gen_chord_parse(s__0p, (nuint)s__0b.Length), static q1724 => q1724.Checked<global::Rune.Chord>(static q1725 => new global::Rune.Chord(q1725.Raw<nint>()))); } }
+    public global::Rune.ChordKey Key() { { return new global::Rune.ChordKey(N.rune_gen_chord_key(P)); } }
+    public bool Has(global::Rune.ChordMod m) { { return N.rune_gen_chord_has(P, m); } }
+    public bool Matches(global::Rune.KeyEvent ev) { { return N.rune_gen_chord_matches(P, ev.P); } }
+    public bool MatchesTx(global::Rune.KeyEvent ev, global::Rune.Tx tx) { { return N.rune_gen_chord_matches_tx(P, ev.P, tx.P); } }
+    public bool MatchesOn(global::Rune.KeyEvent ev, global::Rune.KeyPlatform platform) { { return N.rune_gen_chord_matches_on(P, ev.P, platform); } }
+    public bool MatchesTxOn(global::Rune.KeyEvent ev, global::Rune.Tx tx, global::Rune.KeyPlatform platform) { { return N.rune_gen_chord_matches_tx_on(P, ev.P, tx.P, platform); } }
+    public bool SameKeys(global::Rune.Chord other, global::Rune.KeyPlatform platform) { { return N.rune_gen_chord_same_keys(P, other.P, platform); } }
+    public global::Rune.ChordMod[] ModsOn(global::Rune.KeyPlatform platform) { { return WireReader.Read<global::Rune.ChordMod[]>(N.rune_gen_chord_mods_on(P, platform), static q1729 => q1729.List<global::Rune.ChordMod>(static q1730 => q1730.Raw<global::Rune.ChordMod>())); } }
+    public string Label() { { return Interop.FromUtf8(N.rune_gen_chord_label(P)); } }
+    public string LabelOn(global::Rune.KeyPlatform platform) { { return Interop.FromUtf8(N.rune_gen_chord_label_on(P, platform)); } }
+    public string[] KeycapsOn(global::Rune.KeyPlatform platform) { { return WireReader.Read<string[]>(N.rune_gen_chord_keycaps_on(P, platform), static q1734 => q1734.List<string>(static q1735 => q1735.Str())); } }
+}
+public readonly unsafe partial struct ChordError
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal ChordError(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_chorderror_free(O);
+}
+public readonly unsafe partial struct ChordKey
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal ChordKey(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_chordkey_free(O);
+    public static global::Rune.ChordKey Char(global::System.Text.Rune item0) { { return new(N.rune_gen_chordkey_new_char(item0)); } }
+    public static global::Rune.ChordKey Enter() { { return new(N.rune_gen_chordkey_new_enter()); } }
+    public static global::Rune.ChordKey Tab() { { return new(N.rune_gen_chordkey_new_tab()); } }
+    public static global::Rune.ChordKey Escape() { { return new(N.rune_gen_chordkey_new_escape()); } }
+    public static global::Rune.ChordKey Backspace() { { return new(N.rune_gen_chordkey_new_backspace()); } }
+    public static global::Rune.ChordKey Delete() { { return new(N.rune_gen_chordkey_new_delete()); } }
+    public static global::Rune.ChordKey Insert() { { return new(N.rune_gen_chordkey_new_insert()); } }
+    public static global::Rune.ChordKey Home() { { return new(N.rune_gen_chordkey_new_home()); } }
+    public static global::Rune.ChordKey End() { { return new(N.rune_gen_chordkey_new_end()); } }
+    public static global::Rune.ChordKey PageUp() { { return new(N.rune_gen_chordkey_new_pageup()); } }
+    public static global::Rune.ChordKey PageDown() { { return new(N.rune_gen_chordkey_new_pagedown()); } }
+    public static global::Rune.ChordKey Left() { { return new(N.rune_gen_chordkey_new_left()); } }
+    public static global::Rune.ChordKey Right() { { return new(N.rune_gen_chordkey_new_right()); } }
+    public static global::Rune.ChordKey Up() { { return new(N.rune_gen_chordkey_new_up()); } }
+    public static global::Rune.ChordKey Down() { { return new(N.rune_gen_chordkey_new_down()); } }
+    public static global::Rune.ChordKey Function(byte item0) { { return new(N.rune_gen_chordkey_new_function(item0)); } }
+    public static global::Rune.ChordKey ContextMenu() { { return new(N.rune_gen_chordkey_new_contextmenu()); } }
+    public static global::Rune.ChordKey PrintScreen() { { return new(N.rune_gen_chordkey_new_printscreen()); } }
+    public static global::Rune.ChordKey ScrollLock() { { return new(N.rune_gen_chordkey_new_scrolllock()); } }
+    public static global::Rune.ChordKey Pause() { { return new(N.rune_gen_chordkey_new_pause()); } }
+    public global::System.Text.Rune? AsChar() { global::System.Text.Rune o; return N.rune_gen_chordkey_as_char(P, &o) ? o : null; }
+    public byte? AsFunction() { byte o; return N.rune_gen_chordkey_as_function(P, &o) ? o : null; }
+    public enum Case { Char, Enter, Tab, Escape, Backspace, Delete, Insert, Home, End, PageUp, PageDown, Left, Right, Up, Down, Function, ContextMenu, PrintScreen, ScrollLock, Pause }
+    public Case Which => (Case)N.rune_gen_chordkey_which(P);
+}
+public enum ChordMod { Primary, Ctrl, Alt, Shift, Super }
 public readonly unsafe partial struct Choreography
 {
     readonly nint _p;
@@ -948,8 +1040,22 @@ public readonly unsafe partial struct Chrome
     public static global::Rune.Chrome Default => new global::Rune.Chrome(N.rune_gen_const_rune__chrome__default());
     public static float TrafficLight => N.rune_gen_const_rune__chrome__traffic_light();
     public static float TrafficPitch => N.rune_gen_const_rune__chrome__traffic_pitch();
-    public ((float, float, float, float), (float, float, float, float), (float, float, float, float))? TrafficLightRects() { { return WireReader.Read<((float, float, float, float), (float, float, float, float), (float, float, float, float))?>(N.rune_gen_chrome_traffic_light_rects(P), static q1703 => (q1703.Tag() ? ((q1703.Raw<float>(), q1703.Raw<float>(), q1703.Raw<float>(), q1703.Raw<float>()), (q1703.Raw<float>(), q1703.Raw<float>(), q1703.Raw<float>(), q1703.Raw<float>()), (q1703.Raw<float>(), q1703.Raw<float>(), q1703.Raw<float>(), q1703.Raw<float>())) : (((float, float, float, float), (float, float, float, float), (float, float, float, float))?)null)); } }
+    public ((float, float, float, float), (float, float, float, float), (float, float, float, float))? TrafficLightRects() { { return WireReader.Read<((float, float, float, float), (float, float, float, float), (float, float, float, float))?>(N.rune_gen_chrome_traffic_light_rects(P), static q1755 => (q1755.Tag() ? ((q1755.Raw<float>(), q1755.Raw<float>(), q1755.Raw<float>(), q1755.Raw<float>()), (q1755.Raw<float>(), q1755.Raw<float>(), q1755.Raw<float>(), q1755.Raw<float>()), (q1755.Raw<float>(), q1755.Raw<float>(), q1755.Raw<float>(), q1755.Raw<float>())) : (((float, float, float, float), (float, float, float, float), (float, float, float, float))?)null)); } }
     public float TitlebarInset() { { return N.rune_gen_chrome_titlebar_inset(P); } }
+}
+public readonly unsafe partial struct ChromeInsets
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal ChromeInsets(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_chromeinsets_free(O);
+    public float Leading { get => N.rune_gen_chromeinsets_field_get_leading(P); set { { N.rune_gen_chromeinsets_field_set_leading(P, value); } } }
+    public float Trailing { get => N.rune_gen_chromeinsets_field_get_trailing(P); set { { N.rune_gen_chromeinsets_field_set_trailing(P, value); } } }
+    public float Height { get => N.rune_gen_chromeinsets_field_get_height(P); set { { N.rune_gen_chromeinsets_field_set_height(P, value); } } }
+    public static global::Rune.ChromeInsets CreateDefault() => new(N.rune_gen_chromeinsets_default());
 }
 public readonly unsafe partial struct Clip
 {
@@ -960,7 +1066,7 @@ public readonly unsafe partial struct Clip
     internal Clip(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_clip_free(O);
-    public global::Rune.Bundle WriteBundle(string dir, (nuint, nuint) range, string note) { byte[] dir__1b = Interop.Utf8(dir); var range__3w = new WireWriter(); range__3w.Raw<nuint>(range.Item1); range__3w.Raw<nuint>(range.Item2); byte[] range__3b = range__3w.ToArray(); byte[] note__5b = Interop.Utf8(note); fixed (byte* dir__1p = dir__1b) fixed (byte* range__3p = range__3b) fixed (byte* note__5p = note__5b) { return WireReader.Read<global::Rune.Bundle>(N.rune_gen_clip_write_bundle(P, dir__1p, (nuint)dir__1b.Length, range__3p, (nuint)range__3b.Length, note__5p, (nuint)note__5b.Length), static q1728 => q1728.Checked<global::Rune.Bundle>(static q1729 => new global::Rune.Bundle(q1729.Raw<nint>()))); } }
+    public global::Rune.Bundle WriteBundle(string dir, (nuint, nuint) range, string note) { byte[] dir__1b = Interop.Utf8(dir); var range__3w = new WireWriter(); range__3w.Raw<nuint>(range.Item1); range__3w.Raw<nuint>(range.Item2); byte[] range__3b = range__3w.ToArray(); byte[] note__5b = Interop.Utf8(note); fixed (byte* dir__1p = dir__1b) fixed (byte* range__3p = range__3b) fixed (byte* note__5p = note__5b) { return WireReader.Read<global::Rune.Bundle>(N.rune_gen_clip_write_bundle(P, dir__1p, (nuint)dir__1b.Length, range__3p, (nuint)range__3b.Length, note__5p, (nuint)note__5b.Length), static q1780 => q1780.Checked<global::Rune.Bundle>(static q1781 => new global::Rune.Bundle(q1781.Raw<nint>()))); } }
     public nuint Len() { { return N.rune_gen_clip_len(P); } }
     public bool IsEmpty() { { return N.rune_gen_clip_is_empty(P); } }
     public (float, float) Viewport() { float o0; float o1; { N.rune_gen_clip_viewport(P, &o0, &o1); return (o0, o1); } }
@@ -969,9 +1075,9 @@ public readonly unsafe partial struct Clip
     public float Activity(nuint k) { { return N.rune_gen_clip_activity(P, k); } }
     public bool HasJump(nuint k) { { return N.rune_gen_clip_has_jump(P, k); } }
     public string Name(uint id) { { return Interop.FromUtf8(N.rune_gen_clip_name(P, id)); } }
-    public (uint, global::Rune.Shot)[] Frame(nuint k) { { return WireReader.Read<(uint, global::Rune.Shot)[]>(N.rune_gen_clip_frame(P, k), static q1736 => q1736.List<(uint, global::Rune.Shot)>(static q1737 => (q1737.Raw<uint>(), new global::Rune.Shot(q1737.Raw<nint>())))); } }
-    public global::Rune.Change[] Changes(nuint k) { { return WireReader.Read<global::Rune.Change[]>(N.rune_gen_clip_changes(P, k), static q1744 => q1744.List<global::Rune.Change>(static q1745 => new global::Rune.Change(q1745.Raw<nint>()))); } }
-    public (nuint, global::Rune.Shot)[] Path(uint id, (nuint, nuint) range) { var range__2w = new WireWriter(); range__2w.Raw<nuint>(range.Item1); range__2w.Raw<nuint>(range.Item2); byte[] range__2b = range__2w.ToArray(); fixed (byte* range__2p = range__2b) { return WireReader.Read<(nuint, global::Rune.Shot)[]>(N.rune_gen_clip_path(P, id, range__2p, (nuint)range__2b.Length), static q1756 => q1756.List<(nuint, global::Rune.Shot)>(static q1757 => (q1757.Raw<nuint>(), new global::Rune.Shot(q1757.Raw<nint>())))); } }
+    public (uint, global::Rune.Shot)[] Frame(nuint k) { { return WireReader.Read<(uint, global::Rune.Shot)[]>(N.rune_gen_clip_frame(P, k), static q1788 => q1788.List<(uint, global::Rune.Shot)>(static q1789 => (q1789.Raw<uint>(), new global::Rune.Shot(q1789.Raw<nint>())))); } }
+    public global::Rune.Change[] Changes(nuint k) { { return WireReader.Read<global::Rune.Change[]>(N.rune_gen_clip_changes(P, k), static q1796 => q1796.List<global::Rune.Change>(static q1797 => new global::Rune.Change(q1797.Raw<nint>()))); } }
+    public (nuint, global::Rune.Shot)[] Path(uint id, (nuint, nuint) range) { var range__2w = new WireWriter(); range__2w.Raw<nuint>(range.Item1); range__2w.Raw<nuint>(range.Item2); byte[] range__2b = range__2w.ToArray(); fixed (byte* range__2p = range__2b) { return WireReader.Read<(nuint, global::Rune.Shot)[]>(N.rune_gen_clip_path(P, id, range__2p, (nuint)range__2b.Length), static q1808 => q1808.List<(nuint, global::Rune.Shot)>(static q1809 => (q1809.Raw<nuint>(), new global::Rune.Shot(q1809.Raw<nint>())))); } }
     public nuint? NextActive(nuint k, nint step) { nuint o0; { return N.rune_gen_clip_next_active(P, k, step, &o0) ? o0 : null; } }
 }
 public readonly unsafe partial struct ClipboardContent
@@ -988,12 +1094,12 @@ public readonly unsafe partial struct ClipboardContent
     public global::Rune.ClipboardContent WithHtml(string html) { byte[] html__1b = Interop.Utf8(html); fixed (byte* html__1p = html__1b) { return new global::Rune.ClipboardContent(N.rune_gen_clipboardcontent_with_html(O, html__1p, (nuint)html__1b.Length)); } }
     public global::Rune.ClipboardContent WithRtf(string rtf) { byte[] rtf__1b = Interop.Utf8(rtf); fixed (byte* rtf__1p = rtf__1b) { return new global::Rune.ClipboardContent(N.rune_gen_clipboardcontent_with_rtf(O, rtf__1p, (nuint)rtf__1b.Length)); } }
     public global::Rune.ClipboardContent WithImage(global::Rune.ClipboardImage image) { { return new global::Rune.ClipboardContent(N.rune_gen_clipboardcontent_with_image(O, image.O)); } }
-    public global::Rune.ClipboardContent WithFiles(string[] files) { var files__1w = new WireWriter(); files__1w.Len(files.Length); foreach (var e1762 in files) { files__1w.Str(e1762); } byte[] files__1b = files__1w.ToArray(); fixed (byte* files__1p = files__1b) { return new global::Rune.ClipboardContent(N.rune_gen_clipboardcontent_with_files(O, files__1p, (nuint)files__1b.Length)); } }
+    public global::Rune.ClipboardContent WithFiles(string[] files) { var files__1w = new WireWriter(); files__1w.Len(files.Length); foreach (var e1814 in files) { files__1w.Str(e1814); } byte[] files__1b = files__1w.ToArray(); fixed (byte* files__1p = files__1b) { return new global::Rune.ClipboardContent(N.rune_gen_clipboardcontent_with_files(O, files__1p, (nuint)files__1b.Length)); } }
     public string Text() { { return Interop.FromUtf8(N.rune_gen_clipboardcontent_text(P)); } }
     public string? Html() { Utf8Ref o0; { return N.rune_gen_clipboardcontent_html(P, &o0) ? Interop.FromUtf8(o0) : null; } }
     public string? Rtf() { Utf8Ref o0; { return N.rune_gen_clipboardcontent_rtf(P, &o0) ? Interop.FromUtf8(o0) : null; } }
-    public global::Rune.ClipboardImage? Image() { { return WireReader.Read<global::Rune.ClipboardImage?>(N.rune_gen_clipboardcontent_image(P), static q1766 => (q1766.Tag() ? new global::Rune.ClipboardImage(q1766.Raw<nint>(), q1766.Scope) : (global::Rune.ClipboardImage?)null), _s); } }
-    public string[] Files() { { return WireReader.Read<string[]>(N.rune_gen_clipboardcontent_files(P), static q1771 => q1771.List<string>(static q1772 => q1772.Str())); } }
+    public global::Rune.ClipboardImage? Image() { { return WireReader.Read<global::Rune.ClipboardImage?>(N.rune_gen_clipboardcontent_image(P), static q1818 => (q1818.Tag() ? new global::Rune.ClipboardImage(q1818.Raw<nint>(), q1818.Scope) : (global::Rune.ClipboardImage?)null), _s); } }
+    public string[] Files() { { return WireReader.Read<string[]>(N.rune_gen_clipboardcontent_files(P), static q1823 => q1823.List<string>(static q1824 => q1824.Str())); } }
     public bool IsRich() { { return N.rune_gen_clipboardcontent_is_rich(P); } }
     public bool IsEmpty() { { return N.rune_gen_clipboardcontent_is_empty(P); } }
 }
@@ -1007,7 +1113,7 @@ public readonly unsafe partial struct ClipboardImage
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_clipboardimage_free(O);
     public static global::Rune.ClipboardImage? FromPng(global::System.ReadOnlySpan<byte> png) { nint o0; fixed (byte* png__0p = png) { return N.rune_gen_clipboardimage_from_png(png__0p, (nuint)png.Length, &o0) ? new global::Rune.ClipboardImage(o0) : null; } }
-    public byte[] Png() { { return WireReader.Read<byte[]>(N.rune_gen_clipboardimage_png(P), static q1775 => q1775.Prims<byte>()); } }
+    public byte[] Png() { { return WireReader.Read<byte[]>(N.rune_gen_clipboardimage_png(P), static q1827 => q1827.Prims<byte>()); } }
     public (uint, uint) Size() { uint o0; uint o1; { N.rune_gen_clipboardimage_size(P, &o0, &o1); return (o0, o1); } }
 }
 public readonly unsafe partial struct ClipboardWrite
@@ -1019,7 +1125,7 @@ public readonly unsafe partial struct ClipboardWrite
     internal ClipboardWrite(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_clipboardwrite_free(O);
-    public global::Rune.ClipboardContent Content() { { return WireReader.Read<global::Rune.ClipboardContent>(N.rune_gen_clipboardwrite_content(P), static q1778 => new global::Rune.ClipboardContent(q1778.Raw<nint>(), q1778.Scope), _s); } }
+    public global::Rune.ClipboardContent Content() { { return WireReader.Read<global::Rune.ClipboardContent>(N.rune_gen_clipboardwrite_content(P), static q1830 => new global::Rune.ClipboardContent(q1830.Raw<nint>(), q1830.Scope), _s); } }
 }
 public readonly unsafe partial struct Clock
 {
@@ -1272,13 +1378,21 @@ public readonly unsafe partial struct Cx
     internal nint P => Interop.Check(_p, _s);
     internal nint O => Interop.Take(_p, _s);
     internal Cx(nint p, uint scope = 0) { _p = p; _s = scope; }
-    public (float, float, float, float)[] SelectionRects() { { return WireReader.Read<(float, float, float, float)[]>(N.rune_gen_cx_selection_rects(P), static q1788 => q1788.List<(float, float, float, float)>(static q1789 => (q1789.Raw<float>(), q1789.Raw<float>(), q1789.Raw<float>(), q1789.Raw<float>()))); } }
+    public (float, float, float, float)[] SelectionRects() { { return WireReader.Read<(float, float, float, float)[]>(N.rune_gen_cx_selection_rects(P), static q1840 => q1840.List<(float, float, float, float)>(static q1841 => (q1841.Raw<float>(), q1841.Raw<float>(), q1841.Raw<float>(), q1841.Raw<float>()))); } }
     public (float, float, float, float)? Layout(string key) { byte[] key__1b = Interop.Utf8(key); float o0; float o1; float o2; float o3; fixed (byte* key__1p = key__1b) { return N.rune_gen_cx_layout(P, key__1p, (nuint)key__1b.Length, &o0, &o1, &o2, &o3) ? (o0, o1, o2, o3) : null; } }
     public (float, float)? LayoutSize(string key) { byte[] key__1b = Interop.Utf8(key); float o0; float o1; fixed (byte* key__1p = key__1b) { return N.rune_gen_cx_layout_size(P, key__1p, (nuint)key__1b.Length, &o0, &o1) ? (o0, o1) : null; } }
     public (float, float, float, float)? WindowLayout(string key) { byte[] key__1b = Interop.Utf8(key); float o0; float o1; float o2; float o3; fixed (byte* key__1p = key__1b) { return N.rune_gen_cx_window_layout(P, key__1p, (nuint)key__1b.Length, &o0, &o1, &o2, &o3) ? (o0, o1, o2, o3) : null; } }
+    public global::Rune.Cx Retype() { { return new global::Rune.Cx(N.rune_gen_cx_retype(P)); } }
+    public void Absorb(global::Rune.Cx other) { { N.rune_gen_cx_absorb(P, other.O); } }
     public global::Rune.Env Env() { { return N.rune_gen_cx_env(P); } }
     public bool SystemDark() { { return N.rune_gen_cx_system_dark(P); } }
     public float TitlebarInset() { { return N.rune_gen_cx_titlebar_inset(P); } }
+    public global::Rune.ChromeInsets ChromeInsets() { { return new global::Rune.ChromeInsets(N.rune_gen_cx_chrome_insets(P)); } }
+    public void CaptionColor(global::Rune.Color color) { { N.rune_gen_cx_caption_color(P, color); } }
+    public void Foreground(global::Rune.Color color) { { N.rune_gen_cx_foreground(P, color); } }
+    public void FocusRing(float width, float offset, global::Rune.Color color) { { N.rune_gen_cx_focus_ring(P, width, offset, color); } }
+    public void TitlebarHeight(float points) { { N.rune_gen_cx_titlebar_height(P, points); } }
+    public void SetTitlebar(global::Rune.Titlebar titlebar) { { N.rune_gen_cx_set_titlebar(P, titlebar.O); } }
     public global::Rune.Color Accent() { { return N.rune_gen_cx_accent(P); } }
     public global::Rune.Color FocusColor() { { return N.rune_gen_cx_focus_color(P); } }
     public (float, float, float, float) SafeArea() { float o0; float o1; float o2; float o3; { N.rune_gen_cx_safe_area(P, &o0, &o1, &o2, &o3); return (o0, o1, o2, o3); } }
@@ -1368,7 +1482,7 @@ public readonly unsafe partial struct DiffState
     public static global::Rune.DiffState CreateDefault() => new(N.rune_gen_diffstate_default());
     public static global::Rune.DiffState New(global::System.ReadOnlySpan<global::Rune.FileDiff> files) { var files__0h = new nint[files.Length]; for (int files__0i = 0; files__0i < files__0h.Length; files__0i++) files__0h[files__0i] = files[files__0i].O; fixed (nint* files__0p = files__0h) { return new global::Rune.DiffState(N.rune_gen_diffstate_new(files__0p, (nuint)files.Length)); } }
     public void SetFiles(global::System.ReadOnlySpan<global::Rune.FileDiff> files) { var files__1h = new nint[files.Length]; for (int files__1i = 0; files__1i < files__1h.Length; files__1i++) files__1h[files__1i] = files[files__1i].O; fixed (nint* files__1p = files__1h) { N.rune_gen_diffstate_set_files(P, files__1p, (nuint)files.Length); } }
-    public global::Rune.FileDiff[] Files() { { return WireReader.Read<global::Rune.FileDiff[]>(N.rune_gen_diffstate_files(P), static q1797 => q1797.List<global::Rune.FileDiff>(static q1798 => new global::Rune.FileDiff(q1798.Raw<nint>()))); } }
+    public global::Rune.FileDiff[] Files() { { return WireReader.Read<global::Rune.FileDiff[]>(N.rune_gen_diffstate_files(P), static q1849 => q1849.List<global::Rune.FileDiff>(static q1850 => new global::Rune.FileDiff(q1850.Raw<nint>()))); } }
     public nuint? FileIndex(string path) { byte[] path__1b = Interop.Utf8(path); nuint o0; fixed (byte* path__1p = path__1b) { return N.rune_gen_diffstate_file_index(P, path__1p, (nuint)path__1b.Length, &o0) ? o0 : null; } }
     public global::Rune.DiffMode Mode() { { return N.rune_gen_diffstate_mode(P); } }
     public void SetMode(global::Rune.DiffMode mode) { { N.rune_gen_diffstate_set_mode(P, mode); } }
@@ -1379,7 +1493,7 @@ public readonly unsafe partial struct DiffState
     public void SetCollapsed(nuint file, bool collapsed) { { N.rune_gen_diffstate_set_collapsed(P, file, collapsed); } }
     public uint? Hidden(nuint file, nuint gap) { uint o0; { return N.rune_gen_diffstate_hidden(P, file, gap, &o0) ? o0 : null; } }
     public void Expand(nuint file, nuint gap, global::Rune.Expand how) { { N.rune_gen_diffstate_expand(P, file, gap, how); } }
-    public global::Rune.Annotation[] Annotations() { { return WireReader.Read<global::Rune.Annotation[]>(N.rune_gen_diffstate_annotations(P), static q1802 => q1802.List<global::Rune.Annotation>(static q1803 => new global::Rune.Annotation(q1803.Raw<nint>()))); } }
+    public global::Rune.Annotation[] Annotations() { { return WireReader.Read<global::Rune.Annotation[]>(N.rune_gen_diffstate_annotations(P), static q1854 => q1854.List<global::Rune.Annotation>(static q1855 => new global::Rune.Annotation(q1855.Raw<nint>()))); } }
     public void SetAnnotations(global::System.ReadOnlySpan<global::Rune.Annotation> annotations) { var annotations__1h = new nint[annotations.Length]; for (int annotations__1i = 0; annotations__1i < annotations__1h.Length; annotations__1i++) annotations__1h[annotations__1i] = annotations[annotations__1i].O; fixed (nint* annotations__1p = annotations__1h) { N.rune_gen_diffstate_set_annotations(P, annotations__1p, (nuint)annotations.Length); } }
     public global::Rune.LineRange? Selection() { global::Rune.LineRange o0; { return N.rune_gen_diffstate_selection(P, &o0) ? o0 : null; } }
     public void SetSelection(global::Rune.LineRange? sel) { { N.rune_gen_diffstate_set_selection(P, sel.HasValue, sel.GetValueOrDefault()); } }
@@ -1490,6 +1604,8 @@ public readonly unsafe partial struct Drag
     public float Data { get => N.rune_gen_drag_field_get_data(P); set { { N.rune_gen_drag_field_set_data(P, value); } } }
     public uint Clicks { get => N.rune_gen_drag_field_get_clicks(P); set { { N.rune_gen_drag_field_set_clicks(P, value); } } }
     public bool Cancelled() { { return N.rune_gen_drag_cancelled(P); } }
+    public (float, float) WindowPoint() { float o0; float o1; { N.rune_gen_drag_window_point(P, &o0, &o1); return (o0, o1); } }
+    public (int, int)? ScreenPoint() { int o0; int o1; { return N.rune_gen_drag_screen_point(P, &o0, &o1) ? (o0, o1) : null; } }
 }
 public readonly unsafe partial struct DragImage
 {
@@ -1504,7 +1620,7 @@ public readonly unsafe partial struct DragImage
     public static global::Rune.DragImage? Rgba(uint width, uint height, global::System.ReadOnlySpan<byte> pixels) { nint o0; fixed (byte* pixels__2p = pixels) { return N.rune_gen_dragimage_rgba(width, height, pixels__2p, (nuint)pixels.Length, &o0) ? new global::Rune.DragImage(o0) : null; } }
     public global::Rune.DragImage Size(float width, float height) { { return new global::Rune.DragImage(N.rune_gen_dragimage_size(O, width, height)); } }
     public global::Rune.DragImage OverElement() { { return new global::Rune.DragImage(N.rune_gen_dragimage_over_element(O)); } }
-    public byte[] PngData() { { return WireReader.Read<byte[]>(N.rune_gen_dragimage_png_data(P), static q1811 => q1811.Prims<byte>()); } }
+    public byte[] PngData() { { return WireReader.Read<byte[]>(N.rune_gen_dragimage_png_data(P), static q1863 => q1863.Prims<byte>()); } }
     public (float, float)? Points() { float o0; float o1; { return N.rune_gen_dragimage_points(P, &o0, &o1) ? (o0, o1) : null; } }
 }
 public readonly unsafe partial struct DragItem
@@ -1527,10 +1643,10 @@ public readonly unsafe partial struct DragItem
     public global::Rune.DragItem Operation(global::Rune.DragOperation operation) { { return new global::Rune.DragItem(N.rune_gen_dragitem_operation(O, operation)); } }
     public global::Rune.DragItem Allow(global::Rune.DragOperation operation) { { return new global::Rune.DragItem(N.rune_gen_dragitem_allow(O, operation)); } }
     public global::Rune.DragItem AllowMove() { { return new global::Rune.DragItem(N.rune_gen_dragitem_allow_move(O)); } }
-    public string[] Paths() { { return WireReader.Read<string[]>(N.rune_gen_dragitem_paths(P), static q1815 => q1815.List<string>(static q1816 => q1816.Str())); } }
-    public byte[]? PngData() { { return WireReader.Read<byte[]?>(N.rune_gen_dragitem_png_data(P), static q1820 => (q1820.Tag() ? q1820.Prims<byte>() : (byte[]?)null)); } }
+    public string[] Paths() { { return WireReader.Read<string[]>(N.rune_gen_dragitem_paths(P), static q1867 => q1867.List<string>(static q1868 => q1868.Str())); } }
+    public byte[]? PngData() { { return WireReader.Read<byte[]?>(N.rune_gen_dragitem_png_data(P), static q1872 => (q1872.Tag() ? q1872.Prims<byte>() : (byte[]?)null)); } }
     public string? PlainText() { Utf8Ref o0; { return N.rune_gen_dragitem_plain_text(P, &o0) ? Interop.FromUtf8(o0) : null; } }
-    public global::Rune.DragImage? DragImage() { { return WireReader.Read<global::Rune.DragImage?>(N.rune_gen_dragitem_drag_image(P), static q1825 => (q1825.Tag() ? new global::Rune.DragImage(q1825.Raw<nint>(), q1825.Scope) : (global::Rune.DragImage?)null), _s); } }
+    public global::Rune.DragImage? DragImage() { { return WireReader.Read<global::Rune.DragImage?>(N.rune_gen_dragitem_drag_image(P), static q1877 => (q1877.Tag() ? new global::Rune.DragImage(q1877.Raw<nint>(), q1877.Scope) : (global::Rune.DragImage?)null), _s); } }
     public bool AllowsMove() { { return N.rune_gen_dragitem_allows_move(P); } }
     public bool Offers(global::Rune.DragOperation operation) { { return N.rune_gen_dragitem_offers(P, operation); } }
     public global::Rune.Color? Backing() { global::Rune.Color o0; { return N.rune_gen_dragitem_backing(P, &o0) ? o0 : null; } }
@@ -1683,7 +1799,7 @@ public readonly unsafe partial struct El
     public global::Rune.El ChildExit(global::Rune.Transition t) { { return new global::Rune.El(N.rune_gen_el_child_exit(Id, t.O)); } }
     public global::Rune.El OnDropFiles<S>(global::System.Action<S, string[], global::Rune.Tx> f) where S : class { global::System.Action<object, string[], global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.El(N.rune_gen_el_on_drop_files(Id, Interop.Keep(f__1e))); } }
     public global::Rune.El AcceptsFiles(global::System.Func<string, bool> accepts) { { return new global::Rune.El(N.rune_gen_el_accepts_files(Id, Interop.Keep(accepts))); } }
-    public global::Rune.El AcceptsExtensions(string[] extensions) { var extensions__1w = new WireWriter(); extensions__1w.Len(extensions.Length); foreach (var e1833 in extensions) { extensions__1w.Str(e1833); } byte[] extensions__1b = extensions__1w.ToArray(); fixed (byte* extensions__1p = extensions__1b) { return new global::Rune.El(N.rune_gen_el_accepts_extensions(Id, extensions__1p, (nuint)extensions__1b.Length)); } }
+    public global::Rune.El AcceptsExtensions(string[] extensions) { var extensions__1w = new WireWriter(); extensions__1w.Len(extensions.Length); foreach (var e1885 in extensions) { extensions__1w.Str(e1885); } byte[] extensions__1b = extensions__1w.ToArray(); fixed (byte* extensions__1p = extensions__1b) { return new global::Rune.El(N.rune_gen_el_accepts_extensions(Id, extensions__1p, (nuint)extensions__1b.Length)); } }
     public global::Rune.El OnDropHover<S>(global::System.Action<S, bool, global::Rune.Tx> f) where S : class { global::System.Action<object, bool, global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.El(N.rune_gen_el_on_drop_hover(Id, Interop.Keep(f__1e))); } }
     public global::Rune.El OnDropMove<S>(global::System.Action<S, global::Rune.PointerEvent, global::Rune.Tx> f) where S : class { global::System.Action<object, global::Rune.PointerEvent, global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.El(N.rune_gen_el_on_drop_move(Id, Interop.Keep(f__1e))); } }
     public global::Rune.El OnDropRejected<S>(global::System.Action<S, string[], global::Rune.Tx> f) where S : class { global::System.Action<object, string[], global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.El(N.rune_gen_el_on_drop_rejected(Id, Interop.Keep(f__1e))); } }
@@ -1760,6 +1876,7 @@ public readonly unsafe partial struct El
     public global::Rune.El Pin(float? left, float? top, float? right, float? bottom) { { return new global::Rune.El(N.rune_gen_el_pin(Id, left.HasValue, left.GetValueOrDefault(), top.HasValue, top.GetValueOrDefault(), right.HasValue, right.GetValueOrDefault(), bottom.HasValue, bottom.GetValueOrDefault())); } }
     public global::Rune.El Cursor(global::Rune.Cursor cursor) { { return new global::Rune.El(N.rune_gen_el_cursor(Id, cursor.O)); } }
     public global::Rune.El WindowDrag() { { return new global::Rune.El(N.rune_gen_el_window_drag(Id)); } }
+    public global::Rune.El NoWindowDrag() { { return new global::Rune.El(N.rune_gen_el_no_window_drag(Id)); } }
     public global::Rune.El ImeCursor() { { return new global::Rune.El(N.rune_gen_el_ime_cursor(Id)); } }
     public global::Rune.El Hit() { { return new global::Rune.El(N.rune_gen_el_hit(Id)); } }
     public global::Rune.El OnPointerMove<S>(global::System.Action<S, global::Rune.PointerPress> f) where S : class { global::System.Action<object, global::Rune.PointerPress> f__1e = (x0, x1) => f((S)x0, x1); { return new global::Rune.El(N.rune_gen_el_on_pointer_move(Id, Interop.Keep(f__1e))); } }
@@ -1790,8 +1907,10 @@ public readonly unsafe partial struct El
     public global::Rune.El InstantChanges() { { return new global::Rune.El(N.rune_gen_el_instant_changes(Id)); } }
     public global::Rune.El Transition(global::Rune.Transition t) { { return new global::Rune.El(N.rune_gen_el_transition(Id, t.O)); } }
     public global::Rune.El Matched(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return new global::Rune.El(N.rune_gen_el_matched(Id, id__1p, (nuint)id__1b.Length)); } }
+    public global::Rune.El MatchedCrop() { { return new global::Rune.El(N.rune_gen_el_matched_crop(Id)); } }
     public global::Rune.El Pill((nuint, nuint) range, global::Rune.PillStyle style) { var range__1w = new WireWriter(); range__1w.Raw<nuint>(range.Item1); range__1w.Raw<nuint>(range.Item2); byte[] range__1b = range__1w.ToArray(); fixed (byte* range__1p = range__1b) { return new global::Rune.El(N.rune_gen_el_pill(Id, range__1p, (nuint)range__1b.Length, style.O)); } }
-    public global::Rune.El Pills(((nuint, nuint), global::Rune.PillStyle)[] pills) { var pills__1w = new WireWriter(); pills__1w.Len(pills.Length); foreach (var e1884 in pills) { pills__1w.Raw<nuint>(e1884.Item1.Item1); pills__1w.Raw<nuint>(e1884.Item1.Item2); pills__1w.Raw<nint>(e1884.Item2.O); } byte[] pills__1b = pills__1w.ToArray(); fixed (byte* pills__1p = pills__1b) { return new global::Rune.El(N.rune_gen_el_pills(Id, pills__1p, (nuint)pills__1b.Length)); } }
+    public global::Rune.El Pills(((nuint, nuint), global::Rune.PillStyle)[] pills) { var pills__1w = new WireWriter(); pills__1w.Len(pills.Length); foreach (var e1936 in pills) { pills__1w.Raw<nuint>(e1936.Item1.Item1); pills__1w.Raw<nuint>(e1936.Item1.Item2); pills__1w.Raw<nint>(e1936.Item2.O); } byte[] pills__1b = pills__1w.ToArray(); fixed (byte* pills__1p = pills__1b) { return new global::Rune.El(N.rune_gen_el_pills(Id, pills__1p, (nuint)pills__1b.Length)); } }
+    public global::Rune.El InlineIcon(nuint at, global::Rune.InlineIcon icon) { { return new global::Rune.El(N.rune_gen_el_inline_icon(Id, at, icon.O)); } }
     public global::Rune.El PixelSnap(bool on) { { return new global::Rune.El(N.rune_gen_el_pixel_snap(Id, on)); } }
     public global::Rune.El RideTrailing() { { return new global::Rune.El(N.rune_gen_el_ride_trailing(Id)); } }
     public global::Rune.El Scroll(global::Rune.ScrollSpec spec) { { return new global::Rune.El(N.rune_gen_el_scroll(Id, spec)); } }
@@ -1807,13 +1926,14 @@ public readonly unsafe partial struct El
     public global::Rune.El StickyBottom(float inset) { { return new global::Rune.El(N.rune_gen_el_sticky_bottom(Id, inset)); } }
     public global::Rune.El StickyLeft(float inset) { { return new global::Rune.El(N.rune_gen_el_sticky_left(Id, inset)); } }
     public global::Rune.El StuckShadow(global::Rune.Shadow shadow) { { return new global::Rune.El(N.rune_gen_el_stuck_shadow(Id, shadow)); } }
+    public global::Rune.El ExactLines() { { return new global::Rune.El(N.rune_gen_el_exact_lines(Id)); } }
     public global::Rune.El Font(global::Rune.TextStyle s) { { return new global::Rune.El(N.rune_gen_el_font(Id, s.P)); } }
     public global::Rune.El Spans(global::System.ReadOnlySpan<global::Rune.Span> spans) { var spans__1h = new nint[spans.Length]; for (int spans__1i = 0; spans__1i < spans__1h.Length; spans__1i++) spans__1h[spans__1i] = spans[spans__1i].O; fixed (nint* spans__1p = spans__1h) { return new global::Rune.El(N.rune_gen_el_spans(Id, spans__1p, (nuint)spans.Length)); } }
     public global::Rune.El Decorations(global::System.ReadOnlySpan<global::Rune.Span> spans) { var spans__1h = new nint[spans.Length]; for (int spans__1i = 0; spans__1i < spans__1h.Length; spans__1i++) spans__1h[spans__1i] = spans[spans__1i].O; fixed (nint* spans__1p = spans__1h) { return new global::Rune.El(N.rune_gen_el_decorations(Id, spans__1p, (nuint)spans.Length)); } }
     public global::Rune.El SpanRing(nuint start, nuint end, global::Rune.Color color, float width) { { return new global::Rune.El(N.rune_gen_el_span_ring(Id, start, end, color, width)); } }
-    public global::Rune.El SpanRings((nuint, nuint, global::Rune.Color, float)[] rings) { var rings__1w = new WireWriter(); rings__1w.Len(rings.Length); foreach (var e1893 in rings) { rings__1w.Raw<nuint>(e1893.Item1); rings__1w.Raw<nuint>(e1893.Item2); rings__1w.Raw<global::Rune.Color>(e1893.Item3); rings__1w.Raw<float>(e1893.Item4); } byte[] rings__1b = rings__1w.ToArray(); fixed (byte* rings__1p = rings__1b) { return new global::Rune.El(N.rune_gen_el_span_rings(Id, rings__1p, (nuint)rings__1b.Length)); } }
+    public global::Rune.El SpanRings((nuint, nuint, global::Rune.Color, float)[] rings) { var rings__1w = new WireWriter(); rings__1w.Len(rings.Length); foreach (var e1945 in rings) { rings__1w.Raw<nuint>(e1945.Item1); rings__1w.Raw<nuint>(e1945.Item2); rings__1w.Raw<global::Rune.Color>(e1945.Item3); rings__1w.Raw<float>(e1945.Item4); } byte[] rings__1b = rings__1w.ToArray(); fixed (byte* rings__1p = rings__1b) { return new global::Rune.El(N.rune_gen_el_span_rings(Id, rings__1p, (nuint)rings__1b.Length)); } }
     public global::Rune.El Strike(nuint start, nuint end, global::Rune.Color? color) { { return new global::Rune.El(N.rune_gen_el_strike(Id, start, end, color.HasValue, color.GetValueOrDefault())); } }
-    public global::Rune.El Strikes((nuint, nuint, global::Rune.Color?)[] strikes) { var strikes__1w = new WireWriter(); strikes__1w.Len(strikes.Length); foreach (var e1899 in strikes) { strikes__1w.Raw<nuint>(e1899.Item1); strikes__1w.Raw<nuint>(e1899.Item2); if (e1899.Item3 is { } e1904) { strikes__1w.Tag(true); strikes__1w.Raw<global::Rune.Color>(e1904); } else strikes__1w.Tag(false); } byte[] strikes__1b = strikes__1w.ToArray(); fixed (byte* strikes__1p = strikes__1b) { return new global::Rune.El(N.rune_gen_el_strikes(Id, strikes__1p, (nuint)strikes__1b.Length)); } }
+    public global::Rune.El Strikes((nuint, nuint, global::Rune.Color?)[] strikes) { var strikes__1w = new WireWriter(); strikes__1w.Len(strikes.Length); foreach (var e1951 in strikes) { strikes__1w.Raw<nuint>(e1951.Item1); strikes__1w.Raw<nuint>(e1951.Item2); if (e1951.Item3 is { } e1956) { strikes__1w.Tag(true); strikes__1w.Raw<global::Rune.Color>(e1956); } else strikes__1w.Tag(false); } byte[] strikes__1b = strikes__1w.ToArray(); fixed (byte* strikes__1p = strikes__1b) { return new global::Rune.El(N.rune_gen_el_strikes(Id, strikes__1p, (nuint)strikes__1b.Length)); } }
     public global::Rune.El TextHighlight(global::Rune.TextHighlight highlight) { { return new global::Rune.El(N.rune_gen_el_text_highlight(Id, highlight.O)); } }
     public global::Rune.El TextHighlights(global::System.ReadOnlySpan<global::Rune.TextHighlight> highlights) { var highlights__1h = new nint[highlights.Length]; for (int highlights__1i = 0; highlights__1i < highlights__1h.Length; highlights__1i++) highlights__1h[highlights__1i] = highlights[highlights__1i].O; fixed (nint* highlights__1p = highlights__1h) { return new global::Rune.El(N.rune_gen_el_text_highlights(Id, highlights__1p, (nuint)highlights.Length)); } }
     public global::Rune.El RichStyle(global::Rune.RichStyle style) { { return new global::Rune.El(N.rune_gen_el_rich_style(Id, style.O)); } }
@@ -1861,8 +1981,8 @@ public readonly unsafe partial struct El
     public global::Rune.El Shadow(float y, float blur, global::Rune.Color color) { { return new global::Rune.El(N.rune_gen_el_shadow(Id, y, blur, color)); } }
     public global::Rune.El BoxShadow(global::Rune.Shadow s) { { return new global::Rune.El(N.rune_gen_el_box_shadow(Id, s)); } }
     public global::Rune.El Gradient(global::Rune.Color top, global::Rune.Color bottom) { { return new global::Rune.El(N.rune_gen_el_gradient(Id, top, bottom)); } }
-    public global::Rune.El RadialGradient((float, float) center, global::Rune.RadialRadius radius, (float, global::Rune.Color)[] stops) { var stops__4w = new WireWriter(); stops__4w.Len(stops.Length); foreach (var e1925 in stops) { stops__4w.Raw<float>(e1925.Item1); stops__4w.Raw<global::Rune.Color>(e1925.Item2); } byte[] stops__4b = stops__4w.ToArray(); fixed (byte* stops__4p = stops__4b) { return new global::Rune.El(N.rune_gen_el_radial_gradient(Id, center.Item1, center.Item2, radius.O, stops__4p, (nuint)stops__4b.Length)); } }
-    public global::Rune.El LinearGradient(float angle, (float, global::Rune.Color)[] stops) { var stops__2w = new WireWriter(); stops__2w.Len(stops.Length); foreach (var e1929 in stops) { stops__2w.Raw<float>(e1929.Item1); stops__2w.Raw<global::Rune.Color>(e1929.Item2); } byte[] stops__2b = stops__2w.ToArray(); fixed (byte* stops__2p = stops__2b) { return new global::Rune.El(N.rune_gen_el_linear_gradient(Id, angle, stops__2p, (nuint)stops__2b.Length)); } }
+    public global::Rune.El RadialGradient((float, float) center, global::Rune.RadialRadius radius, (float, global::Rune.Color)[] stops) { var stops__4w = new WireWriter(); stops__4w.Len(stops.Length); foreach (var e1977 in stops) { stops__4w.Raw<float>(e1977.Item1); stops__4w.Raw<global::Rune.Color>(e1977.Item2); } byte[] stops__4b = stops__4w.ToArray(); fixed (byte* stops__4p = stops__4b) { return new global::Rune.El(N.rune_gen_el_radial_gradient(Id, center.Item1, center.Item2, radius.O, stops__4p, (nuint)stops__4b.Length)); } }
+    public global::Rune.El LinearGradient(float angle, (float, global::Rune.Color)[] stops) { var stops__2w = new WireWriter(); stops__2w.Len(stops.Length); foreach (var e1981 in stops) { stops__2w.Raw<float>(e1981.Item1); stops__2w.Raw<global::Rune.Color>(e1981.Item2); } byte[] stops__2b = stops__2w.ToArray(); fixed (byte* stops__2p = stops__2b) { return new global::Rune.El(N.rune_gen_el_linear_gradient(Id, angle, stops__2p, (nuint)stops__2b.Length)); } }
     public global::Rune.El Shape(global::Rune.Shape shape) { { return new global::Rune.El(N.rune_gen_el_shape(Id, shape.O)); } }
     public global::Rune.El Pixels(global::Rune.Pixels pixels) { { return new global::Rune.El(N.rune_gen_el_pixels(Id, pixels.P)); } }
     public global::Rune.El PixelsFit(global::Rune.Pixels pixels, global::Rune.SurfaceFit fit) { { return new global::Rune.El(N.rune_gen_el_pixels_fit(Id, pixels.P, fit)); } }
@@ -1890,9 +2010,10 @@ public readonly unsafe partial struct El
     public global::Rune.El ClipFade(float left, float top, float right, float bottom) { { return new global::Rune.El(N.rune_gen_el_clip_fade(Id, left, top, right, bottom)); } }
     public global::Rune.El ClipFadeLinear(float left, float top, float right, float bottom) { { return new global::Rune.El(N.rune_gen_el_clip_fade_linear(Id, left, top, right, bottom)); } }
     public global::Rune.El HoverGroup() { { return new global::Rune.El(N.rune_gen_el_hover_group(Id)); } }
+    public global::Rune.El HoverGroupShared(string key) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { return new global::Rune.El(N.rune_gen_el_hover_group_shared(Id, key__1p, (nuint)key__1b.Length)); } }
     public global::Rune.El HoverMotion(global::Rune.Anim enter, global::Rune.Anim exit) { { return new global::Rune.El(N.rune_gen_el_hover_motion(Id, enter.O, exit.O)); } }
     public global::Rune.El HoverMotionWithin(global::Rune.Anim enter, global::Rune.Anim exit) { { return new global::Rune.El(N.rune_gen_el_hover_motion_within(Id, enter.O, exit.O)); } }
-    public (global::Rune.Anim, global::Rune.Anim)? HoverWithinCurves() { { return WireReader.Read<(global::Rune.Anim, global::Rune.Anim)?>(N.rune_gen_el_hover_within_curves(Id), static q1938 => (q1938.Tag() ? (new global::Rune.Anim(q1938.Raw<nint>()), new global::Rune.Anim(q1938.Raw<nint>())) : ((global::Rune.Anim, global::Rune.Anim)?)null)); } }
+    public (global::Rune.Anim, global::Rune.Anim)? HoverWithinCurves() { { return WireReader.Read<(global::Rune.Anim, global::Rune.Anim)?>(N.rune_gen_el_hover_within_curves(Id), static q1990 => (q1990.Tag() ? (new global::Rune.Anim(q1990.Raw<nint>()), new global::Rune.Anim(q1990.Raw<nint>())) : ((global::Rune.Anim, global::Rune.Anim)?)null)); } }
     public global::Rune.El GroupOpacity(float rest, float hovered) { { return new global::Rune.El(N.rune_gen_el_group_opacity(Id, rest, hovered)); } }
     public global::Rune.El GroupColor(global::Rune.Color c) { { return new global::Rune.El(N.rune_gen_el_group_color(Id, c)); } }
     public global::Rune.El HoverAlone() { { return new global::Rune.El(N.rune_gen_el_hover_alone(Id)); } }
@@ -1935,6 +2056,7 @@ public readonly unsafe partial struct El
     public global::Rune.El OnStepLimit<S>(global::System.Action<S, bool, global::Rune.Tx> f) where S : class { global::System.Action<object, bool, global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.El(N.rune_gen_el_on_step_limit(Id, Interop.Keep(f__1e))); } }
     public global::Rune.El FocusReturn(string trigger) { byte[] trigger__1b = Interop.Utf8(trigger); fixed (byte* trigger__1p = trigger__1b) { return new global::Rune.El(N.rune_gen_el_focus_return(Id, trigger__1p, (nuint)trigger__1b.Length)); } }
     public global::Rune.El FocusRing(float width, float offset, global::Rune.Color color) { { return new global::Rune.El(N.rune_gen_el_focus_ring(Id, width, offset, color)); } }
+    public global::Rune.El FocusWithinRing(float width, float offset, global::Rune.Color color) { { return new global::Rune.El(N.rune_gen_el_focus_within_ring(Id, width, offset, color)); } }
     public global::Rune.El NoFocusRing() { { return new global::Rune.El(N.rune_gen_el_no_focus_ring(Id)); } }
     public global::Rune.El Modal<S>(bool click_outside, global::System.Action<S> dismiss) where S : class { global::System.Action<object> dismiss__2e = (x0) => dismiss((S)x0); { return new global::Rune.El(N.rune_gen_el_modal(Id, click_outside, Interop.Keep(dismiss__2e))); } }
     public global::Rune.El ModalClickOutside(bool enabled) { { return new global::Rune.El(N.rune_gen_el_modal_click_outside(Id, enabled)); } }
@@ -1948,6 +2070,7 @@ public readonly unsafe partial struct El
     public global::Rune.El IconRotation(float radians) { { return new global::Rune.El(N.rune_gen_el_icon_rotation(Id, radians)); } }
     public global::Rune.El Help(string text) { byte[] text__1b = Interop.Utf8(text); fixed (byte* text__1p = text__1b) { return new global::Rune.El(N.rune_gen_el_help(Id, text__1p, (nuint)text__1b.Length)); } }
     public global::Rune.El HelpWhenTruncated(string text) { byte[] text__1b = Interop.Utf8(text); fixed (byte* text__1p = text__1b) { return new global::Rune.El(N.rune_gen_el_help_when_truncated(Id, text__1p, (nuint)text__1b.Length)); } }
+    public global::Rune.El HelpAbove() { { return new global::Rune.El(N.rune_gen_el_help_above(Id)); } }
     public global::Rune.El Child(global::Rune.El child) { { return new global::Rune.El(N.rune_gen_el_child(Id, child.Id)); } }
     public global::Rune.El Children(global::System.ReadOnlySpan<global::Rune.El> children) { fixed (global::Rune.El* children__1p = children) { return new global::Rune.El(N.rune_gen_el_children(Id, children__1p, (nuint)children.Length)); } }
     public global::Rune.El Color(global::Rune.Color c) { { return new global::Rune.El(N.rune_gen_el_color(Id, c)); } }
@@ -2154,7 +2277,7 @@ public readonly unsafe partial struct FileDialogOptions
     public string? FileName { get => WireReader.Read<string?>(N.rune_gen_filedialogoptions_field_get_file_name(P), static q502 => (q502.Tag() ? q502.Str() : (string?)null)); set { byte[] value__2b = Interop.Utf8((value ?? "")); fixed (byte* value__2p = value__2b) { N.rune_gen_filedialogoptions_field_set_file_name(P, value != null, value__2p, (nuint)value__2b.Length); } } }
     public (string, string[])[] Filters { get => WireReader.Read<(string, string[])[]>(N.rune_gen_filedialogoptions_field_get_filters(P), static q513 => q513.List<(string, string[])>(static q514 => (q514.Str(), q514.List<string>(static q519 => q519.Str())))); set { var value__1w = new WireWriter(); value__1w.Len(value.Length); foreach (var e521 in value) { value__1w.Str(e521.Item1); value__1w.Len(e521.Item2.Length); foreach (var e526 in e521.Item2) { value__1w.Str(e526); } } byte[] value__1b = value__1w.ToArray(); fixed (byte* value__1p = value__1b) { N.rune_gen_filedialogoptions_field_set_filters(P, value__1p, (nuint)value__1b.Length); } } }
     public static global::Rune.FileDialogOptions CreateDefault() => new(N.rune_gen_filedialogoptions_default());
-    public global::Rune.FileDialogOptions Filter(string name, string[] extensions) { byte[] name__1b = Interop.Utf8(name); var extensions__3w = new WireWriter(); extensions__3w.Len(extensions.Length); foreach (var e1944 in extensions) { extensions__3w.Str(e1944); } byte[] extensions__3b = extensions__3w.ToArray(); fixed (byte* name__1p = name__1b) fixed (byte* extensions__3p = extensions__3b) { return new global::Rune.FileDialogOptions(N.rune_gen_filedialogoptions_filter(O, name__1p, (nuint)name__1b.Length, extensions__3p, (nuint)extensions__3b.Length)); } }
+    public global::Rune.FileDialogOptions Filter(string name, string[] extensions) { byte[] name__1b = Interop.Utf8(name); var extensions__3w = new WireWriter(); extensions__3w.Len(extensions.Length); foreach (var e1996 in extensions) { extensions__3w.Str(e1996); } byte[] extensions__3b = extensions__3w.ToArray(); fixed (byte* name__1p = name__1b) fixed (byte* extensions__3p = extensions__3b) { return new global::Rune.FileDialogOptions(N.rune_gen_filedialogoptions_filter(O, name__1p, (nuint)name__1b.Length, extensions__3p, (nuint)extensions__3b.Length)); } }
 }
 public readonly unsafe partial struct FileDialogs
 {
@@ -2207,7 +2330,7 @@ public readonly unsafe partial struct FileNode
     public bool Dir { get => N.rune_gen_filenode_field_get_dir(P); set { { N.rune_gen_filenode_field_set_dir(P, value); } } }
     public object? Data {  set { { N.rune_gen_filenode_field_set_data(P, value is not null, value is null ? 0 : Interop.Keep(value)); } } }
     public string Label() { { return Interop.FromUtf8(N.rune_gen_filenode_label(P)); } }
-    public global::Rune.Icon Icon(bool open) { { return WireReader.Read<global::Rune.Icon>(N.rune_gen_filenode_icon(P, open), static q1947 => new global::Rune.Icon(q1947.Raw<nint>(), q1947.Scope), _s); } }
+    public global::Rune.Icon Icon(bool open) { { return WireReader.Read<global::Rune.Icon>(N.rune_gen_filenode_icon(P, open), static q1999 => new global::Rune.Icon(q1999.Raw<nint>(), q1999.Scope), _s); } }
 }
 public enum FileStatus { Modified, Added, Deleted, Renamed, Copied }
 public readonly unsafe partial struct FileTree
@@ -2251,7 +2374,7 @@ public readonly unsafe partial struct FoldGlide
     public global::Rune.Spring Spring { get => N.rune_gen_foldglide_field_get_spring(P); set { { N.rune_gen_foldglide_field_set_spring(P, value); } } }
     public float? Feather { get => WireReader.Read<float?>(N.rune_gen_foldglide_field_get_feather(P), static q562 => (q562.Tag() ? q562.Raw<float>() : (float?)null)); set { { N.rune_gen_foldglide_field_set_feather(P, value.HasValue, value.GetValueOrDefault()); } } }
 }
-public enum FontSmoothing { On, Off }
+public enum FontSmoothing { On, Off, DirectWrite }
 public enum Format { Bgra, Nv12Video, Nv12Full }
 public readonly unsafe partial struct Frame
 {
@@ -2286,11 +2409,13 @@ public readonly unsafe partial struct FrameEncoded
     internal FrameEncoded(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_frameencoded_free(O);
-    public global::System.TimeSpan At() { { return WireReader.Read<global::System.TimeSpan>(N.rune_gen_frameencoded_at(P), static q1951 => global::System.TimeSpan.FromSeconds(q1951.Raw<double>())); } }
+    public global::System.TimeSpan At() { { return WireReader.Read<global::System.TimeSpan>(N.rune_gen_frameencoded_at(P), static q2003 => global::System.TimeSpan.FromSeconds(q2003.Raw<double>())); } }
     public global::Rune.FrameOutcome Outcome() { { return N.rune_gen_frameencoded_outcome(P); } }
     public string? Window() { Utf8Ref o0; { return N.rune_gen_frameencoded_window(P, &o0) ? Interop.FromUtf8(o0) : null; } }
     public ulong Seq() { { return N.rune_gen_frameencoded_seq(P); } }
-    public global::System.TimeSpan? PresentsAt() { { return WireReader.Read<global::System.TimeSpan?>(N.rune_gen_frameencoded_presents_at(P), static q1958 => (q1958.Tag() ? global::System.TimeSpan.FromSeconds(q1958.Raw<double>()) : (global::System.TimeSpan?)null)); } }
+    public global::System.TimeSpan? PresentsAt() { { return WireReader.Read<global::System.TimeSpan?>(N.rune_gen_frameencoded_presents_at(P), static q2010 => (q2010.Tag() ? global::System.TimeSpan.FromSeconds(q2010.Raw<double>()) : (global::System.TimeSpan?)null)); } }
+    public global::System.TimeSpan? Started() { { return WireReader.Read<global::System.TimeSpan?>(N.rune_gen_frameencoded_started(P), static q2019 => (q2019.Tag() ? global::System.TimeSpan.FromSeconds(q2019.Raw<double>()) : (global::System.TimeSpan?)null)); } }
+    public double? RefreshHz() { double o0; { return N.rune_gen_frameencoded_refresh_hz(P, &o0) ? o0 : null; } }
     public double? UpdateMs() { double o0; { return N.rune_gen_frameencoded_update_ms(P, &o0) ? o0 : null; } }
     public double? EncodeMs() { double o0; { return N.rune_gen_frameencoded_encode_ms(P, &o0) ? o0 : null; } }
 }
@@ -2385,9 +2510,9 @@ public readonly unsafe partial struct Gpu
     public global::Rune.WgpuAdapter Adapter { get => new global::Rune.WgpuAdapter(N.rune_gen_gpu_field_get_adapter(P), _s == 0 ? Interop.Lent : _s); set { { N.rune_gen_gpu_field_set_adapter(P, value.O); } } }
     public global::Rune.WgpuDevice Device { get => new global::Rune.WgpuDevice(N.rune_gen_gpu_field_get_device(P), _s == 0 ? Interop.Lent : _s); set { { N.rune_gen_gpu_field_set_device(P, value.O); } } }
     public global::Rune.WgpuQueue Queue { get => new global::Rune.WgpuQueue(N.rune_gen_gpu_field_get_queue(P), _s == 0 ? Interop.Lent : _s); set { { N.rune_gen_gpu_field_set_queue(P, value.O); } } }
-    public static global::Rune.Gpu New(global::Rune.WgpuInstance instance, global::Rune.WgpuSurface? surface) { var surface__1w = new WireWriter(); if (surface is { } e1963) { surface__1w.Tag(true); surface__1w.Raw<nint>(e1963.P); } else surface__1w.Tag(false); byte[] surface__1b = surface__1w.ToArray(); fixed (byte* surface__1p = surface__1b) { return new global::Rune.Gpu(N.rune_gen_gpu_new(instance.O, surface__1p, (nuint)surface__1b.Length)); } }
-    public static global::Rune.Gpu TryNew(global::Rune.WgpuInstance instance, global::Rune.WgpuSurface? surface) { var surface__1w = new WireWriter(); if (surface is { } e1967) { surface__1w.Tag(true); surface__1w.Raw<nint>(e1967.P); } else surface__1w.Tag(false); byte[] surface__1b = surface__1w.ToArray(); fixed (byte* surface__1p = surface__1b) { return WireReader.Read<global::Rune.Gpu>(N.rune_gen_gpu_try_new(instance.O, surface__1p, (nuint)surface__1b.Length), static q1969 => q1969.Checked<global::Rune.Gpu>(static q1970 => new global::Rune.Gpu(q1970.Raw<nint>()))); } }
-    public static global::Rune.Gpu TryWithFeatures(global::Rune.WgpuInstance instance, global::Rune.WgpuSurface? surface, global::Rune.WgpuFeatures wanted) { var surface__1w = new WireWriter(); if (surface is { } e1974) { surface__1w.Tag(true); surface__1w.Raw<nint>(e1974.P); } else surface__1w.Tag(false); byte[] surface__1b = surface__1w.ToArray(); fixed (byte* surface__1p = surface__1b) { return WireReader.Read<global::Rune.Gpu>(N.rune_gen_gpu_try_with_features(instance.O, surface__1p, (nuint)surface__1b.Length, wanted.P), static q1976 => q1976.Checked<global::Rune.Gpu>(static q1977 => new global::Rune.Gpu(q1977.Raw<nint>()))); } }
+    public static global::Rune.Gpu New(global::Rune.WgpuInstance instance, global::Rune.WgpuSurface? surface) { var surface__1w = new WireWriter(); if (surface is { } e2024) { surface__1w.Tag(true); surface__1w.Raw<nint>(e2024.P); } else surface__1w.Tag(false); byte[] surface__1b = surface__1w.ToArray(); fixed (byte* surface__1p = surface__1b) { return new global::Rune.Gpu(N.rune_gen_gpu_new(instance.O, surface__1p, (nuint)surface__1b.Length)); } }
+    public static global::Rune.Gpu TryNew(global::Rune.WgpuInstance instance, global::Rune.WgpuSurface? surface) { var surface__1w = new WireWriter(); if (surface is { } e2028) { surface__1w.Tag(true); surface__1w.Raw<nint>(e2028.P); } else surface__1w.Tag(false); byte[] surface__1b = surface__1w.ToArray(); fixed (byte* surface__1p = surface__1b) { return WireReader.Read<global::Rune.Gpu>(N.rune_gen_gpu_try_new(instance.O, surface__1p, (nuint)surface__1b.Length), static q2030 => q2030.Checked<global::Rune.Gpu>(static q2031 => new global::Rune.Gpu(q2031.Raw<nint>()))); } }
+    public static global::Rune.Gpu TryWithFeatures(global::Rune.WgpuInstance instance, global::Rune.WgpuSurface? surface, global::Rune.WgpuFeatures wanted) { var surface__1w = new WireWriter(); if (surface is { } e2035) { surface__1w.Tag(true); surface__1w.Raw<nint>(e2035.P); } else surface__1w.Tag(false); byte[] surface__1b = surface__1w.ToArray(); fixed (byte* surface__1p = surface__1b) { return WireReader.Read<global::Rune.Gpu>(N.rune_gen_gpu_try_with_features(instance.O, surface__1p, (nuint)surface__1b.Length, wanted.P), static q2037 => q2037.Checked<global::Rune.Gpu>(static q2038 => new global::Rune.Gpu(q2038.Raw<nint>()))); } }
     public static global::Rune.Gpu Headless() { { return new global::Rune.Gpu(N.rune_gen_gpu_headless()); } }
     public static global::Rune.WgpuInstance Instance_() { { return new global::Rune.WgpuInstance(N.rune_gen_gpu_instance()); } }
 }
@@ -2453,11 +2578,11 @@ public readonly unsafe partial struct HeadlessRun
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_headlessrun_free(O);
     public string? Desktop() { Utf8Ref o0; { return N.rune_gen_headlessrun_desktop(P, &o0) ? Interop.FromUtf8(o0) : null; } }
-    public global::Rune.WindowFrame[] WindowFrames() { { return WireReader.Read<global::Rune.WindowFrame[]>(N.rune_gen_headlessrun_window_frames(P), static q1981 => q1981.List<global::Rune.WindowFrame>(static q1982 => new global::Rune.WindowFrame(q1982.Raw<nint>()))); } }
-    public global::Rune.WindowFrame[] WindowsAt(double t) { { return WireReader.Read<global::Rune.WindowFrame[]>(N.rune_gen_headlessrun_windows_at(P, t), static q1986 => q1986.List<global::Rune.WindowFrame>(static q1987 => new global::Rune.WindowFrame(q1987.Raw<nint>()))); } }
+    public global::Rune.WindowFrame[] WindowFrames() { { return WireReader.Read<global::Rune.WindowFrame[]>(N.rune_gen_headlessrun_window_frames(P), static q2042 => q2042.List<global::Rune.WindowFrame>(static q2043 => new global::Rune.WindowFrame(q2043.Raw<nint>()))); } }
+    public global::Rune.WindowFrame[] WindowsAt(double t) { { return WireReader.Read<global::Rune.WindowFrame[]>(N.rune_gen_headlessrun_windows_at(P, t), static q2047 => q2047.List<global::Rune.WindowFrame>(static q2048 => new global::Rune.WindowFrame(q2048.Raw<nint>()))); } }
     public string? Script() { Utf8Ref o0; { return N.rune_gen_headlessrun_script(P, &o0) ? Interop.FromUtf8(o0) : null; } }
-    public global::Rune.TimedEvent[] Events() { { return WireReader.Read<global::Rune.TimedEvent[]>(N.rune_gen_headlessrun_events(P), static q1991 => q1991.List<global::Rune.TimedEvent>(static q1992 => new global::Rune.TimedEvent(q1992.Raw<nint>()))); } }
-    public (string, double)[] Marks() { { return WireReader.Read<(string, double)[]>(N.rune_gen_headlessrun_marks(P), static q1999 => q1999.List<(string, double)>(static q2000 => (q2000.Str(), q2000.Raw<double>()))); } }
+    public global::Rune.TimedEvent[] Events() { { return WireReader.Read<global::Rune.TimedEvent[]>(N.rune_gen_headlessrun_events(P), static q2052 => q2052.List<global::Rune.TimedEvent>(static q2053 => new global::Rune.TimedEvent(q2053.Raw<nint>()))); } }
+    public (string, double)[] Marks() { { return WireReader.Read<(string, double)[]>(N.rune_gen_headlessrun_marks(P), static q2060 => q2060.List<(string, double)>(static q2061 => (q2061.Str(), q2061.Raw<double>()))); } }
     public double? Mark(string name) { byte[] name__1b = Interop.Utf8(name); double o0; fixed (byte* name__1p = name__1b) { return N.rune_gen_headlessrun_mark(P, name__1p, (nuint)name__1b.Length, &o0) ? o0 : null; } }
     public double ScriptEnd() { { return N.rune_gen_headlessrun_script_end(P); } }
     public float Scale() { { return N.rune_gen_headlessrun_scale(P); } }
@@ -2480,7 +2605,7 @@ public readonly unsafe partial struct Highlighter
     public static global::Rune.Highlighter Builtin() { { return new global::Rune.Highlighter(N.rune_gen_highlighter_builtin()); } }
     public static global::Rune.Highlighter New(global::System.Func<string?, string, ((nuint, nuint), global::Rune.Paint)[]> f) { { return new global::Rune.Highlighter(N.rune_gen_highlighter_new(Interop.Keep(f))); } }
     public global::Rune.Highlighter Key(global::Rune.HashKey key) { var key__1k = key; fixed (byte* key__1p = key__1k.Bytes) { return new global::Rune.Highlighter(N.rune_gen_highlighter_key(O, key__1k.Kind, key__1k.Number, key__1p, (nuint)(key__1k.Bytes?.Length ?? 0))); } }
-    public ((nuint, nuint), global::Rune.Paint)[] Highlight(string? lang, string code) { byte[] lang__2b = Interop.Utf8((lang ?? "")); byte[] code__4b = Interop.Utf8(code); fixed (byte* lang__2p = lang__2b) fixed (byte* code__4p = code__4b) { return WireReader.Read<((nuint, nuint), global::Rune.Paint)[]>(N.rune_gen_highlighter_highlight(P, lang != null, lang__2p, (nuint)lang__2b.Length, code__4p, (nuint)code__4b.Length), static q2029 => q2029.List<((nuint, nuint), global::Rune.Paint)>(static q2031 => ((q2031.Raw<nuint>(), q2031.Raw<nuint>()), new global::Rune.Paint(q2031.Raw<nint>())))); } }
+    public ((nuint, nuint), global::Rune.Paint)[] Highlight(string? lang, string code) { byte[] lang__2b = Interop.Utf8((lang ?? "")); byte[] code__4b = Interop.Utf8(code); fixed (byte* lang__2p = lang__2b) fixed (byte* code__4p = code__4b) { return WireReader.Read<((nuint, nuint), global::Rune.Paint)[]>(N.rune_gen_highlighter_highlight(P, lang != null, lang__2p, (nuint)lang__2b.Length, code__4p, (nuint)code__4b.Length), static q2090 => q2090.List<((nuint, nuint), global::Rune.Paint)>(static q2092 => ((q2092.Raw<nuint>(), q2092.Raw<nuint>()), new global::Rune.Paint(q2092.Raw<nint>())))); } }
     public bool IsBuiltin() { { return N.rune_gen_highlighter_is_builtin(P); } }
 }
 public readonly unsafe partial struct HoverCard
@@ -2563,12 +2688,12 @@ public readonly unsafe partial struct Image
     internal Image(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_image_free(O);
-    public global::Rune.Pixels Pixels() { { return WireReader.Read<global::Rune.Pixels>(N.rune_gen_image_pixels(P), static q2041 => new global::Rune.Pixels(q2041.Raw<nint>(), q2041.Scope), _s); } }
-    public byte[] Id() { { return WireReader.Read<byte[]>(N.rune_gen_image_id(P), static q2045 => q2045.Prims<byte>()); } }
+    public global::Rune.Pixels Pixels() { { return WireReader.Read<global::Rune.Pixels>(N.rune_gen_image_pixels(P), static q2102 => new global::Rune.Pixels(q2102.Raw<nint>(), q2102.Scope), _s); } }
+    public byte[] Id() { { return WireReader.Read<byte[]>(N.rune_gen_image_id(P), static q2106 => q2106.Prims<byte>()); } }
     public (uint, uint)? Size() { uint o0; uint o1; { return N.rune_gen_image_size(P, &o0, &o1) ? (o0, o1) : null; } }
     public bool IsReady() { { return N.rune_gen_image_is_ready(P); } }
-    public global::Rune.ImageError? Error() { { return WireReader.Read<global::Rune.ImageError?>(N.rune_gen_image_error(P), static q2050 => (q2050.Tag() ? new global::Rune.ImageError(q2050.Raw<nint>(), q2050.Scope) : (global::Rune.ImageError?)null), _s); } }
-    public (uint, uint) Wait() { { return WireReader.Read<(uint, uint)>(N.rune_gen_image_wait(P), static q2057 => q2057.Checked<(uint, uint)>(static q2058 => (q2058.Raw<uint>(), q2058.Raw<uint>()))); } }
+    public global::Rune.ImageError? Error() { { return WireReader.Read<global::Rune.ImageError?>(N.rune_gen_image_error(P), static q2111 => (q2111.Tag() ? new global::Rune.ImageError(q2111.Raw<nint>(), q2111.Scope) : (global::Rune.ImageError?)null), _s); } }
+    public (uint, uint) Wait() { { return WireReader.Read<(uint, uint)>(N.rune_gen_image_wait(P), static q2118 => q2118.Checked<(uint, uint)>(static q2119 => (q2119.Raw<uint>(), q2119.Raw<uint>()))); } }
 }
 public readonly unsafe partial struct ImageCache
 {
@@ -2580,7 +2705,7 @@ public readonly unsafe partial struct ImageCache
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_imagecache_free(O);
     public global::Rune.Image Url(string url, float size_pt, float scale) { byte[] url__1b = Interop.Utf8(url); fixed (byte* url__1p = url__1b) { return new global::Rune.Image(N.rune_gen_imagecache_url(P, url__1p, (nuint)url__1b.Length, size_pt, scale)); } }
-    public global::Rune.Image UrlSet((string, uint)[] sources, float size_pt, float scale) { var sources__1w = new WireWriter(); sources__1w.Len(sources.Length); foreach (var e2062 in sources) { sources__1w.Str(e2062.Item1); sources__1w.Raw<uint>(e2062.Item2); } byte[] sources__1b = sources__1w.ToArray(); fixed (byte* sources__1p = sources__1b) { return new global::Rune.Image(N.rune_gen_imagecache_url_set(P, sources__1p, (nuint)sources__1b.Length, size_pt, scale)); } }
+    public global::Rune.Image UrlSet((string, uint)[] sources, float size_pt, float scale) { var sources__1w = new WireWriter(); sources__1w.Len(sources.Length); foreach (var e2123 in sources) { sources__1w.Str(e2123.Item1); sources__1w.Raw<uint>(e2123.Item2); } byte[] sources__1b = sources__1w.ToArray(); fixed (byte* sources__1p = sources__1b) { return new global::Rune.Image(N.rune_gen_imagecache_url_set(P, sources__1p, (nuint)sources__1b.Length, size_pt, scale)); } }
     public static global::Rune.ImageCache New(global::Rune.Waker waker) { { return new global::Rune.ImageCache(N.rune_gen_imagecache_new(waker.O)); } }
     public global::Rune.Image Load(global::System.ReadOnlySpan<byte> bytes) { fixed (byte* bytes__1p = bytes) { return new global::Rune.Image(N.rune_gen_imagecache_load(P, bytes__1p, (nuint)bytes.Length)); } }
     public global::Rune.Image Svg(global::System.ReadOnlySpan<byte> bytes, float size_pt, float scale) { fixed (byte* bytes__1p = bytes) { return new global::Rune.Image(N.rune_gen_imagecache_svg(P, bytes__1p, (nuint)bytes.Length, size_pt, scale)); } }
@@ -2629,6 +2754,22 @@ public readonly unsafe partial struct Ink
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_ink_free(O);
     public static global::Rune.Ink CreateDefault() => new(N.rune_gen_ink_default());
+}
+public readonly unsafe partial struct InlineIcon
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal InlineIcon(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_inlineicon_free(O);
+    public static global::Rune.InlineIcon Glyph(global::Rune.Icon icon) { { return new global::Rune.InlineIcon(N.rune_gen_inlineicon_glyph(icon.P)); } }
+    public static global::Rune.InlineIcon Image(global::Rune.Pixels pixels) { { return new global::Rune.InlineIcon(N.rune_gen_inlineicon_image(pixels.O)); } }
+    public global::Rune.InlineIcon Size(float points) { { return new global::Rune.InlineIcon(N.rune_gen_inlineicon_size(O, points)); } }
+    public global::Rune.InlineIcon Gap(float points) { { return new global::Rune.InlineIcon(N.rune_gen_inlineicon_gap(O, points)); } }
+    public global::Rune.InlineIcon Radius(float points) { { return new global::Rune.InlineIcon(N.rune_gen_inlineicon_radius(O, points)); } }
+    public global::Rune.InlineIcon Color(global::Rune.Color c) { { return new global::Rune.InlineIcon(N.rune_gen_inlineicon_color(O, c)); } }
 }
 public readonly unsafe partial struct InputSpec
 {
@@ -2738,6 +2879,7 @@ public readonly unsafe partial struct KeyEvent
     public global::Rune.Mods Mods { get => N.rune_gen_keyevent_field_get_mods(P); set { { N.rune_gen_keyevent_field_set_mods(P, value); } } }
     public bool IsCommand(global::System.Text.Rune c) { { return N.rune_gen_keyevent_is_command(P, c); } }
 }
+public enum KeyPlatform { Mac, Windows, Linux }
 public enum KeyPolicy { None, OnDemand }
 public enum KeySide { Left, Right }
 public readonly unsafe partial struct Keybind
@@ -2749,9 +2891,19 @@ public readonly unsafe partial struct Keybind
     internal Keybind(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_keybind_free(O);
-    public static global::Rune.Keybind New(string[] keys) { var keys__0w = new WireWriter(); keys__0w.Len(keys.Length); foreach (var e2067 in keys) { keys__0w.Str(e2067); } byte[] keys__0b = keys__0w.ToArray(); fixed (byte* keys__0p = keys__0b) { return new global::Rune.Keybind(N.rune_gen_keybind_new(keys__0p, (nuint)keys__0b.Length)); } }
-    public global::Rune.Keybind Variant(global::Rune.KeybindVariant v) { { return new global::Rune.Keybind(N.rune_gen_keybind_variant(O, v)); } }
-    public global::Rune.El Build(global::Rune.Kit k) { { return new global::Rune.El(N.rune_gen_keybind_build(O, k.P)); } }
+    public static global::Rune.Keybind CreateDefault() => new(N.rune_gen_keybind_default());
+    public static global::Rune.Keybind New(string spec) { byte[] spec__0b = Interop.Utf8(spec); fixed (byte* spec__0p = spec__0b) { return new global::Rune.Keybind(N.rune_gen_keybind_new(spec__0p, (nuint)spec__0b.Length)); } }
+    public global::Rune.Keybind On(global::Rune.KeyPlatform platform, string spec) { byte[] spec__2b = Interop.Utf8(spec); fixed (byte* spec__2p = spec__2b) { return new global::Rune.Keybind(N.rune_gen_keybind_on(O, platform, spec__2p, (nuint)spec__2b.Length)); } }
+    public global::Rune.Keybind OnChords(global::Rune.KeyPlatform platform, global::System.ReadOnlySpan<global::Rune.Chord> chords) { var chords__2h = new nint[chords.Length]; for (int chords__2i = 0; chords__2i < chords__2h.Length; chords__2i++) chords__2h[chords__2i] = chords[chords__2i].O; fixed (nint* chords__2p = chords__2h) { return new global::Rune.Keybind(N.rune_gen_keybind_on_chords(O, platform, chords__2p, (nuint)chords.Length)); } }
+    public global::Rune.Chord[] ChordsOn(global::Rune.KeyPlatform platform) { { return WireReader.Read<global::Rune.Chord[]>(N.rune_gen_keybind_chords_on(P, platform), static q2130 => q2130.List<global::Rune.Chord>(static q2131 => new global::Rune.Chord(q2131.Raw<nint>()))); } }
+    public global::Rune.Chord[] Chords() { { return WireReader.Read<global::Rune.Chord[]>(N.rune_gen_keybind_chords(P), static q2135 => q2135.List<global::Rune.Chord>(static q2136 => new global::Rune.Chord(q2136.Raw<nint>()))); } }
+    public bool Matches(global::Rune.KeyEvent ev) { { return N.rune_gen_keybind_matches(P, ev.P); } }
+    public bool MatchesTx(global::Rune.KeyEvent ev, global::Rune.Tx tx) { { return N.rune_gen_keybind_matches_tx(P, ev.P, tx.P); } }
+    public bool MatchesOn(global::Rune.KeyEvent ev, global::Rune.KeyPlatform platform) { { return N.rune_gen_keybind_matches_on(P, ev.P, platform); } }
+    public bool MatchesTxOn(global::Rune.KeyEvent ev, global::Rune.Tx tx, global::Rune.KeyPlatform platform) { { return N.rune_gen_keybind_matches_tx_on(P, ev.P, tx.P, platform); } }
+    public string Label() { { return Interop.FromUtf8(N.rune_gen_keybind_label(P)); } }
+    public string LabelOn(global::Rune.KeyPlatform platform) { { return Interop.FromUtf8(N.rune_gen_keybind_label_on(P, platform)); } }
+    public string SpecOn(global::Rune.KeyPlatform platform) { { return Interop.FromUtf8(N.rune_gen_keybind_spec_on(P, platform)); } }
 }
 public enum KeybindVariant { Neutral, Ghost }
 public readonly unsafe partial struct Keyed
@@ -3034,7 +3186,7 @@ public readonly unsafe partial struct KeyframesBlur
     public global::Rune.KeyframesBlur Delay(float seconds) { { return new global::Rune.KeyframesBlur(N.rune_gen_keyframesblur_delay(O, seconds)); } }
     public global::Rune.KeyframesBlur Repeat(uint times) { { return new global::Rune.KeyframesBlur(N.rune_gen_keyframesblur_repeat(O, times)); } }
     public float Duration() { { return N.rune_gen_keyframesblur_duration(P); } }
-    public global::Rune.KeyframeBlur[] Frames() { { return WireReader.Read<global::Rune.KeyframeBlur[]>(N.rune_gen_keyframesblur_frames(P), static q2071 => q2071.List<global::Rune.KeyframeBlur>(static q2072 => new global::Rune.KeyframeBlur(q2072.Raw<nint>()))); } }
+    public global::Rune.KeyframeBlur[] Frames() { { return WireReader.Read<global::Rune.KeyframeBlur[]>(N.rune_gen_keyframesblur_frames(P), static q2140 => q2140.List<global::Rune.KeyframeBlur>(static q2141 => new global::Rune.KeyframeBlur(q2141.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct KeyframesColor
 {
@@ -3056,7 +3208,7 @@ public readonly unsafe partial struct KeyframesColor
     public global::Rune.KeyframesColor Delay(float seconds) { { return new global::Rune.KeyframesColor(N.rune_gen_keyframescolor_delay(O, seconds)); } }
     public global::Rune.KeyframesColor Repeat(uint times) { { return new global::Rune.KeyframesColor(N.rune_gen_keyframescolor_repeat(O, times)); } }
     public float Duration() { { return N.rune_gen_keyframescolor_duration(P); } }
-    public global::Rune.KeyframeColor[] Frames() { { return WireReader.Read<global::Rune.KeyframeColor[]>(N.rune_gen_keyframescolor_frames(P), static q2076 => q2076.List<global::Rune.KeyframeColor>(static q2077 => new global::Rune.KeyframeColor(q2077.Raw<nint>()))); } }
+    public global::Rune.KeyframeColor[] Frames() { { return WireReader.Read<global::Rune.KeyframeColor[]>(N.rune_gen_keyframescolor_frames(P), static q2145 => q2145.List<global::Rune.KeyframeColor>(static q2146 => new global::Rune.KeyframeColor(q2146.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct KeyframesCorners
 {
@@ -3078,7 +3230,7 @@ public readonly unsafe partial struct KeyframesCorners
     public global::Rune.KeyframesCorners Delay(float seconds) { { return new global::Rune.KeyframesCorners(N.rune_gen_keyframescorners_delay(O, seconds)); } }
     public global::Rune.KeyframesCorners Repeat(uint times) { { return new global::Rune.KeyframesCorners(N.rune_gen_keyframescorners_repeat(O, times)); } }
     public float Duration() { { return N.rune_gen_keyframescorners_duration(P); } }
-    public global::Rune.KeyframeCorners[] Frames() { { return WireReader.Read<global::Rune.KeyframeCorners[]>(N.rune_gen_keyframescorners_frames(P), static q2081 => q2081.List<global::Rune.KeyframeCorners>(static q2082 => new global::Rune.KeyframeCorners(q2082.Raw<nint>()))); } }
+    public global::Rune.KeyframeCorners[] Frames() { { return WireReader.Read<global::Rune.KeyframeCorners[]>(N.rune_gen_keyframescorners_frames(P), static q2150 => q2150.List<global::Rune.KeyframeCorners>(static q2151 => new global::Rune.KeyframeCorners(q2151.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct KeyframesF32
 {
@@ -3100,7 +3252,7 @@ public readonly unsafe partial struct KeyframesF32
     public global::Rune.KeyframesF32 Delay(float seconds) { { return new global::Rune.KeyframesF32(N.rune_gen_keyframesf32_delay(O, seconds)); } }
     public global::Rune.KeyframesF32 Repeat(uint times) { { return new global::Rune.KeyframesF32(N.rune_gen_keyframesf32_repeat(O, times)); } }
     public float Duration() { { return N.rune_gen_keyframesf32_duration(P); } }
-    public global::Rune.KeyframeF32[] Frames() { { return WireReader.Read<global::Rune.KeyframeF32[]>(N.rune_gen_keyframesf32_frames(P), static q2086 => q2086.List<global::Rune.KeyframeF32>(static q2087 => new global::Rune.KeyframeF32(q2087.Raw<nint>()))); } }
+    public global::Rune.KeyframeF32[] Frames() { { return WireReader.Read<global::Rune.KeyframeF32[]>(N.rune_gen_keyframesf32_frames(P), static q2155 => q2155.List<global::Rune.KeyframeF32>(static q2156 => new global::Rune.KeyframeF32(q2156.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct KeyframesRect
 {
@@ -3122,7 +3274,7 @@ public readonly unsafe partial struct KeyframesRect
     public global::Rune.KeyframesRect Delay(float seconds) { { return new global::Rune.KeyframesRect(N.rune_gen_keyframesrect_delay(O, seconds)); } }
     public global::Rune.KeyframesRect Repeat(uint times) { { return new global::Rune.KeyframesRect(N.rune_gen_keyframesrect_repeat(O, times)); } }
     public float Duration() { { return N.rune_gen_keyframesrect_duration(P); } }
-    public global::Rune.KeyframeRect[] Frames() { { return WireReader.Read<global::Rune.KeyframeRect[]>(N.rune_gen_keyframesrect_frames(P), static q2091 => q2091.List<global::Rune.KeyframeRect>(static q2092 => new global::Rune.KeyframeRect(q2092.Raw<nint>()))); } }
+    public global::Rune.KeyframeRect[] Frames() { { return WireReader.Read<global::Rune.KeyframeRect[]>(N.rune_gen_keyframesrect_frames(P), static q2160 => q2160.List<global::Rune.KeyframeRect>(static q2161 => new global::Rune.KeyframeRect(q2161.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct KeyframesRuneMotionColor
 {
@@ -3144,7 +3296,7 @@ public readonly unsafe partial struct KeyframesRuneMotionColor
     public global::Rune.KeyframesRuneMotionColor Delay(float seconds) { { return new global::Rune.KeyframesRuneMotionColor(N.rune_gen_keyframesrunemotioncolor_delay(O, seconds)); } }
     public global::Rune.KeyframesRuneMotionColor Repeat(uint times) { { return new global::Rune.KeyframesRuneMotionColor(N.rune_gen_keyframesrunemotioncolor_repeat(O, times)); } }
     public float Duration() { { return N.rune_gen_keyframesrunemotioncolor_duration(P); } }
-    public global::Rune.KeyframeRuneMotionColor[] Frames() { { return WireReader.Read<global::Rune.KeyframeRuneMotionColor[]>(N.rune_gen_keyframesrunemotioncolor_frames(P), static q2096 => q2096.List<global::Rune.KeyframeRuneMotionColor>(static q2097 => new global::Rune.KeyframeRuneMotionColor(q2097.Raw<nint>()))); } }
+    public global::Rune.KeyframeRuneMotionColor[] Frames() { { return WireReader.Read<global::Rune.KeyframeRuneMotionColor[]>(N.rune_gen_keyframesrunemotioncolor_frames(P), static q2165 => q2165.List<global::Rune.KeyframeRuneMotionColor>(static q2166 => new global::Rune.KeyframeRuneMotionColor(q2166.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct KeyframesSides
 {
@@ -3166,7 +3318,7 @@ public readonly unsafe partial struct KeyframesSides
     public global::Rune.KeyframesSides Delay(float seconds) { { return new global::Rune.KeyframesSides(N.rune_gen_keyframessides_delay(O, seconds)); } }
     public global::Rune.KeyframesSides Repeat(uint times) { { return new global::Rune.KeyframesSides(N.rune_gen_keyframessides_repeat(O, times)); } }
     public float Duration() { { return N.rune_gen_keyframessides_duration(P); } }
-    public global::Rune.KeyframeSides[] Frames() { { return WireReader.Read<global::Rune.KeyframeSides[]>(N.rune_gen_keyframessides_frames(P), static q2101 => q2101.List<global::Rune.KeyframeSides>(static q2102 => new global::Rune.KeyframeSides(q2102.Raw<nint>()))); } }
+    public global::Rune.KeyframeSides[] Frames() { { return WireReader.Read<global::Rune.KeyframeSides[]>(N.rune_gen_keyframessides_frames(P), static q2170 => q2170.List<global::Rune.KeyframeSides>(static q2171 => new global::Rune.KeyframeSides(q2171.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct KeyframesTransform
 {
@@ -3188,7 +3340,7 @@ public readonly unsafe partial struct KeyframesTransform
     public global::Rune.KeyframesTransform Delay(float seconds) { { return new global::Rune.KeyframesTransform(N.rune_gen_keyframestransform_delay(O, seconds)); } }
     public global::Rune.KeyframesTransform Repeat(uint times) { { return new global::Rune.KeyframesTransform(N.rune_gen_keyframestransform_repeat(O, times)); } }
     public float Duration() { { return N.rune_gen_keyframestransform_duration(P); } }
-    public global::Rune.KeyframeTransform[] Frames() { { return WireReader.Read<global::Rune.KeyframeTransform[]>(N.rune_gen_keyframestransform_frames(P), static q2106 => q2106.List<global::Rune.KeyframeTransform>(static q2107 => new global::Rune.KeyframeTransform(q2107.Raw<nint>()))); } }
+    public global::Rune.KeyframeTransform[] Frames() { { return WireReader.Read<global::Rune.KeyframeTransform[]>(N.rune_gen_keyframestransform_frames(P), static q2175 => q2175.List<global::Rune.KeyframeTransform>(static q2176 => new global::Rune.KeyframeTransform(q2176.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct KeyframesVec2
 {
@@ -3210,7 +3362,7 @@ public readonly unsafe partial struct KeyframesVec2
     public global::Rune.KeyframesVec2 Delay(float seconds) { { return new global::Rune.KeyframesVec2(N.rune_gen_keyframesvec2_delay(O, seconds)); } }
     public global::Rune.KeyframesVec2 Repeat(uint times) { { return new global::Rune.KeyframesVec2(N.rune_gen_keyframesvec2_repeat(O, times)); } }
     public float Duration() { { return N.rune_gen_keyframesvec2_duration(P); } }
-    public global::Rune.KeyframeVec2[] Frames() { { return WireReader.Read<global::Rune.KeyframeVec2[]>(N.rune_gen_keyframesvec2_frames(P), static q2111 => q2111.List<global::Rune.KeyframeVec2>(static q2112 => new global::Rune.KeyframeVec2(q2112.Raw<nint>()))); } }
+    public global::Rune.KeyframeVec2[] Frames() { { return WireReader.Read<global::Rune.KeyframeVec2[]>(N.rune_gen_keyframesvec2_frames(P), static q2180 => q2180.List<global::Rune.KeyframeVec2>(static q2181 => new global::Rune.KeyframeVec2(q2181.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct Kit
 {
@@ -3236,7 +3388,7 @@ public readonly unsafe partial struct Kit
     public global::Rune.Color Alpha(global::Rune.Color c, float a) { { return N.rune_gen_kit_alpha(P, c, a); } }
     public global::Rune.Color Selection() { { return N.rune_gen_kit_selection(P); } }
     public global::Rune.Color On(global::Rune.Color c, global::Rune.Color backdrop) { { return N.rune_gen_kit_on(P, c, backdrop); } }
-    public global::Rune.Shadow[] ShadowLayers(global::System.ReadOnlySpan<global::Rune.Shadow> layers) { fixed (global::Rune.Shadow* layers__1p = layers) { return WireReader.Read<global::Rune.Shadow[]>(N.rune_gen_kit_shadow_layers(P, layers__1p, (nuint)layers.Length), static q2116 => q2116.List<global::Rune.Shadow>(static q2117 => q2117.Raw<global::Rune.Shadow>())); } }
+    public global::Rune.Shadow[] ShadowLayers(global::System.ReadOnlySpan<global::Rune.Shadow> layers) { fixed (global::Rune.Shadow* layers__1p = layers) { return WireReader.Read<global::Rune.Shadow[]>(N.rune_gen_kit_shadow_layers(P, layers__1p, (nuint)layers.Length), static q2185 => q2185.List<global::Rune.Shadow>(static q2186 => q2186.Raw<global::Rune.Shadow>())); } }
     public global::Rune.Color LightOn(float a, global::Rune.Color backdrop) { { return N.rune_gen_kit_light_on(P, a, backdrop); } }
     public global::Rune.Color Light(float a) { { return N.rune_gen_kit_light(P, a); } }
     public global::Rune.Color DarkA(float a) { { return N.rune_gen_kit_dark_a(P, a); } }
@@ -3271,8 +3423,8 @@ public readonly unsafe partial struct Latest
     internal LayerHost(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public void Free() => N.rune_gen_layerhost_free(O);
-    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public global::Rune.Runtime Runtime() { { return WireReader.Read<global::Rune.Runtime>(N.rune_gen_layerhost_runtime(P), static q2122 => new global::Rune.Runtime(q2122.Raw<nint>(), q2122.Scope), _s); } }
-    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public global::Rune.Runtime RuntimeMut() { { return WireReader.Read<global::Rune.Runtime>(N.rune_gen_layerhost_runtime_mut(P), static q2125 => new global::Rune.Runtime(q2125.Raw<nint>(), q2125.Scope), _s); } }
+    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public global::Rune.Runtime Runtime() { { return WireReader.Read<global::Rune.Runtime>(N.rune_gen_layerhost_runtime(P), static q2191 => new global::Rune.Runtime(q2191.Raw<nint>(), q2191.Scope), _s); } }
+    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public global::Rune.Runtime RuntimeMut() { { return WireReader.Read<global::Rune.Runtime>(N.rune_gen_layerhost_runtime_mut(P), static q2194 => new global::Rune.Runtime(q2194.Raw<nint>(), q2194.Scope), _s); } }
     [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public void Resize((float, float) viewport, float scale) { { N.rune_gen_layerhost_resize(P, viewport.Item1, viewport.Item2, scale); } }
     [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public global::Rune.EmbedFrame Frame() { { return new global::Rune.EmbedFrame(N.rune_gen_layerhost_frame(P)); } }
 }
@@ -3488,7 +3640,7 @@ public readonly unsafe partial struct LiveText
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_livetext_free(O);
     public static global::Rune.LiveText New(string text) { byte[] text__0b = Interop.Utf8(text); fixed (byte* text__0p = text__0b) { return new global::Rune.LiveText(N.rune_gen_livetext_new(text__0p, (nuint)text__0b.Length)); } }
-    public string Get() { { return WireReader.Read<string>(N.rune_gen_livetext_get(P), static q2141 => q2141.Str()); } }
+    public string Get() { { return WireReader.Read<string>(N.rune_gen_livetext_get(P), static q2210 => q2210.Str()); } }
     public bool Set(string text) { byte[] text__1b = Interop.Utf8(text); fixed (byte* text__1p = text__1b) { return N.rune_gen_livetext_set(P, text__1p, (nuint)text__1b.Length); } }
 }
 public readonly unsafe partial struct Loader
@@ -3504,6 +3656,25 @@ public readonly unsafe partial struct Loader
     public static global::Rune.Loader New() { { return new global::Rune.Loader(N.rune_gen_loader_new()); } }
     public global::Rune.Loader Size(float s) { { return new global::Rune.Loader(N.rune_gen_loader_size(O, s)); } }
     public global::Rune.El Build(global::Rune.Kit k) { { return new global::Rune.El(N.rune_gen_loader_build(O, k.P)); } }
+}
+public readonly unsafe partial struct LocalTime
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal LocalTime(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_localtime_free(O);
+    public int Year { get => N.rune_gen_localtime_field_get_year(P); set { { N.rune_gen_localtime_field_set_year(P, value); } } }
+    public uint Month { get => N.rune_gen_localtime_field_get_month(P); set { { N.rune_gen_localtime_field_set_month(P, value); } } }
+    public uint Day { get => N.rune_gen_localtime_field_get_day(P); set { { N.rune_gen_localtime_field_set_day(P, value); } } }
+    public uint Hour { get => N.rune_gen_localtime_field_get_hour(P); set { { N.rune_gen_localtime_field_set_hour(P, value); } } }
+    public uint Minute { get => N.rune_gen_localtime_field_get_minute(P); set { { N.rune_gen_localtime_field_set_minute(P, value); } } }
+    public uint Second { get => N.rune_gen_localtime_field_get_second(P); set { { N.rune_gen_localtime_field_set_second(P, value); } } }
+    public int Offset { get => N.rune_gen_localtime_field_get_offset(P); set { { N.rune_gen_localtime_field_set_offset(P, value); } } }
+    public static global::Rune.LocalTime At(long epoch_ms) { { return new global::Rune.LocalTime(N.rune_gen_localtime_at(epoch_ms)); } }
+    public static global::Rune.LocalTime AtOffset(long epoch_ms, int offset) { { return new global::Rune.LocalTime(N.rune_gen_localtime_at_offset(epoch_ms, offset)); } }
 }
 public readonly unsafe partial struct LoopKind
 {
@@ -3648,7 +3819,7 @@ public readonly unsafe partial struct MarkRange
     public nuint End { get => N.rune_gen_markrange_field_get_end(P); set { { N.rune_gen_markrange_field_set_end(P, value); } } }
     public global::Rune.Mark Mark { get => new global::Rune.Mark(N.rune_gen_markrange_field_get_mark(P), _s == 0 ? Interop.Lent : _s); set { { N.rune_gen_markrange_field_set_mark(P, value.O); } } }
     public static global::Rune.MarkRange New((nuint, nuint) range, global::Rune.Mark mark) { var range__0w = new WireWriter(); range__0w.Raw<nuint>(range.Item1); range__0w.Raw<nuint>(range.Item2); byte[] range__0b = range__0w.ToArray(); fixed (byte* range__0p = range__0b) { return new global::Rune.MarkRange(N.rune_gen_markrange_new(range__0p, (nuint)range__0b.Length, mark.O)); } }
-    public (nuint, nuint) Range() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_markrange_range(P), static q2152 => (q2152.Raw<nuint>(), q2152.Raw<nuint>())); } }
+    public (nuint, nuint) Range() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_markrange_range(P), static q2221 => (q2221.Raw<nuint>(), q2221.Raw<nuint>())); } }
 }
 public readonly unsafe partial struct Mask
 {
@@ -3703,7 +3874,7 @@ public readonly unsafe partial struct MemoryClipboard
     internal MemoryClipboard(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_memoryclipboard_free(O);
-    public string? Text() { { return WireReader.Read<string?>(N.rune_gen_memoryclipboard_text(P), static q2161 => (q2161.Tag() ? q2161.Str() : (string?)null)); } }
+    public string? Text() { { return WireReader.Read<string?>(N.rune_gen_memoryclipboard_text(P), static q2230 => (q2230.Tag() ? q2230.Str() : (string?)null)); } }
     public global::Rune.ClipboardContent? Content() { nint o0; { return N.rune_gen_memoryclipboard_content(P, &o0) ? new global::Rune.ClipboardContent(o0) : null; } }
     public void SetText(string text) { byte[] text__1b = Interop.Utf8(text); fixed (byte* text__1p = text__1b) { N.rune_gen_memoryclipboard_set_text(P, text__1p, (nuint)text__1b.Length); } }
     public void SetContent(global::Rune.ClipboardContent content) { { N.rune_gen_memoryclipboard_set_content(P, content.O); } }
@@ -3798,7 +3969,7 @@ public enum MicPermission { Granted, Denied, Undetermined, Restricted }
 public enum Modifier { ShiftLeft, ShiftRight, ControlLeft, ControlRight, AltLeft, AltRight, SuperLeft, SuperRight, Fn }
 [StructLayout(LayoutKind.Sequential)] public unsafe partial record struct Mods(bool Shift, bool Cmd, bool Alt, bool Ctrl, bool Logo)
 {
-
+    public bool Primary() { { return N.rune_gen_mods_primary(this); } }
 }
 [StructLayout(LayoutKind.Sequential)] public unsafe partial record struct Motion(global::Rune.Spring Control, global::Rune.Spring Overlay, global::Rune.Spring Disclosure)
 {
@@ -3921,7 +4092,7 @@ public readonly unsafe partial struct MotionGateRun
     public void Act(string what, global::System.Action<global::Rune.Runtime> f) { byte[] what__1b = Interop.Utf8(what); fixed (byte* what__1p = what__1b) { N.rune_gen_motiongaterun_act(P, what__1p, (nuint)what__1b.Length, Interop.Keep(f)); } }
     public void Quiet() { { N.rune_gen_motiongaterun_quiet(P); } }
     public static void Tap(global::Rune.Runtime rt, string key) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { N.rune_gen_motiongaterun_tap(rt.P, key__1p, (nuint)key__1b.Length); } }
-    public global::Rune.Finding[] Finish() { { return WireReader.Read<global::Rune.Finding[]>(N.rune_gen_motiongaterun_finish(P), static q2174 => q2174.List<global::Rune.Finding>(static q2175 => new global::Rune.Finding(q2175.Raw<nint>()))); } }
+    public global::Rune.Finding[] Finish() { { return WireReader.Read<global::Rune.Finding[]>(N.rune_gen_motiongaterun_finish(P), static q2243 => q2243.List<global::Rune.Finding>(static q2244 => new global::Rune.Finding(q2244.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct MotionGateTrack
 {
@@ -3939,7 +4110,7 @@ public readonly unsafe partial struct MotionGateTrack
     public (nuint, string)[] Words { get => WireReader.Read<(nuint, string)[]>(N.rune_gen_motiongatetrack_field_get_words(P), static q1035 => q1035.List<(nuint, string)>(static q1036 => (q1036.Raw<nuint>(), q1036.Str()))); set { var value__1w = new WireWriter(); value__1w.Len(value.Length); foreach (var e1041 in value) { value__1w.Raw<nuint>(e1041.Item1); value__1w.Str(e1041.Item2); } byte[] value__1b = value__1w.ToArray(); fixed (byte* value__1p = value__1b) { N.rune_gen_motiongatetrack_field_set_words(P, value__1p, (nuint)value__1b.Length); } } }
     public (nuint, string)[] Edits { get => WireReader.Read<(nuint, string)[]>(N.rune_gen_motiongatetrack_field_get_edits(P), static q1052 => q1052.List<(nuint, string)>(static q1053 => (q1053.Raw<nuint>(), q1053.Str()))); set { var value__1w = new WireWriter(); value__1w.Len(value.Length); foreach (var e1058 in value) { value__1w.Raw<nuint>(e1058.Item1); value__1w.Str(e1058.Item2); } byte[] value__1b = value__1w.ToArray(); fixed (byte* value__1p = value__1b) { N.rune_gen_motiongatetrack_field_set_edits(P, value__1p, (nuint)value__1b.Length); } } }
     public global::Rune.PaintPaint?[] Paint { get => WireReader.Read<global::Rune.PaintPaint?[]>(N.rune_gen_motiongatetrack_field_get_paint(P), static q1067 => q1067.List<global::Rune.PaintPaint?>(static q1068 => (q1068.Tag() ? new global::Rune.PaintPaint(q1068.Raw<nint>()) : (global::Rune.PaintPaint?)null))); set { var value__1w = new WireWriter(); value__1w.Len(value.Length); foreach (var e1071 in value) { if (e1071 is { } e1072) { value__1w.Tag(true); value__1w.Raw<nint>(e1072.O); } else value__1w.Tag(false); } byte[] value__1b = value__1w.ToArray(); fixed (byte* value__1p = value__1b) { N.rune_gen_motiongatetrack_field_set_paint(P, value__1p, (nuint)value__1b.Length); } } }
-    public global::Rune.PaintPaint? PaintAt(nuint k) { { return WireReader.Read<global::Rune.PaintPaint?>(N.rune_gen_motiongatetrack_paint_at(P, k), static q2179 => (q2179.Tag() ? new global::Rune.PaintPaint(q2179.Raw<nint>(), q2179.Scope) : (global::Rune.PaintPaint?)null), _s); } }
+    public global::Rune.PaintPaint? PaintAt(nuint k) { { return WireReader.Read<global::Rune.PaintPaint?>(N.rune_gen_motiongatetrack_paint_at(P, k), static q2248 => (q2248.Tag() ? new global::Rune.PaintPaint(q2248.Raw<nint>(), q2248.Scope) : (global::Rune.PaintPaint?)null), _s); } }
 }
 public readonly unsafe partial struct MotionIntent
 {
@@ -3977,16 +4148,16 @@ public readonly unsafe partial struct MotionTrace
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_motiontrace_free(O);
     public static global::Rune.MotionTrace? FromEnv(global::Rune.TraceHeader header) { nint o0; { return N.rune_gen_motiontrace_from_env(header.P, &o0) ? new global::Rune.MotionTrace(o0) : null; } }
-    public static (global::Rune.MotionTrace, global::Rune.SharedBuffer) InMemory(global::Rune.TraceHeader header) { { return WireReader.Read<(global::Rune.MotionTrace, global::Rune.SharedBuffer)>(N.rune_gen_motiontrace_in_memory(header.P), static q2185 => (new global::Rune.MotionTrace(q2185.Raw<nint>()), new global::Rune.SharedBuffer(q2185.Raw<nint>()))); } }
+    public static (global::Rune.MotionTrace, global::Rune.SharedBuffer) InMemory(global::Rune.TraceHeader header) { { return WireReader.Read<(global::Rune.MotionTrace, global::Rune.SharedBuffer)>(N.rune_gen_motiontrace_in_memory(header.P), static q2254 => (new global::Rune.MotionTrace(q2254.Raw<nint>()), new global::Rune.SharedBuffer(q2254.Raw<nint>()))); } }
     public void SetTimeScale(float sc) { { N.rune_gen_motiontrace_set_time_scale(P, sc); } }
     public global::Rune.MotionTrace Host(string host) { byte[] host__1b = Interop.Utf8(host); fixed (byte* host__1p = host__1b) { return new global::Rune.MotionTrace(N.rune_gen_motiontrace_host(O, host__1p, (nuint)host__1b.Length)); } }
     public global::Rune.MotionTrace Class(string @class) { byte[] class__1b = Interop.Utf8(@class); fixed (byte* class__1p = class__1b) { return new global::Rune.MotionTrace(N.rune_gen_motiontrace_class(O, class__1p, (nuint)class__1b.Length)); } }
-    public bool Namespace(global::Rune.NodeId node, (string, string)? @namespace) { var namespace__2w = new WireWriter(); if (@namespace is { } e2189) { namespace__2w.Tag(true); namespace__2w.Str(e2189.Item1); namespace__2w.Str(e2189.Item2); } else namespace__2w.Tag(false); byte[] namespace__2b = namespace__2w.ToArray(); fixed (byte* namespace__2p = namespace__2b) { return N.rune_gen_motiontrace_namespace(P, node.O, namespace__2p, (nuint)namespace__2b.Length); } }
+    public bool Namespace(global::Rune.NodeId node, (string, string)? @namespace) { var namespace__2w = new WireWriter(); if (@namespace is { } e2258) { namespace__2w.Tag(true); namespace__2w.Str(e2258.Item1); namespace__2w.Str(e2258.Item2); } else namespace__2w.Tag(false); byte[] namespace__2b = namespace__2w.ToArray(); fixed (byte* namespace__2p = namespace__2b) { return N.rune_gen_motiontrace_namespace(P, node.O, namespace__2p, (nuint)namespace__2b.Length); } }
     public bool Name(global::Rune.NodeId node, string? name) { byte[] name__3b = Interop.Utf8((name ?? "")); fixed (byte* name__3p = name__3b) { return N.rune_gen_motiontrace_name(P, node.O, name != null, name__3p, (nuint)name__3b.Length); } }
     public void Channel(string name, string kind, float value) { byte[] name__1b = Interop.Utf8(name); byte[] kind__3b = Interop.Utf8(kind); fixed (byte* name__1p = name__1b) fixed (byte* kind__3p = kind__3b) { N.rune_gen_motiontrace_channel(P, name__1p, (nuint)name__1b.Length, kind__3p, (nuint)kind__3b.Length, value); } }
     public void RemoveChannel(string name) { byte[] name__1b = Interop.Utf8(name); fixed (byte* name__1p = name__1b) { N.rune_gen_motiontrace_remove_channel(P, name__1p, (nuint)name__1b.Length); } }
     public void Event(object @event) { byte[] event__1b = Interop.Shown(@event); fixed (byte* event__1p = event__1b) { N.rune_gen_motiontrace_event(P, event__1p, (nuint)event__1b.Length); } }
-    public void Frame(double t, global::System.ReadOnlySpan<global::Rune.Presented> presented, global::System.ReadOnlySpan<global::Rune.NodeId> gone, global::System.ReadOnlySpan<global::Rune.MotionEvent> events, (global::Rune.NodeId, uint, float)[] intents) { var presented__2h = new nint[presented.Length]; for (int presented__2i = 0; presented__2i < presented__2h.Length; presented__2i++) presented__2h[presented__2i] = presented[presented__2i].O; var gone__4h = new nint[gone.Length]; for (int gone__4i = 0; gone__4i < gone__4h.Length; gone__4i++) gone__4h[gone__4i] = gone[gone__4i].O; var events__6h = new nint[events.Length]; for (int events__6i = 0; events__6i < events__6h.Length; events__6i++) events__6h[events__6i] = events[events__6i].O; var intents__8w = new WireWriter(); intents__8w.Len(intents.Length); foreach (var e2194 in intents) { intents__8w.Raw<nint>(e2194.Item1.O); intents__8w.Raw<uint>(e2194.Item2); intents__8w.Raw<float>(e2194.Item3); } byte[] intents__8b = intents__8w.ToArray(); fixed (nint* presented__2p = presented__2h) fixed (nint* gone__4p = gone__4h) fixed (nint* events__6p = events__6h) fixed (byte* intents__8p = intents__8b) { N.rune_gen_motiontrace_frame(P, t, presented__2p, (nuint)presented.Length, gone__4p, (nuint)gone.Length, events__6p, (nuint)events.Length, intents__8p, (nuint)intents__8b.Length); } }
+    public void Frame(double t, global::System.ReadOnlySpan<global::Rune.Presented> presented, global::System.ReadOnlySpan<global::Rune.NodeId> gone, global::System.ReadOnlySpan<global::Rune.MotionEvent> events, (global::Rune.NodeId, uint, float)[] intents) { var presented__2h = new nint[presented.Length]; for (int presented__2i = 0; presented__2i < presented__2h.Length; presented__2i++) presented__2h[presented__2i] = presented[presented__2i].O; var gone__4h = new nint[gone.Length]; for (int gone__4i = 0; gone__4i < gone__4h.Length; gone__4i++) gone__4h[gone__4i] = gone[gone__4i].O; var events__6h = new nint[events.Length]; for (int events__6i = 0; events__6i < events__6h.Length; events__6i++) events__6h[events__6i] = events[events__6i].O; var intents__8w = new WireWriter(); intents__8w.Len(intents.Length); foreach (var e2263 in intents) { intents__8w.Raw<nint>(e2263.Item1.O); intents__8w.Raw<uint>(e2263.Item2); intents__8w.Raw<float>(e2263.Item3); } byte[] intents__8b = intents__8w.ToArray(); fixed (nint* presented__2p = presented__2h) fixed (nint* gone__4p = gone__4h) fixed (nint* events__6p = events__6h) fixed (byte* intents__8p = intents__8b) { N.rune_gen_motiontrace_frame(P, t, presented__2p, (nuint)presented.Length, gone__4p, (nuint)gone.Length, events__6p, (nuint)events.Length, intents__8p, (nuint)intents__8b.Length); } }
     public void Flush() { { WireReader.Check(N.rune_gen_motiontrace_flush(P)); } }
 }
 public enum Mount { Initial, Animated }
@@ -4094,7 +4265,7 @@ public readonly unsafe partial struct Offscreen
     public static global::Rune.Offscreen New(global::Rune.WgpuDevice device, uint width, uint height) { { return new global::Rune.Offscreen(N.rune_gen_offscreen_new(device.P, width, height)); } }
     public static global::Rune.Offscreen WithFormat(global::Rune.WgpuDevice device, uint width, uint height, global::Rune.WgpuTextureFormat format) { { return new global::Rune.Offscreen(N.rune_gen_offscreen_with_format(device.P, width, height, format.P)); } }
     public void Copy(global::Rune.WgpuCommandEncoder encoder) { { N.rune_gen_offscreen_copy(P, encoder.P); } }
-    public byte[] Read(global::Rune.WgpuDevice device) { { return WireReader.Read<byte[]>(N.rune_gen_offscreen_read(P, device.P), static q2204 => q2204.Prims<byte>()); } }
+    public byte[] Read(global::Rune.WgpuDevice device) { { return WireReader.Read<byte[]>(N.rune_gen_offscreen_read(P, device.P), static q2273 => q2273.Prims<byte>()); } }
 }
 public readonly unsafe partial struct OpenUrlError
 {
@@ -4544,7 +4715,7 @@ public readonly unsafe partial struct PillStyle
     internal PixelBuffer(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public void Free() => N.rune_gen_pixelbuffer_free(O);
-    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public static global::Rune.PixelBuffer FromBytes(global::Rune.ByteFrame frame) { { return WireReader.Read<global::Rune.PixelBuffer>(N.rune_gen_pixelbuffer_from_bytes(frame.P), static q2212 => q2212.Checked<global::Rune.PixelBuffer>(static q2213 => new global::Rune.PixelBuffer(q2213.Raw<nint>()))); } }
+    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public static global::Rune.PixelBuffer FromBytes(global::Rune.ByteFrame frame) { { return WireReader.Read<global::Rune.PixelBuffer>(N.rune_gen_pixelbuffer_from_bytes(frame.P), static q2281 => q2281.Checked<global::Rune.PixelBuffer>(static q2282 => new global::Rune.PixelBuffer(q2282.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct Pixels
 {
@@ -4591,7 +4762,7 @@ public readonly unsafe partial struct Player
     public static global::Rune.Player Url(string url) { byte[] url__0b = Interop.Utf8(url); fixed (byte* url__0p = url__0b) { return new global::Rune.Player(N.rune_gen_player_url(url__0p, (nuint)url__0b.Length)); } }
     public static global::Rune.Player Audio(global::Rune.MediaSource source) { { return new global::Rune.Player(N.rune_gen_player_audio(source.O)); } }
     public static global::Rune.MediaRequest Request(string url) { byte[] url__0b = Interop.Utf8(url); fixed (byte* url__0p = url__0b) { return new global::Rune.MediaRequest(N.rune_gen_player_request(url__0p, (nuint)url__0b.Length)); } }
-    public global::Rune.MediaSource Source() { { return WireReader.Read<global::Rune.MediaSource>(N.rune_gen_player_source(P), static q2216 => new global::Rune.MediaSource(q2216.Raw<nint>(), q2216.Scope), _s); } }
+    public global::Rune.MediaSource Source() { { return WireReader.Read<global::Rune.MediaSource>(N.rune_gen_player_source(P), static q2285 => new global::Rune.MediaSource(q2285.Raw<nint>(), q2285.Scope), _s); } }
     public bool IsAudio() { { return N.rune_gen_player_is_audio(P); } }
     public void Preload() { { N.rune_gen_player_preload(P); } }
     public void Play() { { N.rune_gen_player_play(P); } }
@@ -4609,7 +4780,7 @@ public readonly unsafe partial struct Player
     public float Rate() { { return N.rune_gen_player_rate(P); } }
     public bool Looping() { { return N.rune_gen_player_looping(P); } }
     public bool Muted() { { return N.rune_gen_player_muted(P); } }
-    public global::Rune.NativeSurface Surface() { { return WireReader.Read<global::Rune.NativeSurface>(N.rune_gen_player_surface(P), static q2219 => new global::Rune.NativeSurface(q2219.Raw<nint>(), q2219.Scope), _s); } }
+    public global::Rune.NativeSurface Surface() { { return WireReader.Read<global::Rune.NativeSurface>(N.rune_gen_player_surface(P), static q2288 => new global::Rune.NativeSurface(q2288.Raw<nint>(), q2288.Scope), _s); } }
 }
 public readonly unsafe partial struct PlayerState
 {
@@ -4641,7 +4812,7 @@ public readonly unsafe partial struct Playground
     public static global::Rune.Playground CreateDefault() => new(N.rune_gen_playground_default());
     public global::Rune.Playground StartFolded(bool on) { { return new global::Rune.Playground(N.rune_gen_playground_start_folded(O, on)); } }
     public global::Rune.Playground Folds(global::System.Func<string[]> load, global::System.Action<string[]> save) { { return new global::Rune.Playground(N.rune_gen_playground_folds(O, Interop.Keep(load), Interop.Keep(save))); } }
-    public global::Rune.Playground GroupOrder(string[] groups) { var groups__1w = new WireWriter(); groups__1w.Len(groups.Length); foreach (var e2228 in groups) { groups__1w.Str(e2228); } byte[] groups__1b = groups__1w.ToArray(); fixed (byte* groups__1p = groups__1b) { return new global::Rune.Playground(N.rune_gen_playground_group_order(O, groups__1p, (nuint)groups__1b.Length)); } }
+    public global::Rune.Playground GroupOrder(string[] groups) { var groups__1w = new WireWriter(); groups__1w.Len(groups.Length); foreach (var e2297 in groups) { groups__1w.Str(e2297); } byte[] groups__1b = groups__1w.ToArray(); fixed (byte* groups__1p = groups__1b) { return new global::Rune.Playground(N.rune_gen_playground_group_order(O, groups__1p, (nuint)groups__1b.Length)); } }
     public global::Rune.Playground Widths(global::System.Func<(float, float)> load, global::System.Action<float, float> save) { { return new global::Rune.Playground(N.rune_gen_playground_widths(O, Interop.Keep(load), Interop.Keep(save))); } }
     public static global::Rune.Playground New() { { return new global::Rune.Playground(N.rune_gen_playground_new()); } }
     public global::Rune.Playground Page<S>(string name, global::System.Func<S, global::Rune.Cx, global::Rune.El> view) where S : class { byte[] name__1b = Interop.Utf8(name); global::System.Func<object, global::Rune.Cx, global::Rune.El> view__3e = (x0, x1) => view((S)x0, x1); fixed (byte* name__1p = name__1b) { return new global::Rune.Playground(N.rune_gen_playground_page(O, name__1p, (nuint)name__1b.Length, Interop.Keep(view__3e))); } }
@@ -4658,7 +4829,7 @@ public readonly unsafe partial struct Playground
     public global::Rune.Playground Keep<S>(global::System.Action<S, S> keep) where S : class { { return new global::Rune.Playground(N.rune_gen_playground_keep(O, Interop.Slot(14, keep, () => { global::System.Action<object, object> keep__0e = (x0, x1) => keep((S)x0, (S)x1); return Interop.Keep(keep__0e); }, static (i, h) => N.rune_gen_fp_14_set(i, h)))); } }
     public global::Rune.Playground Typing<S>(global::System.Func<S, bool> typing) where S : class { { return new global::Rune.Playground(N.rune_gen_playground_typing(O, Interop.Slot(15, typing, () => { global::System.Func<object, bool> typing__0e = (x0) => typing((S)x0); return Interop.Keep(typing__0e); }, static (i, h) => N.rune_gen_fp_15_set(i, h)))); } }
     public global::Rune.Playground Dark<S>(global::System.Func<S, bool> dark) where S : class { { return new global::Rune.Playground(N.rune_gen_playground_dark(O, Interop.Slot(15, dark, () => { global::System.Func<object, bool> dark__0e = (x0) => dark((S)x0); return Interop.Keep(dark__0e); }, static (i, h) => N.rune_gen_fp_15_set(i, h)))); } }
-    public global::Rune.Playground Sizes((string, (float, float))[] sizes) { var sizes__1w = new WireWriter(); sizes__1w.Len(sizes.Length); foreach (var e2233 in sizes) { sizes__1w.Str(e2233.Item1); sizes__1w.Raw<float>(e2233.Item2.Item1); sizes__1w.Raw<float>(e2233.Item2.Item2); } byte[] sizes__1b = sizes__1w.ToArray(); fixed (byte* sizes__1p = sizes__1b) { return new global::Rune.Playground(N.rune_gen_playground_sizes(O, sizes__1p, (nuint)sizes__1b.Length)); } }
+    public global::Rune.Playground Sizes((string, (float, float))[] sizes) { var sizes__1w = new WireWriter(); sizes__1w.Len(sizes.Length); foreach (var e2302 in sizes) { sizes__1w.Str(e2302.Item1); sizes__1w.Raw<float>(e2302.Item2.Item1); sizes__1w.Raw<float>(e2302.Item2.Item2); } byte[] sizes__1b = sizes__1w.ToArray(); fixed (byte* sizes__1p = sizes__1b) { return new global::Rune.Playground(N.rune_gen_playground_sizes(O, sizes__1p, (nuint)sizes__1b.Length)); } }
     public global::Rune.Playground Shortcut(global::Rune.Shortcut? shortcut) { { return new global::Rune.Playground(N.rune_gen_playground_shortcut(O, shortcut.HasValue, shortcut.GetValueOrDefault().O)); } }
     public global::Rune.Playground Bar(bool on) { { return new global::Rune.Playground(N.rune_gen_playground_bar(O, on)); } }
     public global::Rune.Playground Enabled(bool on) { { return new global::Rune.Playground(N.rune_gen_playground_enabled(O, on)); } }
@@ -4847,7 +5018,7 @@ public readonly unsafe partial struct PopupMenu
     public global::Rune.PopupMenu Separator() { { return new global::Rune.PopupMenu(N.rune_gen_popupmenu_separator(O)); } }
     public global::Rune.PopupMenu Submenu(string title, global::Rune.PopupMenu menu) { byte[] title__1b = Interop.Utf8(title); fixed (byte* title__1p = title__1b) { return new global::Rune.PopupMenu(N.rune_gen_popupmenu_submenu(O, title__1p, (nuint)title__1b.Length, menu.O)); } }
     public global::Rune.PopupMenu Selected(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return new global::Rune.PopupMenu(N.rune_gen_popupmenu_selected(O, id__1p, (nuint)id__1b.Length)); } }
-    public global::Rune.PopupItem? Find(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return WireReader.Read<global::Rune.PopupItem?>(N.rune_gen_popupmenu_find(P, id__1p, (nuint)id__1b.Length), static q2242 => (q2242.Tag() ? new global::Rune.PopupItem(q2242.Raw<nint>(), q2242.Scope) : (global::Rune.PopupItem?)null), _s); } }
+    public global::Rune.PopupItem? Find(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return WireReader.Read<global::Rune.PopupItem?>(N.rune_gen_popupmenu_find(P, id__1p, (nuint)id__1b.Length), static q2311 => (q2311.Tag() ? new global::Rune.PopupItem(q2311.Raw<nint>(), q2311.Scope) : (global::Rune.PopupItem?)null), _s); } }
 }
 public readonly unsafe partial struct PopupMenuError
 {
@@ -4877,7 +5048,7 @@ public readonly unsafe partial struct Pose
     public void Free() => N.rune_gen_pose_free(O);
     public float Rotation() { { return N.rune_gen_pose_rotation(P); } }
     public float Scale() { { return N.rune_gen_pose_scale(P); } }
-    public global::Rune.Shadow[] Shadows() { { return WireReader.Read<global::Rune.Shadow[]>(N.rune_gen_pose_shadows(P), static q2247 => q2247.List<global::Rune.Shadow>(static q2248 => q2248.Raw<global::Rune.Shadow>())); } }
+    public global::Rune.Shadow[] Shadows() { { return WireReader.Read<global::Rune.Shadow[]>(N.rune_gen_pose_shadows(P), static q2316 => q2316.List<global::Rune.Shadow>(static q2317 => q2317.Raw<global::Rune.Shadow>())); } }
     public bool Moving() { { return N.rune_gen_pose_moving(P); } }
 }
 public readonly unsafe partial struct Prefs
@@ -5153,7 +5324,7 @@ public readonly unsafe partial struct Recorder
     internal Recorder(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_recorder_free(O);
-    public static global::System.TimeSpan MeterInterval => WireReader.Read<global::System.TimeSpan>(N.rune_gen_const_rune__recorder__meter_interval(), static q2254 => global::System.TimeSpan.FromSeconds(q2254.Raw<double>()));
+    public static global::System.TimeSpan MeterInterval => WireReader.Read<global::System.TimeSpan>(N.rune_gen_const_rune__recorder__meter_interval(), static q2323 => global::System.TimeSpan.FromSeconds(q2323.Raw<double>()));
     public static global::Rune.Recorder ToFile(string path) { byte[] path__0b = Interop.Utf8(path); fixed (byte* path__0p = path__0b) { return new global::Rune.Recorder(N.rune_gen_recorder_to_file(path__0p, (nuint)path__0b.Length)); } }
     public global::Rune.Recorder Format(global::Rune.RecordFormat format) { { return new global::Rune.Recorder(N.rune_gen_recorder_format(O, format)); } }
     public global::Rune.Recorder SampleRate(uint hz) { { return new global::Rune.Recorder(N.rune_gen_recorder_sample_rate(O, hz)); } }
@@ -5165,7 +5336,7 @@ public readonly unsafe partial struct Recorder
     public void Start() { { N.rune_gen_recorder_start(P); } }
     public void Pause() { { N.rune_gen_recorder_pause(P); } }
     public void Resume() { { N.rune_gen_recorder_resume(P); } }
-    public global::Rune.Recording Stop() { { return WireReader.Read<global::Rune.Recording>(N.rune_gen_recorder_stop(P), static q2259 => q2259.Checked<global::Rune.Recording>(static q2260 => new global::Rune.Recording(q2260.Raw<nint>()))); } }
+    public global::Rune.Recording Stop() { { return WireReader.Read<global::Rune.Recording>(N.rune_gen_recorder_stop(P), static q2328 => q2328.Checked<global::Rune.Recording>(static q2329 => new global::Rune.Recording(q2329.Raw<nint>()))); } }
     public void Cancel() { { N.rune_gen_recorder_cancel(P); } }
     public global::Rune.RecorderState State() { { return new global::Rune.RecorderState(N.rune_gen_recorder_state(P)); } }
     public bool IsRecording() { { return N.rune_gen_recorder_is_recording(P); } }
@@ -5436,7 +5607,7 @@ public readonly unsafe partial struct Renderer
     public ulong CacheBudget() { { return N.rune_gen_renderer_cache_budget(P); } }
     public global::Rune.LayerStats LayerStats() { { return N.rune_gen_renderer_layer_stats(P); } }
     public void EncodeLayers(global::Rune.WgpuCommandEncoder encoder) { { N.rune_gen_renderer_encode_layers(P, encoder.P); } }
-    public (uint, uint)[] PrepareLists(global::Rune.WgpuDevice device, global::Rune.WgpuQueue queue, global::Rune.Atlas atlas, global::Rune.Instance[][] lists, (uint, uint) viewport) { var lists__4w = new WireWriter(); lists__4w.Len(lists.Length); foreach (var e2268 in lists) { lists__4w.Len(e2268.Length); foreach (var e2269 in e2268) { lists__4w.Raw<nint>(e2269.O); } } byte[] lists__4b = lists__4w.ToArray(); fixed (byte* lists__4p = lists__4b) { return WireReader.Read<(uint, uint)[]>(N.rune_gen_renderer_prepare_lists(P, device.P, queue.P, atlas.P, lists__4p, (nuint)lists__4b.Length, viewport.Item1, viewport.Item2), static q2271 => q2271.List<(uint, uint)>(static q2272 => (q2272.Raw<uint>(), q2272.Raw<uint>()))); } }
+    public (uint, uint)[] PrepareLists(global::Rune.WgpuDevice device, global::Rune.WgpuQueue queue, global::Rune.Atlas atlas, global::Rune.Instance[][] lists, (uint, uint) viewport) { var lists__4w = new WireWriter(); lists__4w.Len(lists.Length); foreach (var e2337 in lists) { lists__4w.Len(e2337.Length); foreach (var e2338 in e2337) { lists__4w.Raw<nint>(e2338.O); } } byte[] lists__4b = lists__4w.ToArray(); fixed (byte* lists__4p = lists__4b) { return WireReader.Read<(uint, uint)[]>(N.rune_gen_renderer_prepare_lists(P, device.P, queue.P, atlas.P, lists__4p, (nuint)lists__4b.Length, viewport.Item1, viewport.Item2), static q2340 => q2340.List<(uint, uint)>(static q2341 => (q2341.Raw<uint>(), q2341.Raw<uint>()))); } }
     public void Prepare(global::Rune.WgpuDevice device, global::Rune.WgpuQueue queue, global::Rune.Atlas atlas, global::System.ReadOnlySpan<global::Rune.Instance> instances, (uint, uint) viewport) { var instances__4h = new nint[instances.Length]; for (int instances__4i = 0; instances__4i < instances__4h.Length; instances__4i++) instances__4h[instances__4i] = instances[instances__4i].O; fixed (nint* instances__4p = instances__4h) { N.rune_gen_renderer_prepare(P, device.P, queue.P, atlas.P, instances__4p, (nuint)instances.Length, viewport.Item1, viewport.Item2); } }
     public void PrepareSurfaces(global::Rune.WgpuDevice device, global::Rune.WgpuQueue queue, global::System.ReadOnlySpan<global::Rune.SurfaceDraw> draws, (uint, uint) viewport) { var draws__3h = new nint[draws.Length]; for (int draws__3i = 0; draws__3i < draws__3h.Length; draws__3i++) draws__3h[draws__3i] = draws[draws__3i].O; fixed (nint* draws__3p = draws__3h) { N.rune_gen_renderer_prepare_surfaces(P, device.P, queue.P, draws__3p, (nuint)draws.Length, viewport.Item1, viewport.Item2); } }
     public void PresentAt(global::Rune.WgpuQueue queue, (uint, uint) viewport, double time) { { N.rune_gen_renderer_present_at(P, queue.P, viewport.Item1, viewport.Item2, time); } }
@@ -5638,6 +5809,19 @@ public readonly unsafe partial struct RunLayout
 {
 
 }
+public readonly unsafe partial struct RuneKitKeybind
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal RuneKitKeybind(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_runekitkeybind_free(O);
+    public static global::Rune.RuneKitKeybind New(string[] keys) { var keys__0w = new WireWriter(); keys__0w.Len(keys.Length); foreach (var e2351 in keys) { keys__0w.Str(e2351); } byte[] keys__0b = keys__0w.ToArray(); fixed (byte* keys__0p = keys__0b) { return new global::Rune.RuneKitKeybind(N.rune_gen_runekitkeybind_new(keys__0p, (nuint)keys__0b.Length)); } }
+    public global::Rune.RuneKitKeybind Variant(global::Rune.KeybindVariant v) { { return new global::Rune.RuneKitKeybind(N.rune_gen_runekitkeybind_variant(O, v)); } }
+    public global::Rune.El Build(global::Rune.Kit k) { { return new global::Rune.El(N.rune_gen_runekitkeybind_build(O, k.P)); } }
+}
 public readonly unsafe partial struct RuneKitMenuItem
 {
     readonly nint _p;
@@ -5743,8 +5927,9 @@ public readonly unsafe partial struct Runtime
     public float? Ambient { get => WireReader.Read<float?>(N.rune_gen_runtime_field_get_ambient(P), static q1254 => (q1254.Tag() ? q1254.Raw<float>() : (float?)null)); set { { N.rune_gen_runtime_field_set_ambient(P, value.HasValue, value.GetValueOrDefault()); } } }
     public double DoubleClickInterval { get => N.rune_gen_runtime_field_get_double_click_interval(P); set { { N.rune_gen_runtime_field_set_double_click_interval(P, value); } } }
     public double HelpDelay { get => N.rune_gen_runtime_field_get_help_delay(P); set { { N.rune_gen_runtime_field_set_help_delay(P, value); } } }
-    public string[] TakeUrlRequests() { { return WireReader.Read<string[]>(N.rune_gen_runtime_take_url_requests(P), static q2284 => q2284.List<string>(static q2285 => q2285.Str())); } }
+    public string[] TakeUrlRequests() { { return WireReader.Read<string[]>(N.rune_gen_runtime_take_url_requests(P), static q2355 => q2355.List<string>(static q2356 => q2356.Str())); } }
     public void UseClipboard(global::Rune.MemoryClipboard clipboard) { { N.rune_gen_runtime_use_clipboard(P, clipboard.P); } }
+    public void InvalidateMemosByPrefix(string prefix) { byte[] prefix__1b = Interop.Utf8(prefix); fixed (byte* prefix__1p = prefix__1b) { N.rune_gen_runtime_invalidate_memos_by_prefix(P, prefix__1p, (nuint)prefix__1b.Length); } }
     public void OpenPlayground(string story, string? variant) { byte[] story__1b = Interop.Utf8(story); byte[] variant__4b = Interop.Utf8((variant ?? "")); fixed (byte* story__1p = story__1b) fixed (byte* variant__4p = variant__4b) { N.rune_gen_runtime_open_playground(P, story__1p, (nuint)story__1b.Length, variant != null, variant__4p, (nuint)variant__4b.Length); } }
     public void PlaygroundTrigger(global::System.Text.Rune key) { { N.rune_gen_runtime_playground_trigger(P, key); } }
     public global::Rune.ElementInfo? PlaygroundElement(string key) { byte[] key__1b = Interop.Utf8(key); nint o0; fixed (byte* key__1p = key__1b) { return N.rune_gen_runtime_playground_element(P, key__1p, (nuint)key__1b.Length, &o0) ? new global::Rune.ElementInfo(o0) : null; } }
@@ -5754,7 +5939,7 @@ public readonly unsafe partial struct Runtime
     public global::Rune.FontSmoothing FontSmoothing() { { return N.rune_gen_runtime_font_smoothing(P); } }
     public (float, float, float, float) ClearColor() { float o0; float o1; float o2; float o3; { N.rune_gen_runtime_clear_color(P, &o0, &o1, &o2, &o3); return (o0, o1, o2, o3); } }
     public void SetFontFamilies(string sans, string mono) { byte[] sans__1b = Interop.Utf8(sans); byte[] mono__3b = Interop.Utf8(mono); fixed (byte* sans__1p = sans__1b) fixed (byte* mono__3p = mono__3b) { N.rune_gen_runtime_set_font_families(P, sans__1p, (nuint)sans__1b.Length, mono__3p, (nuint)mono__3b.Length); } }
-    public (string, string) FontFamilies() { { return WireReader.Read<(string, string)>(N.rune_gen_runtime_font_families(P), static q2292 => (q2292.Str(), q2292.Str())); } }
+    public (string, string) FontFamilies() { { return WireReader.Read<(string, string)>(N.rune_gen_runtime_font_families(P), static q2363 => (q2363.Str(), q2363.Str())); } }
     public void SetSystemDark(bool dark) { { N.rune_gen_runtime_set_system_dark(P, dark); } }
     public void SetTitlebarInset(float points) { { N.rune_gen_runtime_set_titlebar_inset(P, points); } }
     public void SetSystemAccent(global::Rune.SystemAccent accent) { { N.rune_gen_runtime_set_system_accent(P, accent.O); } }
@@ -5772,33 +5957,33 @@ public readonly unsafe partial struct Runtime
     public void PhysicalInput(global::Rune.PhysicalInput @event) { { N.rune_gen_runtime_physical_input(P, @event.O); } }
     public void SetModifierKeys(bool enabled) { { N.rune_gen_runtime_set_modifier_keys(P, enabled); } }
     public bool ModifierKeys() { { return N.rune_gen_runtime_modifier_keys(P); } }
-    public global::Rune.PopupMenu? PopupMenu() { { return WireReader.Read<global::Rune.PopupMenu?>(N.rune_gen_runtime_popup_menu(P), static q2298 => (q2298.Tag() ? new global::Rune.PopupMenu(q2298.Raw<nint>(), q2298.Scope) : (global::Rune.PopupMenu?)null), _s); } }
+    public global::Rune.PopupMenu? PopupMenu() { { return WireReader.Read<global::Rune.PopupMenu?>(N.rune_gen_runtime_popup_menu(P), static q2369 => (q2369.Tag() ? new global::Rune.PopupMenu(q2369.Raw<nint>(), q2369.Scope) : (global::Rune.PopupMenu?)null), _s); } }
     public void ResolvePopup(string? picked) { byte[] picked__2b = Interop.Utf8((picked ?? "")); fixed (byte* picked__2p = picked__2b) { WireReader.Check(N.rune_gen_runtime_resolve_popup(P, picked != null, picked__2p, (nuint)picked__2b.Length)); } }
-    public (global::Rune.FileDialogKind, global::Rune.FileDialogOptions)? FileDialog() { { return WireReader.Read<(global::Rune.FileDialogKind, global::Rune.FileDialogOptions)?>(N.rune_gen_runtime_file_dialog(P), static q2307 => (q2307.Tag() ? (q2307.Raw<global::Rune.FileDialogKind>(), new global::Rune.FileDialogOptions(q2307.Raw<nint>(), q2307.Scope)) : ((global::Rune.FileDialogKind, global::Rune.FileDialogOptions)?)null), _s); } }
+    public (global::Rune.FileDialogKind, global::Rune.FileDialogOptions)? FileDialog() { { return WireReader.Read<(global::Rune.FileDialogKind, global::Rune.FileDialogOptions)?>(N.rune_gen_runtime_file_dialog(P), static q2378 => (q2378.Tag() ? (q2378.Raw<global::Rune.FileDialogKind>(), new global::Rune.FileDialogOptions(q2378.Raw<nint>(), q2378.Scope)) : ((global::Rune.FileDialogKind, global::Rune.FileDialogOptions)?)null), _s); } }
     public void ResolveFileDialog(string? path) { byte[] path__2b = Interop.Utf8((path ?? "")); fixed (byte* path__2p = path__2b) { WireReader.Check(N.rune_gen_runtime_resolve_file_dialog(P, path != null, path__2p, (nuint)path__2b.Length)); } }
-    public void DragFiles(string[] paths, (float, float)? at) { var paths__1w = new WireWriter(); paths__1w.Len(paths.Length); foreach (var e2314 in paths) { paths__1w.Str(e2314); } byte[] paths__1b = paths__1w.ToArray(); fixed (byte* paths__1p = paths__1b) { N.rune_gen_runtime_drag_files(P, paths__1p, (nuint)paths__1b.Length, at.HasValue, at.GetValueOrDefault().Item1, at.GetValueOrDefault().Item2); } }
+    public void DragFiles(string[] paths, (float, float)? at) { var paths__1w = new WireWriter(); paths__1w.Len(paths.Length); foreach (var e2385 in paths) { paths__1w.Str(e2385); } byte[] paths__1b = paths__1w.ToArray(); fixed (byte* paths__1p = paths__1b) { N.rune_gen_runtime_drag_files(P, paths__1p, (nuint)paths__1b.Length, at.HasValue, at.GetValueOrDefault().Item1, at.GetValueOrDefault().Item2); } }
     public bool DragFilesTo((float, float)? at) { { return N.rune_gen_runtime_drag_files_to(P, at.HasValue, at.GetValueOrDefault().Item1, at.GetValueOrDefault().Item2); } }
     public void DragFilesLeave() { { N.rune_gen_runtime_drag_files_leave(P); } }
-    public void DropFiles(string[] paths, (float, float)? at) { var paths__1w = new WireWriter(); paths__1w.Len(paths.Length); foreach (var e2316 in paths) { paths__1w.Str(e2316); } byte[] paths__1b = paths__1w.ToArray(); fixed (byte* paths__1p = paths__1b) { N.rune_gen_runtime_drop_files(P, paths__1p, (nuint)paths__1b.Length, at.HasValue, at.GetValueOrDefault().Item1, at.GetValueOrDefault().Item2); } }
+    public void DropFiles(string[] paths, (float, float)? at) { var paths__1w = new WireWriter(); paths__1w.Len(paths.Length); foreach (var e2387 in paths) { paths__1w.Str(e2387); } byte[] paths__1b = paths__1w.ToArray(); fixed (byte* paths__1p = paths__1b) { N.rune_gen_runtime_drop_files(P, paths__1p, (nuint)paths__1b.Length, at.HasValue, at.GetValueOrDefault().Item1, at.GetValueOrDefault().Item2); } }
     public bool DraggingFiles() { { return N.rune_gen_runtime_dragging_files(P); } }
     public string? DropHovered() { Utf8Ref o0; { return N.rune_gen_runtime_drop_hovered(P, &o0) ? Interop.FromUtf8(o0) : null; } }
     public string? DropRejectedHovered() { Utf8Ref o0; { return N.rune_gen_runtime_drop_rejected_hovered(P, &o0) ? Interop.FromUtf8(o0) : null; } }
     public bool? ScrollAtBottom(string key) { byte[] key__1b = Interop.Utf8(key); bool o0; fixed (byte* key__1p = key__1b) { return N.rune_gen_runtime_scroll_at_bottom(P, key__1p, (nuint)key__1b.Length, &o0) ? o0 : null; } }
-    public (string, (nuint, nuint))? TextSelection() { { return WireReader.Read<(string, (nuint, nuint))?>(N.rune_gen_runtime_text_selection(P), static q2327 => (q2327.Tag() ? (q2327.Str(), (q2327.Raw<nuint>(), q2327.Raw<nuint>())) : ((string, (nuint, nuint))?)null)); } }
+    public (string, (nuint, nuint))? TextSelection() { { return WireReader.Read<(string, (nuint, nuint))?>(N.rune_gen_runtime_text_selection(P), static q2398 => (q2398.Tag() ? (q2398.Str(), (q2398.Raw<nuint>(), q2398.Raw<nuint>())) : ((string, (nuint, nuint))?)null)); } }
     public string? SelectedText() { Utf8Ref o0; { return N.rune_gen_runtime_selected_text(P, &o0) ? Interop.FromUtf8(o0) : null; } }
     public global::Rune.TextSelection? Selection() { nint o0; { return N.rune_gen_runtime_selection(P, &o0) ? new global::Rune.TextSelection(o0) : null; } }
-    public ((float, float, float, float), string)[] HelpRegions() { { return WireReader.Read<((float, float, float, float), string)[]>(N.rune_gen_runtime_help_regions(P), static q2346 => q2346.List<((float, float, float, float), string)>(static q2347 => ((q2347.Raw<float>(), q2347.Raw<float>(), q2347.Raw<float>(), q2347.Raw<float>()), q2347.Str()))); } }
-    public (string, (float, float, float, float))? HelpTooltip() { { return WireReader.Read<(string, (float, float, float, float))?>(N.rune_gen_runtime_help_tooltip(P), static q2365 => (q2365.Tag() ? (q2365.Str(), (q2365.Raw<float>(), q2365.Raw<float>(), q2365.Raw<float>(), q2365.Raw<float>())) : ((string, (float, float, float, float))?)null)); } }
+    public ((float, float, float, float), string)[] HelpRegions() { { return WireReader.Read<((float, float, float, float), string)[]>(N.rune_gen_runtime_help_regions(P), static q2417 => q2417.List<((float, float, float, float), string)>(static q2418 => ((q2418.Raw<float>(), q2418.Raw<float>(), q2418.Raw<float>(), q2418.Raw<float>()), q2418.Str()))); } }
+    public (string, (float, float, float, float))? HelpTooltip() { { return WireReader.Read<(string, (float, float, float, float))?>(N.rune_gen_runtime_help_tooltip(P), static q2436 => (q2436.Tag() ? (q2436.Str(), (q2436.Raw<float>(), q2436.Raw<float>(), q2436.Raw<float>(), q2436.Raw<float>())) : ((string, (float, float, float, float))?)null)); } }
     public void WheelXy(float x, float y, float dx, float dy) { { N.rune_gen_runtime_wheel_xy(P, x, y, dx, dy); } }
     public void WheelBegan() { { N.rune_gen_runtime_wheel_began(P); } }
     public void WheelEnded() { { N.rune_gen_runtime_wheel_ended(P); } }
     public void FlingXy(float x, float y, float vx, float vy) { { N.rune_gen_runtime_fling_xy(P, x, y, vx, vy); } }
     public void MotionElements(global::Rune.VecMotionElement @out) { { N.rune_gen_runtime_motion_elements(P, @out.P); } }
-    public (string, string?)? ElementPath(global::Rune.NodeId id) { { return WireReader.Read<(string, string?)?>(N.rune_gen_runtime_element_path(P, id.O), static q2381 => (q2381.Tag() ? (q2381.Str(), (q2381.Tag() ? q2381.Str() : (string?)null)) : ((string, string?)?)null)); } }
+    public (string, string?)? ElementPath(global::Rune.NodeId id) { { return WireReader.Read<(string, string?)?>(N.rune_gen_runtime_element_path(P, id.O), static q2452 => (q2452.Tag() ? (q2452.Str(), (q2452.Tag() ? q2452.Str() : (string?)null)) : ((string, string?)?)null)); } }
     public void SetLiveWaker(global::Rune.Waker waker) { { N.rune_gen_runtime_set_live_waker(P, waker.O); } }
     public void SetLiveVisible(bool visible) { { N.rune_gen_runtime_set_live_visible(P, visible); } }
     public bool LivePending() { { return N.rune_gen_runtime_live_pending(P); } }
-    public global::Rune.Rewind? Rewind() { { return WireReader.Read<global::Rune.Rewind?>(N.rune_gen_runtime_rewind(P), static q2390 => (q2390.Tag() ? new global::Rune.Rewind(q2390.Raw<nint>(), q2390.Scope) : (global::Rune.Rewind?)null), _s); } }
+    public global::Rune.Rewind? Rewind() { { return WireReader.Read<global::Rune.Rewind?>(N.rune_gen_runtime_rewind(P), static q2461 => (q2461.Tag() ? new global::Rune.Rewind(q2461.Raw<nint>(), q2461.Scope) : (global::Rune.Rewind?)null), _s); } }
     public void WheelEvent(global::Rune.WheelEvent ev) { { N.rune_gen_runtime_wheel_event(P, ev.O); } }
     public void MagnifyEvent(global::Rune.MagnifyEvent ev) { { N.rune_gen_runtime_magnify_event(P, ev.O); } }
     public void RotateEvent(global::Rune.RotateEvent ev) { { N.rune_gen_runtime_rotate_event(P, ev.O); } }
@@ -5812,12 +5997,14 @@ public readonly unsafe partial struct Runtime
     public void SecondaryUp(float x, float y) { { N.rune_gen_runtime_secondary_up(P, x, y); } }
     public void SetNativeTitlebarBand(float points) { { N.rune_gen_runtime_set_native_titlebar_band(P, points); } }
     public global::Rune.TitlebarAction? TakeTitlebarAction() { global::Rune.TitlebarAction o0; { return N.rune_gen_runtime_take_titlebar_action(P, &o0) ? o0 : null; } }
+    public void SetChromeInsets(global::Rune.ChromeInsets insets) { { N.rune_gen_runtime_set_chrome_insets(P, insets.O); } }
+    public global::Rune.ChromeInsets ChromeInsets() { { return new global::Rune.ChromeInsets(N.rune_gen_runtime_chrome_insets(P)); } }
     public float ContentHeight() { { return N.rune_gen_runtime_content_height(P); } }
     public string A11yJson() { { return Interop.FromUtf8(N.rune_gen_runtime_a11y_json(P)); } }
     public bool ElementIsSecure(string path) { byte[] path__1b = Interop.Utf8(path); fixed (byte* path__1p = path__1b) { return N.rune_gen_runtime_element_is_secure(P, path__1p, (nuint)path__1b.Length); } }
-    public global::Rune.ElementInfo[] Elements() { { return WireReader.Read<global::Rune.ElementInfo[]>(N.rune_gen_runtime_elements(P), static q2395 => q2395.List<global::Rune.ElementInfo>(static q2396 => new global::Rune.ElementInfo(q2396.Raw<nint>()))); } }
+    public global::Rune.ElementInfo[] Elements() { { return WireReader.Read<global::Rune.ElementInfo[]>(N.rune_gen_runtime_elements(P), static q2466 => q2466.List<global::Rune.ElementInfo>(static q2467 => new global::Rune.ElementInfo(q2467.Raw<nint>()))); } }
     public (float, float)? Find(string key) { byte[] key__1b = Interop.Utf8(key); float o0; float o1; fixed (byte* key__1p = key__1b) { return N.rune_gen_runtime_find(P, key__1p, (nuint)key__1b.Length, &o0, &o1) ? (o0, o1) : null; } }
-    public ((float, float, float, float), float)? Presented(string key) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { return WireReader.Read<((float, float, float, float), float)?>(N.rune_gen_runtime_presented(P, key__1p, (nuint)key__1b.Length), static q2407 => (q2407.Tag() ? ((q2407.Raw<float>(), q2407.Raw<float>(), q2407.Raw<float>(), q2407.Raw<float>()), q2407.Raw<float>()) : (((float, float, float, float), float)?)null)); } }
+    public ((float, float, float, float), float)? Presented(string key) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { return WireReader.Read<((float, float, float, float), float)?>(N.rune_gen_runtime_presented(P, key__1p, (nuint)key__1b.Length), static q2478 => (q2478.Tag() ? ((q2478.Raw<float>(), q2478.Raw<float>(), q2478.Raw<float>(), q2478.Raw<float>()), q2478.Raw<float>()) : (((float, float, float, float), float)?)null)); } }
     public global::Rune.Picked? ElementAt(float x, float y) { nint o0; { return N.rune_gen_runtime_element_at(P, x, y, &o0) ? new global::Rune.Picked(o0) : null; } }
     public global::Rune.Picked? ElementAtWith(float x, float y, global::Rune.Pick pick) { nint o0; { return N.rune_gen_runtime_element_at_with(P, x, y, pick.O, &o0) ? new global::Rune.Picked(o0) : null; } }
     public global::Rune.Picked? ElementAtIn(string within, float x, float y) { byte[] within__1b = Interop.Utf8(within); nint o0; fixed (byte* within__1p = within__1b) { return N.rune_gen_runtime_element_at_in(P, within__1p, (nuint)within__1b.Length, x, y, &o0) ? new global::Rune.Picked(o0) : null; } }
@@ -5842,14 +6029,14 @@ public readonly unsafe partial struct Runtime
     public void PointerLeave() { { N.rune_gen_runtime_pointer_leave(P); } }
     public bool Pressing() { { return N.rune_gen_runtime_pressing(P); } }
     public (float, float)? Pointer() { float o0; float o1; { return N.rune_gen_runtime_pointer(P, &o0, &o1) ? (o0, o1) : null; } }
-    public (float, float, float, float)[] HitRegions() { { return WireReader.Read<(float, float, float, float)[]>(N.rune_gen_runtime_hit_regions(P), static q2423 => q2423.List<(float, float, float, float)>(static q2424 => (q2424.Raw<float>(), q2424.Raw<float>(), q2424.Raw<float>(), q2424.Raw<float>()))); } }
+    public (float, float, float, float)[] HitRegions() { { return WireReader.Read<(float, float, float, float)[]>(N.rune_gen_runtime_hit_regions(P), static q2494 => q2494.List<(float, float, float, float)>(static q2495 => (q2495.Raw<float>(), q2495.Raw<float>(), q2495.Raw<float>(), q2495.Raw<float>()))); } }
     public global::Rune.Cursor Cursor() { { return new global::Rune.Cursor(N.rune_gen_runtime_cursor(P)); } }
     public void Wheel(float x, float y, float dy) { { N.rune_gen_runtime_wheel(P, x, y, dy); } }
     public void Fling(float x, float y, float velocity) { { N.rune_gen_runtime_fling(P, x, y, velocity); } }
     public bool HasPendingInput() { { return N.rune_gen_runtime_has_pending_input(P); } }
     public ulong LiveOnlyEvents() { { return N.rune_gen_runtime_live_only_events(P); } }
     public void CheckLiveOnly(bool on) { { N.rune_gen_runtime_check_live_only(P, on); } }
-    public string[] LiveOnlyWarnings() { { return WireReader.Read<string[]>(N.rune_gen_runtime_live_only_warnings(P), static q2432 => q2432.List<string>(static q2433 => q2433.Str())); } }
+    public string[] LiveOnlyWarnings() { { return WireReader.Read<string[]>(N.rune_gen_runtime_live_only_warnings(P), static q2503 => q2503.List<string>(static q2504 => q2504.Str())); } }
     public void SetViewport((float, float) viewport, float scale) { { N.rune_gen_runtime_set_viewport(P, viewport.Item1, viewport.Item2, scale); } }
     public void WindowFocus(bool focused) { { N.rune_gen_runtime_window_focus(P, focused); } }
     public void Invalidate() { { N.rune_gen_runtime_invalidate(P); } }
@@ -5936,8 +6123,8 @@ public readonly unsafe partial struct Scene
     public void LandPath(global::Rune.NodeId id) { { N.rune_gen_scene_land_path(P, id.O); } }
     public static global::Rune.Scene New() { { return new global::Rune.Scene(N.rune_gen_scene_new()); } }
     public void KeepFlights(bool on) { { N.rune_gen_scene_keep_flights(P, on); } }
-    public global::Rune.AnimationStore Store() { { return WireReader.Read<global::Rune.AnimationStore>(N.rune_gen_scene_store(P), static q2436 => new global::Rune.AnimationStore(q2436.Raw<nint>(), q2436.Scope), _s); } }
-    public global::Rune.AnimationStore StoreMut() { { return WireReader.Read<global::Rune.AnimationStore>(N.rune_gen_scene_store_mut(P), static q2439 => new global::Rune.AnimationStore(q2439.Raw<nint>(), q2439.Scope), _s); } }
+    public global::Rune.AnimationStore Store() { { return WireReader.Read<global::Rune.AnimationStore>(N.rune_gen_scene_store(P), static q2507 => new global::Rune.AnimationStore(q2507.Raw<nint>(), q2507.Scope), _s); } }
+    public global::Rune.AnimationStore StoreMut() { { return WireReader.Read<global::Rune.AnimationStore>(N.rune_gen_scene_store_mut(P), static q2510 => new global::Rune.AnimationStore(q2510.Raw<nint>(), q2510.Scope), _s); } }
     public void SetTime(double t) { { N.rune_gen_scene_set_time(P, t); } }
     public void SetTimeScale(global::Rune.NodeId id, float scale) { { N.rune_gen_scene_set_time_scale(P, id.O, scale); } }
     public double Now() { { return N.rune_gen_scene_now(P); } }
@@ -5945,9 +6132,9 @@ public readonly unsafe partial struct Scene
     public void SetReducedMotion(bool on) { { N.rune_gen_scene_set_reduced_motion(P, on); } }
     public void SetTrace(global::Rune.MotionTrace? trace) { { N.rune_gen_scene_set_trace(P, trace.HasValue, trace.GetValueOrDefault().O); } }
     public bool Tracing() { { return N.rune_gen_scene_tracing(P); } }
-    public global::Rune.MotionTrace? TraceMut() { { return WireReader.Read<global::Rune.MotionTrace?>(N.rune_gen_scene_trace_mut(P), static q2443 => (q2443.Tag() ? new global::Rune.MotionTrace(q2443.Raw<nint>(), q2443.Scope) : (global::Rune.MotionTrace?)null), _s); } }
+    public global::Rune.MotionTrace? TraceMut() { { return WireReader.Read<global::Rune.MotionTrace?>(N.rune_gen_scene_trace_mut(P), static q2514 => (q2514.Tag() ? new global::Rune.MotionTrace(q2514.Raw<nint>(), q2514.Scope) : (global::Rune.MotionTrace?)null), _s); } }
     public void TraceName(global::Rune.NodeId id, string? name) { byte[] name__3b = Interop.Utf8((name ?? "")); fixed (byte* name__3p = name__3b) { N.rune_gen_scene_trace_name(P, id.O, name != null, name__3p, (nuint)name__3b.Length); } }
-    public void TraceNamespace(global::Rune.NodeId id, (string, string)? @namespace) { var namespace__2w = new WireWriter(); if (@namespace is { } e2446) { namespace__2w.Tag(true); namespace__2w.Str(e2446.Item1); namespace__2w.Str(e2446.Item2); } else namespace__2w.Tag(false); byte[] namespace__2b = namespace__2w.ToArray(); fixed (byte* namespace__2p = namespace__2b) { N.rune_gen_scene_trace_namespace(P, id.O, namespace__2p, (nuint)namespace__2b.Length); } }
+    public void TraceNamespace(global::Rune.NodeId id, (string, string)? @namespace) { var namespace__2w = new WireWriter(); if (@namespace is { } e2517) { namespace__2w.Tag(true); namespace__2w.Str(e2517.Item1); namespace__2w.Str(e2517.Item2); } else namespace__2w.Tag(false); byte[] namespace__2b = namespace__2w.ToArray(); fixed (byte* namespace__2p = namespace__2b) { N.rune_gen_scene_trace_namespace(P, id.O, namespace__2p, (nuint)namespace__2b.Length); } }
     public global::Rune.MotionTrace? TakeTrace() { nint o0; { return N.rune_gen_scene_take_trace(P, &o0) ? new global::Rune.MotionTrace(o0) : null; } }
     public bool Contains(global::Rune.NodeId id) { { return N.rune_gen_scene_contains(P, id.O); } }
     public global::Rune.RuneMotionPhase? Phase(global::Rune.NodeId id) { nint o0; { return N.rune_gen_scene_phase(P, id.O, &o0) ? new global::Rune.RuneMotionPhase(o0) : null; } }
@@ -6067,6 +6254,10 @@ public readonly unsafe partial struct ScrollBarStyle
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_scrollbarstyle_free(O);
     public static global::Rune.ScrollBarStyle FromKit(global::Rune.Kit k) { { return new global::Rune.ScrollBarStyle(N.rune_gen_scrollbarstyle_from_kit(k.P)); } }
+    public static global::Rune.ScrollBarStyle ScrollView(global::Rune.Kit k) { { return new global::Rune.ScrollBarStyle(N.rune_gen_scrollbarstyle_scroll_view(k.P)); } }
+    public static global::Rune.ScrollBarStyle Native(global::Rune.Color thumb, global::Rune.Color thumb_hover) { { return new global::Rune.ScrollBarStyle(N.rune_gen_scrollbarstyle_native(thumb, thumb_hover)); } }
+    public global::Rune.ScrollBarStyle Horizontal() { { return new global::Rune.ScrollBarStyle(N.rune_gen_scrollbarstyle_horizontal(O)); } }
+    public float Strip() { { return N.rune_gen_scrollbarstyle_strip(P); } }
     public static global::Rune.ScrollBarStyle Neutral(bool dark) { { return new global::Rune.ScrollBarStyle(N.rune_gen_scrollbarstyle_neutral(dark)); } }
     public global::Rune.ScrollBarStyle Thumb(global::Rune.Color c) { { return new global::Rune.ScrollBarStyle(N.rune_gen_scrollbarstyle_thumb(O, c)); } }
     public global::Rune.ScrollBarStyle ThumbHover(global::Rune.Color c) { { return new global::Rune.ScrollBarStyle(N.rune_gen_scrollbarstyle_thumb_hover(O, c)); } }
@@ -6107,9 +6298,9 @@ public readonly unsafe partial struct Scrub
     public void Show(global::Rune.ArcClip clip) { { N.rune_gen_scrub_show(P, clip.O); } }
     public void Close() { { N.rune_gen_scrub_close(P); } }
     public bool IsOpen() { { return N.rune_gen_scrub_is_open(P); } }
-    public global::Rune.ArcClip? Clip() { { return WireReader.Read<global::Rune.ArcClip?>(N.rune_gen_scrub_clip(P), static q2453 => (q2453.Tag() ? new global::Rune.ArcClip(q2453.Raw<nint>(), q2453.Scope) : (global::Rune.ArcClip?)null), _s); } }
+    public global::Rune.ArcClip? Clip() { { return WireReader.Read<global::Rune.ArcClip?>(N.rune_gen_scrub_clip(P), static q2524 => (q2524.Tag() ? new global::Rune.ArcClip(q2524.Raw<nint>(), q2524.Scope) : (global::Rune.ArcClip?)null), _s); } }
     public nuint Frame() { { return N.rune_gen_scrub_frame(P); } }
-    public (nuint, nuint) Selection() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_scrub_selection(P), static q2460 => (q2460.Raw<nuint>(), q2460.Raw<nuint>())); } }
+    public (nuint, nuint) Selection() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_scrub_selection(P), static q2531 => (q2531.Raw<nuint>(), q2531.Raw<nuint>())); } }
     public void Seek(nuint k, bool extend) { { N.rune_gen_scrub_seek(P, k, extend); } }
     public void Pick(uint? id) { { N.rune_gen_scrub_pick(P, id.HasValue, id.GetValueOrDefault()); } }
     public string Note() { { return Interop.FromUtf8(N.rune_gen_scrub_note(P)); } }
@@ -6159,7 +6350,7 @@ public readonly unsafe partial struct SegmentedControl
     internal SegmentedControl(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_segmentedcontrol_free(O);
-    public static global::Rune.SegmentedControl New(string[] labels, nuint? selected) { var labels__0w = new WireWriter(); labels__0w.Len(labels.Length); foreach (var e2465 in labels) { labels__0w.Str(e2465); } byte[] labels__0b = labels__0w.ToArray(); fixed (byte* labels__0p = labels__0b) { return new global::Rune.SegmentedControl(N.rune_gen_segmentedcontrol_new(labels__0p, (nuint)labels__0b.Length, selected.HasValue, selected.GetValueOrDefault())); } }
+    public static global::Rune.SegmentedControl New(string[] labels, nuint? selected) { var labels__0w = new WireWriter(); labels__0w.Len(labels.Length); foreach (var e2536 in labels) { labels__0w.Str(e2536); } byte[] labels__0b = labels__0w.ToArray(); fixed (byte* labels__0p = labels__0b) { return new global::Rune.SegmentedControl(N.rune_gen_segmentedcontrol_new(labels__0p, (nuint)labels__0b.Length, selected.HasValue, selected.GetValueOrDefault())); } }
     public global::Rune.SegmentedControl Label(string l) { byte[] l__1b = Interop.Utf8(l); fixed (byte* l__1p = l__1b) { return new global::Rune.SegmentedControl(N.rune_gen_segmentedcontrol_label(O, l__1p, (nuint)l__1b.Length)); } }
     public global::Rune.SegmentedControl Width(float? w) { { return new global::Rune.SegmentedControl(N.rune_gen_segmentedcontrol_width(O, w.HasValue, w.GetValueOrDefault())); } }
     public global::Rune.SegmentedControl Fit() { { return new global::Rune.SegmentedControl(N.rune_gen_segmentedcontrol_fit(O)); } }
@@ -6176,9 +6367,9 @@ public readonly unsafe partial struct Select
     internal Select(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_select_free(O);
-    public static global::Rune.Select New(string key, string[] options) { byte[] key__0b = Interop.Utf8(key); var options__2w = new WireWriter(); options__2w.Len(options.Length); foreach (var e2467 in options) { options__2w.Str(e2467); } byte[] options__2b = options__2w.ToArray(); fixed (byte* key__0p = key__0b) fixed (byte* options__2p = options__2b) { return new global::Rune.Select(N.rune_gen_select_new(key__0p, (nuint)key__0b.Length, options__2p, (nuint)options__2b.Length)); } }
-    public static global::Rune.Select Grouped(string key, (string, string)[] options) { byte[] key__0b = Interop.Utf8(key); var options__2w = new WireWriter(); options__2w.Len(options.Length); foreach (var e2469 in options) { options__2w.Str(e2469.Item1); options__2w.Str(e2469.Item2); } byte[] options__2b = options__2w.ToArray(); fixed (byte* key__0p = key__0b) fixed (byte* options__2p = options__2b) { return new global::Rune.Select(N.rune_gen_select_grouped(key__0p, (nuint)key__0b.Length, options__2p, (nuint)options__2b.Length)); } }
-    public global::Rune.Select Details(string?[] d) { var d__1w = new WireWriter(); d__1w.Len(d.Length); foreach (var e2474 in d) { if (e2474 is { } e2475) { d__1w.Tag(true); d__1w.Str(e2475); } else d__1w.Tag(false); } byte[] d__1b = d__1w.ToArray(); fixed (byte* d__1p = d__1b) { return new global::Rune.Select(N.rune_gen_select_details(O, d__1p, (nuint)d__1b.Length)); } }
+    public static global::Rune.Select New(string key, string[] options) { byte[] key__0b = Interop.Utf8(key); var options__2w = new WireWriter(); options__2w.Len(options.Length); foreach (var e2538 in options) { options__2w.Str(e2538); } byte[] options__2b = options__2w.ToArray(); fixed (byte* key__0p = key__0b) fixed (byte* options__2p = options__2b) { return new global::Rune.Select(N.rune_gen_select_new(key__0p, (nuint)key__0b.Length, options__2p, (nuint)options__2b.Length)); } }
+    public static global::Rune.Select Grouped(string key, (string, string)[] options) { byte[] key__0b = Interop.Utf8(key); var options__2w = new WireWriter(); options__2w.Len(options.Length); foreach (var e2540 in options) { options__2w.Str(e2540.Item1); options__2w.Str(e2540.Item2); } byte[] options__2b = options__2w.ToArray(); fixed (byte* key__0p = key__0b) fixed (byte* options__2p = options__2b) { return new global::Rune.Select(N.rune_gen_select_grouped(key__0p, (nuint)key__0b.Length, options__2p, (nuint)options__2b.Length)); } }
+    public global::Rune.Select Details(string?[] d) { var d__1w = new WireWriter(); d__1w.Len(d.Length); foreach (var e2545 in d) { if (e2545 is { } e2546) { d__1w.Tag(true); d__1w.Str(e2546); } else d__1w.Tag(false); } byte[] d__1b = d__1w.ToArray(); fixed (byte* d__1p = d__1b) { return new global::Rune.Select(N.rune_gen_select_details(O, d__1p, (nuint)d__1b.Length)); } }
     public global::Rune.Select Width(float w) { { return new global::Rune.Select(N.rune_gen_select_width(O, w)); } }
     public global::Rune.Select Current(string? c) { byte[] c__2b = Interop.Utf8((c ?? "")); fixed (byte* c__2p = c__2b) { return new global::Rune.Select(N.rune_gen_select_current(O, c != null, c__2p, (nuint)c__2b.Length)); } }
     public global::Rune.Select Placeholder(string p) { byte[] p__1b = Interop.Utf8(p); fixed (byte* p__1p = p__1b) { return new global::Rune.Select(N.rune_gen_select_placeholder(O, p__1p, (nuint)p__1b.Length)); } }
@@ -6208,7 +6399,7 @@ public readonly unsafe partial struct SelectedText
     public void Free() => N.rune_gen_selectedtext_free(O);
     public string Path() { { return Interop.FromUtf8(N.rune_gen_selectedtext_path(P)); } }
     public string? Key() { Utf8Ref o0; { return N.rune_gen_selectedtext_key(P, &o0) ? Interop.FromUtf8(o0) : null; } }
-    public (nuint, nuint) Range() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_selectedtext_range(P), static q2481 => (q2481.Raw<nuint>(), q2481.Raw<nuint>())); } }
+    public (nuint, nuint) Range() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_selectedtext_range(P), static q2552 => (q2552.Raw<nuint>(), q2552.Raw<nuint>())); } }
     public nuint Len() { { return N.rune_gen_selectedtext_len(P); } }
     public bool IsEmpty() { { return N.rune_gen_selectedtext_is_empty(P); } }
     public bool IsSelected() { { return N.rune_gen_selectedtext_is_selected(P); } }
@@ -6224,7 +6415,7 @@ public readonly unsafe partial struct SelectionChange
     internal SelectionChange(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_selectionchange_free(O);
-    public global::Rune.TextSelection? Selection() { { return WireReader.Read<global::Rune.TextSelection?>(N.rune_gen_selectionchange_selection(P), static q2488 => (q2488.Tag() ? new global::Rune.TextSelection(q2488.Raw<nint>(), q2488.Scope) : (global::Rune.TextSelection?)null), _s); } }
+    public global::Rune.TextSelection? Selection() { { return WireReader.Read<global::Rune.TextSelection?>(N.rune_gen_selectionchange_selection(P), static q2559 => (q2559.Tag() ? new global::Rune.TextSelection(q2559.Raw<nint>(), q2559.Scope) : (global::Rune.TextSelection?)null), _s); } }
     public bool Started() { { return N.rune_gen_selectionchange_started(P); } }
     public bool Cleared() { { return N.rune_gen_selectionchange_cleared(P); } }
     public bool Dragging() { { return N.rune_gen_selectionchange_dragging(P); } }
@@ -6238,10 +6429,10 @@ public readonly unsafe partial struct Sent
     internal Sent(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_sent_free(O);
-    public global::Rune.ArcClip Clip() { { return WireReader.Read<global::Rune.ArcClip>(N.rune_gen_sent_clip(P), static q2492 => new global::Rune.ArcClip(q2492.Raw<nint>(), q2492.Scope), _s); } }
-    public (nuint, nuint) Frames() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_sent_frames(P), static q2498 => (q2498.Raw<nuint>(), q2498.Raw<nuint>())); } }
+    public global::Rune.ArcClip Clip() { { return WireReader.Read<global::Rune.ArcClip>(N.rune_gen_sent_clip(P), static q2563 => new global::Rune.ArcClip(q2563.Raw<nint>(), q2563.Scope), _s); } }
+    public (nuint, nuint) Frames() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_sent_frames(P), static q2569 => (q2569.Raw<nuint>(), q2569.Raw<nuint>())); } }
     public string Note() { { return Interop.FromUtf8(N.rune_gen_sent_note(P)); } }
-    public global::Rune.Bundle Write(string dir) { byte[] dir__1b = Interop.Utf8(dir); fixed (byte* dir__1p = dir__1b) { return WireReader.Read<global::Rune.Bundle>(N.rune_gen_sent_write(P, dir__1p, (nuint)dir__1b.Length), static q2505 => q2505.Checked<global::Rune.Bundle>(static q2506 => new global::Rune.Bundle(q2506.Raw<nint>()))); } }
+    public global::Rune.Bundle Write(string dir) { byte[] dir__1b = Interop.Utf8(dir); fixed (byte* dir__1p = dir__1b) { return WireReader.Read<global::Rune.Bundle>(N.rune_gen_sent_write(P, dir__1p, (nuint)dir__1b.Length), static q2576 => q2576.Checked<global::Rune.Bundle>(static q2577 => new global::Rune.Bundle(q2577.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct Sequence
 {
@@ -6271,16 +6462,16 @@ public readonly unsafe partial struct Shape
     public void Free() => N.rune_gen_shape_free(O);
     public static global::Rune.Shape CreateDefault() => new(N.rune_gen_shape_default());
     public static global::Rune.Shape New() { { return new global::Rune.Shape(N.rune_gen_shape_new()); } }
-    public global::Rune.Shape Stroke((float, float)[] points, float width, global::Rune.Color color) { var points__1w = new WireWriter(); points__1w.Len(points.Length); foreach (var e2508 in points) { points__1w.Raw<float>(e2508.Item1); points__1w.Raw<float>(e2508.Item2); } byte[] points__1b = points__1w.ToArray(); fixed (byte* points__1p = points__1b) { return new global::Rune.Shape(N.rune_gen_shape_stroke(O, points__1p, (nuint)points__1b.Length, width, color)); } }
-    public global::Rune.Shape StrokeWith((float, float)[] points, bool closed, float width, global::Rune.LineCap cap, global::Rune.Color color) { var points__1w = new WireWriter(); points__1w.Len(points.Length); foreach (var e2512 in points) { points__1w.Raw<float>(e2512.Item1); points__1w.Raw<float>(e2512.Item2); } byte[] points__1b = points__1w.ToArray(); fixed (byte* points__1p = points__1b) { return new global::Rune.Shape(N.rune_gen_shape_stroke_with(O, points__1p, (nuint)points__1b.Length, closed, width, cap, color)); } }
+    public global::Rune.Shape Stroke((float, float)[] points, float width, global::Rune.Color color) { var points__1w = new WireWriter(); points__1w.Len(points.Length); foreach (var e2579 in points) { points__1w.Raw<float>(e2579.Item1); points__1w.Raw<float>(e2579.Item2); } byte[] points__1b = points__1w.ToArray(); fixed (byte* points__1p = points__1b) { return new global::Rune.Shape(N.rune_gen_shape_stroke(O, points__1p, (nuint)points__1b.Length, width, color)); } }
+    public global::Rune.Shape StrokeWith((float, float)[] points, bool closed, float width, global::Rune.LineCap cap, global::Rune.Color color) { var points__1w = new WireWriter(); points__1w.Len(points.Length); foreach (var e2583 in points) { points__1w.Raw<float>(e2583.Item1); points__1w.Raw<float>(e2583.Item2); } byte[] points__1b = points__1w.ToArray(); fixed (byte* points__1p = points__1b) { return new global::Rune.Shape(N.rune_gen_shape_stroke_with(O, points__1p, (nuint)points__1b.Length, closed, width, cap, color)); } }
     public global::Rune.Shape Line((float, float) a, (float, float) b, float width, global::Rune.LineCap cap, global::Rune.Color color) { { return new global::Rune.Shape(N.rune_gen_shape_line(O, a.Item1, a.Item2, b.Item1, b.Item2, width, cap, color)); } }
-    public global::Rune.Shape Fill((float, float)[] points, global::Rune.Color color) { var points__1w = new WireWriter(); points__1w.Len(points.Length); foreach (var e2516 in points) { points__1w.Raw<float>(e2516.Item1); points__1w.Raw<float>(e2516.Item2); } byte[] points__1b = points__1w.ToArray(); fixed (byte* points__1p = points__1b) { return new global::Rune.Shape(N.rune_gen_shape_fill(O, points__1p, (nuint)points__1b.Length, color)); } }
+    public global::Rune.Shape Fill((float, float)[] points, global::Rune.Color color) { var points__1w = new WireWriter(); points__1w.Len(points.Length); foreach (var e2587 in points) { points__1w.Raw<float>(e2587.Item1); points__1w.Raw<float>(e2587.Item2); } byte[] points__1b = points__1w.ToArray(); fixed (byte* points__1p = points__1b) { return new global::Rune.Shape(N.rune_gen_shape_fill(O, points__1p, (nuint)points__1b.Length, color)); } }
     public global::Rune.Shape StrokePath(global::Rune.Path path, float width, global::Rune.LineCap cap, global::Rune.Color color) { { return new global::Rune.Shape(N.rune_gen_shape_stroke_path(O, path.P, width, cap, color)); } }
     public global::Rune.Shape FillPath(global::Rune.Path path, global::Rune.Color color) { { return new global::Rune.Shape(N.rune_gen_shape_fill_path(O, path.P, color)); } }
     public global::Rune.Shape ViewBox(float width, float height) { { return new global::Rune.Shape(N.rune_gen_shape_view_box(O, width, height)); } }
     public bool IsEmpty() { { return N.rune_gen_shape_is_empty(P); } }
-    public global::Rune.Shape Drawn(float t) { { N.rune_gen_shape_drawn(P, t); return this; } }
-    public global::Rune.Shape Trimmed(float start, float end) { { N.rune_gen_shape_trimmed(P, start, end); return this; } }
+    public global::Rune.Shape Drawn(float t) { { return new global::Rune.Shape(N.rune_gen_shape_drawn(P, t)); } }
+    public global::Rune.Shape Trimmed(float start, float end) { { return new global::Rune.Shape(N.rune_gen_shape_trimmed(P, start, end)); } }
 }
 public readonly unsafe partial struct SharedBuffer
 {
@@ -6304,12 +6495,13 @@ public readonly unsafe partial struct Shortcut
     internal Shortcut(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_shortcut_free(O);
-    public static global::Rune.Shortcut FromPhysicalKey(global::Rune.PhysicalKeyCode key, global::Rune.Mods mods) { { return WireReader.Read<global::Rune.Shortcut>(N.rune_gen_shortcut_from_physical_key(key.P, mods), static q2522 => q2522.Checked<global::Rune.Shortcut>(static q2523 => new global::Rune.Shortcut(q2523.Raw<nint>()))); } }
+    public static global::Rune.Shortcut ParseOn(string input, global::Rune.KeyPlatform platform) { byte[] input__0b = Interop.Utf8(input); fixed (byte* input__0p = input__0b) { return WireReader.Read<global::Rune.Shortcut>(N.rune_gen_shortcut_parse_on(input__0p, (nuint)input__0b.Length, platform), static q2593 => q2593.Checked<global::Rune.Shortcut>(static q2594 => new global::Rune.Shortcut(q2594.Raw<nint>()))); } }
+    public static global::Rune.Shortcut FromPhysicalKey(global::Rune.PhysicalKeyCode key, global::Rune.Mods mods) { { return WireReader.Read<global::Rune.Shortcut>(N.rune_gen_shortcut_from_physical_key(key.P, mods), static q2598 => q2598.Checked<global::Rune.Shortcut>(static q2599 => new global::Rune.Shortcut(q2599.Raw<nint>()))); } }
     public global::Rune.PhysicalKeyCode PhysicalKey() { { return new global::Rune.PhysicalKeyCode(N.rune_gen_shortcut_physical_key(P)); } }
     public void RequireModifier() { { WireReader.Check(N.rune_gen_shortcut_require_modifier(P)); } }
     public global::Rune.Mods Modifiers() { { return N.rune_gen_shortcut_modifiers(P); } }
-    public string[] Keycaps() { { return WireReader.Read<string[]>(N.rune_gen_shortcut_keycaps(P), static q2528 => q2528.List<string>(static q2529 => q2529.Str())); } }
-    public string[] MenuKeycaps() { { return WireReader.Read<string[]>(N.rune_gen_shortcut_menu_keycaps(P), static q2533 => q2533.List<string>(static q2534 => q2534.Str())); } }
+    public string[] Keycaps() { { return WireReader.Read<string[]>(N.rune_gen_shortcut_keycaps(P), static q2604 => q2604.List<string>(static q2605 => q2605.Str())); } }
+    public string[] MenuKeycaps() { { return WireReader.Read<string[]>(N.rune_gen_shortcut_menu_keycaps(P), static q2609 => q2609.List<string>(static q2610 => q2610.Str())); } }
 }
 public readonly unsafe partial struct ShortcutError
 {
@@ -6370,14 +6562,14 @@ public readonly unsafe partial struct ShortcutRecorderState
     public void Free() => N.rune_gen_shortcutrecorderstate_free(O);
     public static global::Rune.ShortcutRecorderState CreateDefault() => new(N.rune_gen_shortcutrecorderstate_default());
     public static global::Rune.ShortcutRecorderState New(global::Rune.Shortcut? shortcut) { { return new global::Rune.ShortcutRecorderState(N.rune_gen_shortcutrecorderstate_new(shortcut.HasValue, shortcut.GetValueOrDefault().O)); } }
-    public global::Rune.Shortcut? Shortcut() { { return WireReader.Read<global::Rune.Shortcut?>(N.rune_gen_shortcutrecorderstate_shortcut(P), static q2544 => (q2544.Tag() ? new global::Rune.Shortcut(q2544.Raw<nint>(), q2544.Scope) : (global::Rune.Shortcut?)null), _s); } }
+    public global::Rune.Shortcut? Shortcut() { { return WireReader.Read<global::Rune.Shortcut?>(N.rune_gen_shortcutrecorderstate_shortcut(P), static q2620 => (q2620.Tag() ? new global::Rune.Shortcut(q2620.Raw<nint>(), q2620.Scope) : (global::Rune.Shortcut?)null), _s); } }
     public bool IsRecording() { { return N.rune_gen_shortcutrecorderstate_is_recording(P); } }
-    public global::Rune.ShortcutError? Error() { { return WireReader.Read<global::Rune.ShortcutError?>(N.rune_gen_shortcutrecorderstate_error(P), static q2549 => (q2549.Tag() ? new global::Rune.ShortcutError(q2549.Raw<nint>(), q2549.Scope) : (global::Rune.ShortcutError?)null), _s); } }
-    public global::Rune.Shortcut? Refused() { { return WireReader.Read<global::Rune.Shortcut?>(N.rune_gen_shortcutrecorderstate_refused(P), static q2554 => (q2554.Tag() ? new global::Rune.Shortcut(q2554.Raw<nint>(), q2554.Scope) : (global::Rune.Shortcut?)null), _s); } }
+    public global::Rune.ShortcutError? Error() { { return WireReader.Read<global::Rune.ShortcutError?>(N.rune_gen_shortcutrecorderstate_error(P), static q2625 => (q2625.Tag() ? new global::Rune.ShortcutError(q2625.Raw<nint>(), q2625.Scope) : (global::Rune.ShortcutError?)null), _s); } }
+    public global::Rune.Shortcut? Refused() { { return WireReader.Read<global::Rune.Shortcut?>(N.rune_gen_shortcutrecorderstate_refused(P), static q2630 => (q2630.Tag() ? new global::Rune.Shortcut(q2630.Raw<nint>(), q2630.Scope) : (global::Rune.Shortcut?)null), _s); } }
     public void MarkUnregistered() { { N.rune_gen_shortcutrecorderstate_mark_unregistered(P); } }
     public void Begin() { { N.rune_gen_shortcutrecorderstate_begin(P); } }
     public void Cancel() { { N.rune_gen_shortcutrecorderstate_cancel(P); } }
-    public string[] Keycaps() { { return WireReader.Read<string[]>(N.rune_gen_shortcutrecorderstate_keycaps(P), static q2559 => q2559.List<string>(static q2560 => q2560.Str())); } }
+    public string[] Keycaps() { { return WireReader.Read<string[]>(N.rune_gen_shortcutrecorderstate_keycaps(P), static q2635 => q2635.List<string>(static q2636 => q2636.Str())); } }
 }
 public readonly unsafe partial struct Shot
 {
@@ -6637,7 +6829,7 @@ public readonly unsafe partial struct SplitView
     public (float, float) Sample(float x0, float v0, float target, float t) { float o0; float o1; { N.rune_gen_spring_sample(this, x0, v0, target, t, &o0, &o1); return (o0, o1); } }
     public float SettlingDuration(float epsilon) { { return N.rune_gen_spring_settling_duration(this, epsilon); } }
     public float SettlingDurationFrom(float from, float velocity, float target, float epsilon) { { return N.rune_gen_spring_settling_duration_from(this, from, velocity, target, epsilon); } }
-    public (string, uint) CssLinear() { { return WireReader.Read<(string, uint)>(N.rune_gen_spring_css_linear(this), static q2578 => (q2578.Str(), q2578.Raw<uint>())); } }
+    public (string, uint) CssLinear() { { return WireReader.Read<(string, uint)>(N.rune_gen_spring_css_linear(this), static q2654 => (q2654.Str(), q2654.Raw<uint>())); } }
     public static global::Rune.Spring None => N.rune_gen_const_rune__spring__none();
     public static global::Rune.Spring Smooth => N.rune_gen_const_rune__spring__smooth();
     public static global::Rune.Spring Snappy => N.rune_gen_const_rune__spring__snappy();
@@ -6835,6 +7027,7 @@ public readonly unsafe partial struct Switch
     public global::Rune.Switch HideLabel() { { return new global::Rune.Switch(N.rune_gen_switch_hide_label(O)); } }
     public global::Rune.Switch Description(string d) { byte[] d__1b = Interop.Utf8(d); fixed (byte* d__1p = d__1b) { return new global::Rune.Switch(N.rune_gen_switch_description(O, d__1p, (nuint)d__1b.Length)); } }
     public global::Rune.Switch Standard() { { return new global::Rune.Switch(N.rune_gen_switch_standard(O)); } }
+    public global::Rune.Switch Web() { { return new global::Rune.Switch(N.rune_gen_switch_web(O)); } }
     public global::Rune.Switch ControlSize(global::Rune.ControlSize s) { { return new global::Rune.Switch(N.rune_gen_switch_control_size(O, s)); } }
     public global::Rune.Switch State(global::Rune.State s) { { return new global::Rune.Switch(N.rune_gen_switch_state(O, s)); } }
     public global::Rune.Switch Disabled(bool d) { { return new global::Rune.Switch(N.rune_gen_switch_disabled(O, d)); } }
@@ -6842,7 +7035,7 @@ public readonly unsafe partial struct Switch
     public global::Rune.Switch OnToggleTx<S>(global::System.Action<S, global::Rune.Tx> f) where S : class { global::System.Action<object, global::Rune.Tx> f__1e = (x0, x1) => f((S)x0, x1); { return new global::Rune.Switch(N.rune_gen_switch_on_toggle_tx(O, Interop.Keep(f__1e))); } }
     public global::Rune.El Build(global::Rune.Kit k) { { return new global::Rune.El(N.rune_gen_switch_build(O, k.P)); } }
 }
-public enum Syntax { Keyword, String, Number, Comment, Type, Function, Property, Punctuation, Inserted, Deleted }
+public enum Syntax { Keyword, String, Number, Comment, Type, Function, Property, Punctuation, Inserted, Deleted, Parameter }
 public readonly unsafe partial struct SyntaxTheme
 {
     readonly nint _p;
@@ -6857,7 +7050,7 @@ public readonly unsafe partial struct SyntaxTheme
     public global::Rune.Color Color(global::Rune.Syntax kind) { { return N.rune_gen_syntaxtheme_color(P, kind); } }
     public global::Rune.SyntaxTheme With(global::Rune.Syntax kind, global::Rune.Color c) { { return new global::Rune.SyntaxTheme(N.rune_gen_syntaxtheme_with(O, kind, c)); } }
     public global::Rune.Color Paint(global::Rune.Paint p) { { return N.rune_gen_syntaxtheme_paint(P, p.O); } }
-    public global::Rune.Span[] Spans(((nuint, nuint), global::Rune.Paint)[] highlights, nuint offset) { var highlights__1w = new WireWriter(); highlights__1w.Len(highlights.Length); foreach (var e2584 in highlights) { highlights__1w.Raw<nuint>(e2584.Item1.Item1); highlights__1w.Raw<nuint>(e2584.Item1.Item2); highlights__1w.Raw<nint>(e2584.Item2.O); } byte[] highlights__1b = highlights__1w.ToArray(); fixed (byte* highlights__1p = highlights__1b) { return WireReader.Read<global::Rune.Span[]>(N.rune_gen_syntaxtheme_spans(P, highlights__1p, (nuint)highlights__1b.Length, offset), static q2593 => q2593.List<global::Rune.Span>(static q2594 => new global::Rune.Span(q2594.Raw<nint>()))); } }
+    public global::Rune.Span[] Spans(((nuint, nuint), global::Rune.Paint)[] highlights, nuint offset) { var highlights__1w = new WireWriter(); highlights__1w.Len(highlights.Length); foreach (var e2660 in highlights) { highlights__1w.Raw<nuint>(e2660.Item1.Item1); highlights__1w.Raw<nuint>(e2660.Item1.Item2); highlights__1w.Raw<nint>(e2660.Item2.O); } byte[] highlights__1b = highlights__1w.ToArray(); fixed (byte* highlights__1p = highlights__1b) { return WireReader.Read<global::Rune.Span[]>(N.rune_gen_syntaxtheme_spans(P, highlights__1p, (nuint)highlights__1b.Length, offset), static q2669 => q2669.List<global::Rune.Span>(static q2670 => new global::Rune.Span(q2670.Raw<nint>()))); } }
 }
 public readonly unsafe partial struct SystemAccent
 {
@@ -6876,6 +7069,180 @@ public readonly unsafe partial struct SystemAccent
     public global::Rune.Color Focus(bool dark) { { return N.rune_gen_systemaccent_focus(P, dark); } }
 }
 public enum SystemMaterial { Glass, Popover }
+public enum TabDensity { Full, Compact, IconOnly }
+public readonly unsafe partial struct TabDragMode
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal TabDragMode(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_tabdragmode_free(O);
+    public static global::Rune.TabDragMode Reorder(nuint from, nuint to, float delta, float pitch, bool pinned) { { return new(N.rune_gen_tabdragmode_new_reorder(from, to, delta, pitch, pinned)); } }
+    public static global::Rune.TabDragMode TearOut(nuint from, (float, float) offset) { { return new(N.rune_gen_tabdragmode_new_tearout(from, offset.Item1, offset.Item2)); } }
+    public nuint? AsReorderFrom() { nuint o; return N.rune_gen_tabdragmode_as_reorder_from(P, &o) ? o : null; }
+    public nuint? AsReorderTo() { nuint o; return N.rune_gen_tabdragmode_as_reorder_to(P, &o) ? o : null; }
+    public float? AsReorderDelta() { float o; return N.rune_gen_tabdragmode_as_reorder_delta(P, &o) ? o : null; }
+    public float? AsReorderPitch() { float o; return N.rune_gen_tabdragmode_as_reorder_pitch(P, &o) ? o : null; }
+    public bool? AsReorderPinned() { bool o; return N.rune_gen_tabdragmode_as_reorder_pinned(P, &o) ? o : null; }
+    public nuint? AsTearOutFrom() { nuint o; return N.rune_gen_tabdragmode_as_tearout_from(P, &o) ? o : null; }
+    public (float, float)? AsTearOutOffset() { Utf8Ref o; return N.rune_gen_tabdragmode_as_tearout_offset(P, &o) ? WireReader.Read<(float, float)>(o, static q1433 => (q1433.Raw<float>(), q1433.Raw<float>())) : null; }
+    public enum Case { Reorder, TearOut }
+    public Case Which => (Case)N.rune_gen_tabdragmode_which(P);
+}
+public readonly unsafe partial struct TabDragPhase
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal TabDragPhase(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_tabdragphase_free(O);
+    public static global::Rune.TabDragPhase Idle() { { return new(N.rune_gen_tabdragphase_new_idle()); } }
+    public static global::Rune.TabDragPhase Pressed(nuint index, bool pinned, float tab_pitch) { { return new(N.rune_gen_tabdragphase_new_pressed(index, pinned, tab_pitch)); } }
+    public static global::Rune.TabDragPhase Dragging(global::Rune.TabDragMode item0) { { return new(N.rune_gen_tabdragphase_new_dragging(item0.O)); } }
+    public static global::Rune.TabDragPhase Dropping(nuint from, nuint to) { { return new(N.rune_gen_tabdragphase_new_dropping(from, to)); } }
+    public nuint? AsPressedIndex() { nuint o; return N.rune_gen_tabdragphase_as_pressed_index(P, &o) ? o : null; }
+    public bool? AsPressedPinned() { bool o; return N.rune_gen_tabdragphase_as_pressed_pinned(P, &o) ? o : null; }
+    public float? AsPressedTabPitch() { float o; return N.rune_gen_tabdragphase_as_pressed_tab_pitch(P, &o) ? o : null; }
+    public global::Rune.TabDragMode? AsDragging() { nint o; return N.rune_gen_tabdragphase_as_dragging(P, &o) ? new global::Rune.TabDragMode(o, _s) : null; }
+    public nuint? AsDroppingFrom() { nuint o; return N.rune_gen_tabdragphase_as_dropping_from(P, &o) ? o : null; }
+    public nuint? AsDroppingTo() { nuint o; return N.rune_gen_tabdragphase_as_dropping_to(P, &o) ? o : null; }
+    public enum Case { Idle, Pressed, Dragging, Dropping }
+    public Case Which => (Case)N.rune_gen_tabdragphase_which(P);
+}
+public readonly unsafe partial struct TabDragState
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal TabDragState(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_tabdragstate_free(O);
+    public global::Rune.TabDragPhase Phase { get => new global::Rune.TabDragPhase(N.rune_gen_tabdragstate_field_get_phase(P), _s == 0 ? Interop.Lent : _s); set { { N.rune_gen_tabdragstate_field_set_phase(P, value.O); } } }
+    public float? WidthLock { get => WireReader.Read<float?>(N.rune_gen_tabdragstate_field_get_width_lock(P), static q1439 => (q1439.Tag() ? q1439.Raw<float>() : (float?)null)); set { { N.rune_gen_tabdragstate_field_set_width_lock(P, value.HasValue, value.GetValueOrDefault()); } } }
+    public bool SuppressClick { get => N.rune_gen_tabdragstate_field_get_suppress_click(P); set { { N.rune_gen_tabdragstate_field_set_suppress_click(P, value); } } }
+    public static global::Rune.TabDragState CreateDefault() => new(N.rune_gen_tabdragstate_default());
+    public static global::Rune.TabDragState New() { { return new global::Rune.TabDragState(N.rune_gen_tabdragstate_new()); } }
+    public nuint? Dragging() { nuint o0; { return N.rune_gen_tabdragstate_dragging(P, &o0) ? o0 : null; } }
+    public bool TornOut() { { return N.rune_gen_tabdragstate_torn_out(P); } }
+    public string? Hovered() { Utf8Ref o0; { return N.rune_gen_tabdragstate_hovered(P, &o0) ? Interop.FromUtf8(o0) : null; } }
+    public void Cancel() { { N.rune_gen_tabdragstate_cancel(P); } }
+}
+public readonly unsafe partial struct TabItem
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal TabItem(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_tabitem_free(O);
+    public static global::Rune.TabItem New(string id, string title) { byte[] id__0b = Interop.Utf8(id); byte[] title__2b = Interop.Utf8(title); fixed (byte* id__0p = id__0b) fixed (byte* title__2p = title__2b) { return new global::Rune.TabItem(N.rune_gen_tabitem_new(id__0p, (nuint)id__0b.Length, title__2p, (nuint)title__2b.Length)); } }
+    public global::Rune.TabItem Subtitle(string subtitle) { byte[] subtitle__1b = Interop.Utf8(subtitle); fixed (byte* subtitle__1p = subtitle__1b) { return new global::Rune.TabItem(N.rune_gen_tabitem_subtitle(O, subtitle__1p, (nuint)subtitle__1b.Length)); } }
+    public global::Rune.TabItem Avatar(global::Rune.El avatar) { { return new global::Rune.TabItem(N.rune_gen_tabitem_avatar(O, avatar.Id)); } }
+    public global::Rune.TabItem Icon(global::Rune.Icon icon) { { return new global::Rune.TabItem(N.rune_gen_tabitem_icon(O, icon.P)); } }
+    public global::Rune.TabItem Status(global::Rune.TabItemStatus? status) { { return new global::Rune.TabItem(N.rune_gen_tabitem_status(O, status.HasValue, status.GetValueOrDefault())); } }
+    public global::Rune.TabItem Pinned(bool pinned) { { return new global::Rune.TabItem(N.rune_gen_tabitem_pinned(O, pinned)); } }
+    public global::Rune.TabItem Closable(bool closable) { { return new global::Rune.TabItem(N.rune_gen_tabitem_closable(O, closable)); } }
+    public global::Rune.TabItem Marked(bool marked) { { return new global::Rune.TabItem(N.rune_gen_tabitem_marked(O, marked)); } }
+    public global::Rune.TabItem Pulse(uint seq) { { return new global::Rune.TabItem(N.rune_gen_tabitem_pulse(O, seq)); } }
+    public global::Rune.TabItem Editor(global::Rune.El field) { { return new global::Rune.TabItem(N.rune_gen_tabitem_editor(O, field.Id)); } }
+    public global::Rune.TabItem Decorate(global::System.Func<global::Rune.El, global::Rune.TabDensity, global::Rune.El> f) { { return new global::Rune.TabItem(N.rune_gen_tabitem_decorate(O, Interop.Keep(f))); } }
+}
+public enum TabItemStatus { Busy, Attention, Unread, Failed }
+public enum TabOrientation { Horizontal, Vertical }
+public readonly unsafe partial struct TabOverflow
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal TabOverflow(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_taboverflow_free(O);
+    public static global::Rune.TabOverflow ShrinkThenScroll(float min_width, float max_width, float pinned_width, float fade_width) { { return new(N.rune_gen_taboverflow_new_shrinkthenscroll(min_width, max_width, pinned_width, fade_width)); } }
+    public static global::Rune.TabOverflow Scroll(float fade_width) { { return new(N.rune_gen_taboverflow_new_scroll(fade_width)); } }
+    public float? AsShrinkThenScrollMinWidth() { float o; return N.rune_gen_taboverflow_as_shrinkthenscroll_min_width(P, &o) ? o : null; }
+    public float? AsShrinkThenScrollMaxWidth() { float o; return N.rune_gen_taboverflow_as_shrinkthenscroll_max_width(P, &o) ? o : null; }
+    public float? AsShrinkThenScrollPinnedWidth() { float o; return N.rune_gen_taboverflow_as_shrinkthenscroll_pinned_width(P, &o) ? o : null; }
+    public float? AsShrinkThenScrollFadeWidth() { float o; return N.rune_gen_taboverflow_as_shrinkthenscroll_fade_width(P, &o) ? o : null; }
+    public float? AsScroll() { float o; return N.rune_gen_taboverflow_as_scroll(P, &o) ? o : null; }
+    public enum Case { ShrinkThenScroll, Scroll }
+    public Case Which => (Case)N.rune_gen_taboverflow_which(P);
+    public static global::Rune.TabOverflow HorizontalDefault => new global::Rune.TabOverflow(N.rune_gen_const_rune_kit__shell__taboverflow__horizontal_default());
+    public static global::Rune.TabOverflow VerticalDefault => new global::Rune.TabOverflow(N.rune_gen_const_rune_kit__shell__taboverflow__vertical_default());
+    public static global::Rune.TabDensity DensityFor(float width) { { return N.rune_gen_taboverflow_density_for(width); } }
+    public float TabWidth(float available, nuint unpinned, nuint pinned, float gap) { { return N.rune_gen_taboverflow_tab_width(P, available, unpinned, pinned, gap); } }
+}
+public readonly unsafe partial struct TabReorder
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal TabReorder(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_tabreorder_free(O);
+    public string Id { get => Interop.FromUtf8(N.rune_gen_tabreorder_field_get_id(P)); set { byte[] value__1b = Interop.Utf8(value); fixed (byte* value__1p = value__1b) { N.rune_gen_tabreorder_field_set_id(P, value__1p, (nuint)value__1b.Length); } } }
+    public nuint From { get => N.rune_gen_tabreorder_field_get_from(P); set { { N.rune_gen_tabreorder_field_set_from(P, value); } } }
+    public nuint To { get => N.rune_gen_tabreorder_field_get_to(P); set { { N.rune_gen_tabreorder_field_set_to(P, value); } } }
+}
+public readonly unsafe partial struct TabStrip
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal TabStrip(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_tabstrip_free(O);
+    public static global::Rune.TabStrip New(string key, global::Rune.TabOrientation orientation) { byte[] key__0b = Interop.Utf8(key); fixed (byte* key__0p = key__0b) { return new global::Rune.TabStrip(N.rune_gen_tabstrip_new(key__0p, (nuint)key__0b.Length, orientation)); } }
+    public global::Rune.TabStrip Tabs(global::System.ReadOnlySpan<global::Rune.TabItem> tabs) { var tabs__1h = new nint[tabs.Length]; for (int tabs__1i = 0; tabs__1i < tabs__1h.Length; tabs__1i++) tabs__1h[tabs__1i] = tabs[tabs__1i].O; fixed (nint* tabs__1p = tabs__1h) { return new global::Rune.TabStrip(N.rune_gen_tabstrip_tabs(O, tabs__1p, (nuint)tabs.Length)); } }
+    public global::Rune.TabStrip Active(string? active_id) { byte[] active_id__2b = Interop.Utf8((active_id ?? "")); fixed (byte* active_id__2p = active_id__2b) { return new global::Rune.TabStrip(N.rune_gen_tabstrip_active(O, active_id != null, active_id__2p, (nuint)active_id__2b.Length)); } }
+    public global::Rune.TabStrip ViewportWidth(float? width) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_viewport_width(O, width.HasValue, width.GetValueOrDefault())); } }
+    public global::Rune.TabStrip Zoom(float zoom) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_zoom(O, zoom)); } }
+    public global::Rune.TabStrip Overflow(global::Rune.TabOverflow policy) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_overflow(O, policy.O)); } }
+    public global::Rune.TabStrip Gap(float points) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_gap(O, points)); } }
+    public global::Rune.TabStrip RowHeight(float points) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_row_height(O, points)); } }
+    public global::Rune.TabStrip SelectOnDragStart(bool on) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_select_on_drag_start(O, on)); } }
+    public global::Rune.TabStrip TearOut(global::Rune.TearOutSpec? spec) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_tear_out(O, spec.HasValue, spec.GetValueOrDefault())); } }
+    public global::Rune.TabStrip MatchedPrefix(string? prefix) { byte[] prefix__2b = Interop.Utf8((prefix ?? "")); fixed (byte* prefix__2p = prefix__2b) { return new global::Rune.TabStrip(N.rune_gen_tabstrip_matched_prefix(O, prefix != null, prefix__2p, (nuint)prefix__2b.Length)); } }
+    public global::Rune.TabStrip ReorderSpring(global::Rune.Spring spring) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_reorder_spring(O, spring)); } }
+    public global::Rune.TabStrip TrailingAction(global::Rune.El action) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_trailing_action(O, action.Id)); } }
+    public global::Rune.TabStrip TrailingWidth(float points) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_trailing_width(O, points)); } }
+    public global::Rune.TabStrip DragState<S>(global::Rune.TabDragState state, global::System.Func<S, global::Rune.TabDragState> access) where S : class { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_drag_state(O, state.P, Interop.Slot(20, access, () => { global::System.Func<object, global::Rune.TabDragState> access__0e = (x0) => access((S)x0); return Interop.Keep(access__0e); }, static (i, h) => N.rune_gen_fp_20_set(i, h)))); } }
+    public global::Rune.TabStrip Fill(global::Rune.Color color) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_fill(O, color)); } }
+    public global::Rune.TabStrip CloseIcon(global::Rune.Icon icon) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_close_icon(O, icon.P)); } }
+    public global::Rune.TabStrip BusyIndicator(global::System.Func<global::Rune.Kit, global::Rune.El> f) { { return new global::Rune.TabStrip(N.rune_gen_tabstrip_busy_indicator(O, Interop.Slot(21, f, () => { return Interop.Keep(f); }, static (i, h) => N.rune_gen_fp_21_set(i, h)))); } }
+    public global::Rune.TabStrip Label(string label) { byte[] label__1b = Interop.Utf8(label); fixed (byte* label__1p = label__1b) { return new global::Rune.TabStrip(N.rune_gen_tabstrip_label(O, label__1p, (nuint)label__1b.Length)); } }
+    public global::Rune.TabStrip OnSelect<S>(global::System.Action<S, string, global::Rune.Tx> f) where S : class { global::System.Action<object, string, global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.TabStrip(N.rune_gen_tabstrip_on_select(O, Interop.Keep(f__1e))); } }
+    public global::Rune.TabStrip OnClose<S>(global::System.Action<S, string, global::Rune.Tx> f) where S : class { global::System.Action<object, string, global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.TabStrip(N.rune_gen_tabstrip_on_close(O, Interop.Keep(f__1e))); } }
+    public global::Rune.TabStrip OnDoubleClick<S>(global::System.Action<S, string, global::Rune.Tx> f) where S : class { global::System.Action<object, string, global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.TabStrip(N.rune_gen_tabstrip_on_double_click(O, Interop.Keep(f__1e))); } }
+    public global::Rune.TabStrip OnHover<S>(global::System.Action<S, string, bool, global::Rune.Tx> f) where S : class { global::System.Action<object, string, bool, global::Rune.Tx> f__1e = (x0, x1, x2, x3) => f((S)x0, x1, x2, x3); { return new global::Rune.TabStrip(N.rune_gen_tabstrip_on_hover(O, Interop.Keep(f__1e))); } }
+    public global::Rune.TabStrip OnReorder<S>(global::System.Action<S, global::Rune.TabReorder, global::Rune.Tx> f) where S : class { global::System.Action<object, global::Rune.TabReorder, global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.TabStrip(N.rune_gen_tabstrip_on_reorder(O, Interop.Keep(f__1e))); } }
+    public global::Rune.TabStrip OnTearOut<S>(global::System.Action<S, global::Rune.TabTearOut, global::Rune.Tx> f) where S : class { global::System.Action<object, global::Rune.TabTearOut, global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.TabStrip(N.rune_gen_tabstrip_on_tear_out(O, Interop.Keep(f__1e))); } }
+    public global::Rune.El Build(global::Rune.Kit k) { { return new global::Rune.El(N.rune_gen_tabstrip_build(O, k.P)); } }
+    public global::Rune.El BuildLayered(global::Rune.Kit k, global::Rune.VecEl layer) { { return new global::Rune.El(N.rune_gen_tabstrip_build_layered(O, k.P, layer.P)); } }
+}
+public readonly unsafe partial struct TabTearOut
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal TabTearOut(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_tabtearout_free(O);
+    public string Id { get => Interop.FromUtf8(N.rune_gen_tabtearout_field_get_id(P)); set { byte[] value__1b = Interop.Utf8(value); fixed (byte* value__1p = value__1b) { N.rune_gen_tabtearout_field_set_id(P, value__1p, (nuint)value__1b.Length); } } }
+    public nuint Index { get => N.rune_gen_tabtearout_field_get_index(P); set { { N.rune_gen_tabtearout_field_set_index(P, value); } } }
+    public (float, float) Offset { get => WireReader.Read<(float, float)>(N.rune_gen_tabtearout_field_get_offset(P), static q1445 => (q1445.Raw<float>(), q1445.Raw<float>())); set { { N.rune_gen_tabtearout_field_set_offset(P, value.Item1, value.Item2); } } }
+    public (float, float)? WindowPoint { get => WireReader.Read<(float, float)?>(N.rune_gen_tabtearout_field_get_window_point(P), static q1453 => (q1453.Tag() ? (q1453.Raw<float>(), q1453.Raw<float>()) : ((float, float)?)null)); set { { N.rune_gen_tabtearout_field_set_window_point(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
+    public (int, int)? ScreenPoint { get => WireReader.Read<(int, int)?>(N.rune_gen_tabtearout_field_get_screen_point(P), static q1462 => (q1462.Tag() ? (q1462.Raw<int>(), q1462.Raw<int>()) : ((int, int)?)null)); set { { N.rune_gen_tabtearout_field_set_screen_point(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
+}
 public readonly unsafe partial struct Table
 {
     readonly nint _p;
@@ -6885,7 +7252,7 @@ public readonly unsafe partial struct Table
     internal Table(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_table_free(O);
-    public static global::Rune.Table New<S>(global::System.Func<S, global::Rune.TableState> get, global::System.Func<S, global::Rune.TableState> get_mut, global::System.Func<S, nuint> len, global::System.Func<S, nuint, string> row_id) where S : class { { return new global::Rune.Table(N.rune_gen_table_new(Interop.Slot(20, get, () => { global::System.Func<object, global::Rune.TableState> get__0e = (x0) => get((S)x0); return Interop.Keep(get__0e); }, static (i, h) => N.rune_gen_fp_20_set(i, h)), Interop.Slot(21, get_mut, () => { global::System.Func<object, global::Rune.TableState> get_mut__0e = (x0) => get_mut((S)x0); return Interop.Keep(get_mut__0e); }, static (i, h) => N.rune_gen_fp_21_set(i, h)), Interop.Slot(22, len, () => { global::System.Func<object, nuint> len__0e = (x0) => len((S)x0); return Interop.Keep(len__0e); }, static (i, h) => N.rune_gen_fp_22_set(i, h)), Interop.Slot(23, row_id, () => { global::System.Func<object, nuint, string> row_id__0e = (x0, x1) => row_id((S)x0, x1); return Interop.Keep(row_id__0e); }, static (i, h) => N.rune_gen_fp_23_set(i, h)))); } }
+    public static global::Rune.Table New<S>(global::System.Func<S, global::Rune.TableState> get, global::System.Func<S, global::Rune.TableState> get_mut, global::System.Func<S, nuint> len, global::System.Func<S, nuint, string> row_id) where S : class { { return new global::Rune.Table(N.rune_gen_table_new(Interop.Slot(22, get, () => { global::System.Func<object, global::Rune.TableState> get__0e = (x0) => get((S)x0); return Interop.Keep(get__0e); }, static (i, h) => N.rune_gen_fp_22_set(i, h)), Interop.Slot(23, get_mut, () => { global::System.Func<object, global::Rune.TableState> get_mut__0e = (x0) => get_mut((S)x0); return Interop.Keep(get_mut__0e); }, static (i, h) => N.rune_gen_fp_23_set(i, h)), Interop.Slot(24, len, () => { global::System.Func<object, nuint> len__0e = (x0) => len((S)x0); return Interop.Keep(len__0e); }, static (i, h) => N.rune_gen_fp_24_set(i, h)), Interop.Slot(25, row_id, () => { global::System.Func<object, nuint, string> row_id__0e = (x0, x1) => row_id((S)x0, x1); return Interop.Keep(row_id__0e); }, static (i, h) => N.rune_gen_fp_25_set(i, h)))); } }
     public global::Rune.Table Column(global::Rune.TableColumn c) { { return new global::Rune.Table(N.rune_gen_table_column(O, c.O)); } }
     public global::Rune.Table Cell<S>(global::System.Func<S, nuint, string, global::Rune.Cell> f) where S : class { global::System.Func<object, nuint, string, global::Rune.Cell> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.Table(N.rune_gen_table_cell(O, Interop.Keep(f__1e))); } }
     public global::Rune.Table OnSort<S>(global::System.Action<S, string, global::Rune.SortDir, global::Rune.Tx> f) where S : class { global::System.Action<object, string, global::Rune.SortDir, global::Rune.Tx> f__1e = (x0, x1, x2, x3) => f((S)x0, x1, x2, x3); { return new global::Rune.Table(N.rune_gen_table_on_sort(O, Interop.Keep(f__1e))); } }
@@ -6929,14 +7296,14 @@ public readonly unsafe partial struct TableState
     public static global::Rune.TableState New() { { return new global::Rune.TableState(N.rune_gen_tablestate_new()); } }
     public global::Rune.TableState Key(string key) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { return new global::Rune.TableState(N.rune_gen_tablestate_key(O, key__1p, (nuint)key__1b.Length)); } }
     public global::Rune.TableState MultiSelect(bool on) { { return new global::Rune.TableState(N.rune_gen_tablestate_multi_select(O, on)); } }
-    public (string, global::Rune.SortDir)? Sort() { { return WireReader.Read<(string, global::Rune.SortDir)?>(N.rune_gen_tablestate_sort(P), static q2601 => (q2601.Tag() ? (q2601.Str(), q2601.Raw<global::Rune.SortDir>()) : ((string, global::Rune.SortDir)?)null)); } }
+    public (string, global::Rune.SortDir)? Sort() { { return WireReader.Read<(string, global::Rune.SortDir)?>(N.rune_gen_tablestate_sort(P), static q2677 => (q2677.Tag() ? (q2677.Str(), q2677.Raw<global::Rune.SortDir>()) : ((string, global::Rune.SortDir)?)null)); } }
     public void SetSort(string column, global::Rune.SortDir dir) { byte[] column__1b = Interop.Utf8(column); fixed (byte* column__1p = column__1b) { N.rune_gen_tablestate_set_sort(P, column__1p, (nuint)column__1b.Length, dir); } }
     public void ClearSort() { { N.rune_gen_tablestate_clear_sort(P); } }
     public global::Rune.SortDir NextSort(string column) { byte[] column__1b = Interop.Utf8(column); fixed (byte* column__1p = column__1b) { return N.rune_gen_tablestate_next_sort(P, column__1p, (nuint)column__1b.Length); } }
     public float? ColumnWidth(string column) { byte[] column__1b = Interop.Utf8(column); float o0; fixed (byte* column__1p = column__1b) { return N.rune_gen_tablestate_column_width(P, column__1p, (nuint)column__1b.Length, &o0) ? o0 : null; } }
     public void SetColumnWidth(string column, float w) { byte[] column__1b = Interop.Utf8(column); fixed (byte* column__1p = column__1b) { N.rune_gen_tablestate_set_column_width(P, column__1p, (nuint)column__1b.Length, w); } }
     public void ResetColumnWidth(string column) { byte[] column__1b = Interop.Utf8(column); fixed (byte* column__1p = column__1b) { N.rune_gen_tablestate_reset_column_width(P, column__1p, (nuint)column__1b.Length); } }
-    public string[] Selected() { { return WireReader.Read<string[]>(N.rune_gen_tablestate_selected(P), static q2609 => q2609.List<string>(static q2610 => q2610.Str())); } }
+    public string[] Selected() { { return WireReader.Read<string[]>(N.rune_gen_tablestate_selected(P), static q2685 => q2685.List<string>(static q2686 => q2686.Str())); } }
     public nuint SelectedLen() { { return N.rune_gen_tablestate_selected_len(P); } }
     public bool IsSelected(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return N.rune_gen_tablestate_is_selected(P, id__1p, (nuint)id__1b.Length); } }
     public string? Cursor() { Utf8Ref o0; { return N.rune_gen_tablestate_cursor(P, &o0) ? Interop.FromUtf8(o0) : null; } }
@@ -6966,6 +7333,10 @@ public readonly unsafe partial struct TableStyle
     public global::Rune.Color Selected { get => N.rune_gen_tablestyle_field_get_selected(P); set { { N.rune_gen_tablestyle_field_set_selected(P, value); } } }
     public global::Rune.Color Stripe { get => N.rune_gen_tablestyle_field_get_stripe(P); set { { N.rune_gen_tablestyle_field_set_stripe(P, value); } } }
     public static global::Rune.TableStyle FromKit(global::Rune.Kit k) { { return new global::Rune.TableStyle(N.rune_gen_tablestyle_from_kit(k.P)); } }
+}
+[StructLayout(LayoutKind.Sequential)] public unsafe partial record struct TearOutSpec(float DetachDistance, float ReattachDistance)
+{
+
 }
 public readonly unsafe partial struct TextArea
 {
@@ -7015,21 +7386,21 @@ public readonly unsafe partial struct TextEdit
     public string Text { get => Interop.FromUtf8(N.rune_gen_textedit_field_get_text(P)); set { byte[] value__1b = Interop.Utf8(value); fixed (byte* value__1p = value__1b) { N.rune_gen_textedit_field_set_text(P, value__1p, (nuint)value__1b.Length); } } }
     public nuint Anchor { get => N.rune_gen_textedit_field_get_anchor(P); set { { N.rune_gen_textedit_field_set_anchor(P, value); } } }
     public nuint Focus { get => N.rune_gen_textedit_field_get_focus(P); set { { N.rune_gen_textedit_field_set_focus(P, value); } } }
-    public (string, (nuint, nuint)?)? Preedit { get => WireReader.Read<(string, (nuint, nuint)?)?>(N.rune_gen_textedit_field_get_preedit(P), static q1439 => (q1439.Tag() ? (q1439.Str(), (q1439.Tag() ? (q1439.Raw<nuint>(), q1439.Raw<nuint>()) : ((nuint, nuint)?)null)) : ((string, (nuint, nuint)?)?)null)); set { var value__1w = new WireWriter(); if (value is { } e1448) { value__1w.Tag(true); value__1w.Str(e1448.Item1); if (e1448.Item2 is { } e1452) { value__1w.Tag(true); value__1w.Raw<nuint>(e1452.Item1); value__1w.Raw<nuint>(e1452.Item2); } else value__1w.Tag(false); } else value__1w.Tag(false); byte[] value__1b = value__1w.ToArray(); fixed (byte* value__1p = value__1b) { N.rune_gen_textedit_field_set_preedit(P, value__1p, (nuint)value__1b.Length); } } }
+    public (string, (nuint, nuint)?)? Preedit { get => WireReader.Read<(string, (nuint, nuint)?)?>(N.rune_gen_textedit_field_get_preedit(P), static q1476 => (q1476.Tag() ? (q1476.Str(), (q1476.Tag() ? (q1476.Raw<nuint>(), q1476.Raw<nuint>()) : ((nuint, nuint)?)null)) : ((string, (nuint, nuint)?)?)null)); set { var value__1w = new WireWriter(); if (value is { } e1485) { value__1w.Tag(true); value__1w.Str(e1485.Item1); if (e1485.Item2 is { } e1489) { value__1w.Tag(true); value__1w.Raw<nuint>(e1489.Item1); value__1w.Raw<nuint>(e1489.Item2); } else value__1w.Tag(false); } else value__1w.Tag(false); byte[] value__1b = value__1w.ToArray(); fixed (byte* value__1p = value__1b) { N.rune_gen_textedit_field_set_preedit(P, value__1p, (nuint)value__1b.Length); } } }
     public bool Focused { get => N.rune_gen_textedit_field_get_focused(P); set { { N.rune_gen_textedit_field_set_focused(P, value); } } }
     public static global::Rune.TextEdit CreateDefault() => new(N.rune_gen_textedit_default());
-    public (string, (nuint, nuint)?) Display() { { return WireReader.Read<(string, (nuint, nuint)?)>(N.rune_gen_textedit_display(P), static q2618 => (q2618.Str(), (q2618.Tag() ? (q2618.Raw<nuint>(), q2618.Raw<nuint>()) : ((nuint, nuint)?)null))); } }
+    public (string, (nuint, nuint)?) Display() { { return WireReader.Read<(string, (nuint, nuint)?)>(N.rune_gen_textedit_display(P), static q2694 => (q2694.Str(), (q2694.Tag() ? (q2694.Raw<nuint>(), q2694.Raw<nuint>()) : ((nuint, nuint)?)null))); } }
     public void ClearHistory() { { N.rune_gen_textedit_clear_history(P); } }
     public void BreakHistoryGroup() { { N.rune_gen_textedit_break_history_group(P); } }
     public S UndoGroup<S>(global::System.Func<global::Rune.TextEdit, S> f) where S : class { global::System.Func<global::Rune.TextEdit, object> f__1e = (x0) => f(x0); { return (S)App.StateOf(N.rune_gen_textedit_undo_group(P, Interop.Keep(f__1e))); } }
     public void Undo() { { N.rune_gen_textedit_undo(P); } }
     public void Redo() { { N.rune_gen_textedit_redo(P); } }
-    public global::Rune.EditOutcome Key(global::Rune.KeyEvent ev, global::Rune.TextLayout? layout) { var layout__2w = new WireWriter(); if (layout is { } e2625) { layout__2w.Tag(true); layout__2w.Raw<nint>(e2625.P); } else layout__2w.Tag(false); byte[] layout__2b = layout__2w.ToArray(); fixed (byte* layout__2p = layout__2b) { return new global::Rune.EditOutcome(N.rune_gen_textedit_key(P, ev.P, layout__2p, (nuint)layout__2b.Length)); } }
+    public global::Rune.EditOutcome Key(global::Rune.KeyEvent ev, global::Rune.TextLayout? layout) { var layout__2w = new WireWriter(); if (layout is { } e2701) { layout__2w.Tag(true); layout__2w.Raw<nint>(e2701.P); } else layout__2w.Tag(false); byte[] layout__2b = layout__2w.ToArray(); fixed (byte* layout__2p = layout__2b) { return new global::Rune.EditOutcome(N.rune_gen_textedit_key(P, ev.P, layout__2p, (nuint)layout__2b.Length)); } }
     public global::Rune.EditOutcome Ime(global::Rune.Ime ev) { { return new global::Rune.EditOutcome(N.rune_gen_textedit_ime(P, ev.P)); } }
     public global::Rune.EditOutcome Paste(string s) { byte[] s__1b = Interop.Utf8(s); fixed (byte* s__1p = s__1b) { return new global::Rune.EditOutcome(N.rune_gen_textedit_paste(P, s__1p, (nuint)s__1b.Length)); } }
     public global::Rune.EditOutcome PasteHtml(string html_str, string plain) { byte[] html_str__1b = Interop.Utf8(html_str); byte[] plain__3b = Interop.Utf8(plain); fixed (byte* html_str__1p = html_str__1b) fixed (byte* plain__3p = plain__3b) { return new global::Rune.EditOutcome(N.rune_gen_textedit_paste_html(P, html_str__1p, (nuint)html_str__1b.Length, plain__3p, (nuint)plain__3b.Length)); } }
     public global::Rune.EditOutcome PasteHtmlWithPills(string html_str, string plain) { byte[] html_str__1b = Interop.Utf8(html_str); byte[] plain__3b = Interop.Utf8(plain); fixed (byte* html_str__1p = html_str__1b) fixed (byte* plain__3p = plain__3b) { return new global::Rune.EditOutcome(N.rune_gen_textedit_paste_html_with_pills(P, html_str__1p, (nuint)html_str__1b.Length, plain__3p, (nuint)plain__3b.Length)); } }
-    public global::Rune.Mark[] ActiveMarks() { { return WireReader.Read<global::Rune.Mark[]>(N.rune_gen_textedit_active_marks(P), static q2629 => q2629.List<global::Rune.Mark>(static q2630 => new global::Rune.Mark(q2630.Raw<nint>()))); } }
+    public global::Rune.Mark[] ActiveMarks() { { return WireReader.Read<global::Rune.Mark[]>(N.rune_gen_textedit_active_marks(P), static q2705 => q2705.List<global::Rune.Mark>(static q2706 => new global::Rune.Mark(q2706.Raw<nint>()))); } }
     public bool HasMark(global::Rune.Mark mark) { { return N.rune_gen_textedit_has_mark(P, mark.P); } }
     public string? ActiveLink() { Utf8Ref o0; { return N.rune_gen_textedit_active_link(P, &o0) ? Interop.FromUtf8(o0) : null; } }
     public void ToggleMark(global::Rune.Mark mark) { { N.rune_gen_textedit_toggle_mark(P, mark.O); } }
@@ -7054,14 +7425,14 @@ public readonly unsafe partial struct TextEdit
     public static global::Rune.TextEdit FromHtml(string html_str) { byte[] html_str__0b = Interop.Utf8(html_str); fixed (byte* html_str__0p = html_str__0b) { return new global::Rune.TextEdit(N.rune_gen_textedit_from_html(html_str__0p, (nuint)html_str__0b.Length)); } }
     public string ToHtml() { { return Interop.FromUtf8(N.rune_gen_textedit_to_html(P)); } }
     public string SelectedHtml() { { return Interop.FromUtf8(N.rune_gen_textedit_selected_html(P)); } }
-    public global::Rune.MarkRange[] Marks() { { return WireReader.Read<global::Rune.MarkRange[]>(N.rune_gen_textedit_marks(P), static q2634 => q2634.List<global::Rune.MarkRange>(static q2635 => new global::Rune.MarkRange(q2635.Raw<nint>()))); } }
-    public global::Rune.Block[] Blocks() { { return WireReader.Read<global::Rune.Block[]>(N.rune_gen_textedit_blocks(P), static q2639 => q2639.List<global::Rune.Block>(static q2640 => new global::Rune.Block(q2640.Raw<nint>()))); } }
+    public global::Rune.MarkRange[] Marks() { { return WireReader.Read<global::Rune.MarkRange[]>(N.rune_gen_textedit_marks(P), static q2710 => q2710.List<global::Rune.MarkRange>(static q2711 => new global::Rune.MarkRange(q2711.Raw<nint>()))); } }
+    public global::Rune.Block[] Blocks() { { return WireReader.Read<global::Rune.Block[]>(N.rune_gen_textedit_blocks(P), static q2715 => q2715.List<global::Rune.Block>(static q2716 => new global::Rune.Block(q2716.Raw<nint>()))); } }
     public void SetMarks(global::System.ReadOnlySpan<global::Rune.MarkRange> marks) { var marks__1h = new nint[marks.Length]; for (int marks__1i = 0; marks__1i < marks__1h.Length; marks__1i++) marks__1h[marks__1i] = marks[marks__1i].O; fixed (nint* marks__1p = marks__1h) { N.rune_gen_textedit_set_marks(P, marks__1p, (nuint)marks.Length); } }
     public void SetBlocks(global::System.ReadOnlySpan<global::Rune.Block> blocks) { var blocks__1h = new nint[blocks.Length]; for (int blocks__1i = 0; blocks__1i < blocks__1h.Length; blocks__1i++) blocks__1h[blocks__1i] = blocks[blocks__1i].O; fixed (nint* blocks__1p = blocks__1h) { N.rune_gen_textedit_set_blocks(P, blocks__1p, (nuint)blocks.Length); } }
-    public uint[] SoftBreaks() { { return WireReader.Read<uint[]>(N.rune_gen_textedit_soft_breaks(P), static q2643 => q2643.Prims<uint>()); } }
+    public uint[] SoftBreaks() { { return WireReader.Read<uint[]>(N.rune_gen_textedit_soft_breaks(P), static q2719 => q2719.Prims<uint>()); } }
     public global::Rune.TextEdit WithSoftBreaks(global::System.ReadOnlySpan<uint> lines) { fixed (uint* lines__1p = lines) { return new global::Rune.TextEdit(N.rune_gen_textedit_with_soft_breaks(O, lines__1p, (nuint)lines.Length)); } }
     public void SetSoftBreaks(global::System.ReadOnlySpan<uint> lines) { fixed (uint* lines__1p = lines) { N.rune_gen_textedit_set_soft_breaks(P, lines__1p, (nuint)lines.Length); } }
-    public global::Rune.ParagraphInfo[] Paragraphs() { { return WireReader.Read<global::Rune.ParagraphInfo[]>(N.rune_gen_textedit_paragraphs(P), static q2647 => q2647.List<global::Rune.ParagraphInfo>(static q2648 => new global::Rune.ParagraphInfo(q2648.Raw<nint>()))); } }
+    public global::Rune.ParagraphInfo[] Paragraphs() { { return WireReader.Read<global::Rune.ParagraphInfo[]>(N.rune_gen_textedit_paragraphs(P), static q2723 => q2723.List<global::Rune.ParagraphInfo>(static q2724 => new global::Rune.ParagraphInfo(q2724.Raw<nint>()))); } }
     public global::Rune.TextEdit Secure() { { return new global::Rune.TextEdit(N.rune_gen_textedit_secure(O)); } }
     public bool IsSecure() { { return N.rune_gen_textedit_is_secure(P); } }
     public void SetSecure(bool secure) { { N.rune_gen_textedit_set_secure(P, secure); } }
@@ -7075,13 +7446,13 @@ public readonly unsafe partial struct TextEdit
     public (nuint, nuint) Range() { nuint o0; nuint o1; { N.rune_gen_textedit_range(P, &o0, &o1); return (o0, o1); } }
     public void SetCaret(nuint @byte) { { N.rune_gen_textedit_set_caret(P, @byte); } }
     public void SetSelection(nuint anchor, nuint focus) { { N.rune_gen_textedit_set_selection(P, anchor, focus); } }
-    public ((nuint, nuint), string)[] Pills() { { return WireReader.Read<((nuint, nuint), string)[]>(N.rune_gen_textedit_pills(P), static q2659 => q2659.List<((nuint, nuint), string)>(static q2660 => ((q2660.Raw<nuint>(), q2660.Raw<nuint>()), q2660.Str()))); } }
+    public ((nuint, nuint), string)[] Pills() { { return WireReader.Read<((nuint, nuint), string)[]>(N.rune_gen_textedit_pills(P), static q2735 => q2735.List<((nuint, nuint), string)>(static q2736 => ((q2736.Raw<nuint>(), q2736.Raw<nuint>()), q2736.Str()))); } }
     public void InsertPill(string id, string label) { byte[] id__1b = Interop.Utf8(id); byte[] label__3b = Interop.Utf8(label); fixed (byte* id__1p = id__1b) fixed (byte* label__3p = label__3b) { N.rune_gen_textedit_insert_pill(P, id__1p, (nuint)id__1b.Length, label__3p, (nuint)label__3b.Length); } }
     public void ReplaceWithPill((nuint, nuint) range, string id, string label) { var range__1w = new WireWriter(); range__1w.Raw<nuint>(range.Item1); range__1w.Raw<nuint>(range.Item2); byte[] range__1b = range__1w.ToArray(); byte[] id__3b = Interop.Utf8(id); byte[] label__5b = Interop.Utf8(label); fixed (byte* range__1p = range__1b) fixed (byte* id__3p = id__3b) fixed (byte* label__5p = label__5b) { N.rune_gen_textedit_replace_with_pill(P, range__1p, (nuint)range__1b.Length, id__3p, (nuint)id__3b.Length, label__5p, (nuint)label__5b.Length); } }
     public string Selected() { { return Interop.FromUtf8(N.rune_gen_textedit_selected(P)); } }
     public void Insert(string s) { byte[] s__1b = Interop.Utf8(s); fixed (byte* s__1p = s__1b) { N.rune_gen_textedit_insert(P, s__1p, (nuint)s__1b.Length); } }
     public nuint LineOfByte(nuint @byte) { { return N.rune_gen_textedit_line_of_byte(P, @byte); } }
-    public (nuint, nuint) LineRange(nuint line_idx) { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_textedit_line_range(P, line_idx), static q2677 => (q2677.Raw<nuint>(), q2677.Raw<nuint>())); } }
+    public (nuint, nuint) LineRange(nuint line_idx) { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_textedit_line_range(P, line_idx), static q2753 => (q2753.Raw<nuint>(), q2753.Raw<nuint>())); } }
 }
 public readonly unsafe partial struct TextField
 {
@@ -7125,7 +7496,7 @@ public readonly unsafe partial struct TextHighlight
     public global::Rune.TextHighlight Ring(global::Rune.Color c, float width) { { return new global::Rune.TextHighlight(N.rune_gen_texthighlight_ring(O, c, width)); } }
     public global::Rune.TextHighlight Pad(float pad) { { return new global::Rune.TextHighlight(N.rune_gen_texthighlight_pad(O, pad)); } }
     public global::Rune.TextHighlight Key(string key) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { return new global::Rune.TextHighlight(N.rune_gen_texthighlight_key(O, key__1p, (nuint)key__1b.Length)); } }
-    public (nuint, nuint) Range() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_texthighlight_range(P), static q2690 => (q2690.Raw<nuint>(), q2690.Raw<nuint>())); } }
+    public (nuint, nuint) Range() { { return WireReader.Read<(nuint, nuint)>(N.rune_gen_texthighlight_range(P), static q2766 => (q2766.Raw<nuint>(), q2766.Raw<nuint>())); } }
     public global::Rune.TextHighlight WithRange((nuint, nuint) range) { var range__1w = new WireWriter(); range__1w.Raw<nuint>(range.Item1); range__1w.Raw<nuint>(range.Item2); byte[] range__1b = range__1w.ToArray(); fixed (byte* range__1p = range__1b) { return new global::Rune.TextHighlight(N.rune_gen_texthighlight_with_range(O, range__1p, (nuint)range__1b.Length)); } }
 }
 public readonly unsafe partial struct TextInk
@@ -7137,8 +7508,8 @@ public readonly unsafe partial struct TextInk
     internal TextInk(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_textink_free(O);
-    public (float, float, float, float) Bounds { get => WireReader.Read<(float, float, float, float)>(N.rune_gen_textink_field_get_bounds(P), static q1461 => (q1461.Raw<float>(), q1461.Raw<float>(), q1461.Raw<float>(), q1461.Raw<float>())); set { { N.rune_gen_textink_field_set_bounds(P, value.Item1, value.Item2, value.Item3, value.Item4); } } }
-    public (float, float) Mass { get => WireReader.Read<(float, float)>(N.rune_gen_textink_field_get_mass(P), static q1470 => (q1470.Raw<float>(), q1470.Raw<float>())); set { { N.rune_gen_textink_field_set_mass(P, value.Item1, value.Item2); } } }
+    public (float, float, float, float) Bounds { get => WireReader.Read<(float, float, float, float)>(N.rune_gen_textink_field_get_bounds(P), static q1498 => (q1498.Raw<float>(), q1498.Raw<float>(), q1498.Raw<float>(), q1498.Raw<float>())); set { { N.rune_gen_textink_field_set_bounds(P, value.Item1, value.Item2, value.Item3, value.Item4); } } }
+    public (float, float) Mass { get => WireReader.Read<(float, float)>(N.rune_gen_textink_field_get_mass(P), static q1507 => (q1507.Raw<float>(), q1507.Raw<float>())); set { { N.rune_gen_textink_field_set_mass(P, value.Item1, value.Item2); } } }
     public (float, float) Centre() { float o0; float o1; { N.rune_gen_textink_centre(P, &o0, &o1); return (o0, o1); } }
     public (float, float) Optical(float pull) { float o0; float o1; { N.rune_gen_textink_optical(P, pull, &o0, &o1); return (o0, o1); } }
 }
@@ -7194,7 +7565,7 @@ public readonly unsafe partial struct TextSelection
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_textselection_free(O);
     public static global::Rune.TextSelection CreateDefault() => new(N.rune_gen_textselection_default());
-    public global::Rune.SelectedText[] Texts() { { return WireReader.Read<global::Rune.SelectedText[]>(N.rune_gen_textselection_texts(P), static q2701 => q2701.List<global::Rune.SelectedText>(static q2702 => new global::Rune.SelectedText(q2702.Raw<nint>()))); } }
+    public global::Rune.SelectedText[] Texts() { { return WireReader.Read<global::Rune.SelectedText[]>(N.rune_gen_textselection_texts(P), static q2777 => q2777.List<global::Rune.SelectedText>(static q2778 => new global::Rune.SelectedText(q2778.Raw<nint>()))); } }
     public string Text() { { return Interop.FromUtf8(N.rune_gen_textselection_text(P)); } }
     public bool Backward() { { return N.rune_gen_textselection_backward(P); } }
 }
@@ -7211,15 +7582,15 @@ public readonly unsafe partial struct TextSpec
     public global::Rune.TextStyle Style { get => new global::Rune.TextStyle(N.rune_gen_textspec_field_get_style(P)); set { { N.rune_gen_textspec_field_set_style(P, value.P); } } }
     public global::Rune.Color Color { get => N.rune_gen_textspec_field_get_color(P); set { { N.rune_gen_textspec_field_set_color(P, value); } } }
     public global::Rune.Align Align { get => N.rune_gen_textspec_field_get_align(P); set { { N.rune_gen_textspec_field_set_align(P, value); } } }
-    public global::Rune.Span[] GetSpans() => WireReader.Read<global::Rune.Span[]>(N.rune_gen_textspec_field_get_spans(P), static q1476 => q1476.List<global::Rune.Span>(static q1477 => new global::Rune.Span(q1477.Raw<nint>())));
+    public global::Rune.Span[] GetSpans() => WireReader.Read<global::Rune.Span[]>(N.rune_gen_textspec_field_get_spans(P), static q1513 => q1513.List<global::Rune.Span>(static q1514 => new global::Rune.Span(q1514.Raw<nint>())));
     public void SetSpans(global::System.ReadOnlySpan<global::Rune.Span> value) { var value__1h = new nint[value.Length]; for (int value__1i = 0; value__1i < value__1h.Length; value__1i++) value__1h[value__1i] = value[value__1i].O; fixed (nint* value__1p = value__1h) { N.rune_gen_textspec_field_set_spans(P, value__1p, (nuint)value.Length); } }
     public bool Wrap { get => N.rune_gen_textspec_field_get_wrap(P); set { { N.rune_gen_textspec_field_set_wrap(P, value); } } }
     public float Reveal { get => N.rune_gen_textspec_field_get_reveal(P); set { { N.rune_gen_textspec_field_set_reveal(P, value); } } }
     public bool Truncate { get => N.rune_gen_textspec_field_get_truncate(P); set { { N.rune_gen_textspec_field_set_truncate(P, value); } } }
     public bool TruncateFade { get => N.rune_gen_textspec_field_get_truncate_fade(P); set { { N.rune_gen_textspec_field_set_truncate_fade(P, value); } } }
     public bool Justify { get => N.rune_gen_textspec_field_get_justify(P); set { { N.rune_gen_textspec_field_set_justify(P, value); } } }
-    public global::Rune.LiveText? Live { get => WireReader.Read<global::Rune.LiveText?>(N.rune_gen_textspec_field_get_live(P), static q1481 => (q1481.Tag() ? new global::Rune.LiveText(q1481.Raw<nint>()) : (global::Rune.LiveText?)null)); set { { N.rune_gen_textspec_field_set_live(P, value.HasValue, value.GetValueOrDefault().O); } } }
-    public (global::Rune.Run, nuint)? AdvanceIn { get => WireReader.Read<(global::Rune.Run, nuint)?>(N.rune_gen_textspec_field_get_advance_in(P), static q1490 => (q1490.Tag() ? (new global::Rune.Run(q1490.Raw<nint>()), q1490.Raw<nuint>()) : ((global::Rune.Run, nuint)?)null)); set { var value__1w = new WireWriter(); if (value is { } e1496) { value__1w.Tag(true); value__1w.Raw<nint>(e1496.Item1.O); value__1w.Raw<nuint>(e1496.Item2); } else value__1w.Tag(false); byte[] value__1b = value__1w.ToArray(); fixed (byte* value__1p = value__1b) { N.rune_gen_textspec_field_set_advance_in(P, value__1p, (nuint)value__1b.Length); } } }
+    public global::Rune.LiveText? Live { get => WireReader.Read<global::Rune.LiveText?>(N.rune_gen_textspec_field_get_live(P), static q1518 => (q1518.Tag() ? new global::Rune.LiveText(q1518.Raw<nint>()) : (global::Rune.LiveText?)null)); set { { N.rune_gen_textspec_field_set_live(P, value.HasValue, value.GetValueOrDefault().O); } } }
+    public (global::Rune.Run, nuint)? AdvanceIn { get => WireReader.Read<(global::Rune.Run, nuint)?>(N.rune_gen_textspec_field_get_advance_in(P), static q1527 => (q1527.Tag() ? (new global::Rune.Run(q1527.Raw<nint>()), q1527.Raw<nuint>()) : ((global::Rune.Run, nuint)?)null)); set { var value__1w = new WireWriter(); if (value is { } e1533) { value__1w.Tag(true); value__1w.Raw<nint>(e1533.Item1.O); value__1w.Raw<nuint>(e1533.Item2); } else value__1w.Tag(false); byte[] value__1b = value__1w.ToArray(); fixed (byte* value__1p = value__1b) { N.rune_gen_textspec_field_set_advance_in(P, value__1p, (nuint)value__1b.Length); } } }
 }
 public readonly unsafe partial struct TextStyle
 {
@@ -7253,8 +7624,9 @@ public readonly unsafe partial struct TextSystem
     public uint Shaped { get => N.rune_gen_textsystem_field_get_shaped(P); set { { N.rune_gen_textsystem_field_set_shaped(P, value); } } }
     public uint Rebroken { get => N.rune_gen_textsystem_field_get_rebroken(P); set { { N.rune_gen_textsystem_field_set_rebroken(P, value); } } }
     public static global::Rune.TextSystem CreateDefault() => new(N.rune_gen_textsystem_default());
+    public global::Rune.Pixels? ColorIcon(global::Rune.Icon icon, uint px, global::Rune.Color color) { { return WireReader.Read<global::Rune.Pixels?>(N.rune_gen_textsystem_color_icon(P, icon.P, px, color), static q2782 => (q2782.Tag() ? new global::Rune.Pixels(q2782.Raw<nint>(), q2782.Scope) : (global::Rune.Pixels?)null), _s); } }
     public void Decorations(global::Rune.TextLayout layout, global::System.ReadOnlySpan<global::Rune.Span> spans, float scale, (float, float) origin, global::Rune.VecDeco @out) { var spans__2h = new nint[spans.Length]; for (int spans__2i = 0; spans__2i < spans__2h.Length; spans__2i++) spans__2h[spans__2i] = spans[spans__2i].O; fixed (nint* spans__2p = spans__2h) { N.rune_gen_textsystem_decorations(P, layout.P, spans__2p, (nuint)spans.Length, scale, origin.Item1, origin.Item2, @out.P); } }
-    public (string, string) Families() { { return WireReader.Read<(string, string)>(N.rune_gen_textsystem_families(P), static q2707 => (q2707.Str(), q2707.Str())); } }
+    public (string, string) Families() { { return WireReader.Read<(string, string)>(N.rune_gen_textsystem_families(P), static q2788 => (q2788.Str(), q2788.Str())); } }
     public bool SetFamilies(string sans, string mono) { byte[] sans__1b = Interop.Utf8(sans); byte[] mono__3b = Interop.Utf8(mono); fixed (byte* sans__1p = sans__1b) fixed (byte* mono__3p = mono__3b) { return N.rune_gen_textsystem_set_families(P, sans__1p, (nuint)sans__1b.Length, mono__3p, (nuint)mono__3b.Length); } }
     public global::Rune.TextLanguage? Language() { nint o0; { return N.rune_gen_textsystem_language(P, &o0) ? new global::Rune.TextLanguage(o0) : null; } }
     public bool SetLanguage(global::Rune.TextLanguage? language) { { return N.rune_gen_textsystem_set_language(P, language.HasValue, language.GetValueOrDefault().P); } }
@@ -7266,10 +7638,11 @@ public readonly unsafe partial struct TextSystem
     public global::Rune.RcTextLayout LayoutAligned(string text, global::System.ReadOnlySpan<global::Rune.Span> spans, global::Rune.TextStyle style, float scale, float? max_width, global::Rune.TextAlignment align) { byte[] text__1b = Interop.Utf8(text); var spans__3h = new nint[spans.Length]; for (int spans__3i = 0; spans__3i < spans__3h.Length; spans__3i++) spans__3h[spans__3i] = spans[spans__3i].O; fixed (byte* text__1p = text__1b) fixed (nint* spans__3p = spans__3h) { return new global::Rune.RcTextLayout(N.rune_gen_textsystem_layout_aligned(P, text__1p, (nuint)text__1b.Length, spans__3p, (nuint)spans.Length, style.P, scale, max_width.HasValue, max_width.GetValueOrDefault(), align.P)); } }
     public global::Rune.RcTextLayout LayoutRichWith(string text, global::System.ReadOnlySpan<global::Rune.Span> spans, global::Rune.TextStyle style, float scale, float? max_width, global::Rune.RichLayoutOptions options) { byte[] text__1b = Interop.Utf8(text); var spans__3h = new nint[spans.Length]; for (int spans__3i = 0; spans__3i < spans__3h.Length; spans__3i++) spans__3h[spans__3i] = spans[spans__3i].O; fixed (byte* text__1p = text__1b) fixed (nint* spans__3p = spans__3h) { return new global::Rune.RcTextLayout(N.rune_gen_textsystem_layout_rich_with(P, text__1p, (nuint)text__1b.Length, spans__3p, (nuint)spans.Length, style.P, scale, max_width.HasValue, max_width.GetValueOrDefault(), options.O)); } }
     public global::Rune.RcRunLayout RunLayout(global::Rune.Run run, global::Rune.TextStyle style, float scale) { { return new global::Rune.RcRunLayout(N.rune_gen_textsystem_run_layout(P, run.P, style.P, scale)); } }
-    public static global::Rune.TextSystem New(byte[][] fonts, (string, string) families) { var fonts__0w = new WireWriter(); fonts__0w.Len(fonts.Length); foreach (var e2711 in fonts) { fonts__0w.Prims<byte>(e2711); } byte[] fonts__0b = fonts__0w.ToArray(); var families__2w = new WireWriter(); families__2w.Str(families.Item1); families__2w.Str(families.Item2); byte[] families__2b = families__2w.ToArray(); fixed (byte* fonts__0p = fonts__0b) fixed (byte* families__2p = families__2b) { return new global::Rune.TextSystem(N.rune_gen_textsystem_new(fonts__0p, (nuint)fonts__0b.Length, families__2p, (nuint)families__2b.Length)); } }
-    public global::Rune.Pixels ColorGlyph(uint color) { { return WireReader.Read<global::Rune.Pixels>(N.rune_gen_textsystem_color_glyph(P, color), static q2717 => new global::Rune.Pixels(q2717.Raw<nint>(), q2717.Scope), _s); } }
+    public static global::Rune.TextSystem New(byte[][] fonts, (string, string) families) { var fonts__0w = new WireWriter(); fonts__0w.Len(fonts.Length); foreach (var e2792 in fonts) { fonts__0w.Prims<byte>(e2792); } byte[] fonts__0b = fonts__0w.ToArray(); var families__2w = new WireWriter(); families__2w.Str(families.Item1); families__2w.Str(families.Item2); byte[] families__2b = families__2w.ToArray(); fixed (byte* fonts__0p = fonts__0b) fixed (byte* families__2p = families__2b) { return new global::Rune.TextSystem(N.rune_gen_textsystem_new(fonts__0p, (nuint)fonts__0b.Length, families__2p, (nuint)families__2b.Length)); } }
+    public global::Rune.Pixels ColorGlyph(uint color) { { return WireReader.Read<global::Rune.Pixels>(N.rune_gen_textsystem_color_glyph(P, color), static q2798 => new global::Rune.Pixels(q2798.Raw<nint>(), q2798.Scope), _s); } }
     public void SetGlyphInks(global::Rune.Color element, global::System.ReadOnlySpan<global::Rune.Span> spans) { var spans__2h = new nint[spans.Length]; for (int spans__2i = 0; spans__2i < spans__2h.Length; spans__2i++) spans__2h[spans__2i] = spans[spans__2i].O; fixed (nint* spans__2p = spans__2h) { N.rune_gen_textsystem_set_glyph_inks(P, element, spans__2p, (nuint)spans.Length); } }
     public global::Rune.FontSmoothing FontSmoothing() { { return N.rune_gen_textsystem_font_smoothing(P); } }
+    public float CoverageExponent((float, float, float, float) fill) { { return N.rune_gen_textsystem_coverage_exponent(P, fill.Item1, fill.Item2, fill.Item3, fill.Item4); } }
     public void SetFontSmoothing(global::Rune.FontSmoothing mode) { { N.rune_gen_textsystem_set_font_smoothing(P, mode); } }
     public global::Rune.ApplePipeline ApplePipeline() { { return N.rune_gen_textsystem_apple_pipeline(P); } }
     public void SetApplePipeline(global::Rune.ApplePipeline pipeline) { { N.rune_gen_textsystem_set_apple_pipeline(P, pipeline); } }
@@ -7288,7 +7661,7 @@ public readonly unsafe partial struct Theme
     public void Free() => N.rune_gen_theme_free(O);
     public string Name { get => Interop.FromUtf8(N.rune_gen_theme_field_get_name(P)); set { byte[] value__1b = Interop.Utf8(value); fixed (byte* value__1p = value__1b) { N.rune_gen_theme_field_set_name(P, value__1p, (nuint)value__1b.Length); } } }
     public bool Dark { get => N.rune_gen_theme_field_get_dark(P); set { { N.rune_gen_theme_field_set_dark(P, value); } } }
-    public static global::Rune.Theme FromJson(string src, bool dark) { byte[] src__0b = Interop.Utf8(src); fixed (byte* src__0p = src__0b) { return WireReader.Read<global::Rune.Theme>(N.rune_gen_theme_from_json(src__0p, (nuint)src__0b.Length, dark), static q2721 => q2721.Checked<global::Rune.Theme>(static q2722 => new global::Rune.Theme(q2722.Raw<nint>()))); } }
+    public static global::Rune.Theme FromJson(string src, bool dark) { byte[] src__0b = Interop.Utf8(src); fixed (byte* src__0p = src__0b) { return WireReader.Read<global::Rune.Theme>(N.rune_gen_theme_from_json(src__0p, (nuint)src__0b.Length, dark), static q2802 => q2802.Checked<global::Rune.Theme>(static q2803 => new global::Rune.Theme(q2803.Raw<nint>()))); } }
     public global::Rune.Color? TryColor(string name) { byte[] name__1b = Interop.Utf8(name); global::Rune.Color o0; fixed (byte* name__1p = name__1b) { return N.rune_gen_theme_try_color(P, name__1p, (nuint)name__1b.Length, &o0) ? o0 : null; } }
     public global::Rune.Color Color(string name) { byte[] name__1b = Interop.Utf8(name); fixed (byte* name__1p = name__1b) { return N.rune_gen_theme_color(P, name__1p, (nuint)name__1b.Length); } }
     public global::Rune.Color Alpha(global::Rune.Color c, float a) { { return N.rune_gen_theme_alpha(P, c, a); } }
@@ -7305,6 +7678,21 @@ public readonly unsafe partial struct TimedEvent
     public void Free() => N.rune_gen_timedevent_free(O);
     public double T { get => N.rune_gen_timedevent_field_get_t(P); set { { N.rune_gen_timedevent_field_set_t(P, value); } } }
     public global::Rune.ScriptEvent Event { get => new global::Rune.ScriptEvent(N.rune_gen_timedevent_field_get_event(P), _s == 0 ? Interop.Lent : _s); set { { N.rune_gen_timedevent_field_set_event(P, value.O); } } }
+}
+public readonly unsafe partial struct Titlebar
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal Titlebar(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_titlebar_free(O);
+    public static float CaptionButtonWidth => N.rune_gen_const_rune__titlebar__caption_button_width();
+    public static global::Rune.Titlebar New(float height) { { return new global::Rune.Titlebar(N.rune_gen_titlebar_new(height)); } }
+    public global::Rune.Titlebar TrafficLights(float x, float y) { { return new global::Rune.Titlebar(N.rune_gen_titlebar_traffic_lights(O, x, y)); } }
+    public float Height() { { return N.rune_gen_titlebar_height(P); } }
+    public (float, float)? TrafficLightsOrigin() { float o0; float o1; { return N.rune_gen_titlebar_traffic_lights_origin(P, &o0, &o1) ? (o0, o1) : null; } }
 }
 public enum TitlebarAction { Drag, DoubleClick }
 public readonly unsafe partial struct Toast
@@ -7509,7 +7897,7 @@ public readonly unsafe partial struct Tray
     internal Tray(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_tray_free(O);
-    public static global::Rune.Tray New(global::Rune.TraySpec spec, global::System.Action<global::Rune.TrayEvent> on_event) { { return WireReader.Read<global::Rune.Tray>(N.rune_gen_tray_new(spec.O, Interop.Keep(on_event)), static q2726 => q2726.Checked<global::Rune.Tray>(static q2727 => new global::Rune.Tray(q2727.Raw<nint>()))); } }
+    public static global::Rune.Tray New(global::Rune.TraySpec spec, global::System.Action<global::Rune.TrayEvent> on_event) { { return WireReader.Read<global::Rune.Tray>(N.rune_gen_tray_new(spec.O, Interop.Keep(on_event)), static q2807 => q2807.Checked<global::Rune.Tray>(static q2808 => new global::Rune.Tray(q2808.Raw<nint>()))); } }
     public void SetMenu(global::System.ReadOnlySpan<global::Rune.TrayItem> menu) { var menu__1h = new nint[menu.Length]; for (int menu__1i = 0; menu__1i < menu__1h.Length; menu__1i++) menu__1h[menu__1i] = menu[menu__1i].O; fixed (nint* menu__1p = menu__1h) { N.rune_gen_tray_set_menu(P, menu__1p, (nuint)menu.Length); } }
     public void SetTooltip(string tooltip) { byte[] tooltip__1b = Interop.Utf8(tooltip); fixed (byte* tooltip__1p = tooltip__1b) { N.rune_gen_tray_set_tooltip(P, tooltip__1p, (nuint)tooltip__1b.Length); } }
 }
@@ -7539,7 +7927,7 @@ public readonly unsafe partial struct TrayEvent
     public void Free() => N.rune_gen_trayevent_free(O);
     public static global::Rune.TrayEvent Activate(string? token) { byte[] token__1b = Interop.Utf8((token ?? "")); fixed (byte* token__1p = token__1b) { return new(N.rune_gen_trayevent_new_activate(token != null, token__1p, (nuint)token__1b.Length)); } }
     public static global::Rune.TrayEvent Menu(string item0) { byte[] item0__0b = Interop.Utf8(item0); fixed (byte* item0__0p = item0__0b) { return new(N.rune_gen_trayevent_new_menu(item0__0p, (nuint)item0__0b.Length)); } }
-    public string? AsActivate() { Utf8Ref o; return N.rune_gen_trayevent_as_activate(P, &o) ? WireReader.Read<string?>(o, static q1503 => (q1503.Tag() ? q1503.Str() : (string?)null)) : null; }
+    public string? AsActivate() { Utf8Ref o; return N.rune_gen_trayevent_as_activate(P, &o) ? WireReader.Read<string?>(o, static q1540 => (q1540.Tag() ? q1540.Str() : (string?)null)) : null; }
     public string? AsMenu() { Utf8Ref o; return N.rune_gen_trayevent_as_menu(P, &o) ? Interop.FromUtf8(o) : null; }
     public enum Case { Activate, Menu }
     public Case Which => (Case)N.rune_gen_trayevent_which(P);
@@ -7596,11 +7984,11 @@ public readonly unsafe partial struct Tree
     internal Tree(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     public void Free() => N.rune_gen_tree_free(O);
-    public static global::Rune.Tree New<S>(global::System.Func<S, global::Rune.TreeModel> get, global::System.Func<S, global::Rune.TreeModel> get_mut, global::System.Func<object, string> label) where S : class { { return new global::Rune.Tree(N.rune_gen_tree_new(Interop.Slot(24, get, () => { global::System.Func<object, global::Rune.TreeModel> get__0e = (x0) => get((S)x0); return Interop.Keep(get__0e); }, static (i, h) => N.rune_gen_fp_24_set(i, h)), Interop.Slot(25, get_mut, () => { global::System.Func<object, global::Rune.TreeModel> get_mut__0e = (x0) => get_mut((S)x0); return Interop.Keep(get_mut__0e); }, static (i, h) => N.rune_gen_fp_25_set(i, h)), Interop.Slot(26, label, () => { return Interop.Keep(label); }, static (i, h) => N.rune_gen_fp_26_set(i, h)))); } }
+    public static global::Rune.Tree New<S>(global::System.Func<S, global::Rune.TreeModel> get, global::System.Func<S, global::Rune.TreeModel> get_mut, global::System.Func<object, string> label) where S : class { { return new global::Rune.Tree(N.rune_gen_tree_new(Interop.Slot(26, get, () => { global::System.Func<object, global::Rune.TreeModel> get__0e = (x0) => get((S)x0); return Interop.Keep(get__0e); }, static (i, h) => N.rune_gen_fp_26_set(i, h)), Interop.Slot(27, get_mut, () => { global::System.Func<object, global::Rune.TreeModel> get_mut__0e = (x0) => get_mut((S)x0); return Interop.Keep(get_mut__0e); }, static (i, h) => N.rune_gen_fp_27_set(i, h)), Interop.Slot(28, label, () => { return Interop.Keep(label); }, static (i, h) => N.rune_gen_fp_28_set(i, h)))); } }
     public global::Rune.Tree Row(global::System.Func<object, global::Rune.TreeRow, global::Rune.TreeItem> f) { { return new global::Rune.Tree(N.rune_gen_tree_row(O, Interop.Keep(f))); } }
     public global::Rune.Tree OnSelect<S>(global::System.Action<S, string, global::Rune.Tx> f) where S : class { global::System.Action<object, string, global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.Tree(N.rune_gen_tree_on_select(O, Interop.Keep(f__1e))); } }
     public global::Rune.Tree OnOpen<S>(global::System.Action<S, string, global::Rune.Tx> f) where S : class { global::System.Action<object, string, global::Rune.Tx> f__1e = (x0, x1, x2) => f((S)x0, x1, x2); { return new global::Rune.Tree(N.rune_gen_tree_on_open(O, Interop.Keep(f__1e))); } }
-    public global::Rune.Tree Style(global::Rune.TreeStyle s) { { return new global::Rune.Tree(N.rune_gen_tree_style(O, s)); } }
+    public global::Rune.Tree Style(global::Rune.TreeStyle s) { { return new global::Rune.Tree(N.rune_gen_tree_style(O, s.O)); } }
     public global::Rune.Tree Name(string n) { byte[] n__1b = Interop.Utf8(n); fixed (byte* n__1p = n__1b) { return new global::Rune.Tree(N.rune_gen_tree_name(O, n__1p, (nuint)n__1b.Length)); } }
     public global::Rune.El Build<S>(S s, global::Rune.Kit k) where S : class { { return new global::Rune.El(N.rune_gen_tree_build(O, Interop.Keep(s), k.P)); } }
 }
@@ -7622,7 +8010,7 @@ public readonly unsafe partial struct TreeItem
     public global::Rune.TreeItem Dot(global::Rune.Color c) { { return new global::Rune.TreeItem(N.rune_gen_treeitem_dot(O, c)); } }
     public global::Rune.TreeItem Badge(string b) { byte[] b__1b = Interop.Utf8(b); fixed (byte* b__1p = b__1b) { return new global::Rune.TreeItem(N.rune_gen_treeitem_badge(O, b__1p, (nuint)b__1b.Length)); } }
     public global::Rune.TreeItem Trailing(global::Rune.El e) { { return new global::Rune.TreeItem(N.rune_gen_treeitem_trailing(O, e.Id)); } }
-    public global::Rune.El Build(global::Rune.Kit k, global::Rune.TreeRow r, global::Rune.TreeStyle style) { { return new global::Rune.El(N.rune_gen_treeitem_build(O, k.P, r.P, style)); } }
+    public global::Rune.El Build(global::Rune.Kit k, global::Rune.TreeRow r, global::Rune.TreeStyle style) { { return new global::Rune.El(N.rune_gen_treeitem_build(O, k.P, r.P, style.P)); } }
 }
 public readonly unsafe partial struct TreeKey
 {
@@ -7661,7 +8049,7 @@ public readonly unsafe partial struct TreeModel
     public object? Get(string id) { byte[] id__1b = Interop.Utf8(id); nint o0; fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodel_get(P, id__1p, (nuint)id__1b.Length, &o0) ? Interop.Target(o0) : null; } }
     public object? GetMut(string id) { byte[] id__1b = Interop.Utf8(id); nint o0; fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodel_get_mut(P, id__1p, (nuint)id__1b.Length, &o0) ? Interop.Target(o0) : null; } }
     public string? Parent(string id) { byte[] id__1b = Interop.Utf8(id); Utf8Ref o0; fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodel_parent(P, id__1p, (nuint)id__1b.Length, &o0) ? Interop.FromUtf8(o0) : null; } }
-    public string[] Children(string? id) { byte[] id__2b = Interop.Utf8((id ?? "")); fixed (byte* id__2p = id__2b) { return WireReader.Read<string[]>(N.rune_gen_treemodel_children(P, id != null, id__2p, (nuint)id__2b.Length), static q2732 => q2732.List<string>(static q2733 => q2733.Str())); } }
+    public string[] Children(string? id) { byte[] id__2b = Interop.Utf8((id ?? "")); fixed (byte* id__2p = id__2b) { return WireReader.Read<string[]>(N.rune_gen_treemodel_children(P, id != null, id__2p, (nuint)id__2b.Length), static q2813 => q2813.List<string>(static q2814 => q2814.Str())); } }
     public bool HasChildren(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodel_has_children(P, id__1p, (nuint)id__1b.Length); } }
     public uint? Depth(string id) { byte[] id__1b = Interop.Utf8(id); uint o0; fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodel_depth(P, id__1p, (nuint)id__1b.Length, &o0) ? o0 : null; } }
     public void SortBy(global::System.Func<object, object, int> cmp) { { N.rune_gen_treemodel_sort_by(P, Interop.Keep(cmp)); } }
@@ -7671,7 +8059,7 @@ public readonly unsafe partial struct TreeModel
     public void ExpandAll() { { N.rune_gen_treemodel_expand_all(P); } }
     public void CollapseAll() { { N.rune_gen_treemodel_collapse_all(P); } }
     public void ExpandTo(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { N.rune_gen_treemodel_expand_to(P, id__1p, (nuint)id__1b.Length); } }
-    public string[] Selected() { { return WireReader.Read<string[]>(N.rune_gen_treemodel_selected(P), static q2741 => q2741.List<string>(static q2742 => q2742.Str())); } }
+    public string[] Selected() { { return WireReader.Read<string[]>(N.rune_gen_treemodel_selected(P), static q2822 => q2822.List<string>(static q2823 => q2823.Str())); } }
     public bool IsSelected(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodel_is_selected(P, id__1p, (nuint)id__1b.Length); } }
     public string? Cursor() { Utf8Ref o0; { return N.rune_gen_treemodel_cursor(P, &o0) ? Interop.FromUtf8(o0) : null; } }
     public void ClearSelection() { { N.rune_gen_treemodel_clear_selection(P); } }
@@ -7707,13 +8095,13 @@ public readonly unsafe partial struct TreeModelFileNode
     public nuint Len() { { return N.rune_gen_treemodelfilenode_len(P); } }
     public bool IsEmpty() { { return N.rune_gen_treemodelfilenode_is_empty(P); } }
     public bool Contains(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodelfilenode_contains(P, id__1p, (nuint)id__1b.Length); } }
-    public global::Rune.FileNode? Get(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return WireReader.Read<global::Rune.FileNode?>(N.rune_gen_treemodelfilenode_get(P, id__1p, (nuint)id__1b.Length), static q2750 => (q2750.Tag() ? new global::Rune.FileNode(q2750.Raw<nint>(), q2750.Scope) : (global::Rune.FileNode?)null), _s); } }
-    public global::Rune.FileNode? GetMut(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return WireReader.Read<global::Rune.FileNode?>(N.rune_gen_treemodelfilenode_get_mut(P, id__1p, (nuint)id__1b.Length), static q2755 => (q2755.Tag() ? new global::Rune.FileNode(q2755.Raw<nint>(), q2755.Scope) : (global::Rune.FileNode?)null), _s); } }
+    public global::Rune.FileNode? Get(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return WireReader.Read<global::Rune.FileNode?>(N.rune_gen_treemodelfilenode_get(P, id__1p, (nuint)id__1b.Length), static q2831 => (q2831.Tag() ? new global::Rune.FileNode(q2831.Raw<nint>(), q2831.Scope) : (global::Rune.FileNode?)null), _s); } }
+    public global::Rune.FileNode? GetMut(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return WireReader.Read<global::Rune.FileNode?>(N.rune_gen_treemodelfilenode_get_mut(P, id__1p, (nuint)id__1b.Length), static q2836 => (q2836.Tag() ? new global::Rune.FileNode(q2836.Raw<nint>(), q2836.Scope) : (global::Rune.FileNode?)null), _s); } }
     public string? Parent(string id) { byte[] id__1b = Interop.Utf8(id); Utf8Ref o0; fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodelfilenode_parent(P, id__1p, (nuint)id__1b.Length, &o0) ? Interop.FromUtf8(o0) : null; } }
-    public string[] Children(string? id) { byte[] id__2b = Interop.Utf8((id ?? "")); fixed (byte* id__2p = id__2b) { return WireReader.Read<string[]>(N.rune_gen_treemodelfilenode_children(P, id != null, id__2p, (nuint)id__2b.Length), static q2760 => q2760.List<string>(static q2761 => q2761.Str())); } }
+    public string[] Children(string? id) { byte[] id__2b = Interop.Utf8((id ?? "")); fixed (byte* id__2p = id__2b) { return WireReader.Read<string[]>(N.rune_gen_treemodelfilenode_children(P, id != null, id__2p, (nuint)id__2b.Length), static q2841 => q2841.List<string>(static q2842 => q2842.Str())); } }
     public bool HasChildren(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodelfilenode_has_children(P, id__1p, (nuint)id__1b.Length); } }
     public uint? Depth(string id) { byte[] id__1b = Interop.Utf8(id); uint o0; fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodelfilenode_depth(P, id__1p, (nuint)id__1b.Length, &o0) ? o0 : null; } }
-    public global::Rune.FileNode[] Subtree(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return WireReader.Read<global::Rune.FileNode[]>(N.rune_gen_treemodelfilenode_subtree(P, id__1p, (nuint)id__1b.Length), static q2765 => q2765.List<global::Rune.FileNode>(static q2766 => new global::Rune.FileNode(q2766.Raw<nint>(), q2766.Scope)), _s); } }
+    public global::Rune.FileNode[] Subtree(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return WireReader.Read<global::Rune.FileNode[]>(N.rune_gen_treemodelfilenode_subtree(P, id__1p, (nuint)id__1b.Length), static q2846 => q2846.List<global::Rune.FileNode>(static q2847 => new global::Rune.FileNode(q2847.Raw<nint>(), q2847.Scope)), _s); } }
     public void SortBy(global::System.Func<global::Rune.FileNode, global::Rune.FileNode, int> cmp) { { N.rune_gen_treemodelfilenode_sort_by(P, Interop.Keep(cmp)); } }
     public bool IsExpanded(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodelfilenode_is_expanded(P, id__1p, (nuint)id__1b.Length); } }
     public void SetExpanded(string id, bool open) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { N.rune_gen_treemodelfilenode_set_expanded(P, id__1p, (nuint)id__1b.Length, open); } }
@@ -7721,7 +8109,7 @@ public readonly unsafe partial struct TreeModelFileNode
     public void ExpandAll() { { N.rune_gen_treemodelfilenode_expand_all(P); } }
     public void CollapseAll() { { N.rune_gen_treemodelfilenode_collapse_all(P); } }
     public void ExpandTo(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { N.rune_gen_treemodelfilenode_expand_to(P, id__1p, (nuint)id__1b.Length); } }
-    public string[] Selected() { { return WireReader.Read<string[]>(N.rune_gen_treemodelfilenode_selected(P), static q2772 => q2772.List<string>(static q2773 => q2773.Str())); } }
+    public string[] Selected() { { return WireReader.Read<string[]>(N.rune_gen_treemodelfilenode_selected(P), static q2853 => q2853.List<string>(static q2854 => q2854.Str())); } }
     public bool IsSelected(string id) { byte[] id__1b = Interop.Utf8(id); fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodelfilenode_is_selected(P, id__1p, (nuint)id__1b.Length); } }
     public string? Cursor() { Utf8Ref o0; { return N.rune_gen_treemodelfilenode_cursor(P, &o0) ? Interop.FromUtf8(o0) : null; } }
     public void ClearSelection() { { N.rune_gen_treemodelfilenode_clear_selection(P); } }
@@ -7737,7 +8125,7 @@ public readonly unsafe partial struct TreeModelFileNode
     public nuint VisibleLen() { { return N.rune_gen_treemodelfilenode_visible_len(P); } }
     public string? VisibleId(nuint row) { Utf8Ref o0; { return N.rune_gen_treemodelfilenode_visible_id(P, row, &o0) ? Interop.FromUtf8(o0) : null; } }
     public nuint? VisibleRow(string id) { byte[] id__1b = Interop.Utf8(id); nuint o0; fixed (byte* id__1p = id__1b) { return N.rune_gen_treemodelfilenode_visible_row(P, id__1p, (nuint)id__1b.Length, &o0) ? o0 : null; } }
-    public (global::Rune.FileNode, global::Rune.TreeRow)? Row(nuint row) { { return WireReader.Read<(global::Rune.FileNode, global::Rune.TreeRow)?>(N.rune_gen_treemodelfilenode_row(P, row), static q2780 => (q2780.Tag() ? (new global::Rune.FileNode(q2780.Raw<nint>(), q2780.Scope), new global::Rune.TreeRow(q2780.Raw<nint>())) : ((global::Rune.FileNode, global::Rune.TreeRow)?)null), _s); } }
+    public (global::Rune.FileNode, global::Rune.TreeRow)? Row(nuint row) { { return WireReader.Read<(global::Rune.FileNode, global::Rune.TreeRow)?>(N.rune_gen_treemodelfilenode_row(P, row), static q2861 => (q2861.Tag() ? (new global::Rune.FileNode(q2861.Raw<nint>(), q2861.Scope), new global::Rune.TreeRow(q2861.Raw<nint>())) : ((global::Rune.FileNode, global::Rune.TreeRow)?)null), _s); } }
     public global::Rune.TreeKey HandleKey(global::Rune.KeyEvent ev, global::System.Func<global::Rune.FileNode, string> label, global::Rune.Tx tx) { { return new global::Rune.TreeKey(N.rune_gen_treemodelfilenode_handle_key(P, ev.P, Interop.Keep(label), tx.P)); } }
 }
 public readonly unsafe partial struct TreeRow
@@ -7751,7 +8139,7 @@ public readonly unsafe partial struct TreeRow
     public void Free() => N.rune_gen_treerow_free(O);
     public string Id { get => Interop.FromUtf8(N.rune_gen_treerow_field_get_id(P)); set { byte[] value__1b = Interop.Utf8(value); fixed (byte* value__1p = value__1b) { N.rune_gen_treerow_field_set_id(P, value__1p, (nuint)value__1b.Length); } } }
     public uint Depth { get => N.rune_gen_treerow_field_get_depth(P); set { { N.rune_gen_treerow_field_set_depth(P, value); } } }
-    public bool? Expanded { get => WireReader.Read<bool?>(N.rune_gen_treerow_field_get_expanded(P), static q1508 => (q1508.Tag() ? q1508.Raw<bool>() : (bool?)null)); set { { N.rune_gen_treerow_field_set_expanded(P, value.HasValue, value.GetValueOrDefault()); } } }
+    public bool? Expanded { get => WireReader.Read<bool?>(N.rune_gen_treerow_field_get_expanded(P), static q1545 => (q1545.Tag() ? q1545.Raw<bool>() : (bool?)null)); set { { N.rune_gen_treerow_field_set_expanded(P, value.HasValue, value.GetValueOrDefault()); } } }
     public bool Selected { get => N.rune_gen_treerow_field_get_selected(P); set { { N.rune_gen_treerow_field_set_selected(P, value); } } }
     public bool Cursor { get => N.rune_gen_treerow_field_get_cursor(P); set { { N.rune_gen_treerow_field_set_cursor(P, value); } } }
     public bool Matched { get => N.rune_gen_treerow_field_get_matched(P); set { { N.rune_gen_treerow_field_set_matched(P, value); } } }
@@ -7770,14 +8158,37 @@ public readonly unsafe partial struct TreeRowInfo
     public void Free() => N.rune_gen_treerowinfo_free(O);
     public string Id { get => Interop.FromUtf8(N.rune_gen_treerowinfo_field_get_id(P)); set { byte[] value__1b = Interop.Utf8(value); fixed (byte* value__1p = value__1b) { N.rune_gen_treerowinfo_field_set_id(P, value__1p, (nuint)value__1b.Length); } } }
     public uint Depth { get => N.rune_gen_treerowinfo_field_get_depth(P); set { { N.rune_gen_treerowinfo_field_set_depth(P, value); } } }
-    public bool? Expanded { get => WireReader.Read<bool?>(N.rune_gen_treerowinfo_field_get_expanded(P), static q1513 => (q1513.Tag() ? q1513.Raw<bool>() : (bool?)null)); set { { N.rune_gen_treerowinfo_field_set_expanded(P, value.HasValue, value.GetValueOrDefault()); } } }
+    public bool? Expanded { get => WireReader.Read<bool?>(N.rune_gen_treerowinfo_field_get_expanded(P), static q1550 => (q1550.Tag() ? q1550.Raw<bool>() : (bool?)null)); set { { N.rune_gen_treerowinfo_field_set_expanded(P, value.HasValue, value.GetValueOrDefault()); } } }
     public bool Selected { get => N.rune_gen_treerowinfo_field_get_selected(P); set { { N.rune_gen_treerowinfo_field_set_selected(P, value); } } }
     public bool Cursor { get => N.rune_gen_treerowinfo_field_get_cursor(P); set { { N.rune_gen_treerowinfo_field_set_cursor(P, value); } } }
     public bool Matched { get => N.rune_gen_treerowinfo_field_get_matched(P); set { { N.rune_gen_treerowinfo_field_set_matched(P, value); } } }
 }
-[StructLayout(LayoutKind.Sequential)] public unsafe partial record struct TreeStyle(float RowHeight, float Indent, float Padding, bool Guides, global::Rune.Color Guide, global::Rune.Color Selected)
+public readonly unsafe partial struct TreeStyle
 {
-    public static global::Rune.TreeStyle FromKit(global::Rune.Kit k) { { return N.rune_gen_treestyle_from_kit(k.P); } }
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal TreeStyle(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_treestyle_free(O);
+    public float RowHeight { get => N.rune_gen_treestyle_field_get_row_height(P); set { { N.rune_gen_treestyle_field_set_row_height(P, value); } } }
+    public float Indent { get => N.rune_gen_treestyle_field_get_indent(P); set { { N.rune_gen_treestyle_field_set_indent(P, value); } } }
+    public float Padding { get => N.rune_gen_treestyle_field_get_padding(P); set { { N.rune_gen_treestyle_field_set_padding(P, value); } } }
+    public bool Guides { get => N.rune_gen_treestyle_field_get_guides(P); set { { N.rune_gen_treestyle_field_set_guides(P, value); } } }
+    public global::Rune.Color Guide { get => N.rune_gen_treestyle_field_get_guide(P); set { { N.rune_gen_treestyle_field_set_guide(P, value); } } }
+    public global::Rune.Color Selected { get => N.rune_gen_treestyle_field_get_selected(P); set { { N.rune_gen_treestyle_field_set_selected(P, value); } } }
+    public static global::Rune.TreeStyle FromKit(global::Rune.Kit k) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_from_kit(k.P)); } }
+    public global::Rune.TreeStyle Hover(global::Rune.Color c) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_hover(O, c)); } }
+    public global::Rune.TreeStyle Gap(float gap) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_gap(O, gap)); } }
+    public global::Rune.TreeStyle Radius(float r) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_radius(O, r)); } }
+    public global::Rune.TreeStyle Label(global::Rune.TextStyle font, global::Rune.Color rest, global::Rune.Color selected) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_label(O, font.P, rest, selected)); } }
+    public global::Rune.TreeStyle FadeLongLabels(float width) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_fade_long_labels(O, width)); } }
+    public global::Rune.TreeStyle ChevronOnlyFolders(bool on) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_chevron_only_folders(O, on)); } }
+    public global::Rune.TreeStyle Chevron(global::Rune.Icon glyph) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_chevron(O, glyph.P)); } }
+    public global::Rune.TreeStyle ChevronColors(global::Rune.Color rest, global::Rune.Color selected) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_chevron_colors(O, rest, selected)); } }
+    public global::Rune.TreeStyle ChevronNudge(float dy) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_chevron_nudge(O, dy)); } }
+    public global::Rune.TreeStyle GuidesOnHover(float opacity) { { return new global::Rune.TreeStyle(N.rune_gen_treestyle_guides_on_hover(O, opacity)); } }
 }
 public readonly unsafe partial struct TweenColor
 {
@@ -7835,6 +8246,7 @@ public readonly unsafe partial struct Tx
     public static global::Rune.Tx CreateDefault() => new(N.rune_gen_tx_default());
     public void FlyText(string source, string destination) { byte[] source__1b = Interop.Utf8(source); byte[] destination__3b = Interop.Utf8(destination); fixed (byte* source__1p = source__1b) fixed (byte* destination__3p = destination__3b) { N.rune_gen_tx_fly_text(P, source__1p, (nuint)source__1b.Length, destination__3p, (nuint)destination__3b.Length); } }
     public void Launch(string source, string destination) { byte[] source__1b = Interop.Utf8(source); byte[] destination__3b = Interop.Utf8(destination); fixed (byte* source__1p = source__1b) fixed (byte* destination__3p = destination__3b) { N.rune_gen_tx_launch(P, source__1p, (nuint)source__1b.Length, destination__3p, (nuint)destination__3b.Length); } }
+    public void UnclippedFlights() { { N.rune_gen_tx_unclipped_flights(P); } }
     public global::Rune.PointerButton Button() { { return new global::Rune.PointerButton(N.rune_gen_tx_button(P)); } }
     public void PopupMenu<S>(global::Rune.PopupMenu menu, global::Rune.PopupAnchor anchor, global::System.Action<S, string?, global::Rune.Tx> on_pick) where S : class { global::System.Action<object, string?, global::Rune.Tx> on_pick__3e = (x0, x1, x2) => on_pick((S)x0, x1, x2); { N.rune_gen_tx_popup_menu(P, menu.O, anchor.O, Interop.Keep(on_pick__3e)); } }
     public string? ActivationToken() { Utf8Ref o0; { return N.rune_gen_tx_activation_token(P, &o0) ? Interop.FromUtf8(o0) : null; } }
@@ -7849,7 +8261,7 @@ public readonly unsafe partial struct Tx
     public global::Rune.PhysicalKeyCode? PhysicalKey() { nint o0; { return N.rune_gen_tx_physical_key(P, &o0) ? new global::Rune.PhysicalKeyCode(o0) : null; } }
     public global::System.Text.Rune? KeyBase() { global::System.Text.Rune o0; { return N.rune_gen_tx_key_base(P, &o0) ? o0 : null; } }
     public global::Rune.Mods Mods() { { return N.rune_gen_tx_mods(P); } }
-    public global::System.TimeSpan? InputTime() { { return WireReader.Read<global::System.TimeSpan?>(N.rune_gen_tx_input_time(P), static q2806 => (q2806.Tag() ? global::System.TimeSpan.FromSeconds(q2806.Raw<double>()) : (global::System.TimeSpan?)null)); } }
+    public global::System.TimeSpan? InputTime() { { return WireReader.Read<global::System.TimeSpan?>(N.rune_gen_tx_input_time(P), static q2887 => (q2887.Tag() ? global::System.TimeSpan.FromSeconds(q2887.Raw<double>()) : (global::System.TimeSpan?)null)); } }
     public string? Focused() { Utf8Ref o0; { return N.rune_gen_tx_focused(P, &o0) ? Interop.FromUtf8(o0) : null; } }
     public void DragRepeatAfter(global::System.TimeSpan delay) { var delay__1w = new WireWriter(); delay__1w.Raw<double>(delay.TotalSeconds); byte[] delay__1b = delay__1w.ToArray(); fixed (byte* delay__1p = delay__1b) { N.rune_gen_tx_drag_repeat_after(P, delay__1p, (nuint)delay__1b.Length); } }
     public bool DragRepeat() { { return N.rune_gen_tx_drag_repeat(P); } }
@@ -7872,6 +8284,7 @@ public readonly unsafe partial struct Tx
     public void ElementAtWith<S>(float x, float y, global::Rune.Pick pick, global::System.Action<S, global::Rune.Picked?, global::Rune.Tx> f) where S : class { global::System.Action<object, global::Rune.Picked?, global::Rune.Tx> f__4e = (x0, x1, x2) => f((S)x0, x1, x2); { N.rune_gen_tx_element_at_with(P, x, y, pick.O, Interop.Keep(f__4e)); } }
     public void ElementAtIn<S>(string within, float x, float y, global::System.Action<S, global::Rune.Picked?, global::Rune.Tx> f) where S : class { byte[] within__1b = Interop.Utf8(within); global::System.Action<object, global::Rune.Picked?, global::Rune.Tx> f__5e = (x0, x1, x2) => f((S)x0, x1, x2); fixed (byte* within__1p = within__1b) { N.rune_gen_tx_element_at_in(P, within__1p, (nuint)within__1b.Length, x, y, Interop.Keep(f__5e)); } }
     public void ElementAtInWith<S>(string within, float x, float y, global::Rune.Pick pick, global::System.Action<S, global::Rune.Picked?, global::Rune.Tx> f) where S : class { byte[] within__1b = Interop.Utf8(within); global::System.Action<object, global::Rune.Picked?, global::Rune.Tx> f__6e = (x0, x1, x2) => f((S)x0, x1, x2); fixed (byte* within__1p = within__1b) { N.rune_gen_tx_element_at_in_with(P, within__1p, (nuint)within__1b.Length, x, y, pick.O, Interop.Keep(f__6e)); } }
+    public void InvalidateMemosByPrefix(string prefix) { byte[] prefix__1b = Interop.Utf8(prefix); fixed (byte* prefix__1p = prefix__1b) { N.rune_gen_tx_invalidate_memos_by_prefix(P, prefix__1p, (nuint)prefix__1b.Length); } }
     public bool Tracing() { { return N.rune_gen_tx_tracing(P); } }
     public void TraceEvent(object @event) { byte[] event__1b = Interop.Shown(@event); fixed (byte* event__1p = event__1b) { N.rune_gen_tx_trace_event(P, event__1p, (nuint)event__1b.Length); } }
     public void TraceChannel(string name, string kind, float value) { byte[] name__1b = Interop.Utf8(name); byte[] kind__3b = Interop.Utf8(kind); fixed (byte* name__1p = name__1b) fixed (byte* kind__3p = kind__3b) { N.rune_gen_tx_trace_channel(P, name__1p, (nuint)name__1b.Length, kind__3p, (nuint)kind__3b.Length, value); } }
@@ -7879,6 +8292,9 @@ public readonly unsafe partial struct Tx
     public void CloseWindow() { { N.rune_gen_tx_close_window(P); } }
     public void Quit() { { N.rune_gen_tx_quit(P); } }
     public void Minimize() { { N.rune_gen_tx_minimize(P); } }
+    public void ToggleMaximized() { { N.rune_gen_tx_toggle_maximized(P); } }
+    public void ToggleFullScreen() { { N.rune_gen_tx_toggle_full_screen(P); } }
+    public void SendKey(global::Rune.KeyEvent ev) { { N.rune_gen_tx_send_key(P, ev.O); } }
     public void SetTitle(string title) { byte[] title__1b = Interop.Utf8(title); fixed (byte* title__1p = title__1b) { N.rune_gen_tx_set_title(P, title__1p, (nuint)title__1b.Length); } }
     public void OpenUrl(string url) { byte[] url__1b = Interop.Utf8(url); fixed (byte* url__1p = url__1b) { WireReader.Check(N.rune_gen_tx_open_url(P, url__1p, (nuint)url__1b.Length)); } }
     public void OpenUrlSameTab(string url) { byte[] url__1b = Interop.Utf8(url); fixed (byte* url__1p = url__1b) { WireReader.Check(N.rune_gen_tx_open_url_same_tab(P, url__1p, (nuint)url__1b.Length)); } }
@@ -7886,12 +8302,12 @@ public readonly unsafe partial struct Tx
     public void ResizeWindowInstant((float, float) size) { { N.rune_gen_tx_resize_window_instant(P, size.Item1, size.Item2); } }
     public void CenterWindow() { { N.rune_gen_tx_center_window(P); } }
     public void Blur() { { N.rune_gen_tx_blur(P); } }
-    public global::Rune.TextSelection? TextSelection() { { return WireReader.Read<global::Rune.TextSelection?>(N.rune_gen_tx_text_selection(P), static q2830 => (q2830.Tag() ? new global::Rune.TextSelection(q2830.Raw<nint>(), q2830.Scope) : (global::Rune.TextSelection?)null), _s); } }
+    public global::Rune.TextSelection? TextSelection() { { return WireReader.Read<global::Rune.TextSelection?>(N.rune_gen_tx_text_selection(P), static q2911 => (q2911.Tag() ? new global::Rune.TextSelection(q2911.Raw<nint>(), q2911.Scope) : (global::Rune.TextSelection?)null), _s); } }
     public void SelectText(string key, (nuint, nuint) range) { byte[] key__1b = Interop.Utf8(key); var range__3w = new WireWriter(); range__3w.Raw<nuint>(range.Item1); range__3w.Raw<nuint>(range.Item2); byte[] range__3b = range__3w.ToArray(); fixed (byte* key__1p = key__1b) fixed (byte* range__3p = range__3b) { N.rune_gen_tx_select_text(P, key__1p, (nuint)key__1b.Length, range__3p, (nuint)range__3b.Length); } }
     public void SelectAllText(string key) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { N.rune_gen_tx_select_all_text(P, key__1p, (nuint)key__1b.Length); } }
     public void ClearTextSelection() { { N.rune_gen_tx_clear_text_selection(P); } }
     public void SetSrgbBlend(bool enabled) { { N.rune_gen_tx_set_srgb_blend(P, enabled); } }
-    public void RecordRewind(global::Rune.Rewind? rewind) { var rewind__1w = new WireWriter(); if (rewind is { } e2837) { rewind__1w.Tag(true); rewind__1w.Raw<nint>(e2837.P); } else rewind__1w.Tag(false); byte[] rewind__1b = rewind__1w.ToArray(); fixed (byte* rewind__1p = rewind__1b) { N.rune_gen_tx_record_rewind(P, rewind__1p, (nuint)rewind__1b.Length); } }
+    public void RecordRewind(global::Rune.Rewind? rewind) { var rewind__1w = new WireWriter(); if (rewind is { } e2918) { rewind__1w.Tag(true); rewind__1w.Raw<nint>(e2918.P); } else rewind__1w.Tag(false); byte[] rewind__1b = rewind__1w.ToArray(); fixed (byte* rewind__1p = rewind__1b) { N.rune_gen_tx_record_rewind(P, rewind__1p, (nuint)rewind__1b.Length); } }
     public void SetFontSmoothing(global::Rune.FontSmoothing mode) { { N.rune_gen_tx_set_font_smoothing(P, mode); } }
     public void SetFontFamilies(string sans, string mono) { byte[] sans__1b = Interop.Utf8(sans); byte[] mono__3b = Interop.Utf8(mono); fixed (byte* sans__1p = sans__1b) fixed (byte* mono__3p = mono__3b) { N.rune_gen_tx_set_font_families(P, sans__1p, (nuint)sans__1b.Length, mono__3p, (nuint)mono__3b.Length); } }
     public void LiveOnly() { { N.rune_gen_tx_live_only(P); } }
@@ -8102,7 +8518,7 @@ public readonly unsafe partial struct Visual
     public global::Rune.Color Border { get => N.rune_gen_visual_field_get_border(P); set { { N.rune_gen_visual_field_set_border(P, value); } } }
     public global::Rune.Color Hover { get => N.rune_gen_visual_field_get_hover(P); set { { N.rune_gen_visual_field_set_hover(P, value); } } }
     public global::Rune.Color Press { get => N.rune_gen_visual_field_get_press(P); set { { N.rune_gen_visual_field_set_press(P, value); } } }
-    public (float, float, float, float) Radius { get => WireReader.Read<(float, float, float, float)>(N.rune_gen_visual_field_get_radius(P), static q1521 => (q1521.Raw<float>(), q1521.Raw<float>(), q1521.Raw<float>(), q1521.Raw<float>())); set { { N.rune_gen_visual_field_set_radius(P, value.Item1, value.Item2, value.Item3, value.Item4); } } }
+    public (float, float, float, float) Radius { get => WireReader.Read<(float, float, float, float)>(N.rune_gen_visual_field_get_radius(P), static q1558 => (q1558.Raw<float>(), q1558.Raw<float>(), q1558.Raw<float>(), q1558.Raw<float>())); set { { N.rune_gen_visual_field_set_radius(P, value.Item1, value.Item2, value.Item3, value.Item4); } } }
     public float BorderWidth { get => N.rune_gen_visual_field_get_border_width(P); set { { N.rune_gen_visual_field_set_border_width(P, value); } } }
     public float Opacity { get => N.rune_gen_visual_field_get_opacity(P); set { { N.rune_gen_visual_field_set_opacity(P, value); } } }
     public float PaintAlpha { get => N.rune_gen_visual_field_get_paint_alpha(P); set { { N.rune_gen_visual_field_set_paint_alpha(P, value); } } }
@@ -8150,7 +8566,7 @@ public readonly unsafe partial struct WindowFrame
     public void Free() => N.rune_gen_windowframe_free(O);
     public double T { get => N.rune_gen_windowframe_field_get_t(P); set { { N.rune_gen_windowframe_field_set_t(P, value); } } }
     public string Key { get => Interop.FromUtf8(N.rune_gen_windowframe_field_get_key(P)); set { byte[] value__1b = Interop.Utf8(value); fixed (byte* value__1p = value__1b) { N.rune_gen_windowframe_field_set_key(P, value__1p, (nuint)value__1b.Length); } } }
-    public (float, float, float, float) Frame { get => WireReader.Read<(float, float, float, float)>(N.rune_gen_windowframe_field_get_frame(P), static q1532 => (q1532.Raw<float>(), q1532.Raw<float>(), q1532.Raw<float>(), q1532.Raw<float>())); set { { N.rune_gen_windowframe_field_set_frame(P, value.Item1, value.Item2, value.Item3, value.Item4); } } }
+    public (float, float, float, float) Frame { get => WireReader.Read<(float, float, float, float)>(N.rune_gen_windowframe_field_get_frame(P), static q1569 => (q1569.Raw<float>(), q1569.Raw<float>(), q1569.Raw<float>(), q1569.Raw<float>())); set { { N.rune_gen_windowframe_field_set_frame(P, value.Item1, value.Item2, value.Item3, value.Item4); } } }
     public bool Visible { get => N.rune_gen_windowframe_field_get_visible(P); set { { N.rune_gen_windowframe_field_set_visible(P, value); } } }
     public bool Focused { get => N.rune_gen_windowframe_field_get_focused(P); set { { N.rune_gen_windowframe_field_set_focused(P, value); } } }
 }
@@ -8195,10 +8611,10 @@ public readonly unsafe partial struct WindowOptions
     public bool ClickThrough { get => N.rune_gen_windowoptions_field_get_click_through(P); set { { N.rune_gen_windowoptions_field_set_click_through(P, value); } } }
     public bool AlwaysOnTop { get => N.rune_gen_windowoptions_field_get_always_on_top(P); set { { N.rune_gen_windowoptions_field_set_always_on_top(P, value); } } }
     public bool Visible { get => N.rune_gen_windowoptions_field_get_visible(P); set { { N.rune_gen_windowoptions_field_set_visible(P, value); } } }
-    public (int, int)? Position { get => WireReader.Read<(int, int)?>(N.rune_gen_windowoptions_field_get_position(P), static q1542 => (q1542.Tag() ? (q1542.Raw<int>(), q1542.Raw<int>()) : ((int, int)?)null)); set { { N.rune_gen_windowoptions_field_set_position(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
-    public (uint, uint)? PhysicalSize { get => WireReader.Read<(uint, uint)?>(N.rune_gen_windowoptions_field_get_physical_size(P), static q1551 => (q1551.Tag() ? (q1551.Raw<uint>(), q1551.Raw<uint>()) : ((uint, uint)?)null)); set { { N.rune_gen_windowoptions_field_set_physical_size(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
-    public (float, float)? MinSize { get => WireReader.Read<(float, float)?>(N.rune_gen_windowoptions_field_get_min_size(P), static q1560 => (q1560.Tag() ? (q1560.Raw<float>(), q1560.Raw<float>()) : ((float, float)?)null)); set { { N.rune_gen_windowoptions_field_set_min_size(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
-    public (float, float)? MaxSize { get => WireReader.Read<(float, float)?>(N.rune_gen_windowoptions_field_get_max_size(P), static q1569 => (q1569.Tag() ? (q1569.Raw<float>(), q1569.Raw<float>()) : ((float, float)?)null)); set { { N.rune_gen_windowoptions_field_set_max_size(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
+    public (int, int)? Position { get => WireReader.Read<(int, int)?>(N.rune_gen_windowoptions_field_get_position(P), static q1579 => (q1579.Tag() ? (q1579.Raw<int>(), q1579.Raw<int>()) : ((int, int)?)null)); set { { N.rune_gen_windowoptions_field_set_position(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
+    public (uint, uint)? PhysicalSize { get => WireReader.Read<(uint, uint)?>(N.rune_gen_windowoptions_field_get_physical_size(P), static q1588 => (q1588.Tag() ? (q1588.Raw<uint>(), q1588.Raw<uint>()) : ((uint, uint)?)null)); set { { N.rune_gen_windowoptions_field_set_physical_size(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
+    public (float, float)? MinSize { get => WireReader.Read<(float, float)?>(N.rune_gen_windowoptions_field_get_min_size(P), static q1597 => (q1597.Tag() ? (q1597.Raw<float>(), q1597.Raw<float>()) : ((float, float)?)null)); set { { N.rune_gen_windowoptions_field_set_min_size(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
+    public (float, float)? MaxSize { get => WireReader.Read<(float, float)?>(N.rune_gen_windowoptions_field_get_max_size(P), static q1606 => (q1606.Tag() ? (q1606.Raw<float>(), q1606.Raw<float>()) : ((float, float)?)null)); set { { N.rune_gen_windowoptions_field_set_max_size(P, value.HasValue, value.GetValueOrDefault().Item1, value.GetValueOrDefault().Item2); } } }
     public bool Resizable { get => N.rune_gen_windowoptions_field_get_resizable(P); set { { N.rune_gen_windowoptions_field_set_resizable(P, value); } } }
     public static global::Rune.WindowOptions CreateDefault() => new(N.rune_gen_windowoptions_default());
     public static global::Rune.ConfiguredWindowOptions LauncherPanel() { { return new global::Rune.ConfiguredWindowOptions(N.rune_gen_windowoptions_launcher_panel()); } }
@@ -8220,6 +8636,7 @@ public readonly unsafe partial struct WindowSpec
     public static global::Rune.WindowSpec New(string key, global::Rune.AppSpec app) { byte[] key__0b = Interop.Utf8(key); fixed (byte* key__0p = key__0b) { return new global::Rune.WindowSpec(N.rune_gen_windowspec_new(key__0p, (nuint)key__0b.Length, app.O)); } }
     public static global::Rune.WindowSpec FromApp(string key, global::Rune.App app) { byte[] key__0b = Interop.Utf8(key); fixed (byte* key__0p = key__0b) { return new global::Rune.WindowSpec(N.rune_gen_windowspec_from_app(key__0p, (nuint)key__0b.Length, app.O)); } }
     public global::Rune.WindowSpec Chrome(global::Rune.Chrome chrome) { { return new global::Rune.WindowSpec(N.rune_gen_windowspec_chrome(O, chrome.O)); } }
+    public global::Rune.WindowSpec Titlebar(global::Rune.Titlebar titlebar) { { return new global::Rune.WindowSpec(N.rune_gen_windowspec_titlebar(O, titlebar.O)); } }
     public global::Rune.WindowSpec SrgbBlend(bool enabled) { { return new global::Rune.WindowSpec(N.rune_gen_windowspec_srgb_blend(O, enabled)); } }
     public global::Rune.WindowSpec FontSmoothing(global::Rune.FontSmoothing mode) { { return new global::Rune.WindowSpec(N.rune_gen_windowspec_font_smoothing(O, mode)); } }
     public global::Rune.WindowSpec OnFocus<S>(global::System.Action<S, bool, global::Rune.Tx> f) where S : class { { return new global::Rune.WindowSpec(N.rune_gen_windowspec_on_focus(O, Interop.Slot(0, f, () => { global::System.Action<object, bool, global::Rune.Tx> f__0e = (x0, x1, x2) => f((S)x0, x1, x2); return Interop.Keep(f__0e); }, static (i, h) => N.rune_gen_fp_0_set(i, h)))); } }
@@ -8237,6 +8654,28 @@ public readonly unsafe partial struct WindowSpec
     public global::Rune.WindowSpec OnCreated(global::System.Action<global::Rune.WindowHandle> callback) { { return new global::Rune.WindowSpec(N.rune_gen_windowspec_on_created(O, Interop.Keep(callback))); } }
     public global::Rune.AnyWindowSpec Boxed() { { return new global::Rune.AnyWindowSpec(N.rune_gen_windowspec_boxed(O)); } }
 }
+public readonly unsafe partial struct WindowTitlebar
+{
+    readonly nint _p;
+    readonly uint _s;
+    internal nint P => Interop.Check(_p, _s);
+    internal nint O => Interop.Take(_p, _s);
+    internal WindowTitlebar(nint p, uint scope = 0) { _p = p; _s = scope; }
+    /// <summary>Drops an object nothing consumed.</summary>
+    public void Free() => N.rune_gen_windowtitlebar_free(O);
+    public static global::Rune.WindowTitlebar FromInsets(global::Rune.ChromeInsets insets, float zoom) { { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_from_insets(insets.O, zoom)); } }
+    public global::Rune.WindowTitlebar Key(string key) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_key(O, key__1p, (nuint)key__1b.Length)); } }
+    public global::Rune.WindowTitlebar Height(float logical_height) { { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_height(O, logical_height)); } }
+    public global::Rune.WindowTitlebar TopPadding(float points) { { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_top_padding(O, points)); } }
+    public global::Rune.WindowTitlebar LeadingPadding(float points) { { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_leading_padding(O, points)); } }
+    public global::Rune.WindowTitlebar TrailingPadding(float points) { { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_trailing_padding(O, points)); } }
+    public global::Rune.WindowTitlebar Gap(float points) { { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_gap(O, points)); } }
+    public global::Rune.WindowTitlebar Fill(global::Rune.Color color) { { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_fill(O, color)); } }
+    public global::Rune.WindowTitlebar Leading(global::Rune.El el) { { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_leading(O, el.Id)); } }
+    public global::Rune.WindowTitlebar Tabs(global::Rune.El strip) { { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_tabs(O, strip.Id)); } }
+    public global::Rune.WindowTitlebar Trailing(global::Rune.El el) { { return new global::Rune.WindowTitlebar(N.rune_gen_windowtitlebar_trailing(O, el.Id)); } }
+    public global::Rune.El Build(global::Rune.Kit k) { { return new global::Rune.El(N.rune_gen_windowtitlebar_build(O, k.P)); } }
+}
 public readonly unsafe partial struct VecEl
 {
     readonly nint _p;
@@ -8249,7 +8688,7 @@ public readonly unsafe partial struct VecEl
     public static global::Rune.VecEl Create() => new(N.rune_gen_vecel_new());
     public int Count => (int)N.rune_gen_vecel_count(P);
     /// <summary>Empties the list and hands over what it held.</summary>
-    public global::Rune.El[] Take() => WireReader.Read<global::Rune.El[]>(N.rune_gen_vecel_take(P), static q3241 => q3241.List<global::Rune.El>(static q3242 => new global::Rune.El(q3242.Raw<uint>())));
+    public global::Rune.El[] Take() => WireReader.Read<global::Rune.El[]>(N.rune_gen_vecel_take(P), static q3327 => q3327.List<global::Rune.El>(static q3328 => new global::Rune.El(q3328.Raw<uint>())));
 }
 public readonly unsafe partial struct VecMotionElement
 {
@@ -8263,7 +8702,7 @@ public readonly unsafe partial struct VecMotionElement
     public static global::Rune.VecMotionElement Create() => new(N.rune_gen_vecmotionelement_new());
     public int Count => (int)N.rune_gen_vecmotionelement_count(P);
     /// <summary>Empties the list and hands over what it held.</summary>
-    public global::Rune.MotionElement[] Take() => WireReader.Read<global::Rune.MotionElement[]>(N.rune_gen_vecmotionelement_take(P), static q3246 => q3246.List<global::Rune.MotionElement>(static q3247 => new global::Rune.MotionElement(q3247.Raw<nint>())));
+    public global::Rune.MotionElement[] Take() => WireReader.Read<global::Rune.MotionElement[]>(N.rune_gen_vecmotionelement_take(P), static q3332 => q3332.List<global::Rune.MotionElement>(static q3333 => new global::Rune.MotionElement(q3333.Raw<nint>())));
 }
 public readonly unsafe partial struct VecDeco
 {
@@ -8277,7 +8716,7 @@ public readonly unsafe partial struct VecDeco
     public static global::Rune.VecDeco Create() => new(N.rune_gen_vecdeco_new());
     public int Count => (int)N.rune_gen_vecdeco_count(P);
     /// <summary>Empties the list and hands over what it held.</summary>
-    public global::Rune.Deco[] Take() => WireReader.Read<global::Rune.Deco[]>(N.rune_gen_vecdeco_take(P), static q3251 => q3251.List<global::Rune.Deco>(static q3252 => new global::Rune.Deco(q3252.Raw<nint>())));
+    public global::Rune.Deco[] Take() => WireReader.Read<global::Rune.Deco[]>(N.rune_gen_vecdeco_take(P), static q3337 => q3337.List<global::Rune.Deco>(static q3338 => new global::Rune.Deco(q3338.Raw<nint>())));
 }
 public readonly unsafe partial struct VecGlyphQuad
 {
@@ -8291,7 +8730,7 @@ public readonly unsafe partial struct VecGlyphQuad
     public static global::Rune.VecGlyphQuad Create() => new(N.rune_gen_vecglyphquad_new());
     public int Count => (int)N.rune_gen_vecglyphquad_count(P);
     /// <summary>Empties the list and hands over what it held.</summary>
-    public global::Rune.GlyphQuad[] Take() => WireReader.Read<global::Rune.GlyphQuad[]>(N.rune_gen_vecglyphquad_take(P), static q3256 => q3256.List<global::Rune.GlyphQuad>(static q3257 => new global::Rune.GlyphQuad(q3257.Raw<nint>())));
+    public global::Rune.GlyphQuad[] Take() => WireReader.Read<global::Rune.GlyphQuad[]>(N.rune_gen_vecglyphquad_take(P), static q3342 => q3342.List<global::Rune.GlyphQuad>(static q3343 => new global::Rune.GlyphQuad(q3343.Raw<nint>())));
 }
 public readonly unsafe partial struct RgbImage
 {
@@ -8980,6 +9419,11 @@ public static unsafe partial class Compose
 {
     public static bool IsGlyph(global::Rune.Instance i) { { return N.rune_gen_rune__compose__is_glyph(i.P); } }
 }
+public static unsafe partial class Dirs
+{
+    public static string? Home() { Utf8Ref o0; { return N.rune_gen_rune__dirs__home(&o0) ? Interop.FromUtf8(o0) : null; } }
+    public static string RootEnv => WireReader.Read<string>(N.rune_gen_const_rune__dirs__root_env(), static q3256 => q3256.Str());
+}
 public static unsafe partial class DragOut
 {
     public static float DragThreshold => N.rune_gen_const_rune__drag_out__drag_threshold();
@@ -8991,7 +9435,7 @@ public static unsafe partial class EdgeExtensions
 }
 public static unsafe partial class EdgeModule
 {
-    public static (global::Rune.StreamEdge, global::Rune.StreamEdge, global::Rune.StreamEdge, global::Rune.StreamEdge) All => WireReader.Read<(global::Rune.StreamEdge, global::Rune.StreamEdge, global::Rune.StreamEdge, global::Rune.StreamEdge)>(N.rune_gen_const_rune__edge__all(), static q3178 => (new global::Rune.StreamEdge(q3178.Raw<nint>()), new global::Rune.StreamEdge(q3178.Raw<nint>()), new global::Rune.StreamEdge(q3178.Raw<nint>()), new global::Rune.StreamEdge(q3178.Raw<nint>())));
+    public static (global::Rune.StreamEdge, global::Rune.StreamEdge, global::Rune.StreamEdge, global::Rune.StreamEdge) All => WireReader.Read<(global::Rune.StreamEdge, global::Rune.StreamEdge, global::Rune.StreamEdge, global::Rune.StreamEdge)>(N.rune_gen_const_rune__edge__all(), static q3264 => (new global::Rune.StreamEdge(q3264.Raw<nint>()), new global::Rune.StreamEdge(q3264.Raw<nint>()), new global::Rune.StreamEdge(q3264.Raw<nint>()), new global::Rune.StreamEdge(q3264.Raw<nint>())));
     public static global::Rune.StreamEdge FastFeather => new global::Rune.StreamEdge(N.rune_gen_const_rune__edge__fast_feather());
     public static global::Rune.StreamEdge Feather => new global::Rune.StreamEdge(N.rune_gen_const_rune__edge__feather());
     public static global::Rune.StreamEdge NoMask => new global::Rune.StreamEdge(N.rune_gen_const_rune__edge__no_mask());
@@ -9006,9 +9450,10 @@ public static unsafe partial class Ext
     public static global::Rune.AccessKitActionData ActionDataNumber(double value) { { return new global::Rune.AccessKitActionData(N.rune_gen_rune_ext__action_data_number(value)); } }
     public static global::Rune.AccessKitActionData ActionDataValue(string value) { byte[] value__0b = Interop.Utf8(value); fixed (byte* value__0p = value__0b) { return new global::Rune.AccessKitActionData(N.rune_gen_rune_ext__action_data_value(value__0p, (nuint)value__0b.Length)); } }
     public static global::Rune.App AppCompositor(global::Rune.App app, global::System.Func<global::Rune.WgpuFeatures> features, global::System.Action<global::Rune.Frame> render, global::System.Func<bool> animating, global::System.Func<global::Rune.WgpuDevice, string?> summary) { { return new global::Rune.App(N.rune_gen_rune_ext__app_compositor(app.O, Interop.Keep(features), Interop.Keep(render), Interop.Keep(animating), Interop.Keep(summary))); } }
-    public static void ChannelSetEmbed(global::Rune.Channel c, global::System.Func<global::Rune.PaintPaint, (float, float, float, float, float, float)> f) { { N.rune_gen_rune_ext__channel_set_embed(c.P, Interop.Slot(27, f, () => { return Interop.Keep(f); }, static (i, h) => N.rune_gen_fp_27_set(i, h))); } }
-    public static void ChannelSetWeight(global::Rune.Channel c, global::System.Func<global::Rune.PaintPaint, (float, float, float, float), float> f) { { N.rune_gen_rune_ext__channel_set_weight(c.P, Interop.Slot(28, f, () => { return Interop.Keep(f); }, static (i, h) => N.rune_gen_fp_28_set(i, h))); } }
-    public static global::Rune.StepId[] ChoreographyStagger(global::Rune.Choreography c, global::Rune.Cue cue, global::Rune.Stagger stagger, nuint count, global::System.Action<global::Rune.Ops, nuint> each) { { return WireReader.Read<global::Rune.StepId[]>(N.rune_gen_rune_ext__choreography_stagger(c.P, cue.O, stagger.O, count, Interop.Keep(each)), static q2971 => q2971.List<global::Rune.StepId>(static q2972 => new global::Rune.StepId(q2972.Raw<nint>()))); } }
+    public static global::Rune.AppDirs? AppDirsFromEnv(string app_id, global::System.Func<string, string?> var) { byte[] app_id__0b = Interop.Utf8(app_id); nint o0; fixed (byte* app_id__0p = app_id__0b) { return N.rune_gen_rune_ext__app_dirs_from_env(app_id__0p, (nuint)app_id__0b.Length, Interop.Keep(var), &o0) ? new global::Rune.AppDirs(o0) : null; } }
+    public static void ChannelSetEmbed(global::Rune.Channel c, global::System.Func<global::Rune.PaintPaint, (float, float, float, float, float, float)> f) { { N.rune_gen_rune_ext__channel_set_embed(c.P, Interop.Slot(29, f, () => { return Interop.Keep(f); }, static (i, h) => N.rune_gen_fp_29_set(i, h))); } }
+    public static void ChannelSetWeight(global::Rune.Channel c, global::System.Func<global::Rune.PaintPaint, (float, float, float, float), float> f) { { N.rune_gen_rune_ext__channel_set_weight(c.P, Interop.Slot(30, f, () => { return Interop.Keep(f); }, static (i, h) => N.rune_gen_fp_30_set(i, h))); } }
+    public static global::Rune.StepId[] ChoreographyStagger(global::Rune.Choreography c, global::Rune.Cue cue, global::Rune.Stagger stagger, nuint count, global::System.Action<global::Rune.Ops, nuint> each) { { return WireReader.Read<global::Rune.StepId[]>(N.rune_gen_rune_ext__choreography_stagger(c.P, cue.O, stagger.O, count, Interop.Keep(each)), static q3054 => q3054.List<global::Rune.StepId>(static q3055 => new global::Rune.StepId(q3055.Raw<nint>()))); } }
     public static object? CxLayoutWith(global::Rune.Cx cx, string key, global::System.Func<(float, float, float, float), object> f) { byte[] key__1b = Interop.Utf8(key); nint o0; fixed (byte* key__1p = key__1b) { return N.rune_gen_rune_ext__cx_layout_with(cx.P, key__1p, (nuint)key__1b.Length, Interop.Keep(f), &o0) ? Interop.Target(o0) : null; } }
     public static object? CxWindowLayoutWith(global::Rune.Cx cx, string key, global::System.Func<(float, float, float, float), object> f) { byte[] key__1b = Interop.Utf8(key); nint o0; fixed (byte* key__1p = key__1b) { return N.rune_gen_rune_ext__cx_window_layout_with(cx.P, key__1p, (nuint)key__1b.Length, Interop.Keep(f), &o0) ? Interop.Target(o0) : null; } }
     public static global::Rune.WgpuCommandEncoder DeviceCreateEncoder(global::Rune.WgpuDevice device, string label) { byte[] label__1b = Interop.Utf8(label); fixed (byte* label__1p = label__1b) { return new global::Rune.WgpuCommandEncoder(N.rune_gen_rune_ext__device_create_encoder(device.P, label__1p, (nuint)label__1b.Length)); } }
@@ -9017,38 +9462,39 @@ public static unsafe partial class Ext
     public static void DialogsSave(global::Rune.FileDialogs dialogs, global::Rune.FileDialogOptions options, global::System.Action<string?, string?> done) { { N.rune_gen_rune_ext__dialogs_save(dialogs.P, options.O, Interop.Keep(done)); } }
     public static global::Rune.WgpuFeatures FeaturesEmpty() { { return new global::Rune.WgpuFeatures(N.rune_gen_rune_ext__features_empty()); } }
     public static object? FileNodeData(global::Rune.FileNode node) { nint o0; { return N.rune_gen_rune_ext__file_node_data(node.P, &o0) ? Interop.Target(o0) : null; } }
-    public static global::Rune.TreeModelFileNode FileTreeBuild(global::Rune.FileTree tree, string[] paths, global::System.Func<string, object> data) { var paths__1w = new WireWriter(); paths__1w.Len(paths.Length); foreach (var e3008 in paths) { paths__1w.Str(e3008); } byte[] paths__1b = paths__1w.ToArray(); fixed (byte* paths__1p = paths__1b) { return new global::Rune.TreeModelFileNode(N.rune_gen_rune_ext__file_tree_build(tree.O, paths__1p, (nuint)paths__1b.Length, Interop.Keep(data))); } }
-    public static void Gate(string[] names, global::System.Func<string, global::Rune.MotionGateRecording> job, (string, string, string, string)[] allow) { var names__0w = new WireWriter(); names__0w.Len(names.Length); foreach (var e3010 in names) { names__0w.Str(e3010); } byte[] names__0b = names__0w.ToArray(); var allow__3w = new WireWriter(); allow__3w.Len(allow.Length); foreach (var e3012 in allow) { allow__3w.Str(e3012.Item1); allow__3w.Str(e3012.Item2); allow__3w.Str(e3012.Item3); allow__3w.Str(e3012.Item4); } byte[] allow__3b = allow__3w.ToArray(); fixed (byte* names__0p = names__0b) fixed (byte* allow__3p = allow__3b) { N.rune_gen_rune_ext__gate(names__0p, (nuint)names__0b.Length, Interop.Keep(job), allow__3p, (nuint)allow__3b.Length); } }
+    public static global::Rune.TreeModelFileNode FileTreeBuild(global::Rune.FileTree tree, string[] paths, global::System.Func<string, object> data) { var paths__1w = new WireWriter(); paths__1w.Len(paths.Length); foreach (var e3091 in paths) { paths__1w.Str(e3091); } byte[] paths__1b = paths__1w.ToArray(); fixed (byte* paths__1p = paths__1b) { return new global::Rune.TreeModelFileNode(N.rune_gen_rune_ext__file_tree_build(tree.O, paths__1p, (nuint)paths__1b.Length, Interop.Keep(data))); } }
+    public static void Gate(string[] names, global::System.Func<string, global::Rune.MotionGateRecording> job, (string, string, string, string)[] allow) { var names__0w = new WireWriter(); names__0w.Len(names.Length); foreach (var e3093 in names) { names__0w.Str(e3093); } byte[] names__0b = names__0w.ToArray(); var allow__3w = new WireWriter(); allow__3w.Len(allow.Length); foreach (var e3095 in allow) { allow__3w.Str(e3095.Item1); allow__3w.Str(e3095.Item2); allow__3w.Str(e3095.Item3); allow__3w.Str(e3095.Item4); } byte[] allow__3b = allow__3w.ToArray(); fixed (byte* names__0p = names__0b) fixed (byte* allow__3p = allow__3b) { N.rune_gen_rune_ext__gate(names__0p, (nuint)names__0b.Length, Interop.Keep(job), allow__3p, (nuint)allow__3b.Length); } }
     public static global::Rune.MotionGateRecording GateRecording(global::Rune.MotionGateRun run) { { return new global::Rune.MotionGateRecording(N.rune_gen_rune_ext__gate_recording(run.O)); } }
-    public static void GateRows(string[] names, global::System.Func<string, global::Rune.MotionGateRecording> job, global::System.ReadOnlySpan<global::Rune.AllowRow> allow) { var names__0w = new WireWriter(); names__0w.Len(names.Length); foreach (var e3019 in names) { names__0w.Str(e3019); } byte[] names__0b = names__0w.ToArray(); var allow__3h = new nint[allow.Length]; for (int allow__3i = 0; allow__3i < allow__3h.Length; allow__3i++) allow__3h[allow__3i] = allow[allow__3i].O; fixed (byte* names__0p = names__0b) fixed (nint* allow__3p = allow__3h) { N.rune_gen_rune_ext__gate_rows(names__0p, (nuint)names__0b.Length, Interop.Keep(job), allow__3p, (nuint)allow.Length); } }
-    public static global::Rune.MotionGateCell[] GateRun(string[] names, global::System.Func<string, global::Rune.MotionGateRecording> job, string filter) { var names__0w = new WireWriter(); names__0w.Len(names.Length); foreach (var e3023 in names) { names__0w.Str(e3023); } byte[] names__0b = names__0w.ToArray(); byte[] filter__3b = Interop.Utf8(filter); fixed (byte* names__0p = names__0b) fixed (byte* filter__3p = filter__3b) { return WireReader.Read<global::Rune.MotionGateCell[]>(N.rune_gen_rune_ext__gate_run(names__0p, (nuint)names__0b.Length, Interop.Keep(job), filter__3p, (nuint)filter__3b.Length), static q3025 => q3025.List<global::Rune.MotionGateCell>(static q3026 => new global::Rune.MotionGateCell(q3026.Raw<nint>()))); } }
+    public static void GateRows(string[] names, global::System.Func<string, global::Rune.MotionGateRecording> job, global::System.ReadOnlySpan<global::Rune.AllowRow> allow) { var names__0w = new WireWriter(); names__0w.Len(names.Length); foreach (var e3102 in names) { names__0w.Str(e3102); } byte[] names__0b = names__0w.ToArray(); var allow__3h = new nint[allow.Length]; for (int allow__3i = 0; allow__3i < allow__3h.Length; allow__3i++) allow__3h[allow__3i] = allow[allow__3i].O; fixed (byte* names__0p = names__0b) fixed (nint* allow__3p = allow__3h) { N.rune_gen_rune_ext__gate_rows(names__0p, (nuint)names__0b.Length, Interop.Keep(job), allow__3p, (nuint)allow.Length); } }
+    public static global::Rune.MotionGateCell[] GateRun(string[] names, global::System.Func<string, global::Rune.MotionGateRecording> job, string filter) { var names__0w = new WireWriter(); names__0w.Len(names.Length); foreach (var e3106 in names) { names__0w.Str(e3106); } byte[] names__0b = names__0w.ToArray(); byte[] filter__3b = Interop.Utf8(filter); fixed (byte* names__0p = names__0b) fixed (byte* filter__3p = filter__3b) { return WireReader.Read<global::Rune.MotionGateCell[]>(N.rune_gen_rune_ext__gate_run(names__0p, (nuint)names__0b.Length, Interop.Keep(job), filter__3p, (nuint)filter__3b.Length), static q3108 => q3108.List<global::Rune.MotionGateCell>(static q3109 => new global::Rune.MotionGateCell(q3109.Raw<nint>()))); } }
+    public static string? HomeFrom(global::System.Func<string, string?> var) { Utf8Ref o0; { return N.rune_gen_rune_ext__home_from(Interop.Keep(var), &o0) ? Interop.FromUtf8(o0) : null; } }
     public static global::Rune.WgpuInstance InstanceNew() { { return new global::Rune.WgpuInstance(N.rune_gen_rune_ext__instance_new()); } }
     public static global::Rune.IoError IoError(string message) { byte[] message__0b = Interop.Utf8(message); fixed (byte* message__0p = message__0b) { return new global::Rune.IoError(N.rune_gen_rune_ext__io_error(message__0p, (nuint)message__0b.Length)); } }
-    public static global::Rune.JsonValue JsonParse(string text) { byte[] text__0b = Interop.Utf8(text); fixed (byte* text__0p = text__0b) { return WireReader.Read<global::Rune.JsonValue>(N.rune_gen_rune_ext__json_parse(text__0p, (nuint)text__0b.Length), static q3030 => q3030.Checked<global::Rune.JsonValue>(static q3031 => new global::Rune.JsonValue(q3031.Raw<nint>()))); } }
+    public static global::Rune.JsonValue JsonParse(string text) { byte[] text__0b = Interop.Utf8(text); fixed (byte* text__0p = text__0b) { return WireReader.Read<global::Rune.JsonValue>(N.rune_gen_rune_ext__json_parse(text__0p, (nuint)text__0b.Length), static q3113 => q3113.Checked<global::Rune.JsonValue>(static q3114 => new global::Rune.JsonValue(q3114.Raw<nint>()))); } }
     public static string JsonText(global::Rune.JsonValue value) { { return Interop.FromUtf8(N.rune_gen_rune_ext__json_text(value.P)); } }
     public static void KitClearRing(global::Rune.Kit kit) { { N.rune_gen_rune_ext__kit_clear_ring(kit.P); } }
-    public static void KitSetRing(global::Rune.Kit kit, global::System.Func<global::Rune.Palette, global::Rune.Color> f) { { N.rune_gen_rune_ext__kit_set_ring(kit.P, Interop.Slot(29, f, () => { return Interop.Keep(f); }, static (i, h) => N.rune_gen_fp_29_set(i, h))); } }
+    public static void KitSetRing(global::Rune.Kit kit, global::System.Func<global::Rune.Palette, global::Rune.Color> f) { { N.rune_gen_rune_ext__kit_set_ring(kit.P, Interop.Slot(31, f, () => { return Interop.Keep(f); }, static (i, h) => N.rune_gen_fp_31_set(i, h))); } }
     public static global::Rune.TextLanguage? LanguageParse(string tag) { byte[] tag__0b = Interop.Utf8(tag); nint o0; fixed (byte* tag__0p = tag__0b) { return N.rune_gen_rune_ext__language_parse(tag__0p, (nuint)tag__0b.Length, &o0) ? new global::Rune.TextLanguage(o0) : null; } }
     public static void LatestRequest(global::Rune.Latest latest, object input, global::System.Func<object, object> work) { { N.rune_gen_rune_ext__latest_request(latest.P, Interop.Keep(input), Interop.Keep(work)); } }
     public static void LatestRequestIfChanged(global::Rune.Latest latest, object key, global::System.Func<object, object> work) { { N.rune_gen_rune_ext__latest_request_if_changed(latest.P, Interop.Keep(key), Interop.Keep(work)); } }
     public static void LatestRequestOpt(global::Rune.Latest latest, object input, global::System.Func<object, object> work, global::System.Func<object, bool> keep) { { N.rune_gen_rune_ext__latest_request_opt(latest.P, Interop.Keep(input), Interop.Keep(work), Interop.Keep(keep)); } }
     [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public static global::Rune.LayerHost LayerHostCompositor(global::Rune.LayerHost host, global::System.Func<global::Rune.WgpuFeatures> features, global::System.Action<global::Rune.Frame> render, global::System.Func<bool> animating, global::System.Func<global::Rune.WgpuDevice, string?> summary) { { return new global::Rune.LayerHost(N.rune_gen_rune_ext__layer_host_compositor(host.O, Interop.Keep(features), Interop.Keep(render), Interop.Keep(animating), Interop.Keep(summary))); } }
-    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public static global::Rune.LayerHost LayerHostNew<S>(nuint layer, global::Rune.AppSpec spec, S state, (float, float) viewport, float scale, bool dark, global::Rune.Waker wake) where S : class { { return WireReader.Read<global::Rune.LayerHost>(N.rune_gen_rune_ext__layer_host_new(layer, spec.P, Interop.Keep(state), viewport.Item1, viewport.Item2, scale, dark, wake.O), static q3040 => q3040.Checked<global::Rune.LayerHost>(static q3041 => new global::Rune.LayerHost(q3041.Raw<nint>()))); } }
+    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public static global::Rune.LayerHost LayerHostNew<S>(nuint layer, global::Rune.AppSpec spec, S state, (float, float) viewport, float scale, bool dark, global::Rune.Waker wake) where S : class { { return WireReader.Read<global::Rune.LayerHost>(N.rune_gen_rune_ext__layer_host_new(layer, spec.P, Interop.Keep(state), viewport.Item1, viewport.Item2, scale, dark, wake.O), static q3123 => q3123.Checked<global::Rune.LayerHost>(static q3124 => new global::Rune.LayerHost(q3124.Raw<nint>()))); } }
     public static global::Rune.WgpuLoadOp LoadClear((float, float, float, float) color) { { return new global::Rune.WgpuLoadOp(N.rune_gen_rune_ext__load_clear(color.Item1, color.Item2, color.Item3, color.Item4)); } }
     public static global::Rune.WgpuLoadOp LoadKeep() { { return new global::Rune.WgpuLoadOp(N.rune_gen_rune_ext__load_keep()); } }
     public static object? MemoLayoutWith(string key, global::System.Func<(float, float, float, float), object> f) { byte[] key__0b = Interop.Utf8(key); nint o0; fixed (byte* key__0p = key__0b) { return N.rune_gen_rune_ext__memo_layout_with(key__0p, (nuint)key__0b.Length, Interop.Keep(f), &o0) ? Interop.Target(o0) : null; } }
     public static object MemoSnapshot(string key, object value) { byte[] key__0b = Interop.Utf8(key); fixed (byte* key__0p = key__0b) { return Interop.Target(N.rune_gen_rune_ext__memo_snapshot(key__0p, (nuint)key__0b.Length, Interop.Keep(value))); } }
     public static object? MemoWindowLayoutWith(string key, global::System.Func<(float, float, float, float), object> f) { byte[] key__0b = Interop.Utf8(key); nint o0; fixed (byte* key__0p = key__0b) { return N.rune_gen_rune_ext__memo_window_layout_with(key__0p, (nuint)key__0b.Length, Interop.Keep(f), &o0) ? Interop.Target(o0) : null; } }
-    public static global::Rune.MotionTrace MotionTraceNew(global::System.Action<byte[]> @out, global::Rune.TraceHeader header) { { return WireReader.Read<global::Rune.MotionTrace>(N.rune_gen_rune_ext__motion_trace_new(Interop.Keep(@out), header.P), static q3058 => q3058.Checked<global::Rune.MotionTrace>(static q3059 => new global::Rune.MotionTrace(q3059.Raw<nint>()))); } }
+    public static global::Rune.MotionTrace MotionTraceNew(global::System.Action<byte[]> @out, global::Rune.TraceHeader header) { { return WireReader.Read<global::Rune.MotionTrace>(N.rune_gen_rune_ext__motion_trace_new(Interop.Keep(@out), header.P), static q3141 => q3141.Checked<global::Rune.MotionTrace>(static q3142 => new global::Rune.MotionTrace(q3142.Raw<nint>()))); } }
     public static void OverlayClearOnCreated(global::Rune.ConfiguredOverlay o) { { N.rune_gen_rune_ext__overlay_clear_on_created(o.P); } }
     public static void OverlayClearOnKey(global::Rune.ConfiguredOverlay o) { { N.rune_gen_rune_ext__overlay_clear_on_key(o.P); } }
     public static global::Rune.ConfiguredOverlay OverlayCompositor(global::Rune.ConfiguredOverlay overlay, global::System.Func<global::Rune.WgpuFeatures> features, global::System.Action<global::Rune.Frame> render, global::System.Func<bool> animating, global::System.Func<global::Rune.WgpuDevice, string?> summary) { { return new global::Rune.ConfiguredOverlay(N.rune_gen_rune_ext__overlay_compositor(overlay.O, Interop.Keep(features), Interop.Keep(render), Interop.Keep(animating), Interop.Keep(summary))); } }
     public static void OverlaySetOnCreated(global::Rune.ConfiguredOverlay o, global::System.Action<global::Rune.OverlayCreated> f) { { N.rune_gen_rune_ext__overlay_set_on_created(o.P, Interop.Keep(f)); } }
     public static void OverlaySetOnKey<S>(global::Rune.ConfiguredOverlay o, global::System.Func<S, global::Rune.KeyEvent, global::Rune.Tx, bool> f) where S : class { { N.rune_gen_rune_ext__overlay_set_on_key(o.P, Interop.Slot(9, f, () => { global::System.Func<object, global::Rune.KeyEvent, global::Rune.Tx, bool> f__0e = (x0, x1, x2) => f((S)x0, x1, x2); return Interop.Keep(f__0e); }, static (i, h) => N.rune_gen_fp_9_set(i, h))); } }
     public static void OverlaySpecSetView<S>(global::Rune.OverlaySpec spec, global::System.Func<S, global::Rune.Cx, global::Rune.El> f) where S : class { { N.rune_gen_rune_ext__overlay_spec_set_view(spec.P, Interop.Slot(7, f, () => { global::System.Func<object, global::Rune.Cx, global::Rune.El> f__0e = (x0, x1) => f((S)x0, x1); return Interop.Keep(f__0e); }, static (i, h) => N.rune_gen_fp_7_set(i, h))); } }
-    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public static global::Rune.PixelBuffer PixelBufferFromIosurface(nuint raw, global::Rune.ColorInfo color) { { return WireReader.Read<global::Rune.PixelBuffer>(N.rune_gen_rune_ext__pixel_buffer_from_iosurface(raw, color), static q3063 => q3063.Checked<global::Rune.PixelBuffer>(static q3064 => new global::Rune.PixelBuffer(q3064.Raw<nint>()))); } }
-    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public static global::Rune.PixelBuffer PixelBufferFromRaw(nuint raw) { { return WireReader.Read<global::Rune.PixelBuffer>(N.rune_gen_rune_ext__pixel_buffer_from_raw(raw), static q3068 => q3068.Checked<global::Rune.PixelBuffer>(static q3069 => new global::Rune.PixelBuffer(q3069.Raw<nint>()))); } }
-    public static global::Rune.PopupMenu PopupPicker(string[] ids, string[] titles, string selected) { var ids__0w = new WireWriter(); ids__0w.Len(ids.Length); foreach (var e3071 in ids) { ids__0w.Str(e3071); } byte[] ids__0b = ids__0w.ToArray(); var titles__2w = new WireWriter(); titles__2w.Len(titles.Length); foreach (var e3073 in titles) { titles__2w.Str(e3073); } byte[] titles__2b = titles__2w.ToArray(); byte[] selected__4b = Interop.Utf8(selected); fixed (byte* ids__0p = ids__0b) fixed (byte* titles__2p = titles__2b) fixed (byte* selected__4p = selected__4b) { return new global::Rune.PopupMenu(N.rune_gen_rune_ext__popup_picker(ids__0p, (nuint)ids__0b.Length, titles__2p, (nuint)titles__2b.Length, selected__4p, (nuint)selected__4b.Length)); } }
+    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public static global::Rune.PixelBuffer PixelBufferFromIosurface(nuint raw, global::Rune.ColorInfo color) { { return WireReader.Read<global::Rune.PixelBuffer>(N.rune_gen_rune_ext__pixel_buffer_from_iosurface(raw, color), static q3146 => q3146.Checked<global::Rune.PixelBuffer>(static q3147 => new global::Rune.PixelBuffer(q3147.Raw<nint>()))); } }
+    [global::System.Runtime.Versioning.SupportedOSPlatform("macos")] public static global::Rune.PixelBuffer PixelBufferFromRaw(nuint raw) { { return WireReader.Read<global::Rune.PixelBuffer>(N.rune_gen_rune_ext__pixel_buffer_from_raw(raw), static q3151 => q3151.Checked<global::Rune.PixelBuffer>(static q3152 => new global::Rune.PixelBuffer(q3152.Raw<nint>()))); } }
+    public static global::Rune.PopupMenu PopupPicker(string[] ids, string[] titles, string selected) { var ids__0w = new WireWriter(); ids__0w.Len(ids.Length); foreach (var e3154 in ids) { ids__0w.Str(e3154); } byte[] ids__0b = ids__0w.ToArray(); var titles__2w = new WireWriter(); titles__2w.Len(titles.Length); foreach (var e3156 in titles) { titles__2w.Str(e3156); } byte[] titles__2b = titles__2w.ToArray(); byte[] selected__4b = Interop.Utf8(selected); fixed (byte* ids__0p = ids__0b) fixed (byte* titles__2p = titles__2b) fixed (byte* selected__4p = selected__4b) { return new global::Rune.PopupMenu(N.rune_gen_rune_ext__popup_picker(ids__0p, (nuint)ids__0b.Length, titles__2p, (nuint)titles__2b.Length, selected__4p, (nuint)selected__4b.Length)); } }
     public static global::Rune.JsonValue? PrefsGet(global::Rune.Prefs prefs, string key) { byte[] key__1b = Interop.Utf8(key); nint o0; fixed (byte* key__1p = key__1b) { return N.rune_gen_rune_ext__prefs_get(prefs.P, key__1p, (nuint)key__1b.Length, &o0) ? new global::Rune.JsonValue(o0) : null; } }
     public static void PrefsSet(global::Rune.Prefs prefs, string key, global::Rune.JsonValue value) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { WireReader.Check(N.rune_gen_rune_ext__prefs_set(prefs.P, key__1p, (nuint)key__1b.Length, value.P)); } }
     public static global::Rune.WgpuSubmissionIndex QueueSubmit(global::Rune.WgpuQueue queue, global::Rune.WgpuCommandEncoder encoder) { { return new global::Rune.WgpuSubmissionIndex(N.rune_gen_rune_ext__queue_submit(queue.P, encoder.O)); } }
@@ -9060,8 +9506,8 @@ public static unsafe partial class Ext
     public static void RendererEncodeLayersWithBackdrop(global::Rune.Renderer r, global::Rune.WgpuCommandEncoder encoder, global::System.Action<global::Rune.WgpuCommandEncoder, global::Rune.EffectSite> backdrop, global::System.Action<global::Rune.WgpuRenderPass, global::Rune.EffectSite> draw) { { N.rune_gen_rune_ext__renderer_encode_layers_with_backdrop(r.P, encoder.P, Interop.Keep(backdrop), Interop.Keep(draw)); } }
     public static void RendererUploadImages(global::Rune.Renderer r, global::Rune.WgpuDevice device, global::Rune.WgpuQueue queue, global::Rune.Runtime rt) { { N.rune_gen_rune_ext__renderer_upload_images(r.P, device.P, queue.P, rt.P); } }
     public static global::Rune.RgbImage? RgbImage(uint width, uint height, global::System.ReadOnlySpan<byte> pixels) { nint o0; fixed (byte* pixels__2p = pixels) { return N.rune_gen_rune_ext__rgb_image(width, height, pixels__2p, (nuint)pixels.Length, &o0) ? new global::Rune.RgbImage(o0) : null; } }
-    public static byte[] RgbImageBytes(global::Rune.RgbImage image) { { return WireReader.Read<byte[]>(N.rune_gen_rune_ext__rgb_image_bytes(image.P), static q3077 => q3077.Prims<byte>()); } }
-    public static global::Rune.El? RowStatusTakeOther(global::Rune.RowStatus status) { { return WireReader.Read<global::Rune.El?>(N.rune_gen_rune_ext__row_status_take_other(status.O), static q3081 => (q3081.Tag() ? new global::Rune.El(q3081.Raw<uint>()) : (global::Rune.El?)null)); } }
+    public static byte[] RgbImageBytes(global::Rune.RgbImage image) { { return WireReader.Read<byte[]>(N.rune_gen_rune_ext__rgb_image_bytes(image.P), static q3160 => q3160.Prims<byte>()); } }
+    public static global::Rune.El? RowStatusTakeOther(global::Rune.RowStatus status) { { return WireReader.Read<global::Rune.El?>(N.rune_gen_rune_ext__row_status_take_other(status.O), static q3164 => (q3164.Tag() ? new global::Rune.El(q3164.Raw<uint>()) : (global::Rune.El?)null)); } }
     public static void RunWith(global::Rune.AppSpec spec, global::System.Func<global::Rune.WgpuFeatures> features, global::System.Action<global::Rune.Frame> render, global::System.Func<bool> animating, global::System.Func<global::Rune.WgpuDevice, string?> summary) { { N.rune_gen_rune_ext__run_with(spec.O, Interop.Keep(features), Interop.Keep(render), Interop.Keep(animating), Interop.Keep(summary)); } }
     public static void RuntimeClearOnKey(global::Rune.Runtime rt) { { N.rune_gen_rune_ext__runtime_clear_on_key(rt.P); } }
     public static void RuntimeClearPoll(global::Rune.Runtime rt) { { N.rune_gen_rune_ext__runtime_clear_poll(rt.P); } }
@@ -9076,7 +9522,7 @@ public static unsafe partial class Ext
     public static void SpecSetInit<S>(global::Rune.AppSpec spec, global::System.Func<S> f) where S : class { { N.rune_gen_rune_ext__spec_set_init(spec.P, Interop.Slot(6, f, () => { global::System.Func<object> f__0e = () => f(); return Interop.Keep(f__0e); }, static (i, h) => N.rune_gen_fp_6_set(i, h))); } }
     public static void SpecSetOnKey<S>(global::Rune.AppSpec spec, global::System.Func<S, global::Rune.KeyEvent, global::Rune.Tx, bool> f) where S : class { { N.rune_gen_rune_ext__spec_set_on_key(spec.P, Interop.Slot(9, f, () => { global::System.Func<object, global::Rune.KeyEvent, global::Rune.Tx, bool> f__0e = (x0, x1, x2) => f((S)x0, x1, x2); return Interop.Keep(f__0e); }, static (i, h) => N.rune_gen_fp_9_set(i, h))); } }
     public static void SpecSetPoll<S>(global::Rune.AppSpec spec, global::System.Func<S, double, global::Rune.Tx, bool> f) where S : class { { N.rune_gen_rune_ext__spec_set_poll(spec.P, Interop.Slot(8, f, () => { global::System.Func<object, double, global::Rune.Tx, bool> f__0e = (x0, x1, x2) => f((S)x0, x1, x2); return Interop.Keep(f__0e); }, static (i, h) => N.rune_gen_fp_8_set(i, h))); } }
-    public static void SpecSetScenes<S>(global::Rune.AppSpec spec, string[] names, global::System.ReadOnlySpan<global::System.Action<S>> runs) where S : class { var names__1w = new WireWriter(); names__1w.Len(names.Length); foreach (var e3091 in names) { names__1w.Str(e3091); } byte[] names__1b = names__1w.ToArray(); var runs__3h = new uint[runs.Length]; for (int runs__3i = 0; runs__3i < runs__3h.Length; runs__3i++) { var runs__3f = runs[runs__3i]; runs__3h[runs__3i] = Interop.Slot(30, runs__3f, () => { global::System.Action<object> runs__0e = (x0) => runs__3f((S)x0); return Interop.Keep(runs__0e); }, static (i, h) => N.rune_gen_fp_30_set(i, h)); } fixed (byte* names__1p = names__1b) fixed (uint* runs__3p = runs__3h) { N.rune_gen_rune_ext__spec_set_scenes(spec.P, names__1p, (nuint)names__1b.Length, runs__3p, (nuint)runs.Length); } }
+    public static void SpecSetScenes<S>(global::Rune.AppSpec spec, string[] names, global::System.ReadOnlySpan<global::System.Action<S>> runs) where S : class { var names__1w = new WireWriter(); names__1w.Len(names.Length); foreach (var e3174 in names) { names__1w.Str(e3174); } byte[] names__1b = names__1w.ToArray(); var runs__3h = new uint[runs.Length]; for (int runs__3i = 0; runs__3i < runs__3h.Length; runs__3i++) { var runs__3f = runs[runs__3i]; runs__3h[runs__3i] = Interop.Slot(32, runs__3f, () => { global::System.Action<object> runs__0e = (x0) => runs__3f((S)x0); return Interop.Keep(runs__0e); }, static (i, h) => N.rune_gen_fp_32_set(i, h)); } fixed (byte* names__1p = names__1b) fixed (uint* runs__3p = runs__3h) { N.rune_gen_rune_ext__spec_set_scenes(spec.P, names__1p, (nuint)names__1b.Length, runs__3p, (nuint)runs.Length); } }
     public static void SpecSetSetup<S>(global::Rune.AppSpec spec, global::System.Action<S, global::Rune.Waker> f) where S : class { { N.rune_gen_rune_ext__spec_set_setup(spec.P, Interop.Slot(10, f, () => { global::System.Action<object, global::Rune.Waker> f__0e = (x0, x1) => f((S)x0, x1); return Interop.Keep(f__0e); }, static (i, h) => N.rune_gen_fp_10_set(i, h))); } }
     public static void SpecSetView<S>(global::Rune.AppSpec spec, global::System.Func<S, global::Rune.Cx, global::Rune.El> f) where S : class { { N.rune_gen_rune_ext__spec_set_view(spec.P, Interop.Slot(7, f, () => { global::System.Func<object, global::Rune.Cx, global::Rune.El> f__0e = (x0, x1) => f((S)x0, x1); return Interop.Keep(f__0e); }, static (i, h) => N.rune_gen_fp_7_set(i, h))); } }
     public static void SurfaceSetObserver(global::Rune.NativeSurface surface, global::System.Action<global::Rune.FrameTiming> observer) { { N.rune_gen_rune_ext__surface_set_observer(surface.P, Interop.Keep(observer)); } }
@@ -9102,7 +9548,7 @@ public static unsafe partial class FontSmoothingExtensions
 public static unsafe partial class GpuSprings
 {
     public static (float, float) SplitTime(double time) { float o0; float o1; { N.rune_gen_rune__gpu_springs__split_time(time, &o0, &o1); return (o0, o1); } }
-    public static string Shader => WireReader.Read<string>(N.rune_gen_const_rune__gpu_springs__shader(), static q3185 => q3185.Str());
+    public static string Shader => WireReader.Read<string>(N.rune_gen_const_rune__gpu_springs__shader(), static q3271 => q3271.Str());
 }
 public static unsafe partial class Growth
 {
@@ -9136,15 +9582,19 @@ public static unsafe partial class GrowthPace
 }
 public static unsafe partial class ImageModule
 {
-    public static (uint, uint, byte[]) AppIconRgba(string path, uint px) { byte[] path__0b = Interop.Utf8(path); fixed (byte* path__0p = path__0b) { return WireReader.Read<(uint, uint, byte[])>(N.rune_gen_rune__image__app_icon_rgba(path__0p, (nuint)path__0b.Length, px), static q2853 => q2853.Checked<(uint, uint, byte[])>(static q2854 => (q2854.Raw<uint>(), q2854.Raw<uint>(), q2854.Prims<byte>()))); } }
+    public static (uint, uint, byte[]) AppIconRgba(string path, uint px) { byte[] path__0b = Interop.Utf8(path); fixed (byte* path__0p = path__0b) { return WireReader.Read<(uint, uint, byte[])>(N.rune_gen_rune__image__app_icon_rgba(path__0p, (nuint)path__0b.Length, px), static q2934 => q2934.Checked<(uint, uint, byte[])>(static q2935 => (q2935.Raw<uint>(), q2935.Raw<uint>(), q2935.Prims<byte>()))); } }
+}
+public static unsafe partial class KeyPlatformExtensions
+{
+    public static global::Rune.KeyPlatform Current() { { return N.rune_gen_keyplatform_current(); } }
 }
 public static unsafe partial class KitCss
 {
-    public static global::Rune.Shadow[] BoxShadows(string src, global::System.Func<global::Rune.Color, global::Rune.Color> color) { byte[] src__0b = Interop.Utf8(src); fixed (byte* src__0p = src__0b) { return WireReader.Read<global::Rune.Shadow[]>(N.rune_gen_rune_kit__css__box_shadows(src__0p, (nuint)src__0b.Length, Interop.Keep(color)), static q3114 => q3114.List<global::Rune.Shadow>(static q3115 => q3115.Raw<global::Rune.Shadow>())); } }
+    public static global::Rune.Shadow[] BoxShadows(string src, global::System.Func<global::Rune.Color, global::Rune.Color> color) { byte[] src__0b = Interop.Utf8(src); fixed (byte* src__0p = src__0b) { return WireReader.Read<global::Rune.Shadow[]>(N.rune_gen_rune_kit__css__box_shadows(src__0p, (nuint)src__0b.Length, Interop.Keep(color)), static q3197 => q3197.List<global::Rune.Shadow>(static q3198 => q3198.Raw<global::Rune.Shadow>())); } }
 }
 public static unsafe partial class KitDiff
 {
-    public static global::Rune.FileDiff[] Parse(string patch) { byte[] patch__0b = Interop.Utf8(patch); fixed (byte* patch__0p = patch__0b) { return WireReader.Read<global::Rune.FileDiff[]>(N.rune_gen_rune_kit__diff__parse(patch__0p, (nuint)patch__0b.Length), static q3119 => q3119.List<global::Rune.FileDiff>(static q3120 => new global::Rune.FileDiff(q3120.Raw<nint>()))); } }
+    public static global::Rune.FileDiff[] Parse(string patch) { byte[] patch__0b = Interop.Utf8(patch); fixed (byte* patch__0p = patch__0b) { return WireReader.Read<global::Rune.FileDiff[]>(N.rune_gen_rune_kit__diff__parse(patch__0p, (nuint)patch__0b.Length), static q3202 => q3202.List<global::Rune.FileDiff>(static q3203 => new global::Rune.FileDiff(q3203.Raw<nint>()))); } }
     public static uint ExpandStep => N.rune_gen_const_rune_kit__diff__expand_step();
 }
 public static unsafe partial class KitGlyphs
@@ -9155,13 +9605,13 @@ public static unsafe partial class KitModule
 {
     public static global::Rune.El BodyText(global::Rune.Kit k, string s) { byte[] s__1b = Interop.Utf8(s); fixed (byte* s__1p = s__1b) { return new global::Rune.El(N.rune_gen_rune_kit__body_text(k.P, s__1p, (nuint)s__1b.Length)); } }
     public static global::Rune.Menu ContextMenu(string key, global::Rune.El trigger, global::Rune.PointerPress? point) { byte[] key__0b = Interop.Utf8(key); fixed (byte* key__0p = key__0b) { return new global::Rune.Menu(N.rune_gen_rune_kit__context_menu(key__0p, (nuint)key__0b.Length, trigger.Id, point.HasValue, point.GetValueOrDefault())); } }
-    public static global::Rune.Icon FileIcon(string name) { byte[] name__0b = Interop.Utf8(name); fixed (byte* name__0p = name__0b) { return WireReader.Read<global::Rune.Icon>(N.rune_gen_rune_kit__file_icon(name__0p, (nuint)name__0b.Length), static q3123 => new global::Rune.Icon(q3123.Raw<nint>(), q3123.Scope)); } }
-    public static int NaturalCmp(string a, string b) { byte[] a__0b = Interop.Utf8(a); byte[] b__2b = Interop.Utf8(b); fixed (byte* a__0p = a__0b) fixed (byte* b__2p = b__2b) { return WireReader.Read<int>(N.rune_gen_rune_kit__natural_cmp(a__0p, (nuint)a__0b.Length, b__2p, (nuint)b__2b.Length), static q3127 => q3127.Raw<int>()); } }
+    public static global::Rune.Icon FileIcon(string name) { byte[] name__0b = Interop.Utf8(name); fixed (byte* name__0p = name__0b) { return WireReader.Read<global::Rune.Icon>(N.rune_gen_rune_kit__file_icon(name__0p, (nuint)name__0b.Length), static q3206 => new global::Rune.Icon(q3206.Raw<nint>(), q3206.Scope)); } }
+    public static int NaturalCmp(string a, string b) { byte[] a__0b = Interop.Utf8(a); byte[] b__2b = Interop.Utf8(b); fixed (byte* a__0p = a__0b) fixed (byte* b__2p = b__2b) { return WireReader.Read<int>(N.rune_gen_rune_kit__natural_cmp(a__0p, (nuint)a__0b.Length, b__2p, (nuint)b__2b.Length), static q3210 => q3210.Raw<int>()); } }
     public static global::Rune.El OverlayText(global::Rune.Kit k, string s) { byte[] s__1b = Interop.Utf8(s); fixed (byte* s__1p = s__1b) { return new global::Rune.El(N.rune_gen_rune_kit__overlay_text(k.P, s__1p, (nuint)s__1b.Length)); } }
     public static global::Rune.El Root(global::Rune.El @base, global::System.ReadOnlySpan<global::Rune.El> overlays) { fixed (global::Rune.El* overlays__1p = overlays) { return new global::Rune.El(N.rune_gen_rune_kit__root(@base.Id, overlays__1p, (nuint)overlays.Length)); } }
     public static global::Rune.El Scrim<S>(string key, global::System.Action<S> close) where S : class { byte[] key__0b = Interop.Utf8(key); global::System.Action<object> close__2e = (x0) => close((S)x0); fixed (byte* key__0p = key__0b) { return new global::Rune.El(N.rune_gen_rune_kit__scrim(key__0p, (nuint)key__0b.Length, Interop.Keep(close__2e))); } }
     public static global::Rune.El ScrollBar(global::Rune.Kit k, string area, string key, global::Rune.El viewport) { byte[] area__1b = Interop.Utf8(area); byte[] key__3b = Interop.Utf8(key); fixed (byte* area__1p = area__1b) fixed (byte* key__3p = key__3b) { return new global::Rune.El(N.rune_gen_rune_kit__scroll_bar(k.P, area__1p, (nuint)area__1b.Length, key__3p, (nuint)key__3b.Length, viewport.Id)); } }
-    public static string ShortcutErrorMessage(global::Rune.ShortcutError error, global::Rune.Shortcut? shortcut) { var shortcut__1w = new WireWriter(); if (shortcut is { } e3130) { shortcut__1w.Tag(true); shortcut__1w.Raw<nint>(e3130.P); } else shortcut__1w.Tag(false); byte[] shortcut__1b = shortcut__1w.ToArray(); fixed (byte* shortcut__1p = shortcut__1b) { return Interop.FromUtf8(N.rune_gen_rune_kit__shortcut_error_message(error.P, shortcut__1p, (nuint)shortcut__1b.Length)); } }
+    public static string ShortcutErrorMessage(global::Rune.ShortcutError error, global::Rune.Shortcut? shortcut) { var shortcut__1w = new WireWriter(); if (shortcut is { } e3213) { shortcut__1w.Tag(true); shortcut__1w.Raw<nint>(e3213.P); } else shortcut__1w.Tag(false); byte[] shortcut__1b = shortcut__1w.ToArray(); fixed (byte* shortcut__1p = shortcut__1b) { return Interop.FromUtf8(N.rune_gen_rune_kit__shortcut_error_message(error.P, shortcut__1p, (nuint)shortcut__1b.Length)); } }
 }
 public static unsafe partial class KitPopover
 {
@@ -9179,14 +9629,15 @@ public static unsafe partial class KitShell
 }
 public static unsafe partial class KitSyntax
 {
-    public static ((nuint, nuint), global::Rune.Paint)[] Builtin(string? lang, string code) { byte[] lang__1b = Interop.Utf8((lang ?? "")); byte[] code__3b = Interop.Utf8(code); fixed (byte* lang__1p = lang__1b) fixed (byte* code__3p = code__3b) { return WireReader.Read<((nuint, nuint), global::Rune.Paint)[]>(N.rune_gen_rune_kit__syntax__builtin(lang != null, lang__1p, (nuint)lang__1b.Length, code__3p, (nuint)code__3b.Length), static q3141 => q3141.List<((nuint, nuint), global::Rune.Paint)>(static q3142 => ((q3142.Raw<nuint>(), q3142.Raw<nuint>()), new global::Rune.Paint(q3142.Raw<nint>())))); } }
-    public static ((nuint, nuint), global::Rune.Paint)[] Highlight(string? lang, string code) { byte[] lang__1b = Interop.Utf8((lang ?? "")); byte[] code__3b = Interop.Utf8(code); fixed (byte* lang__1p = lang__1b) fixed (byte* code__3p = code__3b) { return WireReader.Read<((nuint, nuint), global::Rune.Paint)[]>(N.rune_gen_rune_kit__syntax__highlight(lang != null, lang__1p, (nuint)lang__1b.Length, code__3p, (nuint)code__3b.Length), static q3161 => q3161.List<((nuint, nuint), global::Rune.Paint)>(static q3163 => ((q3163.Raw<nuint>(), q3163.Raw<nuint>()), new global::Rune.Paint(q3163.Raw<nint>())))); } }
+    public static ((nuint, nuint), global::Rune.Paint)[] Builtin(string? lang, string code) { byte[] lang__1b = Interop.Utf8((lang ?? "")); byte[] code__3b = Interop.Utf8(code); fixed (byte* lang__1p = lang__1b) fixed (byte* code__3p = code__3b) { return WireReader.Read<((nuint, nuint), global::Rune.Paint)[]>(N.rune_gen_rune_kit__syntax__builtin(lang != null, lang__1p, (nuint)lang__1b.Length, code__3p, (nuint)code__3b.Length), static q3224 => q3224.List<((nuint, nuint), global::Rune.Paint)>(static q3225 => ((q3225.Raw<nuint>(), q3225.Raw<nuint>()), new global::Rune.Paint(q3225.Raw<nint>())))); } }
+    public static ((nuint, nuint), global::Rune.Paint)[] Highlight(string? lang, string code) { byte[] lang__1b = Interop.Utf8((lang ?? "")); byte[] code__3b = Interop.Utf8(code); fixed (byte* lang__1p = lang__1b) fixed (byte* code__3p = code__3b) { return WireReader.Read<((nuint, nuint), global::Rune.Paint)[]>(N.rune_gen_rune_kit__syntax__highlight(lang != null, lang__1p, (nuint)lang__1b.Length, code__3p, (nuint)code__3b.Length), static q3244 => q3244.List<((nuint, nuint), global::Rune.Paint)>(static q3246 => ((q3246.Raw<nuint>(), q3246.Raw<nuint>()), new global::Rune.Paint(q3246.Raw<nint>())))); } }
     public static bool Known(string lang) { byte[] lang__0b = Interop.Utf8(lang); fixed (byte* lang__0p = lang__0b) { return N.rune_gen_rune_kit__syntax__known(lang__0p, (nuint)lang__0b.Length); } }
 }
 public static unsafe partial class Memo
 {
     public static (float, float, float, float)? Layout(string key) { byte[] key__0b = Interop.Utf8(key); float o0; float o1; float o2; float o3; fixed (byte* key__0p = key__0b) { return N.rune_gen_rune__memo__layout(key__0p, (nuint)key__0b.Length, &o0, &o1, &o2, &o3) ? (o0, o1, o2, o3) : null; } }
     public static (float, float)? LayoutSize(string key) { byte[] key__0b = Interop.Utf8(key); float o0; float o1; fixed (byte* key__0p = key__0b) { return N.rune_gen_rune__memo__layout_size(key__0p, (nuint)key__0b.Length, &o0, &o1) ? (o0, o1) : null; } }
+    public static global::Rune.El MemoWithHash(string id, ulong version, global::System.Func<global::Rune.El> build) { byte[] id__0b = Interop.Utf8(id); fixed (byte* id__0p = id__0b) { return new global::Rune.El(N.rune_gen_rune__memo__memo_with_hash(id__0p, (nuint)id__0b.Length, version, Interop.Keep(build))); } }
     public static (float, float, float, float)? WindowLayout(string key) { byte[] key__0b = Interop.Utf8(key); float o0; float o1; float o2; float o3; fixed (byte* key__0p = key__0b) { return N.rune_gen_rune__memo__window_layout(key__0p, (nuint)key__0b.Length, &o0, &o1, &o2, &o3) ? (o0, o1, o2, o3) : null; } }
 }
 public static unsafe partial class ModifierExtensions
@@ -9209,15 +9660,15 @@ public static unsafe partial class MotionFlags
 }
 public static unsafe partial class MotionGate
 {
-    public static string? Allowed((string, string, string, string)[] allow, global::Rune.Finding f, string cell) { var allow__0w = new WireWriter(); allow__0w.Len(allow.Length); foreach (var e2874 in allow) { allow__0w.Str(e2874.Item1); allow__0w.Str(e2874.Item2); allow__0w.Str(e2874.Item3); allow__0w.Str(e2874.Item4); } byte[] allow__0b = allow__0w.ToArray(); byte[] cell__3b = Interop.Utf8(cell); Utf8Ref o0; fixed (byte* allow__0p = allow__0b) fixed (byte* cell__3p = cell__3b) { return N.rune_gen_rune__motion_gate__allowed(allow__0p, (nuint)allow__0b.Length, f.P, cell__3p, (nuint)cell__3b.Length, &o0) ? Interop.FromUtf8(o0) : null; } }
-    public static global::Rune.Finding[] Check(global::Rune.MotionGateRecording rec) { { return WireReader.Read<global::Rune.Finding[]>(N.rune_gen_rune__motion_gate__check(rec.P), static q2883 => q2883.List<global::Rune.Finding>(static q2884 => new global::Rune.Finding(q2884.Raw<nint>()))); } }
+    public static string? Allowed((string, string, string, string)[] allow, global::Rune.Finding f, string cell) { var allow__0w = new WireWriter(); allow__0w.Len(allow.Length); foreach (var e2955 in allow) { allow__0w.Str(e2955.Item1); allow__0w.Str(e2955.Item2); allow__0w.Str(e2955.Item3); allow__0w.Str(e2955.Item4); } byte[] allow__0b = allow__0w.ToArray(); byte[] cell__3b = Interop.Utf8(cell); Utf8Ref o0; fixed (byte* allow__0p = allow__0b) fixed (byte* cell__3p = cell__3b) { return N.rune_gen_rune__motion_gate__allowed(allow__0p, (nuint)allow__0b.Length, f.P, cell__3p, (nuint)cell__3b.Length, &o0) ? Interop.FromUtf8(o0) : null; } }
+    public static global::Rune.Finding[] Check(global::Rune.MotionGateRecording rec) { { return WireReader.Read<global::Rune.Finding[]>(N.rune_gen_rune__motion_gate__check(rec.P), static q2964 => q2964.List<global::Rune.Finding>(static q2965 => new global::Rune.Finding(q2965.Raw<nint>()))); } }
     public static string Dump(global::Rune.MotionGateRecording rec, string filter, nuint from, nuint to) { byte[] filter__1b = Interop.Utf8(filter); fixed (byte* filter__1p = filter__1b) { return Interop.FromUtf8(N.rune_gen_rune__motion_gate__dump(rec.P, filter__1p, (nuint)filter__1b.Length, from, to)); } }
-    public static global::Rune.Report Report(global::System.ReadOnlySpan<global::Rune.MotionGateCell> cells, (string, string, string, string)[] allow, bool list_allowed, float secs) { var cells__0h = new nint[cells.Length]; for (int cells__0i = 0; cells__0i < cells__0h.Length; cells__0i++) cells__0h[cells__0i] = cells[cells__0i].O; var allow__2w = new WireWriter(); allow__2w.Len(allow.Length); foreach (var e2886 in allow) { allow__2w.Str(e2886.Item1); allow__2w.Str(e2886.Item2); allow__2w.Str(e2886.Item3); allow__2w.Str(e2886.Item4); } byte[] allow__2b = allow__2w.ToArray(); fixed (nint* cells__0p = cells__0h) fixed (byte* allow__2p = allow__2b) { return new global::Rune.Report(N.rune_gen_rune__motion_gate__report(cells__0p, (nuint)cells.Length, allow__2p, (nuint)allow__2b.Length, list_allowed, secs)); } }
+    public static global::Rune.Report Report(global::System.ReadOnlySpan<global::Rune.MotionGateCell> cells, (string, string, string, string)[] allow, bool list_allowed, float secs) { var cells__0h = new nint[cells.Length]; for (int cells__0i = 0; cells__0i < cells__0h.Length; cells__0i++) cells__0h[cells__0i] = cells[cells__0i].O; var allow__2w = new WireWriter(); allow__2w.Len(allow.Length); foreach (var e2967 in allow) { allow__2w.Str(e2967.Item1); allow__2w.Str(e2967.Item2); allow__2w.Str(e2967.Item3); allow__2w.Str(e2967.Item4); } byte[] allow__2b = allow__2w.ToArray(); fixed (nint* cells__0p = cells__0h) fixed (byte* allow__2p = allow__2b) { return new global::Rune.Report(N.rune_gen_rune__motion_gate__report(cells__0p, (nuint)cells.Length, allow__2p, (nuint)allow__2b.Length, list_allowed, secs)); } }
     public static global::Rune.Report ReportRows(global::System.ReadOnlySpan<global::Rune.MotionGateCell> cells, global::System.ReadOnlySpan<global::Rune.AllowRow> rows, bool list_allowed, float secs) { var cells__0h = new nint[cells.Length]; for (int cells__0i = 0; cells__0i < cells__0h.Length; cells__0i++) cells__0h[cells__0i] = cells[cells__0i].O; var rows__2h = new nint[rows.Length]; for (int rows__2i = 0; rows__2i < rows__2h.Length; rows__2i++) rows__2h[rows__2i] = rows[rows__2i].O; fixed (nint* cells__0p = cells__0h) fixed (nint* rows__2p = rows__2h) { return new global::Rune.Report(N.rune_gen_rune__motion_gate__report_rows(cells__0p, (nuint)cells.Length, rows__2p, (nuint)rows.Length, list_allowed, secs)); } }
     public static float Rule(string kind) { byte[] kind__0b = Interop.Utf8(kind); fixed (byte* kind__0p = kind__0b) { return N.rune_gen_rune__motion_gate__rule(kind__0p, (nuint)kind__0b.Length); } }
     public static global::Rune.RgbImage Sheet(global::Rune.MotionGateRecording rec, nuint at, string focus) { byte[] focus__2b = Interop.Utf8(focus); fixed (byte* focus__2p = focus__2b) { return new global::Rune.RgbImage(N.rune_gen_rune__motion_gate__sheet(rec.P, at, focus__2p, (nuint)focus__2b.Length)); } }
     public static string Short(string path) { byte[] path__0b = Interop.Utf8(path); fixed (byte* path__0p = path__0b) { return Interop.FromUtf8(N.rune_gen_rune__motion_gate__short(path__0p, (nuint)path__0b.Length)); } }
-    public static global::Rune.Rule[] Rules => WireReader.Read<global::Rune.Rule[]>(N.rune_gen_const_rune__motion_gate__rules(), static q3189 => q3189.List<global::Rune.Rule>(static q3190 => new global::Rune.Rule(q3190.Raw<nint>())));
+    public static global::Rune.Rule[] Rules => WireReader.Read<global::Rune.Rule[]>(N.rune_gen_const_rune__motion_gate__rules(), static q3275 => q3275.List<global::Rune.Rule>(static q3276 => new global::Rune.Rule(q3276.Raw<nint>())));
 }
 public static unsafe partial class MotionGateCheckPaint
 {
@@ -9227,7 +9678,7 @@ public static unsafe partial class MotionGateCheckPaint
     public static global::Rune.Color? Swatch(global::Rune.PaintPaint p, string channel) { byte[] channel__1b = Interop.Utf8(channel); global::Rune.Color o0; fixed (byte* channel__1p = channel__1b) { return N.rune_gen_rune__motion_gate__check__paint__swatch(p.P, channel__1p, (nuint)channel__1b.Length, &o0) ? o0 : null; } }
     public static (float, float, float) Toe((float, float, float) arg0) { float o0; float o1; float o2; { N.rune_gen_rune__motion_gate__check__paint__toe(arg0.Item1, arg0.Item2, arg0.Item3, &o0, &o1, &o2); return (o0, o1, o2); } }
     public static string Value(global::Rune.PaintPaint p, string channel) { byte[] channel__1b = Interop.Utf8(channel); fixed (byte* channel__1p = channel__1b) { return Interop.FromUtf8(N.rune_gen_rune__motion_gate__check__paint__value(p.P, channel__1p, (nuint)channel__1b.Length)); } }
-    public static global::Rune.Channel[] Channels => WireReader.Read<global::Rune.Channel[]>(N.rune_gen_const_rune__motion_gate__check__paint__channels(), static q3194 => q3194.List<global::Rune.Channel>(static q3195 => new global::Rune.Channel(q3195.Raw<nint>())));
+    public static global::Rune.Channel[] Channels => WireReader.Read<global::Rune.Channel[]>(N.rune_gen_const_rune__motion_gate__check__paint__channels(), static q3280 => q3280.List<global::Rune.Channel>(static q3281 => new global::Rune.Channel(q3281.Raw<nint>())));
     public static nuint Colors => N.rune_gen_const_rune__motion_gate__check__paint__colors();
     public static nuint CBorder => N.rune_gen_const_rune__motion_gate__check__paint__c_border();
     public static nuint CFill => N.rune_gen_const_rune__motion_gate__check__paint__c_fill();
@@ -9310,9 +9761,9 @@ public static unsafe partial class Render
     public static uint PackClipRadii((float, float, float, float) clip, (float, float, float, float) radii) { { return N.rune_gen_rune__render__pack_clip_radii(clip.Item1, clip.Item2, clip.Item3, clip.Item4, radii.Item1, radii.Item2, radii.Item3, radii.Item4); } }
     public static (uint, uint, uint, uint) PackFade((float, float, float, float) width, (float, float, float, float) origin, (float, float, float, float) clip) { uint o0; uint o1; uint o2; uint o3; { N.rune_gen_rune__render__pack_fade(width.Item1, width.Item2, width.Item3, width.Item4, origin.Item1, origin.Item2, origin.Item3, origin.Item4, clip.Item1, clip.Item2, clip.Item3, clip.Item4, &o0, &o1, &o2, &o3); return (o0, o1, o2, o3); } }
     public static (float, float, float, float) UnpackClipRadii(uint w) { float o0; float o1; float o2; float o3; { N.rune_gen_rune__render__unpack_clip_radii(w, &o0, &o1, &o2, &o3); return (o0, o1, o2, o3); } }
-    public static ((float, float, float, float), (float, float, float, float)) UnpackFade((uint, uint, uint, uint) fade) { { return WireReader.Read<((float, float, float, float), (float, float, float, float))>(N.rune_gen_rune__render__unpack_fade(fade.Item1, fade.Item2, fade.Item3, fade.Item4), static q2904 => ((q2904.Raw<float>(), q2904.Raw<float>(), q2904.Raw<float>(), q2904.Raw<float>()), (q2904.Raw<float>(), q2904.Raw<float>(), q2904.Raw<float>(), q2904.Raw<float>()))); } }
+    public static ((float, float, float, float), (float, float, float, float)) UnpackFade((uint, uint, uint, uint) fade) { { return WireReader.Read<((float, float, float, float), (float, float, float, float))>(N.rune_gen_rune__render__unpack_fade(fade.Item1, fade.Item2, fade.Item3, fade.Item4), static q2985 => ((q2985.Raw<float>(), q2985.Raw<float>(), q2985.Raw<float>(), q2985.Raw<float>()), (q2985.Raw<float>(), q2985.Raw<float>(), q2985.Raw<float>(), q2985.Raw<float>()))); } }
     public static void WritePng(string path, uint width, uint height, global::System.ReadOnlySpan<byte> rgba) { byte[] path__0b = Interop.Utf8(path); fixed (byte* path__0p = path__0b) fixed (byte* rgba__4p = rgba) { WireReader.Check(N.rune_gen_rune__render__write_png(path__0p, (nuint)path__0b.Length, width, height, rgba__4p, (nuint)rgba.Length)); } }
-    public static string ClipWgsl => WireReader.Read<string>(N.rune_gen_const_rune__render__clip_wgsl(), static q3198 => q3198.Str());
+    public static string ClipWgsl => WireReader.Read<string>(N.rune_gen_const_rune__render__clip_wgsl(), static q3284 => q3284.Str());
     public static float KindBackdropBlur => N.rune_gen_const_rune__render__kind_backdrop_blur();
     public static float KindDashed => N.rune_gen_const_rune__render__kind_dashed();
     public static float KindEffect => N.rune_gen_const_rune__render__kind_effect();
@@ -9327,7 +9778,7 @@ public static unsafe partial class Render
     public static float KindSegment => N.rune_gen_const_rune__render__kind_segment();
     public static float KindShadow => N.rune_gen_const_rune__render__kind_shadow();
     public static float KindTriangle => N.rune_gen_const_rune__render__kind_triangle();
-    public static (float, float, float, float) NoClip => WireReader.Read<(float, float, float, float)>(N.rune_gen_const_rune__render__no_clip(), static q3205 => (q3205.Raw<float>(), q3205.Raw<float>(), q3205.Raw<float>(), q3205.Raw<float>()));
+    public static (float, float, float, float) NoClip => WireReader.Read<(float, float, float, float)>(N.rune_gen_const_rune__render__no_clip(), static q3291 => (q3291.Raw<float>(), q3291.Raw<float>(), q3291.Raw<float>(), q3291.Raw<float>()));
     public static global::Rune.WgpuTextureFormat OffscreenFormat => new global::Rune.WgpuTextureFormat(N.rune_gen_const_rune__render__offscreen_format());
 }
 public static unsafe partial class ScrollBarsExtensions
@@ -9341,13 +9792,14 @@ public static unsafe partial class ShapeModule
 public static unsafe partial class SortDirExtensions
 {
     public static global::Rune.SortDir Flip(this global::Rune.SortDir self) { { return N.rune_gen_sortdir_flip(self); } }
-    public static int Apply(this global::Rune.SortDir self, int o) { var o__1w = new WireWriter(); o__1w.Raw<int>(o); byte[] o__1b = o__1w.ToArray(); fixed (byte* o__1p = o__1b) { return WireReader.Read<int>(N.rune_gen_sortdir_apply(self, o__1p, (nuint)o__1b.Length), static q2572 => q2572.Raw<int>()); } }
+    public static int Apply(this global::Rune.SortDir self, int o) { var o__1w = new WireWriter(); o__1w.Raw<int>(o); byte[] o__1b = o__1w.ToArray(); fixed (byte* o__1p = o__1b) { return WireReader.Read<int>(N.rune_gen_sortdir_apply(self, o__1p, (nuint)o__1b.Length), static q2648 => q2648.Raw<int>()); } }
 }
 public static unsafe partial class Text
 {
     public static float Advance(string text, global::Rune.TextStyle style) { byte[] text__0b = Interop.Utf8(text); fixed (byte* text__0p = text__0b) { return N.rune_gen_rune__text__advance(text__0p, (nuint)text__0b.Length, style.P); } }
+    public static (float, float) ContentWidths(string text, global::System.ReadOnlySpan<global::Rune.Span> spans, global::Rune.TextStyle style) { byte[] text__0b = Interop.Utf8(text); var spans__2h = new nint[spans.Length]; for (int spans__2i = 0; spans__2i < spans__2h.Length; spans__2i++) spans__2h[spans__2i] = spans[spans__2i].O; float o0; float o1; fixed (byte* text__0p = text__0b) fixed (nint* spans__2p = spans__2h) { N.rune_gen_rune__text__content_widths(text__0p, (nuint)text__0b.Length, spans__2p, (nuint)spans.Length, style.P, &o0, &o1); return (o0, o1); } }
     public static ulong FontEpoch() { { return N.rune_gen_rune__text__font_epoch(); } }
-    public static byte[] IconCoverage(global::Rune.Icon icon, uint px) { { return WireReader.Read<byte[]>(N.rune_gen_rune__text__icon_coverage(icon.P, px), static q2932 => q2932.Prims<byte>()); } }
+    public static byte[] IconCoverage(global::Rune.Icon icon, uint px) { { return WireReader.Read<byte[]>(N.rune_gen_rune__text__icon_coverage(icon.P, px), static q3013 => q3013.Prims<byte>()); } }
     public static global::Rune.TextInk? Ink(string text, global::Rune.TextStyle style) { byte[] text__0b = Interop.Utf8(text); nint o0; fixed (byte* text__0p = text__0b) { return N.rune_gen_rune__text__ink(text__0p, (nuint)text__0b.Length, style.P, &o0) ? new global::Rune.TextInk(o0) : null; } }
     public static float LastLineFill(global::Rune.TextLayout l, float width) { { return N.rune_gen_rune__text__last_line_fill(l.P, width); } }
     public static float LayoutHeight(global::Rune.TextLayout l, global::Rune.TextStyle style, float scale) { { return N.rune_gen_rune__text__layout_height(l.P, style.P, scale); } }
@@ -9369,13 +9821,13 @@ public static unsafe partial class Tok
 {
     public static global::Rune.Color Accent(nuint i, bool dark) { { return N.rune_gen_rune__tok__accent(i, dark); } }
     public static global::Rune.TokTheme Theme(bool dark) { { return N.rune_gen_rune__tok__theme(dark); } }
-    public static (string, string, string, string, string, string) AccentNames => WireReader.Read<(string, string, string, string, string, string)>(N.rune_gen_const_rune__tok__accent_names(), static q3219 => (q3219.Str(), q3219.Str(), q3219.Str(), q3219.Str(), q3219.Str(), q3219.Str()));
+    public static (string, string, string, string, string, string) AccentNames => WireReader.Read<(string, string, string, string, string, string)>(N.rune_gen_const_rune__tok__accent_names(), static q3305 => (q3305.Str(), q3305.Str(), q3305.Str(), q3305.Str(), q3305.Str(), q3305.Str()));
 }
 public static unsafe partial class TokMotion
 {
     public static global::Rune.Spring FollowLead() { { return N.rune_gen_rune__tok__motion__follow_lead(); } }
     public static global::Rune.Spring FollowTrail() { { return N.rune_gen_rune__tok__motion__follow_trail(); } }
-    public static (string, global::Rune.SpringPair)[] All => WireReader.Read<(string, global::Rune.SpringPair)[]>(N.rune_gen_const_rune__tok__motion__all(), static q3233 => q3233.List<(string, global::Rune.SpringPair)>(static q3234 => (q3234.Str(), q3234.Raw<global::Rune.SpringPair>())));
+    public static (string, global::Rune.SpringPair)[] All => WireReader.Read<(string, global::Rune.SpringPair)[]>(N.rune_gen_const_rune__tok__motion__all(), static q3319 => q3319.List<(string, global::Rune.SpringPair)>(static q3320 => (q3320.Str(), q3320.Raw<global::Rune.SpringPair>())));
     public static global::Rune.Spring Calm => N.rune_gen_const_rune__tok__motion__calm();
     public static global::Rune.Spring Camera => N.rune_gen_const_rune__tok__motion__camera();
     public static global::Rune.Curve CssEnter => new global::Rune.Curve(N.rune_gen_const_rune__tok__motion__css_enter());
@@ -9447,7 +9899,7 @@ public static unsafe partial class TokType
 public static unsafe partial class Tooling
 {
     public static void Headless(global::Rune.App app, global::Rune.Args args) { { N.rune_gen_rune__tooling__headless(app.O, args.O); } }
-    public static global::Rune.HeadlessRun? HeadlessRun() { { return WireReader.Read<global::Rune.HeadlessRun?>(N.rune_gen_rune__tooling__headless_run(), static q2936 => (q2936.Tag() ? new global::Rune.HeadlessRun(q2936.Raw<nint>(), q2936.Scope) : (global::Rune.HeadlessRun?)null)); } }
+    public static global::Rune.HeadlessRun? HeadlessRun() { { return WireReader.Read<global::Rune.HeadlessRun?>(N.rune_gen_rune__tooling__headless_run(), static q3017 => (q3017.Tag() ? new global::Rune.HeadlessRun(q3017.Raw<nint>(), q3017.Scope) : (global::Rune.HeadlessRun?)null)); } }
     public static S InitialState<S>(global::Rune.AppSpec spec, string? scene) where S : class { byte[] scene__2b = Interop.Utf8((scene ?? "")); fixed (byte* scene__2p = scene__2b) { return (S)App.StateOf(N.rune_gen_rune__tooling__initial_state(spec.P, scene != null, scene__2p, (nuint)scene__2b.Length)); } }
 }
 public static unsafe partial class Ui
@@ -9460,12 +9912,12 @@ public static unsafe partial class Ui
     public static string Describe(global::Rune.WgpuDevice device) { { return Interop.FromUtf8(N.rune_gen_rune__describe_gpu(device.P)); } }
     public static global::Rune.El Effect(uint mark) { { return new global::Rune.El(N.rune_gen_rune__effect(mark)); } }
     public static global::Rune.El El() { { return new global::Rune.El(N.rune_gen_rune__el()); } }
-    public static string[] ExtraArgs() { { return WireReader.Read<string[]>(N.rune_gen_rune__extra_args(), static q2844 => q2844.List<string>(static q2845 => q2845.Str())); } }
+    public static string[] ExtraArgs() { { return WireReader.Read<string[]>(N.rune_gen_rune__extra_args(), static q2925 => q2925.List<string>(static q2926 => q2926.Str())); } }
     public static global::Rune.El Icon(global::Rune.Icon i, float size) { { return new global::Rune.El(N.rune_gen_rune__icon(i.P, size)); } }
     public static bool IsHeadless() { { return N.rune_gen_rune__is_headless(); } }
-    public static global::System.TimeSpan? LastInput() { { return WireReader.Read<global::System.TimeSpan?>(N.rune_gen_rune__last_input(), static q2864 => (q2864.Tag() ? global::System.TimeSpan.FromSeconds(q2864.Raw<double>()) : (global::System.TimeSpan?)null)); } }
+    public static global::System.TimeSpan? LastInput() { { return WireReader.Read<global::System.TimeSpan?>(N.rune_gen_rune__last_input(), static q2945 => (q2945.Tag() ? global::System.TimeSpan.FromSeconds(q2945.Raw<double>()) : (global::System.TimeSpan?)null)); } }
     public static global::Rune.El Memo(string id, global::Rune.HashKey version, global::System.Func<global::Rune.El> build) { byte[] id__0b = Interop.Utf8(id); var version__2k = version; fixed (byte* id__0p = id__0b) fixed (byte* version__2p = version__2k.Bytes) { return new global::Rune.El(N.rune_gen_rune__memo(id__0p, (nuint)id__0b.Length, version__2k.Kind, version__2k.Number, version__2p, (nuint)(version__2k.Bytes?.Length ?? 0), Interop.Keep(build))); } }
-    public static string[] ModifierKeycaps(global::Rune.Mods mods) { { return WireReader.Read<string[]>(N.rune_gen_rune__modifier_keycaps(mods), static q2871 => q2871.List<string>(static q2872 => q2872.Str())); } }
+    public static string[] ModifierKeycaps(global::Rune.Mods mods) { { return WireReader.Read<string[]>(N.rune_gen_rune__modifier_keycaps(mods), static q2952 => q2952.List<string>(static q2953 => q2953.Str())); } }
     public static global::Rune.Color Oklch(float l, float c, float h) { { return N.rune_gen_rune__oklch(l, c, h); } }
     public static global::Rune.Color Oklcha(float l, float c, float h, float a) { { return N.rune_gen_rune__oklcha(l, c, h, a); } }
     public static void OnGpu(global::System.Action<global::Rune.GpuEvent> f) { { N.rune_gen_rune__on_gpu(Interop.Keep(f)); } }
@@ -9477,7 +9929,7 @@ public static unsafe partial class Ui
     public static void Run(global::Rune.AppSpec spec) { { N.rune_gen_rune__run(spec.O); } }
     public static void RunWindows(global::System.Func<global::Rune.Display[], global::Rune.AnyWindowSpec[]> factory) { { N.rune_gen_rune__run_windows(Interop.Keep(factory)); } }
     public static void RunWindowsWith(global::Rune.RunOptions options, global::System.Func<global::Rune.Display[], global::Rune.AnyWindowSpec[]> factory) { { N.rune_gen_rune__run_windows_with(options, Interop.Keep(factory)); } }
-    public static void RunWindowsWithArgs(global::Rune.RunOptions options, string[] args, global::System.Func<global::Rune.Display[], global::Rune.AnyWindowSpec[]> factory) { var args__1w = new WireWriter(); args__1w.Len(args.Length); foreach (var e2928 in args) { args__1w.Str(e2928); } byte[] args__1b = args__1w.ToArray(); fixed (byte* args__1p = args__1b) { N.rune_gen_rune__run_windows_with_args(options, args__1p, (nuint)args__1b.Length, Interop.Keep(factory)); } }
+    public static void RunWindowsWithArgs(global::Rune.RunOptions options, string[] args, global::System.Func<global::Rune.Display[], global::Rune.AnyWindowSpec[]> factory) { var args__1w = new WireWriter(); args__1w.Len(args.Length); foreach (var e3009 in args) { args__1w.Str(e3009); } byte[] args__1b = args__1w.ToArray(); fixed (byte* args__1p = args__1b) { N.rune_gen_rune__run_windows_with_args(options, args__1p, (nuint)args__1b.Length, Interop.Keep(factory)); } }
     public static global::Rune.SceneClock SceneClock() { { return new global::Rune.SceneClock(N.rune_gen_rune__scene_clock()); } }
     public static void SetAppIcon(global::System.ReadOnlySpan<byte> bytes) { fixed (byte* bytes__0p = bytes) { WireReader.Check(N.rune_gen_rune__set_app_icon(bytes__0p, (nuint)bytes.Length)); } }
     public static void SetAppId(string id) { byte[] id__0b = Interop.Utf8(id); fixed (byte* id__0p = id__0b) { N.rune_gen_rune__set_app_id(id__0p, (nuint)id__0b.Length); } }
@@ -9489,7 +9941,7 @@ public static unsafe partial class Ui
     public static global::Rune.El Text(string content) { byte[] content__0b = Interop.Utf8(content); fixed (byte* content__0p = content__0b) { return new global::Rune.El(N.rune_gen_rune__text(content__0p, (nuint)content__0b.Length)); } }
     public static global::Rune.El TextInput(global::Rune.TextEdit edit, global::Rune.TextStyle style) { { return new global::Rune.El(N.rune_gen_rune__text_input(edit.P, style.P)); } }
     public static void TryRunWindowsWith(global::Rune.RunOptions options, global::System.Func<global::Rune.Display[], global::Rune.AnyWindowSpec[]> factory) { { WireReader.Check(N.rune_gen_rune__try_run_windows_with(options, Interop.Keep(factory))); } }
-    public static void TryRunWindowsWithArgs(global::Rune.RunOptions options, string[] args, global::System.Func<global::Rune.Display[], global::Rune.AnyWindowSpec[]> factory) { var args__1w = new WireWriter(); args__1w.Len(args.Length); foreach (var e2945 in args) { args__1w.Str(e2945); } byte[] args__1b = args__1w.ToArray(); fixed (byte* args__1p = args__1b) { WireReader.Check(N.rune_gen_rune__try_run_windows_with_args(options, args__1p, (nuint)args__1b.Length, Interop.Keep(factory))); } }
+    public static void TryRunWindowsWithArgs(global::Rune.RunOptions options, string[] args, global::System.Func<global::Rune.Display[], global::Rune.AnyWindowSpec[]> factory) { var args__1w = new WireWriter(); args__1w.Len(args.Length); foreach (var e3026 in args) { args__1w.Str(e3026); } byte[] args__1b = args__1w.ToArray(); fixed (byte* args__1p = args__1b) { WireReader.Check(N.rune_gen_rune__try_run_windows_with_args(options, args__1p, (nuint)args__1b.Length, Interop.Keep(factory))); } }
     public static void WarmGpu(global::Rune.WgpuFeatures features) { { N.rune_gen_rune__warm_gpu(features.P); } }
     public static void WarmGpuWith(global::Rune.WgpuFeatures features, global::System.Action<global::Rune.WgpuDevice> prepare) { { N.rune_gen_rune__warm_gpu_with(features.P, Interop.Keep(prepare)); } }
     public static global::Rune.Spring Growth => N.rune_gen_const_rune__growth();
@@ -9622,6 +10074,13 @@ internal static unsafe class Callbacks
         N.rune_gen_cb_118(&Cb118);
         N.rune_gen_cb_119(&Cb119);
         N.rune_gen_cb_120(&Cb120);
+        N.rune_gen_cb_121(&Cb121);
+        N.rune_gen_cb_122(&Cb122);
+        N.rune_gen_cb_123(&Cb123);
+        N.rune_gen_cb_124(&Cb124);
+        N.rune_gen_cb_125(&Cb125);
+        N.rune_gen_cb_126(&Cb126);
+        N.rune_gen_cb_127(&Cb127);
     }
 
     [UnmanagedCallersOnly] static void Cb0(nint h, nint a0) { try { ((global::System.Action<object>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)); } catch (global::System.Exception e) { App.Fatal(e); } }
@@ -9649,7 +10108,7 @@ internal static unsafe class Callbacks
     [UnmanagedCallersOnly] static nint Cb22(nint h, nint a0) { try { return ((global::System.Func<object, global::Rune.DiffState>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)).P; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static uint Cb23(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { return ((global::System.Func<object, global::Rune.Annotation, global::Rune.El>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.Annotation(a1, sc)).Id; } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static uint Cb24(nint h, nint a0, nuint a1) { try { return ((global::System.Func<object, nuint, global::Rune.El>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1).Id; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb25(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.LineRange?, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<global::Rune.LineRange?>(a1p, a1l, static q1805 => (q1805.Tag() ? q1805.Raw<global::Rune.LineRange>() : (global::Rune.LineRange?)null)), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb25(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.LineRange?, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<global::Rune.LineRange?>(a1p, a1l, static q1857 => (q1857.Tag() ? q1857.Raw<global::Rune.LineRange>() : (global::Rune.LineRange?)null)), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb26(nint h, nint a0, global::Rune.LineRange a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.LineRange, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1, new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb27(nint h, nint a0, nuint a1) { try { ((global::System.Action<object, nuint>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1); } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static bool Cb28(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { return ((global::System.Func<object, global::Rune.WheelEvent, global::Rune.Tx, bool>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.WheelEvent(a1), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
@@ -9657,36 +10116,36 @@ internal static unsafe class Callbacks
     [UnmanagedCallersOnly] static bool Cb30(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { return ((global::System.Func<object, global::Rune.RotateEvent, global::Rune.Tx, bool>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.RotateEvent(a1), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static bool Cb31(nint h, nint a0, float a1, float a2, nint a3) { try { var sc = Interop.Enter(); try { return ((global::System.Func<object, float, float, global::Rune.Tx, bool>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1, a2, new global::Rune.Tx(a3, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static bool Cb32(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { return ((global::System.Func<object, global::Rune.PhysicalInput, global::Rune.Tx, bool>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.PhysicalInput(a1, sc), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb33(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, string[], global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<string[]>(a1p, a1l, static q1828 => q1828.List<string>(static q1829 => q1829.Str())), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb33(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, string[], global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<string[]>(a1p, a1l, static q1880 => q1880.List<string>(static q1881 => q1881.Str())), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb34(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.PointerEvent, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.PointerEvent(a1), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb35(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.Drag, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.Drag(a1, sc), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb36(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.Drag, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.Drag(a0, sc), new global::Rune.Tx(a1, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb37(nint h, nint a0) { try { var rv = ((global::System.Func<object, global::Rune.DragItem?>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)); var rw = new WireWriter(); if (rv is { } e1837) { rw.Tag(true); rw.Raw<nint>(e1837.O); } else rw.Tag(false); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb37(nint h, nint a0) { try { var rv = ((global::System.Func<object, global::Rune.DragItem?>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)); var rw = new WireWriter(); if (rv is { } e1889) { rw.Tag(true); rw.Raw<nint>(e1889.O); } else rw.Tag(false); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static void Cb38(nint h, nint a0, global::Rune.DragOutcome a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.DragOutcome, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1, new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb39(nint h, nint a0, global::Rune.PointerPress a1) { try { ((global::System.Action<object, global::Rune.PointerPress>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1); } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb40(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.PointerEvent, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.PointerEvent(a0), new global::Rune.Tx(a1, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb41(nint h, bool a0, nint a1) { try { var sc = Interop.Enter(); try { ((global::System.Action<bool, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(a0, new global::Rune.Tx(a1, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static void Cb42(nint h, nint a0, byte* a1p, nuint a1l) { try { ((global::System.Action<object, (float, float, float, float)>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<(float, float, float, float)>(a1p, a1l, static q1843 => (q1843.Raw<float>(), q1843.Raw<float>(), q1843.Raw<float>(), q1843.Raw<float>()))); } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static void Cb43(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, (float, float, float, float), global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<(float, float, float, float)>(a1p, a1l, static q1854 => (q1854.Raw<float>(), q1854.Raw<float>(), q1854.Raw<float>(), q1854.Raw<float>())), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb42(nint h, nint a0, byte* a1p, nuint a1l) { try { ((global::System.Action<object, (float, float, float, float)>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<(float, float, float, float)>(a1p, a1l, static q1895 => (q1895.Raw<float>(), q1895.Raw<float>(), q1895.Raw<float>(), q1895.Raw<float>()))); } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb43(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, (float, float, float, float), global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<(float, float, float, float)>(a1p, a1l, static q1906 => (q1906.Raw<float>(), q1906.Raw<float>(), q1906.Raw<float>(), q1906.Raw<float>())), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb44(nint h, nint a0) { try { ((global::System.Action<global::Rune.ScrollPos>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.ScrollPos(a0)); } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb45(nint h, nint a0, bool a1) { try { ((global::System.Action<object, bool>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1); } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb46(nint h, byte* a0p, nuint a0l) { try { var rv = ((global::System.Func<string, global::Rune.Icon?>)GCHandle.FromIntPtr(h).Target!)(Interop.FromUtf8(a0p, a0l)); var rw = new WireWriter(); if (rv is { } e1906) { rw.Tag(true); rw.Raw<nint>(e1906.P); } else rw.Tag(false); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb46(nint h, byte* a0p, nuint a0l) { try { var rv = ((global::System.Func<string, global::Rune.Icon?>)GCHandle.FromIntPtr(h).Target!)(Interop.FromUtf8(a0p, a0l)); var rw = new WireWriter(); if (rv is { } e1958) { rw.Tag(true); rw.Raw<nint>(e1958.P); } else rw.Tag(false); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static nint Cb47(nint h, byte* a0p, nuint a0l) { try { return ((global::System.Func<string, global::Rune.PillStyle>)GCHandle.FromIntPtr(h).Target!)(Interop.FromUtf8(a0p, a0l)).O; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static void Cb48(nint h, nint a0, byte* a1p, nuint a1l, global::Rune.PointerPress a2, nint a3) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, string, global::Rune.PointerPress, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), Interop.FromUtf8(a1p, a1l), a2, new global::Rune.Tx(a3, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb49(nint h, nint a0) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.TextSelection, string?>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.TextSelection(a0, sc)); var rw = new WireWriter(); if (rv is { } e1908) { rw.Tag(true); rw.Str(e1908); } else rw.Tag(false); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb49(nint h, nint a0) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.TextSelection, string?>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.TextSelection(a0, sc)); var rw = new WireWriter(); if (rv is { } e1960) { rw.Tag(true); rw.Str(e1960); } else rw.Tag(false); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static void Cb50(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.SelectionChange, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.SelectionChange(a1, sc), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static nint Cb51(nint h, nint a0) { try { return ((global::System.Func<object, global::Rune.TextEdit>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)).P; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static Utf8Ref Cb52(nint h, nint a0, nuint a1) { try { var rv = ((global::System.Func<object, nuint, string>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1); var rw = new WireWriter(); rw.Str(rv); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static bool Cb53(nint h, nint a0, byte* a1p, nuint a1l) { try { return ((global::System.Func<object, (nuint, nuint), bool>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<(nuint, nuint)>(a1p, a1l, static q1916 => (q1916.Raw<nuint>(), q1916.Raw<nuint>()))); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static bool Cb53(nint h, nint a0, byte* a1p, nuint a1l) { try { return ((global::System.Func<object, (nuint, nuint), bool>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<(nuint, nuint)>(a1p, a1l, static q1968 => (q1968.Raw<nuint>(), q1968.Raw<nuint>()))); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static void Cb54(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.ClipboardContent, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.ClipboardContent(a1, sc), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static bool Cb55(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { return ((global::System.Func<object, global::Rune.ClipboardContent, global::Rune.Tx, bool>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.ClipboardContent(a1, sc), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static void Cb56(nint h, nint a0, global::Rune.PointerPress a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.PointerPress, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1, new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb57(nint h, nint a0, int a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, int, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1, new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb58(nint h, byte* a0p, nuint a0l, byte* a1p, nuint a1l) { try { var rv = ((global::System.Func<string?, string, ((nuint, nuint), global::Rune.Paint)[]>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<string?>(a0p, a0l, static q2005 => (q2005.Tag() ? q2005.Str() : (string?)null)), Interop.FromUtf8(a1p, a1l)); var rw = new WireWriter(); rw.Len(rv.Length); foreach (var e2008 in rv) { rw.Raw<nuint>(e2008.Item1.Item1); rw.Raw<nuint>(e2008.Item1.Item2); rw.Raw<nint>(e2008.Item2.O); } return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb59(nint h, nint a0) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.Runtime, (uint, uint, byte[])?>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.Runtime(a0, sc)); var rw = new WireWriter(); if (rv is { } e2166) { rw.Tag(true); rw.Raw<uint>(e2166.Item1); rw.Raw<uint>(e2166.Item2); rw.Prims<byte>(e2166.Item3); } else rw.Tag(false); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb58(nint h, byte* a0p, nuint a0l, byte* a1p, nuint a1l) { try { var rv = ((global::System.Func<string?, string, ((nuint, nuint), global::Rune.Paint)[]>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<string?>(a0p, a0l, static q2066 => (q2066.Tag() ? q2066.Str() : (string?)null)), Interop.FromUtf8(a1p, a1l)); var rw = new WireWriter(); rw.Len(rv.Length); foreach (var e2069 in rv) { rw.Raw<nuint>(e2069.Item1.Item1); rw.Raw<nuint>(e2069.Item1.Item2); rw.Raw<nint>(e2069.Item2.O); } return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb59(nint h, nint a0) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.Runtime, (uint, uint, byte[])?>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.Runtime(a0, sc)); var rw = new WireWriter(); if (rv is { } e2235) { rw.Tag(true); rw.Raw<uint>(e2235.Item1); rw.Raw<uint>(e2235.Item2); rw.Prims<byte>(e2235.Item3); } else rw.Tag(false); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static void Cb60(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.Play>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.Play(a1, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb61(nint h) { try { var rv = ((global::System.Func<string[]>)GCHandle.FromIntPtr(h).Target!)(); var rw = new WireWriter(); rw.Len(rv.Length); foreach (var e2221 in rv) { rw.Str(e2221); } return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb62(nint h, byte* a0p, nuint a0l) { try { ((global::System.Action<string[]>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<string[]>(a0p, a0l, static q2223 => q2223.List<string>(static q2224 => q2224.Str()))); } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb61(nint h) { try { var rv = ((global::System.Func<string[]>)GCHandle.FromIntPtr(h).Target!)(); var rw = new WireWriter(); rw.Len(rv.Length); foreach (var e2290 in rv) { rw.Str(e2290); } return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb62(nint h, byte* a0p, nuint a0l) { try { ((global::System.Action<string[]>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<string[]>(a0p, a0l, static q2292 => q2292.List<string>(static q2293 => q2293.Str()))); } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static Utf8Ref Cb63(nint h) { try { var rv = ((global::System.Func<(float, float)>)GCHandle.FromIntPtr(h).Target!)(); var rw = new WireWriter(); rw.Raw<float>(rv.Item1); rw.Raw<float>(rv.Item2); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static void Cb64(nint h, float a0, float a1) { try { ((global::System.Action<float, float>)GCHandle.FromIntPtr(h).Target!)(a0, a1); } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static uint Cb65(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { return ((global::System.Func<object, object, global::Rune.Cx, global::Rune.El>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), App.StateOf(a1), new global::Rune.Cx(a2, sc)).Id; } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
@@ -9699,52 +10158,59 @@ internal static unsafe class Callbacks
     [UnmanagedCallersOnly] static void Cb72(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.Sent, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.Sent(a1), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static void Cb73(nint h, nint a0, nuint a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, nuint, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1, new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static nint Cb74(nint h, nint a0) { try { return ((global::System.Func<object, global::Rune.ShortcutRecorderState>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)).P; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb75(nint h, nint a0, byte* a1p, nuint a1l) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.ShortcutError, global::Rune.Shortcut?, string>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.ShortcutError(a0, sc), WireReader.Read<global::Rune.Shortcut?>(a1p, a1l, static q2536 => (q2536.Tag() ? new global::Rune.Shortcut(q2536.Raw<nint>(), q2536.Scope) : (global::Rune.Shortcut?)null), sc)); var rw = new WireWriter(); rw.Str(rv); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb75(nint h, nint a0, byte* a1p, nuint a1l) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.ShortcutError, global::Rune.Shortcut?, string>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.ShortcutError(a0, sc), WireReader.Read<global::Rune.Shortcut?>(a1p, a1l, static q2612 => (q2612.Tag() ? new global::Rune.Shortcut(q2612.Raw<nint>(), q2612.Scope) : (global::Rune.Shortcut?)null), sc)); var rw = new WireWriter(); rw.Str(rv); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static nint Cb76(nint h, nint a0) { try { return ((global::System.Func<object, global::Rune.Reorder>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)).P; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
     [UnmanagedCallersOnly] static void Cb77(nint h, nint a0, nuint a1, nuint a2) { try { ((global::System.Action<object, nuint, nuint>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1, a2); } catch (global::System.Exception e) { App.Fatal(e); } }
     [UnmanagedCallersOnly] static nint Cb78(nint h, nint a0) { try { return ((global::System.Func<object, global::Rune.PaneState>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)).P; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static nint Cb79(nint h, nint a0) { try { return ((global::System.Func<object, global::Rune.TableState>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)).P; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static nuint Cb80(nint h, nint a0) { try { return ((global::System.Func<object, nuint>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static nint Cb81(nint h, nint a0, nuint a1, byte* a2p, nuint a2l) { try { return ((global::System.Func<object, nuint, string, global::Rune.Cell>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1, Interop.FromUtf8(a2p, a2l)).O; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb82(nint h, nint a0, byte* a1p, nuint a1l, global::Rune.SortDir a2, nint a3) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, string, global::Rune.SortDir, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), Interop.FromUtf8(a1p, a1l), a2, new global::Rune.Tx(a3, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static nint Cb83(nint h, nint a0) { try { var sc = Interop.Enter(); try { return Interop.Keep(((global::System.Func<global::Rune.TextEdit, object>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.TextEdit(a0, sc))); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb84(nint h, nint a0) { try { ((global::System.Action<global::Rune.TrayEvent>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.TrayEvent(a0)); } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static nint Cb85(nint h, nint a0) { try { return ((global::System.Func<object, global::Rune.TreeModel>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)).P; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb86(nint h, nint a0) { try { var rv = ((global::System.Func<object, string>)GCHandle.FromIntPtr(h).Target!)(Interop.Target(a0)); var rw = new WireWriter(); rw.Str(rv); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static nint Cb87(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { return ((global::System.Func<object, global::Rune.TreeRow, global::Rune.TreeItem>)GCHandle.FromIntPtr(h).Target!)(Interop.Target(a0), new global::Rune.TreeRow(a1, sc)).O; } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb88(nint h, nint a0, nint a1) { try { var rv = ((global::System.Func<object, object, int>)GCHandle.FromIntPtr(h).Target!)(Interop.Target(a0), Interop.Target(a1)); var rw = new WireWriter(); rw.Raw<int>(rv); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb89(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.FileNode, global::Rune.FileNode, int>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.FileNode(a0, sc), new global::Rune.FileNode(a1, sc)); var rw = new WireWriter(); rw.Raw<int>(rv); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static bool Cb90(nint h, nint a0) { try { var sc = Interop.Enter(); try { return ((global::System.Func<global::Rune.FileNode, bool>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.FileNode(a0, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb91(nint h, nint a0) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.FileNode, string>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.FileNode(a0, sc)); var rw = new WireWriter(); rw.Str(rv); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb92(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, string?, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<string?>(a1p, a1l, static q2795 => (q2795.Tag() ? q2795.Str() : (string?)null)), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static void Cb93(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.Picked?, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<global::Rune.Picked?>(a1p, a1l, static q2813 => (q2813.Tag() ? new global::Rune.Picked(q2813.Raw<nint>()) : (global::Rune.Picked?)null)), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static nint Cb94(nint h, nint a0) { try { return Interop.Keep(((global::System.Func<global::Rune.RawWindowHandle, object>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.RawWindowHandle(a0))); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static uint Cb95(nint h) { try { return ((global::System.Func<global::Rune.El>)GCHandle.FromIntPtr(h).Target!)().Id; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb96(nint h, global::Rune.GpuEvent a0) { try { ((global::System.Action<global::Rune.GpuEvent>)GCHandle.FromIntPtr(h).Target!)(a0); } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb97(nint h, byte* a0p, nuint a0l) { try { var rv = ((global::System.Func<global::Rune.Display[], global::Rune.AnyWindowSpec[]>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<global::Rune.Display[]>(a0p, a0l, static q2917 => q2917.List<global::Rune.Display>(static q2918 => new global::Rune.Display(q2918.Raw<nint>())))); var rw = new WireWriter(); rw.Len(rv.Length); foreach (var e2920 in rv) { rw.Raw<nint>(e2920.O); } return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb98(nint h, nint a0) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.WgpuDevice>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.WgpuDevice(a0, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static nint Cb99(nint h) { try { return ((global::System.Func<global::Rune.WgpuFeatures>)GCHandle.FromIntPtr(h).Target!)().O; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb100(nint h, nint a0) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.Frame>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.Frame(a0, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static bool Cb101(nint h) { try { return ((global::System.Func<bool>)GCHandle.FromIntPtr(h).Target!)(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb102(nint h, nint a0) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.WgpuDevice, string?>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.WgpuDevice(a0, sc)); var rw = new WireWriter(); if (rv is { } e2947) { rw.Tag(true); rw.Str(e2947); } else rw.Tag(false); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb103(nint h, nint a0) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.PaintPaint, (float, float, float, float, float, float)>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.PaintPaint(a0, sc)); var rw = new WireWriter(); rw.Raw<float>(rv.Item1); rw.Raw<float>(rv.Item2); rw.Raw<float>(rv.Item3); rw.Raw<float>(rv.Item4); rw.Raw<float>(rv.Item5); rw.Raw<float>(rv.Item6); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static float Cb104(nint h, nint a0, byte* a1p, nuint a1l) { try { var sc = Interop.Enter(); try { return ((global::System.Func<global::Rune.PaintPaint, (float, float, float, float), float>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.PaintPaint(a0, sc), WireReader.Read<(float, float, float, float)>(a1p, a1l, static q2956 => (q2956.Raw<float>(), q2956.Raw<float>(), q2956.Raw<float>(), q2956.Raw<float>()))); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb105(nint h, nint a0, nuint a1) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.Ops, nuint>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.Ops(a0, sc), a1); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static nint Cb106(nint h, byte* a0p, nuint a0l) { try { return Interop.Keep(((global::System.Func<(float, float, float, float), object>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<(float, float, float, float)>(a0p, a0l, static q2974 => (q2974.Raw<float>(), q2974.Raw<float>(), q2974.Raw<float>(), q2974.Raw<float>())))); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb107(nint h, byte* a0p, nuint a0l, byte* a1p, nuint a1l) { try { ((global::System.Action<string?, string?>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<string?>(a0p, a0l, static q2990 => (q2990.Tag() ? q2990.Str() : (string?)null)), WireReader.Read<string?>(a1p, a1l, static q2993 => (q2993.Tag() ? q2993.Str() : (string?)null))); } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static nint Cb108(nint h, byte* a0p, nuint a0l) { try { return Interop.Keep(((global::System.Func<string, object>)GCHandle.FromIntPtr(h).Target!)(Interop.FromUtf8(a0p, a0l))); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static nint Cb109(nint h, byte* a0p, nuint a0l) { try { return ((global::System.Func<string, global::Rune.MotionGateRecording>)GCHandle.FromIntPtr(h).Target!)(Interop.FromUtf8(a0p, a0l)).O; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static global::Rune.Color Cb110(nint h, byte* a0p, nuint a0l) { try { return ((global::System.Func<global::Rune.Palette, global::Rune.Color>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<global::Rune.Palette>(a0p, a0l, static q3033 => q3033.Raw<global::Rune.Palette>())); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static nint Cb111(nint h, nint a0) { try { return Interop.Keep(((global::System.Func<object, object>)GCHandle.FromIntPtr(h).Target!)(Interop.Target(a0))); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb112(nint h, byte* a0p, nuint a0l) { try { ((global::System.Action<byte[]>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<byte[]>(a0p, a0l, static q3053 => q3053.Prims<byte>())); } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static void Cb113(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.WgpuRenderPass, global::Rune.EffectSite>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.WgpuRenderPass(a0, sc), new global::Rune.EffectSite(a1, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static void Cb114(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.WgpuCommandEncoder, global::Rune.EffectSite>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.WgpuCommandEncoder(a0, sc), new global::Rune.EffectSite(a1, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static Utf8Ref Cb115(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<object, global::Rune.Shortcut?, global::Rune.Tx, global::Rune.ShortcutError?>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<global::Rune.Shortcut?>(a1p, a1l, static q3084 => (q3084.Tag() ? new global::Rune.Shortcut(q3084.Raw<nint>(), q3084.Scope) : (global::Rune.Shortcut?)null), sc), new global::Rune.Tx(a2, sc)); var rw = new WireWriter(); if (rv is { } e3087) { rw.Tag(true); rw.Raw<nint>(e3087.O); } else rw.Tag(false); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static void Cb116(nint h, nint a0) { try { ((global::System.Action<global::Rune.FrameTiming>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.FrameTiming(a0)); } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static void Cb117(nint h, nint a0, byte* a1p, nuint a1l, byte* a2p, nuint a2l, nint a3) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, string?, string?, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<string?>(a1p, a1l, static q3093 => (q3093.Tag() ? q3093.Str() : (string?)null)), WireReader.Read<string?>(a2p, a2l, static q3096 => (q3096.Tag() ? q3096.Str() : (string?)null)), new global::Rune.Tx(a3, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static void Cb118(nint h, nint a0) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.RawWindowHandle>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.RawWindowHandle(a0, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
-    [UnmanagedCallersOnly] static nint Cb119(nint h) { try { return Interop.Keep(((global::System.Func<object>)GCHandle.FromIntPtr(h).Target!)()); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
-    [UnmanagedCallersOnly] static global::Rune.Color Cb120(nint h, global::Rune.Color a0) { try { return ((global::System.Func<global::Rune.Color, global::Rune.Color>)GCHandle.FromIntPtr(h).Target!)(a0); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static uint Cb79(nint h, uint a0, global::Rune.TabDensity a1) { try { return ((global::System.Func<global::Rune.El, global::Rune.TabDensity, global::Rune.El>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.El(a0), a1).Id; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static nint Cb80(nint h, nint a0) { try { return ((global::System.Func<object, global::Rune.TabDragState>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)).P; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static uint Cb81(nint h, nint a0) { try { var sc = Interop.Enter(); try { return ((global::System.Func<global::Rune.Kit, global::Rune.El>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.Kit(a0, sc)).Id; } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb82(nint h, nint a0, byte* a1p, nuint a1l, bool a2, nint a3) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, string, bool, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), Interop.FromUtf8(a1p, a1l), a2, new global::Rune.Tx(a3, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb83(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.TabReorder, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.TabReorder(a1), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb84(nint h, nint a0, nint a1, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.TabTearOut, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), new global::Rune.TabTearOut(a1), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static nint Cb85(nint h, nint a0) { try { return ((global::System.Func<object, global::Rune.TableState>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)).P; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static nuint Cb86(nint h, nint a0) { try { return ((global::System.Func<object, nuint>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static nint Cb87(nint h, nint a0, nuint a1, byte* a2p, nuint a2l) { try { return ((global::System.Func<object, nuint, string, global::Rune.Cell>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), a1, Interop.FromUtf8(a2p, a2l)).O; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb88(nint h, nint a0, byte* a1p, nuint a1l, global::Rune.SortDir a2, nint a3) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, string, global::Rune.SortDir, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), Interop.FromUtf8(a1p, a1l), a2, new global::Rune.Tx(a3, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static nint Cb89(nint h, nint a0) { try { var sc = Interop.Enter(); try { return Interop.Keep(((global::System.Func<global::Rune.TextEdit, object>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.TextEdit(a0, sc))); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb90(nint h, nint a0) { try { ((global::System.Action<global::Rune.TrayEvent>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.TrayEvent(a0)); } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static nint Cb91(nint h, nint a0) { try { return ((global::System.Func<object, global::Rune.TreeModel>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0)).P; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb92(nint h, nint a0) { try { var rv = ((global::System.Func<object, string>)GCHandle.FromIntPtr(h).Target!)(Interop.Target(a0)); var rw = new WireWriter(); rw.Str(rv); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static nint Cb93(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { return ((global::System.Func<object, global::Rune.TreeRow, global::Rune.TreeItem>)GCHandle.FromIntPtr(h).Target!)(Interop.Target(a0), new global::Rune.TreeRow(a1, sc)).O; } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb94(nint h, nint a0, nint a1) { try { var rv = ((global::System.Func<object, object, int>)GCHandle.FromIntPtr(h).Target!)(Interop.Target(a0), Interop.Target(a1)); var rw = new WireWriter(); rw.Raw<int>(rv); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb95(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.FileNode, global::Rune.FileNode, int>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.FileNode(a0, sc), new global::Rune.FileNode(a1, sc)); var rw = new WireWriter(); rw.Raw<int>(rv); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static bool Cb96(nint h, nint a0) { try { var sc = Interop.Enter(); try { return ((global::System.Func<global::Rune.FileNode, bool>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.FileNode(a0, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb97(nint h, nint a0) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.FileNode, string>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.FileNode(a0, sc)); var rw = new WireWriter(); rw.Str(rv); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb98(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, string?, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<string?>(a1p, a1l, static q2876 => (q2876.Tag() ? q2876.Str() : (string?)null)), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb99(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, global::Rune.Picked?, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<global::Rune.Picked?>(a1p, a1l, static q2894 => (q2894.Tag() ? new global::Rune.Picked(q2894.Raw<nint>()) : (global::Rune.Picked?)null)), new global::Rune.Tx(a2, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static nint Cb100(nint h, nint a0) { try { return Interop.Keep(((global::System.Func<global::Rune.RawWindowHandle, object>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.RawWindowHandle(a0))); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static uint Cb101(nint h) { try { return ((global::System.Func<global::Rune.El>)GCHandle.FromIntPtr(h).Target!)().Id; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb102(nint h, global::Rune.GpuEvent a0) { try { ((global::System.Action<global::Rune.GpuEvent>)GCHandle.FromIntPtr(h).Target!)(a0); } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb103(nint h, byte* a0p, nuint a0l) { try { var rv = ((global::System.Func<global::Rune.Display[], global::Rune.AnyWindowSpec[]>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<global::Rune.Display[]>(a0p, a0l, static q2998 => q2998.List<global::Rune.Display>(static q2999 => new global::Rune.Display(q2999.Raw<nint>())))); var rw = new WireWriter(); rw.Len(rv.Length); foreach (var e3001 in rv) { rw.Raw<nint>(e3001.O); } return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb104(nint h, nint a0) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.WgpuDevice>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.WgpuDevice(a0, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static nint Cb105(nint h) { try { return ((global::System.Func<global::Rune.WgpuFeatures>)GCHandle.FromIntPtr(h).Target!)().O; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb106(nint h, nint a0) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.Frame>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.Frame(a0, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static bool Cb107(nint h) { try { return ((global::System.Func<bool>)GCHandle.FromIntPtr(h).Target!)(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb108(nint h, nint a0) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.WgpuDevice, string?>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.WgpuDevice(a0, sc)); var rw = new WireWriter(); if (rv is { } e3028) { rw.Tag(true); rw.Str(e3028); } else rw.Tag(false); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb109(nint h, byte* a0p, nuint a0l) { try { var rv = ((global::System.Func<string, string?>)GCHandle.FromIntPtr(h).Target!)(Interop.FromUtf8(a0p, a0l)); var rw = new WireWriter(); if (rv is { } e3030) { rw.Tag(true); rw.Str(e3030); } else rw.Tag(false); return rw.Keep(); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb110(nint h, nint a0) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<global::Rune.PaintPaint, (float, float, float, float, float, float)>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.PaintPaint(a0, sc)); var rw = new WireWriter(); rw.Raw<float>(rv.Item1); rw.Raw<float>(rv.Item2); rw.Raw<float>(rv.Item3); rw.Raw<float>(rv.Item4); rw.Raw<float>(rv.Item5); rw.Raw<float>(rv.Item6); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static float Cb111(nint h, nint a0, byte* a1p, nuint a1l) { try { var sc = Interop.Enter(); try { return ((global::System.Func<global::Rune.PaintPaint, (float, float, float, float), float>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.PaintPaint(a0, sc), WireReader.Read<(float, float, float, float)>(a1p, a1l, static q3039 => (q3039.Raw<float>(), q3039.Raw<float>(), q3039.Raw<float>(), q3039.Raw<float>()))); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb112(nint h, nint a0, nuint a1) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.Ops, nuint>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.Ops(a0, sc), a1); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static nint Cb113(nint h, byte* a0p, nuint a0l) { try { return Interop.Keep(((global::System.Func<(float, float, float, float), object>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<(float, float, float, float)>(a0p, a0l, static q3057 => (q3057.Raw<float>(), q3057.Raw<float>(), q3057.Raw<float>(), q3057.Raw<float>())))); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb114(nint h, byte* a0p, nuint a0l, byte* a1p, nuint a1l) { try { ((global::System.Action<string?, string?>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<string?>(a0p, a0l, static q3073 => (q3073.Tag() ? q3073.Str() : (string?)null)), WireReader.Read<string?>(a1p, a1l, static q3076 => (q3076.Tag() ? q3076.Str() : (string?)null))); } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static nint Cb115(nint h, byte* a0p, nuint a0l) { try { return Interop.Keep(((global::System.Func<string, object>)GCHandle.FromIntPtr(h).Target!)(Interop.FromUtf8(a0p, a0l))); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static nint Cb116(nint h, byte* a0p, nuint a0l) { try { return ((global::System.Func<string, global::Rune.MotionGateRecording>)GCHandle.FromIntPtr(h).Target!)(Interop.FromUtf8(a0p, a0l)).O; } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static global::Rune.Color Cb117(nint h, byte* a0p, nuint a0l) { try { return ((global::System.Func<global::Rune.Palette, global::Rune.Color>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<global::Rune.Palette>(a0p, a0l, static q3116 => q3116.Raw<global::Rune.Palette>())); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static nint Cb118(nint h, nint a0) { try { return Interop.Keep(((global::System.Func<object, object>)GCHandle.FromIntPtr(h).Target!)(Interop.Target(a0))); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb119(nint h, byte* a0p, nuint a0l) { try { ((global::System.Action<byte[]>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<byte[]>(a0p, a0l, static q3136 => q3136.Prims<byte>())); } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb120(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.WgpuRenderPass, global::Rune.EffectSite>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.WgpuRenderPass(a0, sc), new global::Rune.EffectSite(a1, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb121(nint h, nint a0, nint a1) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.WgpuCommandEncoder, global::Rune.EffectSite>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.WgpuCommandEncoder(a0, sc), new global::Rune.EffectSite(a1, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static Utf8Ref Cb122(nint h, nint a0, byte* a1p, nuint a1l, nint a2) { try { var sc = Interop.Enter(); try { var rv = ((global::System.Func<object, global::Rune.Shortcut?, global::Rune.Tx, global::Rune.ShortcutError?>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<global::Rune.Shortcut?>(a1p, a1l, static q3167 => (q3167.Tag() ? new global::Rune.Shortcut(q3167.Raw<nint>(), q3167.Scope) : (global::Rune.Shortcut?)null), sc), new global::Rune.Tx(a2, sc)); var rw = new WireWriter(); if (rv is { } e3170) { rw.Tag(true); rw.Raw<nint>(e3170.O); } else rw.Tag(false); return rw.Keep(); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static void Cb123(nint h, nint a0) { try { ((global::System.Action<global::Rune.FrameTiming>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.FrameTiming(a0)); } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb124(nint h, nint a0, byte* a1p, nuint a1l, byte* a2p, nuint a2l, nint a3) { try { var sc = Interop.Enter(); try { ((global::System.Action<object, string?, string?, global::Rune.Tx>)GCHandle.FromIntPtr(h).Target!)(App.StateOf(a0), WireReader.Read<string?>(a1p, a1l, static q3176 => (q3176.Tag() ? q3176.Str() : (string?)null)), WireReader.Read<string?>(a2p, a2l, static q3179 => (q3179.Tag() ? q3179.Str() : (string?)null)), new global::Rune.Tx(a3, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb125(nint h, nint a0) { try { var sc = Interop.Enter(); try { ((global::System.Action<global::Rune.RawWindowHandle>)GCHandle.FromIntPtr(h).Target!)(new global::Rune.RawWindowHandle(a0, sc)); } finally { Interop.Leave(); } } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static nint Cb126(nint h) { try { return Interop.Keep(((global::System.Func<object>)GCHandle.FromIntPtr(h).Target!)()); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
+    [UnmanagedCallersOnly] static global::Rune.Color Cb127(nint h, global::Rune.Color a0) { try { return ((global::System.Func<global::Rune.Color, global::Rune.Color>)GCHandle.FromIntPtr(h).Target!)(a0); } catch (global::System.Exception e) { App.Fatal(e); return default; } }
 }
 internal static unsafe partial class N
 {
@@ -9809,6 +10275,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_annotation_field_set_id(nint h, byte* v_p, nuint v_l);
     [DllImport(Lib)] public static extern void rune_gen_anywindowspec_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_app_free(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_appdirs_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_apphandle_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_appspec_free(nint h);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_appspec_field_get_title(nint h);
@@ -9939,6 +10406,32 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_channel_field_get_name(nint h);
     [DllImport(Lib)] public static extern void rune_gen_channel_field_set_name(nint h, byte* v_p, nuint v_l);
     [DllImport(Lib)] public static extern void rune_gen_checkbox_free(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_chord_free(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_chorderror_free(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_chordkey_free(nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_char(global::System.Text.Rune p_item0);
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_enter();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_tab();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_escape();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_backspace();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_delete();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_insert();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_home();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_end();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_pageup();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_pagedown();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_left();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_right();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_up();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_down();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_function(byte p_item0);
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_contextmenu();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_printscreen();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_scrolllock();
+    [DllImport(Lib)] public static extern nint rune_gen_chordkey_new_pause();
+    [DllImport(Lib)] public static extern bool rune_gen_chordkey_as_char(nint h, global::System.Text.Rune* o);
+    [DllImport(Lib)] public static extern bool rune_gen_chordkey_as_function(nint h, byte* o);
+    [DllImport(Lib)] public static extern int rune_gen_chordkey_which(nint h);
     [DllImport(Lib)] public static extern void rune_gen_choreography_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_choreography_default();
     [DllImport(Lib)] public static extern void rune_gen_chrome_free(nint h);
@@ -9949,6 +10442,14 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern bool rune_gen_chrome_field_get_drag_regions(nint h);
     [DllImport(Lib)] public static extern void rune_gen_chrome_field_set_drag_regions(nint h, bool v);
     [DllImport(Lib)] public static extern nint rune_gen_chrome_default();
+    [DllImport(Lib)] public static extern void rune_gen_chromeinsets_free(nint h);
+    [DllImport(Lib)] public static extern float rune_gen_chromeinsets_field_get_leading(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_chromeinsets_field_set_leading(nint h, float v);
+    [DllImport(Lib)] public static extern float rune_gen_chromeinsets_field_get_trailing(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_chromeinsets_field_set_trailing(nint h, float v);
+    [DllImport(Lib)] public static extern float rune_gen_chromeinsets_field_get_height(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_chromeinsets_field_set_height(nint h, float v);
+    [DllImport(Lib)] public static extern nint rune_gen_chromeinsets_default();
     [DllImport(Lib)] public static extern void rune_gen_clip_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_clipboardcontent_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_clipboardcontent_default();
@@ -10460,6 +10961,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern int rune_gen_ime_which(nint h);
     [DllImport(Lib)] public static extern void rune_gen_ink_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_ink_default();
+    [DllImport(Lib)] public static extern void rune_gen_inlineicon_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_inputspec_free(nint h);
     [DllImport(Lib)] public static extern bool rune_gen_inputspec_field_get_animate_layout(nint h);
     [DllImport(Lib)] public static extern void rune_gen_inputspec_field_set_animate_layout(nint h, bool v);
@@ -10528,6 +11030,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern global::Rune.Mods rune_gen_keyevent_field_get_mods(nint h);
     [DllImport(Lib)] public static extern void rune_gen_keyevent_field_set_mods(nint h, global::Rune.Mods v);
     [DllImport(Lib)] public static extern void rune_gen_keybind_free(nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_keybind_default();
     [DllImport(Lib)] public static extern void rune_gen_keyed_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_keyed_new_ignored();
     [DllImport(Lib)] public static extern nint rune_gen_keyed_new_handled();
@@ -10746,6 +11249,21 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_livetext_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_loader_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_loader_default();
+    [DllImport(Lib)] public static extern void rune_gen_localtime_free(nint h);
+    [DllImport(Lib)] public static extern int rune_gen_localtime_field_get_year(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_localtime_field_set_year(nint h, int v);
+    [DllImport(Lib)] public static extern uint rune_gen_localtime_field_get_month(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_localtime_field_set_month(nint h, uint v);
+    [DllImport(Lib)] public static extern uint rune_gen_localtime_field_get_day(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_localtime_field_set_day(nint h, uint v);
+    [DllImport(Lib)] public static extern uint rune_gen_localtime_field_get_hour(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_localtime_field_set_hour(nint h, uint v);
+    [DllImport(Lib)] public static extern uint rune_gen_localtime_field_get_minute(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_localtime_field_set_minute(nint h, uint v);
+    [DllImport(Lib)] public static extern uint rune_gen_localtime_field_get_second(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_localtime_field_set_second(nint h, uint v);
+    [DllImport(Lib)] public static extern int rune_gen_localtime_field_get_offset(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_localtime_field_set_offset(nint h, int v);
     [DllImport(Lib)] public static extern void rune_gen_loopkind_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_loopkind_new_opacity(float p_low, float p_high);
     [DllImport(Lib)] public static extern nint rune_gen_loopkind_new_opacitycycle(nint p_item0);
@@ -11474,6 +11992,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_runlayout_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_runlayout_field_get_layout(nint h);
     [DllImport(Lib)] public static extern void rune_gen_runlayout_field_set_layout(nint h, nint v);
+    [DllImport(Lib)] public static extern void rune_gen_runekitkeybind_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_runekitmenuitem_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_runekitpopupitem_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_runemotionphase_free(nint h);
@@ -11791,6 +12310,66 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_syntaxtheme_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_systemaccent_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_systemaccent_default();
+    [DllImport(Lib)] public static extern void rune_gen_tabdragmode_free(nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_tabdragmode_new_reorder(nuint p_from, nuint p_to, float p_delta, float p_pitch, bool p_pinned);
+    [DllImport(Lib)] public static extern nint rune_gen_tabdragmode_new_tearout(nuint p_from, float p_offset_0, float p_offset_1);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragmode_as_reorder_from(nint h, nuint* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragmode_as_reorder_to(nint h, nuint* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragmode_as_reorder_delta(nint h, float* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragmode_as_reorder_pitch(nint h, float* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragmode_as_reorder_pinned(nint h, bool* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragmode_as_tearout_from(nint h, nuint* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragmode_as_tearout_offset(nint h, Utf8Ref* o);
+    [DllImport(Lib)] public static extern int rune_gen_tabdragmode_which(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabdragphase_free(nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_tabdragphase_new_idle();
+    [DllImport(Lib)] public static extern nint rune_gen_tabdragphase_new_pressed(nuint p_index, bool p_pinned, float p_tab_pitch);
+    [DllImport(Lib)] public static extern nint rune_gen_tabdragphase_new_dragging(nint p_item0);
+    [DllImport(Lib)] public static extern nint rune_gen_tabdragphase_new_dropping(nuint p_from, nuint p_to);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragphase_as_pressed_index(nint h, nuint* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragphase_as_pressed_pinned(nint h, bool* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragphase_as_pressed_tab_pitch(nint h, float* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragphase_as_dragging(nint h, nint* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragphase_as_dropping_from(nint h, nuint* o);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragphase_as_dropping_to(nint h, nuint* o);
+    [DllImport(Lib)] public static extern int rune_gen_tabdragphase_which(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabdragstate_free(nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_tabdragstate_field_get_phase(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabdragstate_field_set_phase(nint h, nint v);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_tabdragstate_field_get_width_lock(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabdragstate_field_set_width_lock(nint h, bool v_has, float v);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragstate_field_get_suppress_click(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabdragstate_field_set_suppress_click(nint h, bool v);
+    [DllImport(Lib)] public static extern nint rune_gen_tabdragstate_default();
+    [DllImport(Lib)] public static extern void rune_gen_tabitem_free(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_taboverflow_free(nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_taboverflow_new_shrinkthenscroll(float p_min_width, float p_max_width, float p_pinned_width, float p_fade_width);
+    [DllImport(Lib)] public static extern nint rune_gen_taboverflow_new_scroll(float p_fade_width);
+    [DllImport(Lib)] public static extern bool rune_gen_taboverflow_as_shrinkthenscroll_min_width(nint h, float* o);
+    [DllImport(Lib)] public static extern bool rune_gen_taboverflow_as_shrinkthenscroll_max_width(nint h, float* o);
+    [DllImport(Lib)] public static extern bool rune_gen_taboverflow_as_shrinkthenscroll_pinned_width(nint h, float* o);
+    [DllImport(Lib)] public static extern bool rune_gen_taboverflow_as_shrinkthenscroll_fade_width(nint h, float* o);
+    [DllImport(Lib)] public static extern bool rune_gen_taboverflow_as_scroll(nint h, float* o);
+    [DllImport(Lib)] public static extern int rune_gen_taboverflow_which(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabreorder_free(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_tabreorder_field_get_id(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabreorder_field_set_id(nint h, byte* v_p, nuint v_l);
+    [DllImport(Lib)] public static extern nuint rune_gen_tabreorder_field_get_from(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabreorder_field_set_from(nint h, nuint v);
+    [DllImport(Lib)] public static extern nuint rune_gen_tabreorder_field_get_to(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabreorder_field_set_to(nint h, nuint v);
+    [DllImport(Lib)] public static extern void rune_gen_tabstrip_free(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabtearout_free(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_tabtearout_field_get_id(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabtearout_field_set_id(nint h, byte* v_p, nuint v_l);
+    [DllImport(Lib)] public static extern nuint rune_gen_tabtearout_field_get_index(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabtearout_field_set_index(nint h, nuint v);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_tabtearout_field_get_offset(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabtearout_field_set_offset(nint h, float v_0, float v_1);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_tabtearout_field_get_window_point(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabtearout_field_set_window_point(nint h, bool v_has, float v_0, float v_1);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_tabtearout_field_get_screen_point(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tabtearout_field_set_screen_point(nint h, bool v_has, int v_0, int v_1);
     [DllImport(Lib)] public static extern void rune_gen_table_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_tablecolumn_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_tablestate_free(nint h);
@@ -11890,6 +12469,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_timedevent_field_set_t(nint h, double v);
     [DllImport(Lib)] public static extern nint rune_gen_timedevent_field_get_event(nint h);
     [DllImport(Lib)] public static extern void rune_gen_timedevent_field_set_event(nint h, nint v);
+    [DllImport(Lib)] public static extern void rune_gen_titlebar_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_toast_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_toastregion_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_toastregion_default();
@@ -11981,6 +12561,19 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_treerowinfo_field_set_cursor(nint h, bool v);
     [DllImport(Lib)] public static extern bool rune_gen_treerowinfo_field_get_matched(nint h);
     [DllImport(Lib)] public static extern void rune_gen_treerowinfo_field_set_matched(nint h, bool v);
+    [DllImport(Lib)] public static extern void rune_gen_treestyle_free(nint h);
+    [DllImport(Lib)] public static extern float rune_gen_treestyle_field_get_row_height(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_treestyle_field_set_row_height(nint h, float v);
+    [DllImport(Lib)] public static extern float rune_gen_treestyle_field_get_indent(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_treestyle_field_set_indent(nint h, float v);
+    [DllImport(Lib)] public static extern float rune_gen_treestyle_field_get_padding(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_treestyle_field_set_padding(nint h, float v);
+    [DllImport(Lib)] public static extern bool rune_gen_treestyle_field_get_guides(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_treestyle_field_set_guides(nint h, bool v);
+    [DllImport(Lib)] public static extern global::Rune.Color rune_gen_treestyle_field_get_guide(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_treestyle_field_set_guide(nint h, global::Rune.Color v);
+    [DllImport(Lib)] public static extern global::Rune.Color rune_gen_treestyle_field_get_selected(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_treestyle_field_set_selected(nint h, global::Rune.Color v);
     [DllImport(Lib)] public static extern void rune_gen_tweencolor_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_tweenf32_free(nint h);
     [DllImport(Lib)] public static extern void rune_gen_tweenf32x2_free(nint h);
@@ -12125,6 +12718,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_windowspec_field_set_app(nint h, nint v);
     [DllImport(Lib)] public static extern nint rune_gen_windowspec_field_get_options(nint h);
     [DllImport(Lib)] public static extern void rune_gen_windowspec_field_set_options(nint h, nint v);
+    [DllImport(Lib)] public static extern void rune_gen_windowtitlebar_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_accessibilitylink_new();
     [DllImport(Lib)] public static extern void rune_gen_accessibilitylink_activate(nint h);
     [DllImport(Lib)] public static extern bool rune_gen_accessibilitylink_service(nint h, nint p_rt, byte* p_name_p, nuint p_name_l, nint* o0);
@@ -12414,6 +13008,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_app_srgb_blend(nint h, bool p_enabled);
     [DllImport(Lib)] public static extern nint rune_gen_app_font_smoothing(nint h, global::Rune.FontSmoothing p_mode);
     [DllImport(Lib)] public static extern nint rune_gen_app_chrome(nint h, nint p_chrome);
+    [DllImport(Lib)] public static extern nint rune_gen_app_titlebar(nint h, nint p_titlebar);
     [DllImport(Lib)] public static extern nint rune_gen_app_window_options(nint h, nint p_options);
     [DllImport(Lib)] public static extern nint rune_gen_app_fit_content_height(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_app_float_on_open(nint h);
@@ -12466,6 +13061,18 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_app_global_shortcut(nint h, byte* p_accelerator_p, nuint p_accelerator_l, uint p_handler);
     [DllImport(Lib)] public static extern nint rune_gen_app_allow_unmodified_shortcuts(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_app_headless_runtime(nint h, float p_size_0, float p_size_1, global::Rune.Env p_env);
+    [DllImport(Lib)] public static extern bool rune_gen_appdirs_new(byte* p_app_id_p, nuint p_app_id_l, nint* o0);
+    [DllImport(Lib)] public static extern nint rune_gen_appdirs_rooted(byte* p_root_p, nuint p_root_l, byte* p_app_id_p, nuint p_app_id_l);
+    [DllImport(Lib)] public static extern nint rune_gen_appdirs_sibling(nint h, byte* p_app_id_p, nuint p_app_id_l);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_appdirs_id(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_appdirs_config(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_appdirs_data(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_appdirs_cache(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_appdirs_state(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_appdirs_logs(nint h);
+    [DllImport(Lib)] public static extern bool rune_gen_appdirs_home(nint h, Utf8Ref* o0);
+    [DllImport(Lib)] public static extern bool rune_gen_appdirs_downloads(nint h, Utf8Ref* o0);
+    [DllImport(Lib)] public static extern bool rune_gen_appdirs_is_rooted(nint h);
     [DllImport(Lib)] public static extern void rune_gen_apphandle_wake(nint h);
     [DllImport(Lib)] public static extern void rune_gen_apphandle_open(nint h);
     [DllImport(Lib)] public static extern void rune_gen_apphandle_show(nint h);
@@ -12565,6 +13172,20 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_checkbox_on_toggle(nint h, nint p_f);
     [DllImport(Lib)] public static extern nint rune_gen_checkbox_on_toggle_tx(nint h, nint p_f);
     [DllImport(Lib)] public static extern uint rune_gen_checkbox_build(nint h, nint p_k);
+    [DllImport(Lib)] public static extern nint rune_gen_chord_new(nint p_key);
+    [DllImport(Lib)] public static extern nint rune_gen_chord_with(nint h, global::Rune.ChordMod p_m);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_chord_parse(byte* p_s_p, nuint p_s_l);
+    [DllImport(Lib)] public static extern nint rune_gen_chord_key(nint h);
+    [DllImport(Lib)] public static extern bool rune_gen_chord_has(nint h, global::Rune.ChordMod p_m);
+    [DllImport(Lib)] public static extern bool rune_gen_chord_matches(nint h, nint p_ev);
+    [DllImport(Lib)] public static extern bool rune_gen_chord_matches_tx(nint h, nint p_ev, nint p_tx);
+    [DllImport(Lib)] public static extern bool rune_gen_chord_matches_on(nint h, nint p_ev, global::Rune.KeyPlatform p_platform);
+    [DllImport(Lib)] public static extern bool rune_gen_chord_matches_tx_on(nint h, nint p_ev, nint p_tx, global::Rune.KeyPlatform p_platform);
+    [DllImport(Lib)] public static extern bool rune_gen_chord_same_keys(nint h, nint p_other, global::Rune.KeyPlatform p_platform);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_chord_mods_on(nint h, global::Rune.KeyPlatform p_platform);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_chord_label(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_chord_label_on(nint h, global::Rune.KeyPlatform p_platform);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_chord_keycaps_on(nint h, global::Rune.KeyPlatform p_platform);
     [DllImport(Lib)] public static extern nint rune_gen_choreography_new();
     [DllImport(Lib)] public static extern void rune_gen_cb_15(delegate* unmanaged<nint, nint, void> f);
     [DllImport(Lib)] public static extern nint rune_gen_choreography_step(nint h, nint p_cue, nint p_build);
@@ -12695,9 +13316,17 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern bool rune_gen_cx_layout(nint h, byte* p_key_p, nuint p_key_l, float* o0, float* o1, float* o2, float* o3);
     [DllImport(Lib)] public static extern bool rune_gen_cx_layout_size(nint h, byte* p_key_p, nuint p_key_l, float* o0, float* o1);
     [DllImport(Lib)] public static extern bool rune_gen_cx_window_layout(nint h, byte* p_key_p, nuint p_key_l, float* o0, float* o1, float* o2, float* o3);
+    [DllImport(Lib)] public static extern nint rune_gen_cx_retype(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_cx_absorb(nint h, nint p_other);
     [DllImport(Lib)] public static extern global::Rune.Env rune_gen_cx_env(nint h);
     [DllImport(Lib)] public static extern bool rune_gen_cx_system_dark(nint h);
     [DllImport(Lib)] public static extern float rune_gen_cx_titlebar_inset(nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_cx_chrome_insets(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_cx_caption_color(nint h, global::Rune.Color p_color);
+    [DllImport(Lib)] public static extern void rune_gen_cx_foreground(nint h, global::Rune.Color p_color);
+    [DllImport(Lib)] public static extern void rune_gen_cx_focus_ring(nint h, float p_width, float p_offset, global::Rune.Color p_color);
+    [DllImport(Lib)] public static extern void rune_gen_cx_titlebar_height(nint h, float p_points);
+    [DllImport(Lib)] public static extern void rune_gen_cx_set_titlebar(nint h, nint p_titlebar);
     [DllImport(Lib)] public static extern global::Rune.Color rune_gen_cx_accent(nint h);
     [DllImport(Lib)] public static extern global::Rune.Color rune_gen_cx_focus_color(nint h);
     [DllImport(Lib)] public static extern void rune_gen_cx_safe_area(nint h, float* o0, float* o1, float* o2, float* o3);
@@ -12766,6 +13395,8 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_divider_vertical();
     [DllImport(Lib)] public static extern uint rune_gen_divider_build(nint h, nint p_k);
     [DllImport(Lib)] public static extern bool rune_gen_drag_cancelled(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_drag_window_point(nint h, float* o0, float* o1);
+    [DllImport(Lib)] public static extern bool rune_gen_drag_screen_point(nint h, int* o0, int* o1);
     [DllImport(Lib)] public static extern nint rune_gen_dragimage_png(byte* p_bytes_p, nuint p_bytes_l);
     [DllImport(Lib)] public static extern bool rune_gen_dragimage_rgba(uint p_width, uint p_height, byte* p_pixels_p, nuint p_pixels_l, nint* o0);
     [DllImport(Lib)] public static extern nint rune_gen_dragimage_size(nint h, float p_width, float p_height);
@@ -12933,6 +13564,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_el_pin(uint id, bool p_left_has, float p_left, bool p_top_has, float p_top, bool p_right_has, float p_right, bool p_bottom_has, float p_bottom);
     [DllImport(Lib)] public static extern uint rune_gen_el_cursor(uint id, nint p_cursor);
     [DllImport(Lib)] public static extern uint rune_gen_el_window_drag(uint id);
+    [DllImport(Lib)] public static extern uint rune_gen_el_no_window_drag(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_ime_cursor(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_hit(uint id);
     [DllImport(Lib)] public static extern void rune_gen_cb_39(delegate* unmanaged<nint, nint, global::Rune.PointerPress, void> f);
@@ -12969,8 +13601,10 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_el_instant_changes(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_transition(uint id, nint p_t);
     [DllImport(Lib)] public static extern uint rune_gen_el_matched(uint id, byte* p_id_p, nuint p_id_l);
+    [DllImport(Lib)] public static extern uint rune_gen_el_matched_crop(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_pill(uint id, byte* p_range_p, nuint p_range_l, nint p_style);
     [DllImport(Lib)] public static extern uint rune_gen_el_pills(uint id, byte* p_pills_p, nuint p_pills_l);
+    [DllImport(Lib)] public static extern uint rune_gen_el_inline_icon(uint id, nuint p_at, nint p_icon);
     [DllImport(Lib)] public static extern uint rune_gen_el_pixel_snap(uint id, bool p_on);
     [DllImport(Lib)] public static extern uint rune_gen_el_ride_trailing(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_scroll(uint id, global::Rune.ScrollSpec p_spec);
@@ -12987,6 +13621,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_el_sticky_bottom(uint id, float p_inset);
     [DllImport(Lib)] public static extern uint rune_gen_el_sticky_left(uint id, float p_inset);
     [DllImport(Lib)] public static extern uint rune_gen_el_stuck_shadow(uint id, global::Rune.Shadow p_shadow);
+    [DllImport(Lib)] public static extern uint rune_gen_el_exact_lines(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_font(uint id, nint p_s);
     [DllImport(Lib)] public static extern uint rune_gen_el_spans(uint id, nint* p_spans_p, nuint p_spans_l);
     [DllImport(Lib)] public static extern uint rune_gen_el_decorations(uint id, nint* p_spans_p, nuint p_spans_l);
@@ -13078,6 +13713,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_el_clip_fade(uint id, float p_left, float p_top, float p_right, float p_bottom);
     [DllImport(Lib)] public static extern uint rune_gen_el_clip_fade_linear(uint id, float p_left, float p_top, float p_right, float p_bottom);
     [DllImport(Lib)] public static extern uint rune_gen_el_hover_group(uint id);
+    [DllImport(Lib)] public static extern uint rune_gen_el_hover_group_shared(uint id, byte* p_key_p, nuint p_key_l);
     [DllImport(Lib)] public static extern uint rune_gen_el_hover_motion(uint id, nint p_enter, nint p_exit);
     [DllImport(Lib)] public static extern uint rune_gen_el_hover_motion_within(uint id, nint p_enter, nint p_exit);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_el_hover_within_curves(uint id);
@@ -13127,6 +13763,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_el_on_step_limit(uint id, nint p_f);
     [DllImport(Lib)] public static extern uint rune_gen_el_focus_return(uint id, byte* p_trigger_p, nuint p_trigger_l);
     [DllImport(Lib)] public static extern uint rune_gen_el_focus_ring(uint id, float p_width, float p_offset, global::Rune.Color p_color);
+    [DllImport(Lib)] public static extern uint rune_gen_el_focus_within_ring(uint id, float p_width, float p_offset, global::Rune.Color p_color);
     [DllImport(Lib)] public static extern uint rune_gen_el_no_focus_ring(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_modal(uint id, bool p_click_outside, nint p_dismiss);
     [DllImport(Lib)] public static extern uint rune_gen_el_modal_click_outside(uint id, bool p_enabled);
@@ -13140,6 +13777,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_el_icon_rotation(uint id, float p_radians);
     [DllImport(Lib)] public static extern uint rune_gen_el_help(uint id, byte* p_text_p, nuint p_text_l);
     [DllImport(Lib)] public static extern uint rune_gen_el_help_when_truncated(uint id, byte* p_text_p, nuint p_text_l);
+    [DllImport(Lib)] public static extern uint rune_gen_el_help_above(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_child(uint id, uint p_child);
     [DllImport(Lib)] public static extern uint rune_gen_el_children(uint id, global::Rune.El* p_children_p, nuint p_children_l);
     [DllImport(Lib)] public static extern uint rune_gen_el_color(uint id, global::Rune.Color p_c);
@@ -13191,6 +13829,8 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern bool rune_gen_frameencoded_window(nint h, Utf8Ref* o0);
     [DllImport(Lib)] public static extern ulong rune_gen_frameencoded_seq(nint h);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_frameencoded_presents_at(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_frameencoded_started(nint h);
+    [DllImport(Lib)] public static extern bool rune_gen_frameencoded_refresh_hz(nint h, double* o0);
     [DllImport(Lib)] public static extern bool rune_gen_frameencoded_update_ms(nint h, double* o0);
     [DllImport(Lib)] public static extern bool rune_gen_frameencoded_encode_ms(nint h, double* o0);
     [DllImport(Lib)] public static extern nuint rune_gen_glyphquad_atlas_page(nint h);
@@ -13263,6 +13903,12 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_imagecache_rgba(nint h, uint p_width, uint p_height, byte* p_bytes_p, nuint p_bytes_l);
     [DllImport(Lib)] public static extern nint rune_gen_imagecache_app_icon(nint h, byte* p_path_p, nuint p_path_l, float p_size_pt);
     [DllImport(Lib)] public static extern nint rune_gen_imagecache_app_icon_scaled(nint h, byte* p_path_p, nuint p_path_l, float p_size_pt, float p_scale);
+    [DllImport(Lib)] public static extern nint rune_gen_inlineicon_glyph(nint p_icon);
+    [DllImport(Lib)] public static extern nint rune_gen_inlineicon_image(nint p_pixels);
+    [DllImport(Lib)] public static extern nint rune_gen_inlineicon_size(nint h, float p_points);
+    [DllImport(Lib)] public static extern nint rune_gen_inlineicon_gap(nint h, float p_points);
+    [DllImport(Lib)] public static extern nint rune_gen_inlineicon_radius(nint h, float p_points);
+    [DllImport(Lib)] public static extern nint rune_gen_inlineicon_color(nint h, global::Rune.Color p_c);
     [DllImport(Lib)] public static extern nint rune_gen_instance_begin_layer(float p_bounds_0, float p_bounds_1, float p_bounds_2, float p_bounds_3, float p_clip_0, float p_clip_1, float p_clip_2, float p_clip_3, global::Rune.LayerSpec p_spec);
     [DllImport(Lib)] public static extern nint rune_gen_instance_turned(nint h, float p_angle, float p_pivot_0, float p_pivot_1);
     [DllImport(Lib)] public static extern nint rune_gen_instance_end_layer();
@@ -13275,9 +13921,19 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_const_rune_motion__intent__contents();
     [DllImport(Lib)] public static extern uint rune_gen_intent_for_prop(nint p_p);
     [DllImport(Lib)] public static extern bool rune_gen_keyevent_is_command(nint h, global::System.Text.Rune p_c);
-    [DllImport(Lib)] public static extern nint rune_gen_keybind_new(byte* p_keys_p, nuint p_keys_l);
-    [DllImport(Lib)] public static extern nint rune_gen_keybind_variant(nint h, global::Rune.KeybindVariant p_v);
-    [DllImport(Lib)] public static extern uint rune_gen_keybind_build(nint h, nint p_k);
+    [DllImport(Lib)] public static extern global::Rune.KeyPlatform rune_gen_keyplatform_current();
+    [DllImport(Lib)] public static extern nint rune_gen_keybind_new(byte* p_spec_p, nuint p_spec_l);
+    [DllImport(Lib)] public static extern nint rune_gen_keybind_on(nint h, global::Rune.KeyPlatform p_platform, byte* p_spec_p, nuint p_spec_l);
+    [DllImport(Lib)] public static extern nint rune_gen_keybind_on_chords(nint h, global::Rune.KeyPlatform p_platform, nint* p_chords_p, nuint p_chords_l);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_keybind_chords_on(nint h, global::Rune.KeyPlatform p_platform);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_keybind_chords(nint h);
+    [DllImport(Lib)] public static extern bool rune_gen_keybind_matches(nint h, nint p_ev);
+    [DllImport(Lib)] public static extern bool rune_gen_keybind_matches_tx(nint h, nint p_ev, nint p_tx);
+    [DllImport(Lib)] public static extern bool rune_gen_keybind_matches_on(nint h, nint p_ev, global::Rune.KeyPlatform p_platform);
+    [DllImport(Lib)] public static extern bool rune_gen_keybind_matches_tx_on(nint h, nint p_ev, nint p_tx, global::Rune.KeyPlatform p_platform);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_keybind_label(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_keybind_label_on(nint h, global::Rune.KeyPlatform p_platform);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_keybind_spec_on(nint h, global::Rune.KeyPlatform p_platform);
     [DllImport(Lib)] public static extern nint rune_gen_keyframeblur_value(nint h);
     [DllImport(Lib)] public static extern float rune_gen_keyframeblur_duration(nint h);
     [DllImport(Lib)] public static extern global::Rune.Color rune_gen_keyframecolor_value(nint h);
@@ -13489,6 +14145,8 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_loader_new();
     [DllImport(Lib)] public static extern nint rune_gen_loader_size(nint h, float p_s);
     [DllImport(Lib)] public static extern uint rune_gen_loader_build(nint h, nint p_k);
+    [DllImport(Lib)] public static extern nint rune_gen_localtime_at(long p_epoch_ms);
+    [DllImport(Lib)] public static extern nint rune_gen_localtime_at_offset(long p_epoch_ms, int p_offset);
     [DllImport(Lib)] public static extern nint rune_gen_loopspec_sequence(nint p_frames);
     [DllImport(Lib)] public static extern nint rune_gen_loopspec_cycle(nint p_cycle);
     [DllImport(Lib)] public static extern nint rune_gen_loopspec_opacity(double p_period, double p_delay, float p_low, float p_high);
@@ -13557,6 +14215,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_menuitem_enabled(nint h, bool p_enabled);
     [DllImport(Lib)] public static extern nint rune_gen_menuitem_checked(nint h, bool p_checked);
     [DllImport(Lib)] public static extern bool rune_gen_modifier_side(global::Rune.Modifier this_, global::Rune.KeySide* o0);
+    [DllImport(Lib)] public static extern bool rune_gen_mods_primary(global::Rune.Mods this_);
     [DllImport(Lib)] public static extern ushort rune_gen_const_rune__motionelement__exiting();
     [DllImport(Lib)] public static extern ushort rune_gen_const_rune__motionelement__scrolling();
     [DllImport(Lib)] public static extern ushort rune_gen_const_rune__motionelement__growing();
@@ -13986,6 +14645,9 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_run_as_str(nint h);
     [DllImport(Lib)] public static extern bool rune_gen_runlayout_x(nint h, nuint p_at, float* o0);
     [DllImport(Lib)] public static extern bool rune_gen_runlayout_advance(nint h, nuint p_at, float p_scale, float* o0);
+    [DllImport(Lib)] public static extern nint rune_gen_runekitkeybind_new(byte* p_keys_p, nuint p_keys_l);
+    [DllImport(Lib)] public static extern nint rune_gen_runekitkeybind_variant(nint h, global::Rune.KeybindVariant p_v);
+    [DllImport(Lib)] public static extern uint rune_gen_runekitkeybind_build(nint h, nint p_k);
     [DllImport(Lib)] public static extern nint rune_gen_runekitmenuitem_new(byte* p_label_p, nuint p_label_l);
     [DllImport(Lib)] public static extern nint rune_gen_runekitmenuitem_icon(nint h, nint p_i);
     [DllImport(Lib)] public static extern nint rune_gen_runekitmenuitem_lead(nint h, uint p_e);
@@ -14016,6 +14678,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern global::Rune.RuneMotionColor rune_gen_runemotioncolor_from_oklab(float p_lab_0, float p_lab_1, float p_lab_2, float p_alpha);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_runtime_take_url_requests(nint h);
     [DllImport(Lib)] public static extern void rune_gen_runtime_use_clipboard(nint h, nint p_clipboard);
+    [DllImport(Lib)] public static extern void rune_gen_runtime_invalidate_memos_by_prefix(nint h, byte* p_prefix_p, nuint p_prefix_l);
     [DllImport(Lib)] public static extern void rune_gen_runtime_open_playground(nint h, byte* p_story_p, nuint p_story_l, bool p_variant_has, byte* p_variant_p, nuint p_variant_l);
     [DllImport(Lib)] public static extern void rune_gen_runtime_playground_trigger(nint h, global::System.Text.Rune p_key);
     [DllImport(Lib)] public static extern bool rune_gen_runtime_playground_element(nint h, byte* p_key_p, nuint p_key_l, nint* o0);
@@ -14083,6 +14746,8 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_runtime_secondary_up(nint h, float p_x, float p_y);
     [DllImport(Lib)] public static extern void rune_gen_runtime_set_native_titlebar_band(nint h, float p_points);
     [DllImport(Lib)] public static extern bool rune_gen_runtime_take_titlebar_action(nint h, global::Rune.TitlebarAction* o0);
+    [DllImport(Lib)] public static extern void rune_gen_runtime_set_chrome_insets(nint h, nint p_insets);
+    [DllImport(Lib)] public static extern nint rune_gen_runtime_chrome_insets(nint h);
     [DllImport(Lib)] public static extern float rune_gen_runtime_content_height(nint h);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_runtime_a11y_json(nint h);
     [DllImport(Lib)] public static extern bool rune_gen_runtime_element_is_secure(nint h, byte* p_path_p, nuint p_path_l);
@@ -14211,6 +14876,10 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_scene_frame(nint h);
     [DllImport(Lib)] public static extern void rune_gen_scene_present(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_scrollbarstyle_from_kit(nint p_k);
+    [DllImport(Lib)] public static extern nint rune_gen_scrollbarstyle_scroll_view(nint p_k);
+    [DllImport(Lib)] public static extern nint rune_gen_scrollbarstyle_native(global::Rune.Color p_thumb, global::Rune.Color p_thumb_hover);
+    [DllImport(Lib)] public static extern nint rune_gen_scrollbarstyle_horizontal(nint h);
+    [DllImport(Lib)] public static extern float rune_gen_scrollbarstyle_strip(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_scrollbarstyle_neutral(bool p_dark);
     [DllImport(Lib)] public static extern nint rune_gen_scrollbarstyle_thumb(nint h, global::Rune.Color p_c);
     [DllImport(Lib)] public static extern nint rune_gen_scrollbarstyle_thumb_hover(nint h, global::Rune.Color p_c);
@@ -14295,9 +14964,10 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_shape_fill_path(nint h, nint p_path, global::Rune.Color p_color);
     [DllImport(Lib)] public static extern nint rune_gen_shape_view_box(nint h, float p_width, float p_height);
     [DllImport(Lib)] public static extern bool rune_gen_shape_is_empty(nint h);
-    [DllImport(Lib)] public static extern void rune_gen_shape_drawn(nint h, float p_t);
-    [DllImport(Lib)] public static extern void rune_gen_shape_trimmed(nint h, float p_start, float p_end);
+    [DllImport(Lib)] public static extern nint rune_gen_shape_drawn(nint h, float p_t);
+    [DllImport(Lib)] public static extern nint rune_gen_shape_trimmed(nint h, float p_start, float p_end);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_sharedbuffer_contents(nint h);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_shortcut_parse_on(byte* p_input_p, nuint p_input_l, global::Rune.KeyPlatform p_platform);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_shortcut_from_physical_key(nint p_key, global::Rune.Mods p_mods);
     [DllImport(Lib)] public static extern nint rune_gen_shortcut_physical_key(nint h);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_shortcut_require_modifier(nint h);
@@ -14482,6 +15152,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_switch_hide_label(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_switch_description(nint h, byte* p_d_p, nuint p_d_l);
     [DllImport(Lib)] public static extern nint rune_gen_switch_standard(nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_switch_web(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_switch_control_size(nint h, global::Rune.ControlSize p_s);
     [DllImport(Lib)] public static extern nint rune_gen_switch_state(nint h, global::Rune.State p_s);
     [DllImport(Lib)] public static extern nint rune_gen_switch_disabled(nint h, bool p_d);
@@ -14499,17 +15170,72 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_systemaccent_with_focus(nint h, global::Rune.Color p_light, global::Rune.Color p_dark);
     [DllImport(Lib)] public static extern global::Rune.Color rune_gen_systemaccent_accent(nint h, bool p_dark);
     [DllImport(Lib)] public static extern global::Rune.Color rune_gen_systemaccent_focus(nint h, bool p_dark);
-    [DllImport(Lib)] public static extern void rune_gen_cb_79(delegate* unmanaged<nint, nint, nint> f);
+    [DllImport(Lib)] public static extern nint rune_gen_tabdragstate_new();
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragstate_dragging(nint h, nuint* o0);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragstate_torn_out(nint h);
+    [DllImport(Lib)] public static extern bool rune_gen_tabdragstate_hovered(nint h, Utf8Ref* o0);
+    [DllImport(Lib)] public static extern void rune_gen_tabdragstate_cancel(nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_new(byte* p_id_p, nuint p_id_l, byte* p_title_p, nuint p_title_l);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_subtitle(nint h, byte* p_subtitle_p, nuint p_subtitle_l);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_avatar(nint h, uint p_avatar);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_icon(nint h, nint p_icon);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_status(nint h, bool p_status_has, global::Rune.TabItemStatus p_status);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_pinned(nint h, bool p_pinned);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_closable(nint h, bool p_closable);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_marked(nint h, bool p_marked);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_pulse(nint h, uint p_seq);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_editor(nint h, uint p_field);
+    [DllImport(Lib)] public static extern void rune_gen_cb_79(delegate* unmanaged<nint, uint, global::Rune.TabDensity, uint> f);
+    [DllImport(Lib)] public static extern nint rune_gen_tabitem_decorate(nint h, nint p_f);
+    [DllImport(Lib)] public static extern nint rune_gen_const_rune_kit__shell__taboverflow__horizontal_default();
+    [DllImport(Lib)] public static extern nint rune_gen_const_rune_kit__shell__taboverflow__vertical_default();
+    [DllImport(Lib)] public static extern global::Rune.TabDensity rune_gen_taboverflow_density_for(float p_width);
+    [DllImport(Lib)] public static extern float rune_gen_taboverflow_tab_width(nint h, float p_available, nuint p_unpinned, nuint p_pinned, float p_gap);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_new(byte* p_key_p, nuint p_key_l, global::Rune.TabOrientation p_orientation);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_tabs(nint h, nint* p_tabs_p, nuint p_tabs_l);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_active(nint h, bool p_active_id_has, byte* p_active_id_p, nuint p_active_id_l);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_viewport_width(nint h, bool p_width_has, float p_width);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_zoom(nint h, float p_zoom);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_overflow(nint h, nint p_policy);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_gap(nint h, float p_points);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_row_height(nint h, float p_points);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_select_on_drag_start(nint h, bool p_on);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_tear_out(nint h, bool p_spec_has, global::Rune.TearOutSpec p_spec);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_matched_prefix(nint h, bool p_prefix_has, byte* p_prefix_p, nuint p_prefix_l);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_reorder_spring(nint h, global::Rune.Spring p_spring);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_trailing_action(nint h, uint p_action);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_trailing_width(nint h, float p_points);
+    [DllImport(Lib)] public static extern void rune_gen_cb_80(delegate* unmanaged<nint, nint, nint> f);
     [DllImport(Lib)] public static extern void rune_gen_fp_20_set(uint i, nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_drag_state(nint h, nint p_state, uint p_access);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_fill(nint h, global::Rune.Color p_color);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_close_icon(nint h, nint p_icon);
+    [DllImport(Lib)] public static extern void rune_gen_cb_81(delegate* unmanaged<nint, nint, uint> f);
     [DllImport(Lib)] public static extern void rune_gen_fp_21_set(uint i, nint h);
-    [DllImport(Lib)] public static extern void rune_gen_cb_80(delegate* unmanaged<nint, nint, nuint> f);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_busy_indicator(nint h, uint p_f);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_label(nint h, byte* p_label_p, nuint p_label_l);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_on_select(nint h, nint p_f);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_on_close(nint h, nint p_f);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_on_double_click(nint h, nint p_f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_82(delegate* unmanaged<nint, nint, byte*, nuint, bool, nint, void> f);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_on_hover(nint h, nint p_f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_83(delegate* unmanaged<nint, nint, nint, nint, void> f);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_on_reorder(nint h, nint p_f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_84(delegate* unmanaged<nint, nint, nint, nint, void> f);
+    [DllImport(Lib)] public static extern nint rune_gen_tabstrip_on_tear_out(nint h, nint p_f);
+    [DllImport(Lib)] public static extern uint rune_gen_tabstrip_build(nint h, nint p_k);
+    [DllImport(Lib)] public static extern uint rune_gen_tabstrip_build_layered(nint h, nint p_k, nint p_layer);
+    [DllImport(Lib)] public static extern void rune_gen_cb_85(delegate* unmanaged<nint, nint, nint> f);
     [DllImport(Lib)] public static extern void rune_gen_fp_22_set(uint i, nint h);
     [DllImport(Lib)] public static extern void rune_gen_fp_23_set(uint i, nint h);
+    [DllImport(Lib)] public static extern void rune_gen_cb_86(delegate* unmanaged<nint, nint, nuint> f);
+    [DllImport(Lib)] public static extern void rune_gen_fp_24_set(uint i, nint h);
+    [DllImport(Lib)] public static extern void rune_gen_fp_25_set(uint i, nint h);
     [DllImport(Lib)] public static extern nint rune_gen_table_new(uint p_get, uint p_get_mut, uint p_len, uint p_row_id);
     [DllImport(Lib)] public static extern nint rune_gen_table_column(nint h, nint p_c);
-    [DllImport(Lib)] public static extern void rune_gen_cb_81(delegate* unmanaged<nint, nint, nuint, byte*, nuint, nint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_87(delegate* unmanaged<nint, nint, nuint, byte*, nuint, nint> f);
     [DllImport(Lib)] public static extern nint rune_gen_table_cell(nint h, nint p_f);
-    [DllImport(Lib)] public static extern void rune_gen_cb_82(delegate* unmanaged<nint, nint, byte*, nuint, global::Rune.SortDir, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_88(delegate* unmanaged<nint, nint, byte*, nuint, global::Rune.SortDir, nint, void> f);
     [DllImport(Lib)] public static extern nint rune_gen_table_on_sort(nint h, nint p_f);
     [DllImport(Lib)] public static extern nint rune_gen_table_on_select(nint h, nint p_f);
     [DllImport(Lib)] public static extern nint rune_gen_table_on_open(nint h, nint p_f);
@@ -14573,7 +15299,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_textedit_display(nint h);
     [DllImport(Lib)] public static extern void rune_gen_textedit_clear_history(nint h);
     [DllImport(Lib)] public static extern void rune_gen_textedit_break_history_group(nint h);
-    [DllImport(Lib)] public static extern void rune_gen_cb_83(delegate* unmanaged<nint, nint, nint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_89(delegate* unmanaged<nint, nint, nint> f);
     [DllImport(Lib)] public static extern nint rune_gen_textedit_undo_group(nint h, nint p_f);
     [DllImport(Lib)] public static extern void rune_gen_textedit_undo(nint h);
     [DllImport(Lib)] public static extern void rune_gen_textedit_redo(nint h);
@@ -14708,6 +15434,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_textstyle_optical_size(nint this_, float p_size);
     [DllImport(Lib)] public static extern nint rune_gen_textstyle_optical_sizing(nint this_, nint p_optical_size);
     [DllImport(Lib)] public static extern float rune_gen_textstyle_line_px(nint this_);
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_textsystem_color_icon(nint h, nint p_icon, uint p_px, global::Rune.Color p_color);
     [DllImport(Lib)] public static extern void rune_gen_textsystem_decorations(nint h, nint p_layout, nint* p_spans_p, nuint p_spans_l, float p_scale, float p_origin_0, float p_origin_1, nint p_out);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_textsystem_families(nint h);
     [DllImport(Lib)] public static extern bool rune_gen_textsystem_set_families(nint h, byte* p_sans_p, nuint p_sans_l, byte* p_mono_p, nuint p_mono_l);
@@ -14725,6 +15452,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_textsystem_color_glyph(nint h, uint p_color);
     [DllImport(Lib)] public static extern void rune_gen_textsystem_set_glyph_inks(nint h, global::Rune.Color p_element, nint* p_spans_p, nuint p_spans_l);
     [DllImport(Lib)] public static extern global::Rune.FontSmoothing rune_gen_textsystem_font_smoothing(nint h);
+    [DllImport(Lib)] public static extern float rune_gen_textsystem_coverage_exponent(nint h, float p_fill_0, float p_fill_1, float p_fill_2, float p_fill_3);
     [DllImport(Lib)] public static extern void rune_gen_textsystem_set_font_smoothing(nint h, global::Rune.FontSmoothing p_mode);
     [DllImport(Lib)] public static extern global::Rune.ApplePipeline rune_gen_textsystem_apple_pipeline(nint h);
     [DllImport(Lib)] public static extern void rune_gen_textsystem_set_apple_pipeline(nint h, global::Rune.ApplePipeline p_pipeline);
@@ -14736,6 +15464,11 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern global::Rune.Color rune_gen_theme_color(nint h, byte* p_name_p, nuint p_name_l);
     [DllImport(Lib)] public static extern global::Rune.Color rune_gen_theme_alpha(nint h, global::Rune.Color p_c, float p_a);
     [DllImport(Lib)] public static extern float rune_gen_theme_num(nint h, byte* p_name_p, nuint p_name_l);
+    [DllImport(Lib)] public static extern float rune_gen_const_rune__titlebar__caption_button_width();
+    [DllImport(Lib)] public static extern nint rune_gen_titlebar_new(float p_height);
+    [DllImport(Lib)] public static extern nint rune_gen_titlebar_traffic_lights(nint h, float p_x, float p_y);
+    [DllImport(Lib)] public static extern float rune_gen_titlebar_height(nint h);
+    [DllImport(Lib)] public static extern bool rune_gen_titlebar_traffic_lights_origin(nint h, float* o0, float* o1);
     [DllImport(Lib)] public static extern nint rune_gen_toast_new(byte* p_key_p, nuint p_key_l, byte* p_title_p, nuint p_title_l);
     [DllImport(Lib)] public static extern nint rune_gen_toast_description(nint h, byte* p_d_p, nuint p_d_l);
     [DllImport(Lib)] public static extern nint rune_gen_toast_icon(nint h, nint p_k, nint p_i);
@@ -14805,7 +15538,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_transition_springs(nint h, global::Rune.SpringPair p_springs);
     [DllImport(Lib)] public static extern nint rune_gen_transition_allow_small_scale(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_transition_hold_layout(nint h);
-    [DllImport(Lib)] public static extern void rune_gen_cb_84(delegate* unmanaged<nint, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_90(delegate* unmanaged<nint, nint, void> f);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_tray_new(nint p_spec, nint p_on_event);
     [DllImport(Lib)] public static extern void rune_gen_tray_set_menu(nint h, nint* p_menu_p, nuint p_menu_l);
     [DllImport(Lib)] public static extern void rune_gen_tray_set_tooltip(nint h, byte* p_tooltip_p, nuint p_tooltip_l);
@@ -14815,17 +15548,17 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_trayspec_new(byte* p_id_p, nuint p_id_l, byte* p_title_p, nuint p_title_l, nint p_icon);
     [DllImport(Lib)] public static extern nint rune_gen_trayspec_tooltip(nint h, byte* p_tooltip_p, nuint p_tooltip_l);
     [DllImport(Lib)] public static extern nint rune_gen_trayspec_menu(nint h, nint* p_menu_p, nuint p_menu_l);
-    [DllImport(Lib)] public static extern void rune_gen_cb_85(delegate* unmanaged<nint, nint, nint> f);
-    [DllImport(Lib)] public static extern void rune_gen_fp_24_set(uint i, nint h);
-    [DllImport(Lib)] public static extern void rune_gen_fp_25_set(uint i, nint h);
-    [DllImport(Lib)] public static extern void rune_gen_cb_86(delegate* unmanaged<nint, nint, Utf8Ref> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_91(delegate* unmanaged<nint, nint, nint> f);
     [DllImport(Lib)] public static extern void rune_gen_fp_26_set(uint i, nint h);
+    [DllImport(Lib)] public static extern void rune_gen_fp_27_set(uint i, nint h);
+    [DllImport(Lib)] public static extern void rune_gen_cb_92(delegate* unmanaged<nint, nint, Utf8Ref> f);
+    [DllImport(Lib)] public static extern void rune_gen_fp_28_set(uint i, nint h);
     [DllImport(Lib)] public static extern nint rune_gen_tree_new(uint p_get, uint p_get_mut, uint p_label);
-    [DllImport(Lib)] public static extern void rune_gen_cb_87(delegate* unmanaged<nint, nint, nint, nint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_93(delegate* unmanaged<nint, nint, nint, nint> f);
     [DllImport(Lib)] public static extern nint rune_gen_tree_row(nint h, nint p_f);
     [DllImport(Lib)] public static extern nint rune_gen_tree_on_select(nint h, nint p_f);
     [DllImport(Lib)] public static extern nint rune_gen_tree_on_open(nint h, nint p_f);
-    [DllImport(Lib)] public static extern nint rune_gen_tree_style(nint h, global::Rune.TreeStyle p_s);
+    [DllImport(Lib)] public static extern nint rune_gen_tree_style(nint h, nint p_s);
     [DllImport(Lib)] public static extern nint rune_gen_tree_name(nint h, byte* p_n_p, nuint p_n_l);
     [DllImport(Lib)] public static extern uint rune_gen_tree_build(nint h, nint p_s, nint p_k);
     [DllImport(Lib)] public static extern nint rune_gen_treeitem_new(byte* p_label_p, nuint p_label_l);
@@ -14837,7 +15570,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_treeitem_dot(nint h, global::Rune.Color p_c);
     [DllImport(Lib)] public static extern nint rune_gen_treeitem_badge(nint h, byte* p_b_p, nuint p_b_l);
     [DllImport(Lib)] public static extern nint rune_gen_treeitem_trailing(nint h, uint p_e);
-    [DllImport(Lib)] public static extern uint rune_gen_treeitem_build(nint h, nint p_k, nint p_r, global::Rune.TreeStyle p_style);
+    [DllImport(Lib)] public static extern uint rune_gen_treeitem_build(nint h, nint p_k, nint p_r, nint p_style);
     [DllImport(Lib)] public static extern nint rune_gen_treemodel_new();
     [DllImport(Lib)] public static extern nint rune_gen_treemodel_key(nint h, byte* p_key_p, nuint p_key_l);
     [DllImport(Lib)] public static extern nint rune_gen_treemodel_multi_select(nint h, bool p_on);
@@ -14852,7 +15585,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_treemodel_children(nint h, bool p_id_has, byte* p_id_p, nuint p_id_l);
     [DllImport(Lib)] public static extern bool rune_gen_treemodel_has_children(nint h, byte* p_id_p, nuint p_id_l);
     [DllImport(Lib)] public static extern bool rune_gen_treemodel_depth(nint h, byte* p_id_p, nuint p_id_l, uint* o0);
-    [DllImport(Lib)] public static extern void rune_gen_cb_88(delegate* unmanaged<nint, nint, nint, Utf8Ref> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_94(delegate* unmanaged<nint, nint, nint, Utf8Ref> f);
     [DllImport(Lib)] public static extern void rune_gen_treemodel_sort_by(nint h, nint p_cmp);
     [DllImport(Lib)] public static extern bool rune_gen_treemodel_is_expanded(nint h, byte* p_id_p, nuint p_id_l);
     [DllImport(Lib)] public static extern void rune_gen_treemodel_set_expanded(nint h, byte* p_id_p, nuint p_id_l, bool p_open);
@@ -14892,7 +15625,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern bool rune_gen_treemodelfilenode_has_children(nint h, byte* p_id_p, nuint p_id_l);
     [DllImport(Lib)] public static extern bool rune_gen_treemodelfilenode_depth(nint h, byte* p_id_p, nuint p_id_l, uint* o0);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_treemodelfilenode_subtree(nint h, byte* p_id_p, nuint p_id_l);
-    [DllImport(Lib)] public static extern void rune_gen_cb_89(delegate* unmanaged<nint, nint, nint, Utf8Ref> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_95(delegate* unmanaged<nint, nint, nint, Utf8Ref> f);
     [DllImport(Lib)] public static extern void rune_gen_treemodelfilenode_sort_by(nint h, nint p_cmp);
     [DllImport(Lib)] public static extern bool rune_gen_treemodelfilenode_is_expanded(nint h, byte* p_id_p, nuint p_id_l);
     [DllImport(Lib)] public static extern void rune_gen_treemodelfilenode_set_expanded(nint h, byte* p_id_p, nuint p_id_l, bool p_open);
@@ -14909,7 +15642,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_treemodelfilenode_select_range(nint h, byte* p_id_p, nuint p_id_l);
     [DllImport(Lib)] public static extern bool rune_gen_treemodelfilenode_click(nint h, byte* p_id_p, nuint p_id_l, global::Rune.Mods p_mods);
     [DllImport(Lib)] public static extern bool rune_gen_treemodelfilenode_reveal(nint h, byte* p_id_p, nuint p_id_l, nint p_tx);
-    [DllImport(Lib)] public static extern void rune_gen_cb_90(delegate* unmanaged<nint, nint, bool> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_96(delegate* unmanaged<nint, nint, bool> f);
     [DllImport(Lib)] public static extern void rune_gen_treemodelfilenode_filter(nint h, nint p_keep);
     [DllImport(Lib)] public static extern void rune_gen_treemodelfilenode_clear_filter(nint h);
     [DllImport(Lib)] public static extern bool rune_gen_treemodelfilenode_is_filtering(nint h);
@@ -14918,20 +15651,31 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern bool rune_gen_treemodelfilenode_visible_id(nint h, nuint p_row, Utf8Ref* o0);
     [DllImport(Lib)] public static extern bool rune_gen_treemodelfilenode_visible_row(nint h, byte* p_id_p, nuint p_id_l, nuint* o0);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_treemodelfilenode_row(nint h, nuint p_row);
-    [DllImport(Lib)] public static extern void rune_gen_cb_91(delegate* unmanaged<nint, nint, Utf8Ref> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_97(delegate* unmanaged<nint, nint, Utf8Ref> f);
     [DllImport(Lib)] public static extern nint rune_gen_treemodelfilenode_handle_key(nint h, nint p_ev, nint p_label, nint p_tx);
     [DllImport(Lib)] public static extern nint rune_gen_treerow_new(byte* p_id_p, nuint p_id_l, uint p_depth);
     [DllImport(Lib)] public static extern nint rune_gen_treerow_expanded(nint h, bool p_open_has, bool p_open);
     [DllImport(Lib)] public static extern nint rune_gen_treerow_selected(nint h, bool p_on);
-    [DllImport(Lib)] public static extern global::Rune.TreeStyle rune_gen_treestyle_from_kit(nint p_k);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_from_kit(nint p_k);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_hover(nint h, global::Rune.Color p_c);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_gap(nint h, float p_gap);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_radius(nint h, float p_r);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_label(nint h, nint p_font, global::Rune.Color p_rest, global::Rune.Color p_selected);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_fade_long_labels(nint h, float p_width);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_chevron_only_folders(nint h, bool p_on);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_chevron(nint h, nint p_glyph);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_chevron_colors(nint h, global::Rune.Color p_rest, global::Rune.Color p_selected);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_chevron_nudge(nint h, float p_dy);
+    [DllImport(Lib)] public static extern nint rune_gen_treestyle_guides_on_hover(nint h, float p_opacity);
     [DllImport(Lib)] public static extern nint rune_gen_tweencolor_linear(global::Rune.Color p_from, global::Rune.Color p_to, byte* p_duration_p, nuint p_duration_l);
     [DllImport(Lib)] public static extern nint rune_gen_tweenf32_linear(float p_from, float p_to, byte* p_duration_p, nuint p_duration_l);
     [DllImport(Lib)] public static extern nint rune_gen_tweenf32x2_linear(float p_from_0, float p_from_1, float p_to_0, float p_to_1, byte* p_duration_p, nuint p_duration_l);
     [DllImport(Lib)] public static extern nint rune_gen_tweenf32x4_linear(float p_from_0, float p_from_1, float p_from_2, float p_from_3, float p_to_0, float p_to_1, float p_to_2, float p_to_3, byte* p_duration_p, nuint p_duration_l);
     [DllImport(Lib)] public static extern void rune_gen_tx_fly_text(nint h, byte* p_source_p, nuint p_source_l, byte* p_destination_p, nuint p_destination_l);
     [DllImport(Lib)] public static extern void rune_gen_tx_launch(nint h, byte* p_source_p, nuint p_source_l, byte* p_destination_p, nuint p_destination_l);
+    [DllImport(Lib)] public static extern void rune_gen_tx_unclipped_flights(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_tx_button(nint h);
-    [DllImport(Lib)] public static extern void rune_gen_cb_92(delegate* unmanaged<nint, nint, byte*, nuint, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_98(delegate* unmanaged<nint, nint, byte*, nuint, nint, void> f);
     [DllImport(Lib)] public static extern void rune_gen_tx_popup_menu(nint h, nint p_menu, nint p_anchor, nint p_on_pick);
     [DllImport(Lib)] public static extern bool rune_gen_tx_activation_token(nint h, Utf8Ref* o0);
     [DllImport(Lib)] public static extern void rune_gen_tx_copy(nint h, byte* p_text_p, nuint p_text_l);
@@ -14964,11 +15708,12 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_tx_scroll_to_instant(nint h, byte* p_key_p, nuint p_key_l, float p_x, float p_y);
     [DllImport(Lib)] public static extern void rune_gen_tx_scroll_key_to(nint h, byte* p_key_p, nuint p_key_l, float p_at);
     [DllImport(Lib)] public static extern void rune_gen_tx_keep_on_screen(nint h, byte* p_key_p, nuint p_key_l);
-    [DllImport(Lib)] public static extern void rune_gen_cb_93(delegate* unmanaged<nint, nint, byte*, nuint, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_99(delegate* unmanaged<nint, nint, byte*, nuint, nint, void> f);
     [DllImport(Lib)] public static extern void rune_gen_tx_element_at(nint h, float p_x, float p_y, nint p_f);
     [DllImport(Lib)] public static extern void rune_gen_tx_element_at_with(nint h, float p_x, float p_y, nint p_pick, nint p_f);
     [DllImport(Lib)] public static extern void rune_gen_tx_element_at_in(nint h, byte* p_within_p, nuint p_within_l, float p_x, float p_y, nint p_f);
     [DllImport(Lib)] public static extern void rune_gen_tx_element_at_in_with(nint h, byte* p_within_p, nuint p_within_l, float p_x, float p_y, nint p_pick, nint p_f);
+    [DllImport(Lib)] public static extern void rune_gen_tx_invalidate_memos_by_prefix(nint h, byte* p_prefix_p, nuint p_prefix_l);
     [DllImport(Lib)] public static extern bool rune_gen_tx_tracing(nint h);
     [DllImport(Lib)] public static extern void rune_gen_tx_trace_event(nint h, byte* p_event_p, nuint p_event_l);
     [DllImport(Lib)] public static extern void rune_gen_tx_trace_channel(nint h, byte* p_name_p, nuint p_name_l, byte* p_kind_p, nuint p_kind_l, float p_value);
@@ -14976,6 +15721,9 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_tx_close_window(nint h);
     [DllImport(Lib)] public static extern void rune_gen_tx_quit(nint h);
     [DllImport(Lib)] public static extern void rune_gen_tx_minimize(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tx_toggle_maximized(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tx_toggle_full_screen(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_tx_send_key(nint h, nint p_ev);
     [DllImport(Lib)] public static extern void rune_gen_tx_set_title(nint h, byte* p_title_p, nuint p_title_l);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_tx_open_url(nint h, byte* p_url_p, nuint p_url_l);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_tx_open_url_same_tab(nint h, byte* p_url_p, nuint p_url_l);
@@ -15067,13 +15815,14 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_windowhandle_focus(nint h);
     [DllImport(Lib)] public static extern void rune_gen_windowhandle_open(nint h);
     [DllImport(Lib)] public static extern void rune_gen_windowhandle_close(nint h);
-    [DllImport(Lib)] public static extern void rune_gen_cb_94(delegate* unmanaged<nint, nint, nint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_100(delegate* unmanaged<nint, nint, nint> f);
     [DllImport(Lib)] public static extern nint rune_gen_windowoptions_launcher_panel();
     [DllImport(Lib)] public static extern nint rune_gen_windowoptions_macos(nint h, nint p_native);
     [DllImport(Lib)] public static extern nint rune_gen_windowoptions_overlay(nint p_display);
     [DllImport(Lib)] public static extern nint rune_gen_windowspec_new(byte* p_key_p, nuint p_key_l, nint p_app);
     [DllImport(Lib)] public static extern nint rune_gen_windowspec_from_app(byte* p_key_p, nuint p_key_l, nint p_app);
     [DllImport(Lib)] public static extern nint rune_gen_windowspec_chrome(nint h, nint p_chrome);
+    [DllImport(Lib)] public static extern nint rune_gen_windowspec_titlebar(nint h, nint p_titlebar);
     [DllImport(Lib)] public static extern nint rune_gen_windowspec_srgb_blend(nint h, bool p_enabled);
     [DllImport(Lib)] public static extern nint rune_gen_windowspec_font_smoothing(nint h, global::Rune.FontSmoothing p_mode);
     [DllImport(Lib)] public static extern nint rune_gen_windowspec_on_focus(nint h, uint p_f);
@@ -15090,6 +15839,18 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_windowspec_state(nint h, nint p_state);
     [DllImport(Lib)] public static extern nint rune_gen_windowspec_on_created(nint h, nint p_callback);
     [DllImport(Lib)] public static extern nint rune_gen_windowspec_boxed(nint h);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_from_insets(nint p_insets, float p_zoom);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_key(nint h, byte* p_key_p, nuint p_key_l);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_height(nint h, float p_logical_height);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_top_padding(nint h, float p_points);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_leading_padding(nint h, float p_points);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_trailing_padding(nint h, float p_points);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_gap(nint h, float p_points);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_fill(nint h, global::Rune.Color p_color);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_leading(nint h, uint p_el);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_tabs(nint h, uint p_strip);
+    [DllImport(Lib)] public static extern nint rune_gen_windowtitlebar_trailing(nint h, uint p_el);
+    [DllImport(Lib)] public static extern uint rune_gen_windowtitlebar_build(nint h, nint p_k);
     [DllImport(Lib)] public static extern void rune_gen_rune__anchor_rect(float p_trigger_0, float p_trigger_1, float p_trigger_2, float p_trigger_3, float p_size_0, float p_size_1, global::Rune.Side p_side, global::Rune.Align p_align, float p_gap, float p_window_0, float p_window_1, float* o0, float* o1, float* o2, float* o3);
     [DllImport(Lib)] public static extern uint rune_gen_rune__auto_grow(uint p_field, nuint p_min_lines, nuint p_max_lines);
     [DllImport(Lib)] public static extern uint rune_gen_rune__canvas(nint p_shape);
@@ -15103,6 +15864,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern ulong rune_gen_rune__commit_generation();
     [DllImport(Lib)] public static extern bool rune_gen_rune__compose__is_glyph(nint p_i);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune__describe_gpu(nint p_device);
+    [DllImport(Lib)] public static extern bool rune_gen_rune__dirs__home(Utf8Ref* o0);
     [DllImport(Lib)] public static extern uint rune_gen_rune__effect(uint p_mark);
     [DllImport(Lib)] public static extern uint rune_gen_rune__el();
     [DllImport(Lib)] public static extern void rune_gen_rune__embed__prewarm();
@@ -15112,10 +15874,11 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune__image__app_icon_rgba(byte* p_path_p, nuint p_path_l, uint p_px);
     [DllImport(Lib)] public static extern bool rune_gen_rune__is_headless();
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune__last_input();
-    [DllImport(Lib)] public static extern void rune_gen_cb_95(delegate* unmanaged<nint, uint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_101(delegate* unmanaged<nint, uint> f);
     [DllImport(Lib)] public static extern uint rune_gen_rune__memo(byte* p_id_p, nuint p_id_l, uint p_version_k, ulong p_version_n, byte* p_version_p, nuint p_version_l, nint p_build);
     [DllImport(Lib)] public static extern bool rune_gen_rune__memo__layout(byte* p_key_p, nuint p_key_l, float* o0, float* o1, float* o2, float* o3);
     [DllImport(Lib)] public static extern bool rune_gen_rune__memo__layout_size(byte* p_key_p, nuint p_key_l, float* o0, float* o1);
+    [DllImport(Lib)] public static extern uint rune_gen_rune__memo__memo_with_hash(byte* p_id_p, nuint p_id_l, ulong p_version, nint p_build);
     [DllImport(Lib)] public static extern bool rune_gen_rune__memo__window_layout(byte* p_key_p, nuint p_key_l, float* o0, float* o1, float* o2, float* o3);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune__modifier_keycaps(global::Rune.Mods p_mods);
     [DllImport(Lib)] public static extern bool rune_gen_rune__motion_gate__allowed(byte* p_allow_p, nuint p_allow_l, nint p_f, byte* p_cell_p, nuint p_cell_l, Utf8Ref* o0);
@@ -15140,7 +15903,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern nint rune_gen_rune__native_surface__synthetic(uint p_width, uint p_height, ulong p_phase);
     [DllImport(Lib)] public static extern global::Rune.Color rune_gen_rune__oklch(float p_l, float p_c, float p_h);
     [DllImport(Lib)] public static extern global::Rune.Color rune_gen_rune__oklcha(float p_l, float p_c, float p_h, float p_a);
-    [DllImport(Lib)] public static extern void rune_gen_cb_96(delegate* unmanaged<nint, global::Rune.GpuEvent, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_102(delegate* unmanaged<nint, global::Rune.GpuEvent, void> f);
     [DllImport(Lib)] public static extern void rune_gen_rune__on_gpu(nint p_f);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune__playground__slug(byte* p_path_p, nuint p_path_l);
     [DllImport(Lib)] public static extern bool rune_gen_rune__popup_menu_supported();
@@ -15154,7 +15917,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_rune__rich(byte* p_content_p, nuint p_content_l, nint* p_spans_p, nuint p_spans_l);
     [DllImport(Lib)] public static extern uint rune_gen_rune__row();
     [DllImport(Lib)] public static extern void rune_gen_rune__run(nint p_spec);
-    [DllImport(Lib)] public static extern void rune_gen_cb_97(delegate* unmanaged<nint, byte*, nuint, Utf8Ref> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_103(delegate* unmanaged<nint, byte*, nuint, Utf8Ref> f);
     [DllImport(Lib)] public static extern void rune_gen_rune__run_windows(nint p_factory);
     [DllImport(Lib)] public static extern void rune_gen_rune__run_windows_with(global::Rune.RunOptions p_options, nint p_factory);
     [DllImport(Lib)] public static extern void rune_gen_rune__run_windows_with_args(global::Rune.RunOptions p_options, byte* p_args_p, nuint p_args_l, nint p_factory);
@@ -15168,6 +15931,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern bool rune_gen_rune__system_scroller_overlay();
     [DllImport(Lib)] public static extern uint rune_gen_rune__text(byte* p_content_p, nuint p_content_l);
     [DllImport(Lib)] public static extern float rune_gen_rune__text__advance(byte* p_text_p, nuint p_text_l, nint p_style);
+    [DllImport(Lib)] public static extern void rune_gen_rune__text__content_widths(byte* p_text_p, nuint p_text_l, nint* p_spans_p, nuint p_spans_l, nint p_style, float* o0, float* o1);
     [DllImport(Lib)] public static extern ulong rune_gen_rune__text__font_epoch();
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune__text__icon_coverage(nint p_icon, uint p_px);
     [DllImport(Lib)] public static extern bool rune_gen_rune__text__ink(byte* p_text_p, nuint p_text_l, nint p_style, nint* o0);
@@ -15193,50 +15957,53 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune__try_run_windows_with(global::Rune.RunOptions p_options, nint p_factory);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune__try_run_windows_with_args(global::Rune.RunOptions p_options, byte* p_args_p, nuint p_args_l, nint p_factory);
     [DllImport(Lib)] public static extern void rune_gen_rune__warm_gpu(nint p_features);
-    [DllImport(Lib)] public static extern void rune_gen_cb_98(delegate* unmanaged<nint, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_104(delegate* unmanaged<nint, nint, void> f);
     [DllImport(Lib)] public static extern void rune_gen_rune__warm_gpu_with(nint p_features, nint p_prepare);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__action_data_number(double p_value);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__action_data_value(byte* p_value_p, nuint p_value_l);
-    [DllImport(Lib)] public static extern void rune_gen_cb_99(delegate* unmanaged<nint, nint> f);
-    [DllImport(Lib)] public static extern void rune_gen_cb_100(delegate* unmanaged<nint, nint, void> f);
-    [DllImport(Lib)] public static extern void rune_gen_cb_101(delegate* unmanaged<nint, bool> f);
-    [DllImport(Lib)] public static extern void rune_gen_cb_102(delegate* unmanaged<nint, nint, Utf8Ref> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_105(delegate* unmanaged<nint, nint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_106(delegate* unmanaged<nint, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_107(delegate* unmanaged<nint, bool> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_108(delegate* unmanaged<nint, nint, Utf8Ref> f);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__app_compositor(nint p_app, nint p_features, nint p_render, nint p_animating, nint p_summary);
-    [DllImport(Lib)] public static extern void rune_gen_cb_103(delegate* unmanaged<nint, nint, Utf8Ref> f);
-    [DllImport(Lib)] public static extern void rune_gen_fp_27_set(uint i, nint h);
+    [DllImport(Lib)] public static extern void rune_gen_cb_109(delegate* unmanaged<nint, byte*, nuint, Utf8Ref> f);
+    [DllImport(Lib)] public static extern bool rune_gen_rune_ext__app_dirs_from_env(byte* p_app_id_p, nuint p_app_id_l, nint p_var, nint* o0);
+    [DllImport(Lib)] public static extern void rune_gen_cb_110(delegate* unmanaged<nint, nint, Utf8Ref> f);
+    [DllImport(Lib)] public static extern void rune_gen_fp_29_set(uint i, nint h);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__channel_set_embed(nint p_c, uint p_f);
-    [DllImport(Lib)] public static extern void rune_gen_cb_104(delegate* unmanaged<nint, nint, byte*, nuint, float> f);
-    [DllImport(Lib)] public static extern void rune_gen_fp_28_set(uint i, nint h);
+    [DllImport(Lib)] public static extern void rune_gen_cb_111(delegate* unmanaged<nint, nint, byte*, nuint, float> f);
+    [DllImport(Lib)] public static extern void rune_gen_fp_30_set(uint i, nint h);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__channel_set_weight(nint p_c, uint p_f);
-    [DllImport(Lib)] public static extern void rune_gen_cb_105(delegate* unmanaged<nint, nint, nuint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_112(delegate* unmanaged<nint, nint, nuint, void> f);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_ext__choreography_stagger(nint p_c, nint p_cue, nint p_stagger, nuint p_count, nint p_each);
-    [DllImport(Lib)] public static extern void rune_gen_cb_106(delegate* unmanaged<nint, byte*, nuint, nint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_113(delegate* unmanaged<nint, byte*, nuint, nint> f);
     [DllImport(Lib)] public static extern bool rune_gen_rune_ext__cx_layout_with(nint p_cx, byte* p_key_p, nuint p_key_l, nint p_f, nint* o0);
     [DllImport(Lib)] public static extern bool rune_gen_rune_ext__cx_window_layout_with(nint p_cx, byte* p_key_p, nuint p_key_l, nint p_f, nint* o0);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__device_create_encoder(nint p_device, byte* p_label_p, nuint p_label_l);
-    [DllImport(Lib)] public static extern void rune_gen_cb_107(delegate* unmanaged<nint, byte*, nuint, byte*, nuint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_114(delegate* unmanaged<nint, byte*, nuint, byte*, nuint, void> f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__dialogs_open(nint p_dialogs, nint p_options, nint p_done);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__dialogs_open_folder(nint p_dialogs, nint p_options, nint p_done);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__dialogs_save(nint p_dialogs, nint p_options, nint p_done);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__features_empty();
     [DllImport(Lib)] public static extern bool rune_gen_rune_ext__file_node_data(nint p_node, nint* o0);
-    [DllImport(Lib)] public static extern void rune_gen_cb_108(delegate* unmanaged<nint, byte*, nuint, nint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_115(delegate* unmanaged<nint, byte*, nuint, nint> f);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__file_tree_build(nint p_tree, byte* p_paths_p, nuint p_paths_l, nint p_data);
-    [DllImport(Lib)] public static extern void rune_gen_cb_109(delegate* unmanaged<nint, byte*, nuint, nint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_116(delegate* unmanaged<nint, byte*, nuint, nint> f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__gate(byte* p_names_p, nuint p_names_l, nint p_job, byte* p_allow_p, nuint p_allow_l);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__gate_recording(nint p_run);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__gate_rows(byte* p_names_p, nuint p_names_l, nint p_job, nint* p_allow_p, nuint p_allow_l);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_ext__gate_run(byte* p_names_p, nuint p_names_l, nint p_job, byte* p_filter_p, nuint p_filter_l);
+    [DllImport(Lib)] public static extern bool rune_gen_rune_ext__home_from(nint p_var, Utf8Ref* o0);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__instance_new();
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__io_error(byte* p_message_p, nuint p_message_l);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_ext__json_parse(byte* p_text_p, nuint p_text_l);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_ext__json_text(nint p_value);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__kit_clear_ring(nint p_kit);
-    [DllImport(Lib)] public static extern void rune_gen_cb_110(delegate* unmanaged<nint, byte*, nuint, global::Rune.Color> f);
-    [DllImport(Lib)] public static extern void rune_gen_fp_29_set(uint i, nint h);
+    [DllImport(Lib)] public static extern void rune_gen_cb_117(delegate* unmanaged<nint, byte*, nuint, global::Rune.Color> f);
+    [DllImport(Lib)] public static extern void rune_gen_fp_31_set(uint i, nint h);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__kit_set_ring(nint p_kit, uint p_f);
     [DllImport(Lib)] public static extern bool rune_gen_rune_ext__language_parse(byte* p_tag_p, nuint p_tag_l, nint* o0);
-    [DllImport(Lib)] public static extern void rune_gen_cb_111(delegate* unmanaged<nint, nint, nint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_118(delegate* unmanaged<nint, nint, nint> f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__latest_request(nint p_latest, nint p_input, nint p_work);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__latest_request_if_changed(nint p_latest, nint p_key, nint p_work);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__latest_request_opt(nint p_latest, nint p_input, nint p_work, nint p_keep);
@@ -15247,7 +16014,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern bool rune_gen_rune_ext__memo_layout_with(byte* p_key_p, nuint p_key_l, nint p_f, nint* o0);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__memo_snapshot(byte* p_key_p, nuint p_key_l, nint p_value);
     [DllImport(Lib)] public static extern bool rune_gen_rune_ext__memo_window_layout_with(byte* p_key_p, nuint p_key_l, nint p_f, nint* o0);
-    [DllImport(Lib)] public static extern void rune_gen_cb_112(delegate* unmanaged<nint, byte*, nuint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_119(delegate* unmanaged<nint, byte*, nuint, void> f);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_ext__motion_trace_new(nint p_out, nint p_header);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__overlay_clear_on_created(nint p_o);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__overlay_clear_on_key(nint p_o);
@@ -15261,9 +16028,9 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern bool rune_gen_rune_ext__prefs_get(nint p_prefs, byte* p_key_p, nuint p_key_l, nint* o0);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_ext__prefs_set(nint p_prefs, byte* p_key_p, nuint p_key_l, nint p_value);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__queue_submit(nint p_queue, nint p_encoder);
-    [DllImport(Lib)] public static extern void rune_gen_cb_113(delegate* unmanaged<nint, nint, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_120(delegate* unmanaged<nint, nint, nint, void> f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__renderer_draw_range_with(nint p_r, nint p_pass, nint p_format, uint p_start, uint p_end, nint p_hook);
-    [DllImport(Lib)] public static extern void rune_gen_cb_114(delegate* unmanaged<nint, nint, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_121(delegate* unmanaged<nint, nint, nint, void> f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__renderer_draw_target_range_with(nint p_r, nint p_encoder, nint p_view, nint p_format, nint p_load, uint p_start, uint p_end, nint p_backdrop, nint p_draw);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__renderer_draw_with(nint p_r, nint p_encoder, nint p_view, float p_clear_0, float p_clear_1, float p_clear_2, float p_clear_3, nint p_hook);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__renderer_draw_with_backdrop(nint p_r, nint p_encoder, nint p_view, float p_clear_0, float p_clear_1, float p_clear_2, float p_clear_3, nint p_backdrop, nint p_draw);
@@ -15280,7 +16047,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__runtime_set_on_key(nint p_rt, uint p_f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__runtime_set_poll(nint p_rt, uint p_f);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__scripted_dialog(global::Rune.FileDialogKind p_kind, bool p_path_has, byte* p_path_p, nuint p_path_l);
-    [DllImport(Lib)] public static extern void rune_gen_cb_115(delegate* unmanaged<nint, nint, byte*, nuint, nint, Utf8Ref> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_122(delegate* unmanaged<nint, nint, byte*, nuint, nint, Utf8Ref> f);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__shortcut_on_change(nint p_recorder, nint p_change);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__spec_clear_on_key(nint p_spec);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__spec_clear_poll(nint p_spec);
@@ -15288,11 +16055,11 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__spec_set_init(nint p_spec, uint p_f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__spec_set_on_key(nint p_spec, uint p_f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__spec_set_poll(nint p_spec, uint p_f);
-    [DllImport(Lib)] public static extern void rune_gen_fp_30_set(uint i, nint h);
+    [DllImport(Lib)] public static extern void rune_gen_fp_32_set(uint i, nint h);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__spec_set_scenes(nint p_spec, byte* p_names_p, nuint p_names_l, uint* p_runs_p, nuint p_runs_l);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__spec_set_setup(nint p_spec, uint p_f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__spec_set_view(nint p_spec, uint p_f);
-    [DllImport(Lib)] public static extern void rune_gen_cb_116(delegate* unmanaged<nint, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_123(delegate* unmanaged<nint, nint, void> f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__surface_set_observer(nint p_surface, nint p_observer);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__texture_format_astc(nint p_block, nint p_channel);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_ext__trace_channels_json(nint p_channels, byte* p_line_p, nuint p_line_l);
@@ -15301,19 +16068,19 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern bool rune_gen_rune_ext__tree_row(nint p_model, nuint p_row, nint* o0);
     [DllImport(Lib)] public static extern bool rune_gen_rune_ext__tree_row_data(nint p_model, nuint p_row, nint* o0);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__tree_subtree(nint p_model, byte* p_id_p, nuint p_id_l, nint p_each);
-    [DllImport(Lib)] public static extern void rune_gen_cb_117(delegate* unmanaged<nint, nint, byte*, nuint, byte*, nuint, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_124(delegate* unmanaged<nint, nint, byte*, nuint, byte*, nuint, nint, void> f);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__tx_open_file(nint p_tx, nint p_options, nint p_on_answer);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__tx_open_folder(nint p_tx, nint p_options, nint p_on_answer);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__tx_save_file(nint p_tx, nint p_options, nint p_on_answer);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__window_spec_clear_on_created(nint p_w);
     [DllImport(Lib)] public static extern void rune_gen_rune_ext__window_spec_set_on_created(nint p_w, nint p_f);
-    [DllImport(Lib)] public static extern void rune_gen_cb_118(delegate* unmanaged<nint, nint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_125(delegate* unmanaged<nint, nint, void> f);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_ext__window_with_raw_handle(nint p_window, nint p_f);
-    [DllImport(Lib)] public static extern void rune_gen_cb_119(delegate* unmanaged<nint, nint> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_126(delegate* unmanaged<nint, nint> f);
     [DllImport(Lib)] public static extern nint rune_gen_rune_ext__with_blend(bool p_srgb, nint p_f);
     [DllImport(Lib)] public static extern uint rune_gen_rune_kit__body_text(nint p_k, byte* p_s_p, nuint p_s_l);
     [DllImport(Lib)] public static extern nint rune_gen_rune_kit__context_menu(byte* p_key_p, nuint p_key_l, uint p_trigger, bool p_point_has, global::Rune.PointerPress p_point);
-    [DllImport(Lib)] public static extern void rune_gen_cb_120(delegate* unmanaged<nint, global::Rune.Color, global::Rune.Color> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_127(delegate* unmanaged<nint, global::Rune.Color, global::Rune.Color> f);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_kit__css__box_shadows(byte* p_src_p, nuint p_src_l, nint p_color);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_kit__diff__parse(byte* p_patch_p, nuint p_patch_l);
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_rune_kit__file_icon(byte* p_name_p, nuint p_name_l);
@@ -15348,6 +16115,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern byte rune_gen_const_rune__max_list_level();
     [DllImport(Lib)] public static extern nuint rune_gen_const_rune__max_native_materials();
     [DllImport(Lib)] public static extern nuint rune_gen_const_rune__clipboard__max_image_bytes();
+    [DllImport(Lib)] public static extern Utf8Ref rune_gen_const_rune__dirs__root_env();
     [DllImport(Lib)] public static extern float rune_gen_const_rune__drag_out__drag_threshold();
     [DllImport(Lib)] public static extern Utf8Ref rune_gen_const_rune__edge__all();
     [DllImport(Lib)] public static extern nint rune_gen_const_rune__edge__fast_feather();

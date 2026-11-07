@@ -481,3 +481,13 @@ pub fn pixel_buffer_from_iosurface(raw: usize, color: rune::native_surface::Colo
     // SAFETY: the caller keeps the promise above, which is the one Rune asks for.
     unsafe { rune::native_surface::macos::PixelBuffer::from_iosurface(raw as *mut std::ffi::c_void, color) }
 }
+
+/// The environment as strings: a variable that isn't valid UTF-8 reads as unset. covers: AppDirs::from_env
+pub fn app_dirs_from_env(app_id: &str, var: impl Fn(&str) -> Option<String>) -> Option<rune::dirs::AppDirs> {
+    rune::dirs::AppDirs::from_env(app_id, |name| var(name).map(Into::into))
+}
+
+/// The environment as strings, as `app_dirs_from_env`. covers: rune::dirs::home_from
+pub fn home_from(var: impl Fn(&str) -> Option<String>) -> Option<PathBuf> {
+    rune::dirs::home_from(|name| var(name).map(Into::into))
+}
