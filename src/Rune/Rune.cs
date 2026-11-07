@@ -350,10 +350,39 @@ public readonly unsafe partial struct App
 #pragma warning restore CA2255
     internal static void Load()
     {
+        if (OperatingSystem.IsWindows())
+        {
+            SingleThreadedMainThread();
+        }
         Callbacks.Register();
         Native.rune_set_release(&OnRelease);
         Native.rune_set_equals(&OnEquals);
     }
+
+    // .NET puts the main thread in COM's multithreaded apartment unless Main has [STAThread], which
+    // top-level statements can't carry. winit's windows need a single-threaded one (OleInitialize,
+    // for drag and drop) and panic otherwise, so swap it, as [STAThread] would. NativeAOT runs module
+    // initializers on the main thread before Main. A thread that only joined the apartment
+    // implicitly is left alone.
+    private static void SingleThreadedMainThread()
+    {
+        const int AptTypeMta = 1, QualifierNone = 0, CoinitApartmentThreaded = 2;
+        int type, qualifier;
+        if (CoGetApartmentType(&type, &qualifier) == 0 && type == AptTypeMta && qualifier == QualifierNone)
+        {
+            CoUninitialize();
+            CoInitializeEx(0, CoinitApartmentThreaded);
+        }
+    }
+
+    [DllImport("ole32.dll")]
+    private static extern int CoGetApartmentType(int* type, int* qualifier);
+
+    [DllImport("ole32.dll")]
+    private static extern void CoUninitialize();
+
+    [DllImport("ole32.dll")]
+    private static extern int CoInitializeEx(nint reserved, int coinit);
 
     [UnmanagedCallersOnly]
     private static byte OnEquals(nint a, nint b) => Equals(Interop.Target(a), Interop.Target(b)) ? (byte)1 : (byte)0;

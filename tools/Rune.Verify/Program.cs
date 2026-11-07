@@ -116,6 +116,7 @@ void Case(string rust, string cs, string label, params string[] args)
     else
     {
         bad.Add("stdout");
+        FirstDifference(ro, co);
     }
     if (!Clean(rr.Err, r).SequenceEqual(Clean(cr.Err, c)))
     {
@@ -223,9 +224,27 @@ static void Exec(string directory, string program, params string[] arguments)
 static string Expand(string arg, string side) => arg.Replace("@PNG", side + ".png").Replace("@TREE", side + ".tree");
 
 // Latin-1 maps bytes to chars one to one, so this edits the output without reencoding it.
+// Prints the first line where the two sides differ, so a failure in CI says what changed.
+static void FirstDifference(byte[] rust, byte[] cs)
+{
+    var r = Encoding.Latin1.GetString(rust).Split('\n');
+    var c = Encoding.Latin1.GetString(cs).Split('\n');
+    for (int i = 0; i < Math.Max(r.Length, c.Length); i++)
+    {
+        var (rl, cl) = (i < r.Length ? r[i] : "<end>", i < c.Length ? c[i] : "<end>");
+        if (rl != cl)
+        {
+            Console.WriteLine($"     line {i + 1}: rust {rl}");
+            Console.WriteLine($"     line {i + 1}: c#   {cl}");
+            return;
+        }
+    }
+}
+
 static byte[] Clean(byte[] output, string side)
 {
-    var text = Encoding.Latin1.GetString(output).Replace(side, "X");
+    // C# writes \r\n on Windows and Rust writes \n, so lines are compared, not their endings.
+    var text = Encoding.Latin1.GetString(output).Replace(side, "X").Replace("\r\n", "\n");
     return Encoding.Latin1.GetBytes(Regex.Replace(text, @"^rune: .*(\r?\n|\z)", "", RegexOptions.Multiline));
 }
 
