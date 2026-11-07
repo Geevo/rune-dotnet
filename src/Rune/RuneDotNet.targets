@@ -1,0 +1,7 @@
+<!-- Imported into every app that references the RuneDotNet package. -->
+<Project>
+  <PropertyGroup>
+    <RunePackageRoot>$(MSBuildThisFileDirectory)../</RunePackageRoot>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)Rune.targets" />
+</Project>

@@ -9,4 +9,39 @@
     <AssemblyName>Rune</AssemblyName>
     <Version>0.1.0</Version>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>RuneDotNet</PackageId>
+    <Authors>Geevo</Authors>
+    <Description>C# bindings for Rune, the Rust UI framework, for NativeAOT apps. Rune is linked statically, so an app ships as one native executable.</Description>
+    <PackageTags>rune;ui;gui;nativeaot;aot;desktop;bindings</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Geevo/rune-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Geevo/rune-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <!-- Folder holding <rid>/ folders of native libraries, as the release workflow stages them. -->
+    <RuneNativeRoot Condition="'$(RuneNativeRoot)' == ''">$(MSBuildThisFileDirectory)../../artifacts/native/</RuneNativeRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+    <None Include="Rune.targets;RuneDotNet.targets" Pack="true" PackagePath="buildTransitive/" />
+    <!-- Not runtimes/<rid>/native/, which NuGet copies beside the app: the linker reads them from
+         the package folder. -->
+    <None Include="$(RuneNativeRoot)linux-x64/*" Pack="true" PackagePath="native/linux-x64/" />
+    <None Include="$(RuneNativeRoot)win-x64/*" Pack="true" PackagePath="native/win-x64/" />
+    <None Include="$(RuneNativeRoot)osx-arm64/*" Pack="true" PackagePath="native/osx-arm64/" />
+  </ItemGroup>
+
+  <Target Name="RuneCheckNative" BeforeTargets="GenerateNuspec">
+    <ItemGroup>
+      <RuneRid Include="linux-x64;win-x64;osx-arm64" />
+      <RuneMissingRid Include="@(RuneRid)" Condition="!Exists('$(RuneNativeRoot)%(Identity)')" />
+    </ItemGroup>
+    <Error Condition="'$(RuneRequireAllRids)' == 'true' And '@(RuneMissingRid)' != ''" Text="No native library for @(RuneMissingRid): stage each under $(RuneNativeRoot)&lt;rid&gt;/." />
+    <Warning Condition="'$(RuneRequireAllRids)' != 'true' And '@(RuneMissingRid)' != ''" Text="Packing without native libraries for @(RuneMissingRid)." />
+  </Target>
 </Project>

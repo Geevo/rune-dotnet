@@ -1,0 +1,22 @@
+<!-- Hello, built from the RuneDotNet package instead of the source tree, as a user's app would be.
+     Pack first, then: dotnet publish tests/PackageCheck -c Release -o out/packagecheck
+     nuget.config beside this file points at artifacts/packages and keeps restored packages in
+     out/packagecheck-packages: delete that folder after repacking the same version. -->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AssemblyName>packagecheck</AssemblyName>
+    <RuntimeIdentifier>$(NETCoreSdkPortableRuntimeIdentifier)</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishAot>true</PublishAot>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- The newest package in artifacts/packages, unless a version is given. -->
+    <RuneVersion Condition="'$(RuneVersion)' == ''">*</RuneVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../samples/Hello/Program.cs" />
+    <PackageReference Include="RuneDotNet" Version="$(RuneVersion)" />
+  </ItemGroup>
+</Project>

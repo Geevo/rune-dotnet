@@ -6,3 +6,4 @@ out/
 rune/
 # Cargo bin targets, not .NET output
 !native/rune-capi/src/bin/
+artifacts/

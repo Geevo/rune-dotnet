@@ -1,5 +1,4 @@
 # rune-dotnet
-
 C# bindings for [Rune](https://github.com/anomalyco/rune), the Rust UI framework, built for **NativeAOT with static linking**. Your app ships as one self-contained native executable: no .NET runtime to install and no Rust shared library beside it.
 
 ```csharp
@@ -66,13 +65,44 @@ The Windows and macOS link settings in [`src/Rune/Rune.targets`](src/Rune/Rune.t
 
 ## Getting started
 
-### Requirements
+### Install from NuGet
+
+The [`RuneDotNet`](https://www.nuget.org/packages/RuneDotNet) package carries the native library for Linux x64, Windows x64 and macOS arm64, so there's no Rust to install. You need the [.NET 10 SDK](https://dotnet.microsoft.com/download) and the [NativeAOT prerequisites](https://learn.microsoft.com/dotnet/core/deploying/native-aot/#prerequisites) for your platform (`clang` and `zlib1g-dev` on Linux), plus `libxkbcommon` on Linux.
+
+```bash
+dotnet new console -n MyApp
+cd MyApp
+dotnet add package RuneDotNet
+```
+
+Rune links into the executable at publish time, so the app must be published with NativeAOT. Add this to `MyApp.csproj`:
+
+```xml
+<PropertyGroup>
+  <RuntimeIdentifier>$(NETCoreSdkPortableRuntimeIdentifier)</RuntimeIdentifier>
+  <SelfContained>true</SelfContained>
+  <PublishAot>true</PublishAot>
+</PropertyGroup>
+```
+
+Put the example above in `Program.cs`, then:
+
+```bash
+dotnet publish -c Release -o out
+out/MyApp
+```
+
+`dotnet run` won't work: a JIT build can't load a static library, and the build warns if `PublishAot` is off. The output is one executable with nothing to ship beside it.
+
+### Build from source
+
+#### Requirements
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download), plus the [NativeAOT prerequisites](https://learn.microsoft.com/dotnet/core/deploying/native-aot/#prerequisites) for your platform. On Linux these are `clang` and `zlib1g-dev`.
 - [Rust](https://rustup.rs), with the toolchain Rune pins in its `rust-toolchain.toml`.
 - On Linux, `libxkbcommon` (`libxkbcommon-dev` on Debian and Ubuntu, `libxkbcommon-devel` on Fedora). If only the runtime library is installed, the build links against it directly.
 
-### Build
+#### Build
 
 ```bash
 git clone https://github.com/Geevo/rune-dotnet
@@ -100,7 +130,7 @@ Rune's headless tooling works unchanged from C#:
 out/hello/hello --snap on.png --scene on
 ```
 
-### Use it in your own app
+#### Use the source tree in your own app
 
 Reference `src/Rune/Rune.csproj`, import `src/Rune/Rune.targets`, and publish with `PublishAot` and `SelfContained` set to true. [`samples/Hello/Hello.csproj`](samples/Hello/Hello.csproj) is a complete example, including size settings.
 
@@ -113,6 +143,7 @@ Reference `src/Rune/Rune.csproj`, import `src/Rune/Rune.targets`, and publish wi
 | `native/rune-ext/` | Small Rust adapters for APIs a C ABI can't express as written (see below). |
 | `tools/Rune.BindGen/` | The generator. |
 | `tools/Rune.Verify/` | Builds every sample and its Rust twin and compares their output. |
+| `tests/PackageCheck/` | `Hello`, built from a local `RuneDotNet` package the way a user's app is. |
 | `samples/` | C# ports of Rune's examples and focused checks. See below. |
 | `rune/` | The upstream clone. Not tracked here and never modified. |
 
@@ -193,10 +224,25 @@ dotnet run -c Release --project tools/Rune.Verify -- --build
 
 This builds everything one link at a time, compares every sample with its Rust twin and runs the adapters. Both sides run on the same machine, so no reference output is stored. Leave out `--build` to reuse what's built. Add `--window` to also open a real window, which needs a display.
 
+### Packaging and releasing
+
+To try the package locally, stage the native library under `artifacts/native/<rid>/`, pack, and publish `tests/PackageCheck` from it:
+
+```bash
+mkdir -p artifacts/native/linux-x64
+cp target/release/librune_capi.a artifacts/native/linux-x64/
+dotnet pack src/Rune -c Release -o artifacts/packages
+dotnet publish tests/PackageCheck -c Release -o out/packagecheck
+```
+
+A local pack warns about the platforms it's missing. Delete `out/packagecheck-packages` before publishing a repack of the same version, or the old one is reused.
+
+A release bumps `<Version>` in `src/Rune/Rune.csproj` and both `Cargo.toml` files (the tools refuse to run if they differ), then pushes a `vX.Y.Z` tag. The [release workflow](.github/workflows/release.yml) builds the native library on each platform, packs all three into one package, tests it in a fresh app on each platform, then pushes it to NuGet and creates a GitHub release. It needs a `NUGET_API_KEY` secret in a `nuget` environment. Run it by hand to build and test a package without publishing.
+
 ### Build notes
 
 - Fat LTO peaks at about 2.5 GB per binary, and a plain `cargo build --release` links every twin at once, which can exhaust memory. Build them one at a time with `cargo build --release --bin NAME -j2`.
-- Without the xkbcommon development package there's no `libxkbcommon.so` to link against. The build then links `target/linkshim/libxkbcommon.so` to the runtime library, `libxkbcommon.so.0`, and apps link through the same directory.
+- Without the xkbcommon development package there's no `libxkbcommon.so` to link against. Cargo then links `target/linkshim/libxkbcommon.so` to the runtime library, `libxkbcommon.so.0`, and an app's publish does the same under its `obj/` folder.
 - For a smaller build without accessibility, D-Bus services, SVG or Ogg audio:
 
   ```bash

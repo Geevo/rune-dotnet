@@ -1,0 +1,127 @@
+name: release
+
+# A tag vX.Y.Z builds the native library on each platform, packs RuneDotNet with all of them,
+# installs the package into a fresh app on each platform, and only then publishes it.
+# Run it by hand to build and test a package without publishing.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, rid: linux-x64 }
+          - { os: windows-latest, rid: win-x64 }
+          - { os: macos-latest, rid: osx-arm64 }
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "RUNE_COMMIT=$(cat RUNE_COMMIT)" >> "$GITHUB_ENV"
+      - uses: actions/checkout@v4
+        with:
+          repository: anomalyco/rune
+          ref: ${{ env.RUNE_COMMIT }}
+          path: rune
+      - run: rustup update stable && rustup default stable
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libxkbcommon-dev
+      - run: cargo build --release --lib
+        working-directory: native/rune-capi
+      - name: Stage the library
+        run: |
+          dir="artifacts/native/${{ matrix.rid }}"
+          mkdir -p "$dir"
+          if [ "$RUNNER_OS" = Windows ]; then
+            cp target/release/rune_capi.lib "$dir/"
+            # The windows-targets import library, which only Cargo knows the path of.
+            find "$USERPROFILE/.cargo/registry/src" -path '*windows_x86_64_msvc-0.52.*' -name windows.0.52.0.lib -exec cp {} "$dir/" \; -quit
+            test -f "$dir/windows.0.52.0.lib"
+          else
+            cp target/release/librune_capi.a "$dir/"
+          fi
+          ls -la "$dir"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-${{ matrix.rid }}
+          path: artifacts/native
+
+  pack:
+    needs: native
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: native-*
+          path: artifacts/native
+          merge-multiple: true
+      - name: The tag must match the version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          version=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' src/Rune/Rune.csproj)
+          test "v$version" = "$GITHUB_REF_NAME" || { echo "tag $GITHUB_REF_NAME, but Rune.csproj says $version"; exit 1; }
+      - run: dotnet pack src/Rune -c Release -o artifacts/packages -p:RuneNativeRoot=$PWD/artifacts/native/ -p:RuneRequireAllRids=true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: package
+          path: artifacts/packages
+
+  test:
+    needs: pack
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      # The NativeAOT linker, xkbcommon, and software Vulkan and X, as the runners have no GPU or display.
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y clang zlib1g-dev libxkbcommon-dev mesa-vulkan-drivers xvfb
+      - uses: actions/download-artifact@v4
+        with:
+          name: package
+          path: artifacts/packages
+      - run: dotnet publish tests/PackageCheck -c Release -o out/packagecheck
+      - name: Run the app
+        run: |
+          run() { if [ "$RUNNER_OS" = Linux ]; then xvfb-run -a "$@"; else "$@"; fi; }
+          run out/packagecheck/packagecheck --selftest-unwind | tee unwind.txt
+          grep -q "unwind ok" unwind.txt
+          run out/packagecheck/packagecheck --snap on.png --scene on
+          test -s on.png
+
+  publish:
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    # Add required reviewers to this environment to approve each release by hand.
+    environment: nuget
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: package
+          path: artifacts/packages
+      - run: dotnet nuget push "artifacts/packages/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json
+      - run: gh release create "$GITHUB_REF_NAME" artifacts/packages/*.nupkg --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}
