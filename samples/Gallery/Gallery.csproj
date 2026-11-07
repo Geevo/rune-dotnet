@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>$(RuneTfm)</TargetFramework>
+    <TargetFramework Condition="'$(RuneTfm)' == ''">net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AssemblyName>gallery</AssemblyName>
+    <RuntimeIdentifier>$(NETCoreSdkPortableRuntimeIdentifier)</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishAot>true</PublishAot>
+    <!-- Size. None of these change Rune's behaviour. -->
+    <OptimizationPreference>Size</OptimizationPreference>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <UseSystemResourceKeys>true</UseSystemResourceKeys>
+    <EventSourceSupport>false</EventSourceSupport>
+    <StackTraceSupport>false</StackTraceSupport>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <DebuggerSupport>false</DebuggerSupport>
+    <StripSymbols>true</StripSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Rune/Rune.csproj" />
+    <!-- The SDK's default 10.0.12 ILCompiler carries a high-severity advisory (GHSA-p3jp-9v83-76w9). -->
+    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="10.0.14" Condition="'$(RuneTfm)' == ''" />
+  </ItemGroup>
+  <Import Project="../../src/Rune/Rune.targets" />
+</Project>

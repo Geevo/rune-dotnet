@@ -46,7 +46,7 @@ That's Rune's `examples/hello` in C# ([`samples/Hello`](samples/Hello/Program.cs
 
 - **All of Rune's public API is bound.** 4,645 of 4,645 items, including rune-kit, across 394 object types and 128 closure shapes. [COVERAGE.md](native/rune-capi/COVERAGE.md) lists every item and how it's reached.
 - **Generated, not hand-written.** [`tools/Rune.BindGen`](tools/Rune.BindGen) is a C# program that reads Rune's rustdoc JSON and writes both sides: the Rust C ABI shim and the C# API. Output is reproducible, and generation fails if anything public goes unbound, so an upstream change can't be silently missed.
-- **Checked against Rust.** Every sample has a Rust twin. [`tools/Rune.Verify`](tools/Rune.Verify) runs both through Rune's headless tooling with the same scripted input and compares output byte for byte.
+- **Checked against Rust.** Every sample except the gallery has a Rust twin. [`tools/Rune.Verify`](tools/Rune.Verify) runs both through Rune's headless tooling with the same scripted input and compares output byte for byte.
 - **Idiomatic C#.** Fluent builders, delegates for closures, `ReadOnlySpan<T>` for slices, `TimeSpan`, `Task`-returning file dialogs, and exceptions for Rust errors.
 - **Safe by default.** Use-after-free, use-after-consume and escaping borrowed references throw or abort cleanly instead of corrupting memory. [`samples/Hazards`](samples/Hazards/Program.cs) shows each case.
 - **Cross-platform tooling.** Generation and verification are plain .NET programs with no shell scripts.
@@ -130,6 +130,12 @@ Rune's headless tooling works unchanged from C#:
 out/hello/hello --snap on.png --scene on
 ```
 
+For a tour of rune-kit, publish [`samples/Gallery`](samples/Gallery/Program.cs) the same way. It has a page for each family of widgets, three themes in light and dark, and a scene for each overlay:
+
+```bash
+out/gallery/gallery --snap menu.png --scene menu --at 0.5
+```
+
 #### Use the source tree in your own app
 
 Reference `src/Rune/Rune.csproj`, import `src/Rune/Rune.targets`, and publish with `PublishAot` and `SelfContained` set to true. [`samples/Hello/Hello.csproj`](samples/Hello/Hello.csproj) is a complete example, including size settings.
@@ -149,6 +155,7 @@ Reference `src/Rune/Rune.csproj`, import `src/Rune/Rune.targets`, and publish wi
 
 Samples:
 
+- `Gallery`: as many rune-kit widgets as fit, live, across six pages and three themes. It's a showcase, so it has no Rust twin.
 - `Hello`, `Todo`, `Settings`, `Shapes`, `Odometer`, `Matched`, `Texts`: ports of Rune's examples.
 - `KitCheck`: rune-kit, owned objects and closures.
 - `SpecCheck`: `AppSpec`'s optional fields. Run it from the repository root.
