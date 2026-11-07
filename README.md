@@ -6,26 +6,42 @@ C# bindings for [Rune](https://github.com/anomalyco/rune), the Rust UI framework
 using Rune;
 using static Rune.Ui;
 
-App.Run(new AppSpec<State>("Hello", (320f, 200f), () => new State(), View));
+App.Run(new AppSpec<LightState>("Hello", (320f, 200f), () => new LightState(), View));
 
-static El View(State s, Cx _)
+static El View(LightState state, Cx context)
 {
-    var t = Tok.Theme(true);
-    var toggle = El().Key("switch").Role("switch").Label("Lights").Checked(s.On).Focusable(true)
+    var theme = Tok.Theme(dark: true);
+
+    var knob = El().Key("knob")
+        .Size(18f, 18f).Radius(9f)
+        .Fill(theme.Knob)
+        .Absolute(state.On ? 18f : 2f, 2f);
+
+    var toggle = El().Key("switch")
+        .Role("switch").Label("Lights").Checked(state.On).Focusable(true)
         .Size(38f, 22f).Radius(11f)
-        .Fill(s.On ? Tok.Accent(0, true) : t.ControlOff)
+        .Fill(state.On ? Tok.Accent(0, dark: true) : theme.ControlOff)
         .Motion(TokMotion.Snappy)
-        .OnPress<State>(s => s.On = !s.On)
-        .Child(El().Key("knob").Size(18f, 18f).Radius(9f).Fill(t.Knob).Absolute(s.On ? 18f : 2f, 2f));
-    return Col().WFull().HFull().Center().Gap(16f).Fill(t.Bg)
-        .Child(Text(s.On ? "Lights on" : "Lights off").Font(TokType.Title).Color(t.Text))
+        .OnPress<LightState>(state => state.On = !state.On)
+        .Child(knob);
+
+    var label = Text(state.On ? "Lights on" : "Lights off")
+        .Font(TokType.Title)
+        .Color(theme.Text);
+
+    return Col().WFull().HFull().Center().Gap(16f)
+        .Fill(theme.Bg)
+        .Child(label)
         .Child(toggle);
 }
 
-sealed class State { public bool On; }
+sealed class LightState
+{
+    public bool On { get; set; }
+}
 ```
 
-That's Rune's `examples/hello`, line for line ([`samples/Hello`](samples/Hello/Program.cs)).
+That's Rune's `examples/hello` in C# ([`samples/Hello`](samples/Hello/Program.cs)).
 
 ## Highlights
 

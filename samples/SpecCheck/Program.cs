@@ -16,7 +16,7 @@ App.Run(new AppSpec<State>("SpecCheck", (360f, 220f), () => new State(), View)
     OnKey = OnKey,
 });
 
-static void Setup(State s, Waker waker)
+static void Setup(State state, Waker waker)
 {
     var other = waker.Clone();
     var thread = new Thread(() =>
@@ -28,20 +28,20 @@ static void Setup(State s, Waker waker)
     thread.Join();
     waker.Wake();
     waker.Free();
-    s.Woken = true;
+    state.Woken = true;
 }
 
-static bool Poll(State s, double seconds, Tx tx)
+static bool Poll(State state, double seconds, Tx tx)
 {
     int tenths = (int)(seconds * 10);
-    bool changed = tenths != s.Tenths;
-    s.Tenths = tenths;
+    bool changed = tenths != state.Tenths;
+    state.Tenths = tenths;
     return changed;
 }
 
-static bool OnKey(State s, KeyEvent ev, Tx tx)
+static bool OnKey(State state, KeyEvent keyEvent, Tx tx)
 {
-    var key = ev.Key;
+    var key = keyEvent.Key;
     var name = key.Which switch
     {
         Key.Case.Text => $"text:{key.AsText()}",
@@ -49,33 +49,33 @@ static bool OnKey(State s, KeyEvent ev, Tx tx)
         Key.Case.Function => $"fn:{key.AsFunction()}",
         var other => other.ToString(),
     };
-    if (ev.Mods.Shift)
+    if (keyEvent.Mods.Shift)
     {
         name += " +shift";
     }
-    if (ev.IsCommand(new System.Text.Rune('k')))
+    if (keyEvent.IsCommand(new System.Text.Rune('k')))
     {
         name += " is-k";
     }
-    s.Last = name;
-    s.Keys++;
+    state.Last = name;
+    state.Keys++;
     tx.SetTitle(name);
     return true;
 }
 
-static El View(State s, Cx _)
+static El View(State state, Cx context)
 {
-    var t = Tok.Theme(true);
-    return Col().WFull().HFull().Center().Gap(8f).Fill(t.Bg)
-        .Child(Text(s.Woken ? "woken" : "asleep").Key("woken").Font(TokType.Body).Color(t.Text))
-        .Child(Text($"tenths {s.Tenths}").Key("tenths").Font(TokType.Body).Color(t.Text))
-        .Child(Text($"{s.Keys} keys, last {s.Last}").Key("keys").Font(TokType.Body).Color(t.Text));
+    var theme = Tok.Theme(dark: true);
+    return Col().WFull().HFull().Center().Gap(8f).Fill(theme.Bg)
+        .Child(Text(state.Woken ? "woken" : "asleep").Key("woken").Font(TokType.Body).Color(theme.Text))
+        .Child(Text($"tenths {state.Tenths}").Key("tenths").Font(TokType.Body).Color(theme.Text))
+        .Child(Text($"{state.Keys} keys, last {state.Last}").Key("keys").Font(TokType.Body).Color(theme.Text));
 }
 
 sealed class State
 {
-    public bool Woken;
-    public int Tenths;
-    public int Keys;
-    public string Last = "none";
+    public bool Woken { get; set; }
+    public int Tenths { get; set; }
+    public int Keys { get; set; }
+    public string Last { get; set; } = "none";
 }

@@ -6,31 +6,31 @@ using static Rune.Ui;
 
 var mode = Environment.GetEnvironmentVariable("HAZ") ?? "";
 
-App.Run(new AppSpec<State>("Hazards", (300f, 200f), () => new State(), (s, cx) => View(s, cx, mode))
+App.Run(new AppSpec<State>("Hazards", (300f, 200f), () => new State(), (state, context) => View(state, context, mode))
 {
-    OnKey = (s, e, tx) =>
+    OnKey = (state, keyEvent, tx) =>
     {
-        s.Held = e.Key;
-        s.HeldTx = tx;
-        s.Frames++;
+        state.Held = keyEvent.Key;
+        state.HeldTx = tx;
+        state.Frames++;
         return true;
     },
-    Poll = (s, t, tx) => mode == "handles",
+    Poll = (state, time, tx) => mode == "handles",
 });
 
-static El View(State s, Cx cx, string mode)
+static El View(State state, Cx context, string mode)
 {
-    var root = Col().Key("root").WFull().HFull().Padding(10f).OnPress((State s) => s.Frames++);
-    root = root.Child(Text($"frame {s.Frames}").Key("count"));
+    var root = Col().Key("root").WFull().HFull().Padding(10f).OnPress((State state) => state.Frames++);
+    root = root.Child(Text($"frame {state.Frames}").Key("count"));
     switch (mode)
     {
         case "el-twice":
-            var e = Text("twice");
-            root = root.Child(e).Child(e);
+            var element = Text("twice");
+            root = root.Child(element).Child(element);
             break;
         case "el-static":
             // A cached element is gone after its view. Its old id is the next view's third slot.
-            if (s.Frames == 0)
+            if (state.Frames == 0)
             {
                 State.Cached = Text("cached");
                 root = root.Child(State.Cached.Value);
@@ -42,61 +42,69 @@ static El View(State s, Cx cx, string mode)
             }
             break;
         case "held-key":
-            if (s.Frames > 0)
+            if (state.Frames > 0)
             {
-                Console.Error.WriteLine($"held key: {s.Held.Which}");
+                Console.Error.WriteLine($"held key: {state.Held.Which}");
             }
             break;
         case "handles":
             for (int i = 0; i < 500; i++)
             {
-                int n = i;
-                root = root.Child(El().Key($"h{i}").OnPress((State s) => s.Frames += n));
+                int step = i;
+                root = root.Child(El().Key($"h{i}").OnPress((State state) => state.Frames += step));
             }
-            if (s.Frames % 200 == 0)
+            if (state.Frames % 200 == 0)
             {
-                Console.Error.WriteLine($"heap {GC.GetTotalMemory(true) / 1024} KiB at frame {s.Frames}");
+                Console.Error.WriteLine($"heap {GC.GetTotalMemory(true) / 1024} KiB at frame {state.Frames}");
             }
-            s.Frames++;
+            state.Frames++;
             break;
         case "transition-reuse":
-            var tr = Transition.Scale(0.9f);
-            root = root.Child(El().Key("a").Transition(tr)).Child(El().Key("b").Transition(tr));
+            var transition = Transition.Scale(0.9f);
+            root = root.Child(El().Key("a").Transition(transition)).Child(El().Key("b").Transition(transition));
             break;
         case "span-reuse":
             Span[] spans = [Span.New(0, 2).Bold()];
             root = root.Child(Rich("ab", spans)).Child(Rich("cd", spans));
             break;
         case "builder-reuse":
-            var k = Kit.Neutral(true);
-            var b = Button.New("x");
-            root = root.Child(b.Build(k)).Child(b.Build(k));
-            k.Free();
+        {
+            var kit = Kit.Neutral(true);
+            var button = Button.New("x");
+            root = root.Child(button.Build(kit)).Child(button.Build(kit));
+            kit.Free();
             break;
+        }
         case "builder-old":
-            var k2 = Kit.Neutral(true);
-            var b2 = Button.New("x");
-            var b3 = b2.OnPress((State s) => s.Frames++);
-            root = root.Child(b2.Build(k2));
-            k2.Free();
+        {
+            var kit = Kit.Neutral(true);
+            var original = Button.New("x");
+            var withPress = original.OnPress((State state) => state.Frames++);
+            root = root.Child(original.Build(kit));
+            kit.Free();
             break;
+        }
         case "free-twice":
-            var p = Path.New();
-            p.Free();
-            p.Free();
+            var path = Path.New();
+            path.Free();
+            path.Free();
             break;
         case "free-borrowed":
-            var k3 = Kit.Neutral(true);
-            k3.Ty.Free();
+        {
+            var kit = Kit.Neutral(true);
+            kit.Ty.Free();
             break;
+        }
         case "set-borrowed":
-            var k4 = Kit.Neutral(true);
-            var k5 = Kit.Neutral(false);
-            k4.Elevation = k5.Elevation;
-            root = root.Child(Button.New("x").Build(k4));
-            k4.Free();
-            k5.Free();
+        {
+            var darkKit = Kit.Neutral(true);
+            var lightKit = Kit.Neutral(false);
+            darkKit.Elevation = lightKit.Elevation;
+            root = root.Child(Button.New("x").Build(darkKit));
+            darkKit.Free();
+            lightKit.Free();
             break;
+        }
         case "default-struct":
             root = root.Child(default(El));
             break;
@@ -108,9 +116,9 @@ static El View(State s, Cx cx, string mode)
             throw new InvalidOperationException("from the view");
         case "off-thread":
             El made = default;
-            var t = new System.Threading.Thread(() => made = Text("other thread"));
-            t.Start();
-            t.Join();
+            var thread = new System.Threading.Thread(() => made = Text("other thread"));
+            thread.Start();
+            thread.Join();
             root = root.Child(made);
             break;
         case "text-nul":

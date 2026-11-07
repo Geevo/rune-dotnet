@@ -46,16 +46,16 @@ Check("io error", Ext.IoError("boom").ToString().Contains("boom"));
 
 // Lists and tuples
 var menu = Ext.PopupPicker(["a", "b"], ["Apple", "Banana"], "b");
-Check("popup picker", menu.Find("b") is { } b && b.Title() == "Banana" && b.IsChecked() && menu.Find("a") is { } a && !a.IsChecked());
+Check("popup picker", menu.Find("b") is { } banana && banana.Title() == "Banana" && banana.IsChecked() && menu.Find("a") is { } apple && !apple.IsChecked());
 var order = new List<nuint>();
-var steps = Ext.ChoreographyStagger(Choreography.New(), Cue.Now(), Stagger.New(0.1f), 3, (_, i) => order.Add(i));
+var steps = Ext.ChoreographyStagger(Choreography.New(), Cue.Now(), Stagger.New(0.1f), 3, (_, index) => order.Add(index));
 Check("stagger", steps.Length == 3 && order.SequenceEqual(new nuint[] { 0, 1, 2 }));
 
 // Trees
-var files = Ext.FileTreeBuild(FileTree.New(), ["src/main.rs", "src/lib.rs", "README.md"], p => "data:" + p);
+var files = Ext.FileTreeBuild(FileTree.New(), ["src/main.rs", "src/lib.rs", "README.md"], path => "data:" + path);
 Check("file tree rows", files.Row(0) is { } first && first.Item1.Name == "src");
-Check("file tree data", Enumerable.Range(0, 4).Select(i => files.Row((nuint)i)).Any(r => r is { } x && Ext.FileNodeData(x.Item1) is string d && d == "data:README.md"));
-Check("tree item file", files.Row(0) is { } r0 && Ext.TreeItemFile(r0.Item1, r0.Item2.Id, files) is not null);
+Check("file tree data", Enumerable.Range(0, 4).Select(i => files.Row((nuint)i)).Any(row => row is { } found && Ext.FileNodeData(found.Item1) is string data && data == "data:README.md"));
+Check("tree item file", files.Row(0) is { } firstRow && Ext.TreeItemFile(firstRow.Item1, firstRow.Item2.Id, files) is not null);
 var tree = TreeModel.New();
 tree.Insert(null, "root", "R");
 tree.Insert("root", "kid", "K");
@@ -73,33 +73,33 @@ Check("snapshot outside a scope", (string)Ext.MemoSnapshot("k", "v") == "v");
 
 // A worker thread calling back into C#
 var latest = Latest.CreateDefault();
-Ext.LatestRequest(latest, 20, k => (int)k + 1);
+Ext.LatestRequest(latest, 20, key => (int)key + 1);
 Check("latest request", Wait(latest) is 21);
 int ran = 0;
-Ext.LatestRequestIfChanged(latest, "same", k =>
+Ext.LatestRequestIfChanged(latest, "same", key =>
 {
     Interlocked.Increment(ref ran);
-    return k;
+    return key;
 });
 Wait(latest);
-Ext.LatestRequestIfChanged(latest, new string("same".AsSpan()), k =>
+Ext.LatestRequestIfChanged(latest, new string("same".AsSpan()), key =>
 {
     Interlocked.Increment(ref ran);
-    return k;
+    return key;
 });
 Thread.Sleep(50);
 Check("equal keys use C# Equals", ran == 1);
-Ext.LatestRequestOpt(latest, 1, k => k, r => false);
+Ext.LatestRequestOpt(latest, 1, key => key, result => false);
 Thread.Sleep(50);
 Check("refused result", latest.Take() is null);
 
-static object? Wait(Latest l)
+static object? Wait(Latest latest)
 {
     for (int i = 0; i < 500; i++)
     {
-        if (l.Take() is { } v)
+        if (latest.Take() is { } value)
         {
-            return v;
+            return value;
         }
         Thread.Sleep(2);
     }
@@ -107,34 +107,34 @@ static object? Wait(Latest l)
 }
 
 // Function pointer fields, and Display and Hash taking strings
-var spec = AppSpec.New<State>("ext", (320f, 200f), static () => new State(), static (s, cx) => Text("one").Key("t"));
-Ext.SpecSetView<State>(spec, static (s, cx) => Text("two").Key("t").VirtualRowsVersion("v1"));
-spec.SetScenes<State>(("bump", static s => s.Bumps++), ("jump", static s => s.Bumps += 10));
+var spec = AppSpec.New<State>("ext", (320f, 200f), static () => new State(), static (state, context) => Text("one").Key("t"));
+Ext.SpecSetView<State>(spec, static (state, context) => Text("two").Key("t").VirtualRowsVersion("v1"));
+spec.SetScenes<State>(("bump", static state => state.Bumps++), ("jump", static state => state.Bumps += 10));
 Check("scene ran", Tooling.InitialState<State>(spec, "jump").Bumps == 10);
 Check("second scene ran", Tooling.InitialState<State>(spec, "bump").Bumps == 1);
-Ext.SpecSetPoll<State>(spec, static (s, t, tx) =>
+Ext.SpecSetPoll<State>(spec, static (state, time, tx) =>
 {
-    s.Polls++;
+    state.Polls++;
     tx.TraceEvent("polled");
     return false;
 });
 var state = new State();
-var rt = Runtime.New(state, View, (320f, 200f), Env.New(true, 2f));
-Ext.RuntimeSetPoll<State>(rt, static (s, t, tx) =>
+var runtime = Runtime.New(state, View, (320f, 200f), Env.New(true, 2f));
+Ext.RuntimeSetPoll<State>(runtime, static (state, time, tx) =>
 {
-    s.Polls++;
+    state.Polls++;
     return false;
 });
-rt.Frame(0.016);
-rt.TraceEvent("frame");
+runtime.Frame(0.016);
+runtime.TraceEvent("frame");
 Check("poll ran", state.Polls > 0);
-rt.Frame(0.016);
+runtime.Frame(0.016);
 Check("layout read", state.Width > 0f);
-Ext.RuntimeClearPoll(rt);
+Ext.RuntimeClearPoll(runtime);
 Check("highlighter key", Highlighter.Builtin().Key("theme").ToString() != null);
 Check("number and byte keys", Highlighter.Builtin().Key(7).Key(7UL).Key(new byte[] { 1, 2 }).Key(new byte[0]).ToString() != null);
-rt.TraceEvent(42);
-rt.TraceEvent(1.5);
+runtime.TraceEvent(42);
+runtime.TraceEvent(1.5);
 
 // Awaitable file dialogs, on Rune's scripted backend
 var dialogs = FileDialogs.Scripted([
@@ -152,9 +152,9 @@ try
     failed.GetAwaiter().GetResult();
     Check("dialog failure faults the task", false);
 }
-catch (RuneException e)
+catch (RuneException ex)
 {
-    Check("dialog failure faults the task", e.Message.Length > 0);
+    Check("dialog failure faults the task", ex.Message.Length > 0);
 }
 
 // macOS-only API: this branch has to compile and link everywhere
@@ -169,15 +169,15 @@ Check("astc format", astc.ToString().Contains("B6x6") && astc.ToString().Contain
 
 // A sink for MotionTrace
 var trace = new StringBuilder();
-var mt = Ext.MotionTraceNew(b =>
+var motionTrace = Ext.MotionTraceNew(bytes =>
 {
     lock (trace)
     {
-        trace.Append(Encoding.UTF8.GetString(b));
+        trace.Append(Encoding.UTF8.GetString(bytes));
     }
 }, Ext.TraceHeader("ext", 320f, 200f, 60f, 2f));
-mt.Event("hello");
-mt.Free();
+motionTrace.Event("hello");
+motionTrace.Free();
 Check("motion trace sink", trace.ToString().Contains("\"header\""));
 
 if (args.Contains("--gpu"))
@@ -194,7 +194,7 @@ var cells = Ext.GateRun(["tap/wide", "tap/narrow"], name =>
     var run = MotionGateRun.New(Runtime.New(new State(), GateView, (320f, 200f), Env.New(true, 1f)), 120.0);
     run.Idle(0.1);
     run.Step();
-    run.Act("tap", static rt => MotionGateRun.Tap(rt, "go"));
+    run.Act("tap", static runtime => MotionGateRun.Tap(runtime, "go"));
     run.Play(0.25);
     return Ext.GateRecording(run);
 }, "");
@@ -232,9 +232,9 @@ if (args.Contains("--compositor"))
     var png = at < args.Length ? args[at] : "compositor.png";
     var surface = NativeSurface.New();
     int submitted = 0, completed = 0;
-    Ext.SurfaceSetObserver(surface, t =>
+    Ext.SurfaceSetObserver(surface, timing =>
     {
-        if (t.CompletedAt is null)
+        if (timing.CompletedAt is null)
         {
             Interlocked.Increment(ref submitted);
         }
@@ -250,30 +250,30 @@ if (args.Contains("--compositor"))
     int featureAsks = 0, renders = 0;
     (uint, uint) size = default;
 
-    void Render(Frame f)
+    void Render(Frame frame)
     {
         renders++;
-        size = f.Size;
-        f.DrawUi();
-        var ui = f.Ui;
+        size = frame.Size;
+        frame.DrawUi();
+        var ui = frame.Ui;
         var clear = (0f, 0f, 0f, 1f);
-        var count = (uint)f.Rt.GetInstances().Length;
-        Ext.RendererUploadImages(ui, f.Device, f.Queue, f.Rt);
-        Ext.RendererDrawWith(ui, f.Encoder, f.Target, clear, (pass, site) =>
+        var count = (uint)frame.Rt.GetInstances().Length;
+        Ext.RendererUploadImages(ui, frame.Device, frame.Queue, frame.Rt);
+        Ext.RendererDrawWith(ui, frame.Encoder, frame.Target, clear, (pass, site) =>
         {
             Hit($"draw {site.Mark}");
             if (site.Mark == 42)
             {
-                Ext.RendererDrawRangeWith(ui, pass, f.Format, site.Index, site.Index + 1, (_, inner) => Hit($"range {inner.Mark}"));
+                Ext.RendererDrawRangeWith(ui, pass, frame.Format, site.Index, site.Index + 1, (_, inner) => Hit($"range {inner.Mark}"));
             }
         });
-        Ext.RendererDrawWithBackdrop(ui, f.Encoder, f.Target, clear, (_, site) => Hit($"backdrop {site.Mark}"), (_, site) => Hit($"backdrop draw {site.Mark}"));
-        Ext.RendererEncodeLayersWith(ui, f.Encoder, (_, site) => Hit($"layer {site.Mark}"));
-        Ext.RendererEncodeLayersWithBackdrop(ui, f.Encoder, (_, site) => Hit($"layer backdrop {site.Mark}"), (_, site) => Hit($"layer draw {site.Mark}"));
-        Ext.RendererDrawTargetRangeWith(ui, f.Encoder, f.Target, f.Format, Ext.LoadKeep(), 0, count, (_, site) => Hit($"target backdrop {site.Mark}"), (_, site) => Hit($"target draw {site.Mark}"));
+        Ext.RendererDrawWithBackdrop(ui, frame.Encoder, frame.Target, clear, (_, site) => Hit($"backdrop {site.Mark}"), (_, site) => Hit($"backdrop draw {site.Mark}"));
+        Ext.RendererEncodeLayersWith(ui, frame.Encoder, (_, site) => Hit($"layer {site.Mark}"));
+        Ext.RendererEncodeLayersWithBackdrop(ui, frame.Encoder, (_, site) => Hit($"layer backdrop {site.Mark}"), (_, site) => Hit($"layer draw {site.Mark}"));
+        Ext.RendererDrawTargetRangeWith(ui, frame.Encoder, frame.Target, frame.Format, Ext.LoadKeep(), 0, count, (_, site) => Hit($"target backdrop {site.Mark}"), (_, site) => Hit($"target draw {site.Mark}"));
     }
 
-    var drawn = AppSpec.New<State>("compositor", (320f, 200f), static () => new State(), (s, cx) =>
+    var drawn = AppSpec.New<State>("compositor", (320f, 200f), static () => new State(), (state, context) =>
         Col().WFull().HFull().Gap(4f)
             .Child(Effect(42).Size(60f, 20f))
             .Child(Effect(43).EffectBackdrop(true).Size(60f, 20f))
@@ -286,9 +286,9 @@ if (args.Contains("--compositor"))
     }, Render, static () => false, static _ => "extcheck");
     composed.Args(["--snap", png]).TryRun();
 
-    foreach (var (what, n) in hits.OrderBy(h => h.Key, StringComparer.Ordinal))
+    foreach (var (what, count) in hits.OrderBy(hit => hit.Key, StringComparer.Ordinal))
     {
-        Console.WriteLine($"     {what}: {n}");
+        Console.WriteLine($"     {what}: {count}");
     }
     Console.WriteLine($"     surface: {submitted} submitted, {completed} completed");
     Check("compositor asked for features", featureAsks > 0);
@@ -306,12 +306,12 @@ if (args.Contains("--window"))
 {
     string? raw = null;
     int ready = 0;
-    var shown = App.New(AppSpec.New<State>("extcheck", (240f, 120f), static () => new State(), static (s, cx) => Text("window check")));
+    var shown = App.New(AppSpec.New<State>("extcheck", (240f, 120f), static () => new State(), static (state, context) => Text("window check")));
     var handle = shown.Handle();
-    shown.Args([]).OnReady(w =>
+    shown.Args([]).OnReady(window =>
     {
         ready++;
-        Ext.WindowWithRawHandle(w, h => raw = h.ToString());
+        Ext.WindowWithRawHandle(window, rawHandle => raw = rawHandle.ToString());
         handle.Quit();
     }).TryRun();
     Console.WriteLine($"     {raw}");
@@ -321,21 +321,21 @@ if (args.Contains("--window"))
 
 Console.WriteLine($"{passed} checks passed");
 
-static El View(State s, Cx cx)
+static El View(State state, Cx context)
 {
-    if (Ext.CxLayoutWith(cx, "t", r => r.Item3) is float w)
+    if (Ext.CxLayoutWith(context, "t", rect => rect.Item3) is float width)
     {
-        s.Width = w;
+        state.Width = width;
     }
     return Text("x").Key("t");
 }
 
-static El GateView(State s, Cx cx) =>
-    Col().WFull().HFull().Child(El().Key("go").Size(s.Bumps > 0 ? 80f : 40f, 20f).Motion(TokMotion.Snappy).OnPress<State>(static s => s.Bumps++));
+static El GateView(State state, Cx context) =>
+    Col().WFull().HFull().Child(El().Key("go").Size(state.Bumps > 0 ? 80f : 40f, 20f).Motion(TokMotion.Snappy).OnPress<State>(static state => state.Bumps++));
 
 sealed class State
 {
-    public int Bumps;
-    public int Polls;
-    public float Width;
+    public int Bumps { get; set; }
+    public int Polls { get; set; }
+    public float Width { get; set; }
 }
