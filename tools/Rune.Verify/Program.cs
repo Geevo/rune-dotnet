@@ -12,6 +12,11 @@ var exe = OperatingSystem.IsWindows() ? ".exe" : "";
 int pass = 0, fail = 0;
 
 Environment.CurrentDirectory = RepositoryRoot();
+if (Pins.Problem() is { } problem)
+{
+    Console.Error.WriteLine(problem);
+    return 1;
+}
 if (args.Contains("--build"))
 {
     Build();

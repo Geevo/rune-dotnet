@@ -1,6 +1,6 @@
 [package]
 name = "rune-ext"
-version = "0.0.1"
+version = "0.1.0"
 edition = "2024"
 license = "MIT"
 description = "Concrete signatures for the parts of Rune's API a C ABI can't express, so the generator can bind them."

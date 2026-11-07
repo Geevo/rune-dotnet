@@ -5,6 +5,11 @@ using System.Diagnostics;
 using Rune.BindGen;
 
 Environment.CurrentDirectory = RepositoryRoot();
+if (Pins.Problem() is { } problem)
+{
+    Console.Error.WriteLine(problem);
+    return 1;
+}
 if (args.Length is > 0 and < 4)
 {
     Console.Error.WriteLine("usage: Rune.BindGen [<out.rs> <out.cs> <report.md> <rune.json> [more.json...]]");

@@ -16,7 +16,7 @@
     <NativeLibrary Include="$(RuneLib)" />
   </ItemGroup>
   <ItemGroup Condition="'$(RuneIsLinux)' == 'true'">
-    <LinkerArg Include="-L$(RuneRoot)native/linkshim" />
+    <LinkerArg Include="-L$(RuneRoot)target/linkshim" />
     <!-- Only keep the DT_NEEDED entry if the app reaches xkbcommon, as a plain Rust link does. -->
     <LinkerArg Include="-Wl,--as-needed" />
     <LinkerArg Include="-lxkbcommon" />

@@ -4,9 +4,6 @@ on:
   push:
   pull_request:
 
-env:
-  RUNE_COMMIT: 53c7f60f51ce12bd5da53145d9d86ce1552324e4
-
 jobs:
   build:
     strategy:
@@ -17,6 +14,9 @@ jobs:
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
+      # RUNE_COMMIT is the one place the Rune version lives.
+      - run: echo "RUNE_COMMIT=$(cat RUNE_COMMIT)" >> "$GITHUB_ENV"
+        shell: bash
       - uses: actions/checkout@v4
         with:
           repository: anomalyco/rune
@@ -45,6 +45,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # RUNE_COMMIT is the one place the Rune version lives.
+      - run: echo "RUNE_COMMIT=$(cat RUNE_COMMIT)" >> "$GITHUB_ENV"
+        shell: bash
       - uses: actions/checkout@v4
         with:
           repository: anomalyco/rune

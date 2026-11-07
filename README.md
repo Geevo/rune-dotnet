@@ -54,7 +54,7 @@ That's Rune's `examples/hello` in C# ([`samples/Hello`](samples/Hello/Program.cs
 
 ## Status
 
-Rune is in active development, and these bindings track a pinned upstream commit: `53c7f60f51ce12bd5da53145d9d86ce1552324e4`.
+Rune is in active development, and these bindings track one upstream commit, pinned in [`RUNE_COMMIT`](RUNE_COMMIT). Releases are tagged `vX.Y.Z`, and each release notes the Rune commit it binds.
 
 | | Linux x64 | Windows x64 | macOS arm64 |
 |---|---|---|---|
@@ -70,7 +70,7 @@ The Windows and macOS link settings in [`src/Rune/Rune.targets`](src/Rune/Rune.t
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download), plus the [NativeAOT prerequisites](https://learn.microsoft.com/dotnet/core/deploying/native-aot/#prerequisites) for your platform. On Linux these are `clang` and `zlib1g-dev`.
 - [Rust](https://rustup.rs), with the toolchain Rune pins in its `rust-toolchain.toml`.
-- On Linux, `libxkbcommon-dev`.
+- On Linux, `libxkbcommon` (`libxkbcommon-dev` on Debian and Ubuntu, `libxkbcommon-devel` on Fedora). If only the runtime library is installed, the build links against it directly.
 
 ### Build
 
@@ -78,8 +78,10 @@ The Windows and macOS link settings in [`src/Rune/Rune.targets`](src/Rune/Rune.t
 git clone https://github.com/Geevo/rune-dotnet
 cd rune-dotnet
 git clone https://github.com/anomalyco/rune
-git -C rune checkout 53c7f60f51ce12bd5da53145d9d86ce1552324e4
+git -C rune checkout $(cat RUNE_COMMIT)
 ```
+
+The last line works in bash, zsh and PowerShell.
 
 Build the native library, then publish a sample:
 
@@ -175,17 +177,13 @@ dotnet run -c Release --project tools/Rune.BindGen
 
 This rewrites `native/rune-capi/src/generated.rs`, `src/Rune/Generated.cs` and `native/rune-capi/COVERAGE.md`. It exits non-zero if any public API goes unbound and lists each one, but still writes its output, so COVERAGE.md shows the same list. To skip an item on purpose, add it to [`deny.txt`](tools/Rune.BindGen/deny.txt).
 
-Generation needs the Linux and macOS targets for both Rune's pinned toolchain and your default one:
-
-```bash
-rustup target add x86_64-unknown-linux-gnu aarch64-apple-darwin --toolchain 1.99.1
-```
+Generation needs the Linux and macOS targets for both your default toolchain and the one Rune pins in `rune/rust-toolchain.toml`. Run this once in the repository root and once inside `rune/`, where rustup picks up Rune's toolchain by itself:
 
 ```bash
 rustup target add x86_64-unknown-linux-gnu aarch64-apple-darwin
 ```
 
-To move to a newer Rune, check out the new commit in `rune/`, update the pin in this README and in `.github/workflows/ci.yml`, regenerate, and verify.
+To move to a newer Rune, put the new commit in `RUNE_COMMIT`, check it out in `rune/`, regenerate, and verify. CI reads the same file. Both tools refuse to run if `rune/` isn't at the pinned commit, or if `src/Rune/Rune.csproj`, `native/rune-capi/Cargo.toml` and `native/rune-ext/Cargo.toml` disagree on the version.
 
 ### Verifying
 
@@ -198,7 +196,7 @@ This builds everything one link at a time, compares every sample with its Rust t
 ### Build notes
 
 - Fat LTO peaks at about 2.5 GB per binary, and a plain `cargo build --release` links every twin at once, which can exhaust memory. Build them one at a time with `cargo build --release --bin NAME -j2`.
-- Fedora ships `libxkbcommon.so.0` without the development symlink. `native/linkshim/libxkbcommon.so` points at `/usr/lib64/libxkbcommon.so.0` to stand in for it. Elsewhere, install `libxkbcommon-dev` and the shim is unused.
+- Without the xkbcommon development package there's no `libxkbcommon.so` to link against. The build then links `target/linkshim/libxkbcommon.so` to the runtime library, `libxkbcommon.so.0`, and apps link through the same directory.
 - For a smaller build without accessibility, D-Bus services, SVG or Ogg audio:
 
   ```bash
