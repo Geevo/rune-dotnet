@@ -23,9 +23,9 @@ jobs:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: echo "RUNE_COMMIT=$(cat RUNE_COMMIT)" >> "$GITHUB_ENV"
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: anomalyco/rune
           ref: ${{ env.RUNE_COMMIT }}
@@ -48,7 +48,7 @@ jobs:
             cp target/release/librune_capi.a "$dir/"
           fi
           ls -la "$dir"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: native-${{ matrix.rid }}
           path: artifacts/native
@@ -57,11 +57,11 @@ jobs:
     needs: native
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.0.x
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: native-*
           path: artifacts/native
@@ -72,7 +72,7 @@ jobs:
           version=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' src/Rune/Rune.csproj)
           test "v$version" = "$GITHUB_REF_NAME" || { echo "tag $GITHUB_REF_NAME, but Rune.csproj says $version"; exit 1; }
       - run: dotnet pack src/Rune -c Release -o artifacts/packages -p:RuneNativeRoot=$PWD/artifacts/native/ -p:RuneRequireAllRids=true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: package
           path: artifacts/packages
@@ -88,14 +88,14 @@ jobs:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.0.x
       # The NativeAOT linker, xkbcommon, and software Vulkan and X, as the runners have no GPU or display.
       - if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y clang zlib1g-dev libxkbcommon-dev mesa-vulkan-drivers xvfb
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: package
           path: artifacts/packages
@@ -119,7 +119,7 @@ jobs:
       # Trusted Publishing: NuGet trades the job's OIDC token for an API key that lasts an hour.
       id-token: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: package
           path: artifacts/packages

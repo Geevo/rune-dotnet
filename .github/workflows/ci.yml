@@ -13,20 +13,20 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 120
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       # RUNE_COMMIT is the one place the Rune version lives.
       - run: echo "RUNE_COMMIT=$(cat RUNE_COMMIT)" >> "$GITHUB_ENV"
         shell: bash
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: anomalyco/rune
           ref: ${{ env.RUNE_COMMIT }}
           path: rune
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.0.x
       - run: rustup update stable && rustup default stable
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: |
             ~/.cargo/registry
@@ -44,16 +44,16 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       # RUNE_COMMIT is the one place the Rune version lives.
       - run: echo "RUNE_COMMIT=$(cat RUNE_COMMIT)" >> "$GITHUB_ENV"
         shell: bash
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           repository: anomalyco/rune
           ref: ${{ env.RUNE_COMMIT }}
           path: rune
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.0.x
       - run: rustup update stable && rustup default stable

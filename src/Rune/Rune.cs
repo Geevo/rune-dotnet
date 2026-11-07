@@ -343,7 +343,11 @@ public readonly unsafe partial struct App
         }
     }
 
+    // CA2255 warns off module initializers in libraries. This one has to run before any Rune call:
+    // it hands Rust the C# functions it calls back into.
+#pragma warning disable CA2255
     [System.Runtime.CompilerServices.ModuleInitializer]
+#pragma warning restore CA2255
     internal static void Load()
     {
         Callbacks.Register();
