@@ -244,7 +244,7 @@ dotnet publish tests/PackageCheck -c Release -o out/packagecheck
 
 A local pack warns about the platforms it's missing. Delete `out/packagecheck-packages` before publishing a repack of the same version, or the old one is reused.
 
-A release bumps `<Version>` in `src/Rune/Rune.csproj` and both `Cargo.toml` files (the tools refuse to run if they differ), then pushes a `vX.Y.Z` tag. The [release workflow](.github/workflows/release.yml) builds the native library on each platform, packs all three into one package, tests it in a fresh app on each platform, then pushes it to NuGet and creates a GitHub release. It needs a `NUGET_API_KEY` secret in a `nuget` environment. Run it by hand to build and test a package without publishing.
+A release bumps `<Version>` in `src/Rune/Rune.csproj` and both `Cargo.toml` files (the tools refuse to run if they differ), then pushes a `vX.Y.Z` tag. The [release workflow](.github/workflows/release.yml) builds the native library on each platform, packs all three into one package, tests it in a fresh app on each platform, then pushes it to NuGet and creates a GitHub release. It publishes with NuGet's [Trusted Publishing](https://learn.microsoft.com/nuget/nuget-org/trusted-publishing), so there's no API key to store: it needs a policy on nuget.org for this repository, `release.yml` and the `nuget` environment, and a `NUGET_USER` repository variable holding the nuget.org user name. Run it by hand to build and test a package without publishing.
 
 ### Build notes
 

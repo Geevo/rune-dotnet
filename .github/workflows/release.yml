@@ -116,12 +116,18 @@ jobs:
     environment: nuget
     permissions:
       contents: write
+      # Trusted Publishing: NuGet trades the job's OIDC token for an API key that lasts an hour.
+      id-token: write
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: package
           path: artifacts/packages
-      - run: dotnet nuget push "artifacts/packages/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json
+      - uses: NuGet/login@v1
+        id: nuget
+        with:
+          user: ${{ vars.NUGET_USER }}
+      - run: dotnet nuget push "artifacts/packages/*.nupkg" --api-key "${{ steps.nuget.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json
       - run: gh release create "$GITHUB_REF_NAME" artifacts/packages/*.nupkg --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --generate-notes
         env:
           GH_TOKEN: ${{ github.token }}
