@@ -32,9 +32,10 @@ jobs:
             ~/.cargo/registry
             target
           key: ${{ runner.os }}-${{ env.RUNE_COMMIT }}-${{ hashFiles('native/rune-capi/Cargo.lock') }}
-      # The NativeAOT linker, xkbcommon, and software Vulkan and X, as the runners have no GPU or display.
+      # The NativeAOT linker, xkbcommon (and its X11 half, for the real window), and software Vulkan
+      # and X, as the runners have no GPU or display.
       - if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y clang zlib1g-dev libxkbcommon-dev mesa-vulkan-drivers xvfb
+        run: sudo apt-get update && sudo apt-get install -y clang zlib1g-dev libxkbcommon-dev libxkbcommon-x11-0 mesa-vulkan-drivers xvfb
       - if: runner.os == 'Linux'
         run: xvfb-run -a dotnet run -c Release --project tools/Rune.Verify -- --build --window
       - if: runner.os != 'Linux'
