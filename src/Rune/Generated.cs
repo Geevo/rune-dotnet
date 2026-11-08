@@ -85,6 +85,7 @@ public readonly unsafe partial struct Anchor
     public float Gap { get => N.rune_gen_anchor_field_get_gap(P); set { { N.rune_gen_anchor_field_set_gap(P, value); } } }
     public bool Fit { get => N.rune_gen_anchor_field_get_fit(P); set { { N.rune_gen_anchor_field_set_fit(P, value); } } }
     public bool Unscaled { get => N.rune_gen_anchor_field_get_unscaled(P); set { { N.rune_gen_anchor_field_set_unscaled(P, value); } } }
+    public bool Round { get => N.rune_gen_anchor_field_get_round(P); set { { N.rune_gen_anchor_field_set_round(P, value); } } }
 }
 public readonly unsafe partial struct Anim
 {
@@ -1794,6 +1795,7 @@ public readonly unsafe partial struct El
     public global::Rune.El Anchored(string key, global::Rune.Side side, global::Rune.Align align, float gap) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { return new global::Rune.El(N.rune_gen_el_anchored(Id, key__1p, (nuint)key__1b.Length, side, align, gap)); } }
     public global::Rune.El AnchoredFit(string key, global::Rune.Side side, global::Rune.Align align, float gap) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { return new global::Rune.El(N.rune_gen_el_anchored_fit(Id, key__1p, (nuint)key__1b.Length, side, align, gap)); } }
     public global::Rune.El AnchoredUnscaled() { { return new global::Rune.El(N.rune_gen_el_anchored_unscaled(Id)); } }
+    public global::Rune.El AnchoredRound() { { return new global::Rune.El(N.rune_gen_el_anchored_round(Id)); } }
     public global::Rune.El SystemMaterial(global::Rune.SystemMaterial material) { { return new global::Rune.El(N.rune_gen_el_system_material(Id, material)); } }
     public global::Rune.El BackdropBlur(float sigma) { { return new global::Rune.El(N.rune_gen_el_backdrop_blur(Id, sigma)); } }
     public global::Rune.El ChildExit(global::Rune.Transition t) { { return new global::Rune.El(N.rune_gen_el_child_exit(Id, t.O)); } }
@@ -1975,6 +1977,7 @@ public readonly unsafe partial struct El
     public global::Rune.El ContinuousCorners() { { return new global::Rune.El(N.rune_gen_el_continuous_corners(Id)); } }
     public global::Rune.El Corners((float, float, float, float) r) { { return new global::Rune.El(N.rune_gen_el_corners(Id, r.Item1, r.Item2, r.Item3, r.Item4)); } }
     public global::Rune.El Border(float width, global::Rune.Color c) { { return new global::Rune.El(N.rune_gen_el_border(Id, width, c)); } }
+    public global::Rune.El BorderSides((float, float, float, float) widths, global::Rune.Color c) { { return new global::Rune.El(N.rune_gen_el_border_sides(Id, widths.Item1, widths.Item2, widths.Item3, widths.Item4, c)); } }
     public global::Rune.El BorderGradient(float width, global::Rune.Color top, global::Rune.Color bottom) { { return new global::Rune.El(N.rune_gen_el_border_gradient(Id, width, top, bottom)); } }
     public global::Rune.El BorderDash(float dash, float gap) { { return new global::Rune.El(N.rune_gen_el_border_dash(Id, dash, gap)); } }
     public global::Rune.El BorderDashPhase(float phase) { { return new global::Rune.El(N.rune_gen_el_border_dash_phase(Id, phase)); } }
@@ -1991,6 +1994,7 @@ public readonly unsafe partial struct El
     public global::Rune.El Blur(float sigma) { { return new global::Rune.El(N.rune_gen_el_blur(Id, sigma)); } }
     public global::Rune.El BlurMotion(global::Rune.Anim anim) { { return new global::Rune.El(N.rune_gen_el_blur_motion(Id, anim.O)); } }
     public global::Rune.El Dim(float alpha) { { return new global::Rune.El(N.rune_gen_el_dim(Id, alpha)); } }
+    public global::Rune.El LayerOpacity(float alpha) { { return new global::Rune.El(N.rune_gen_el_layer_opacity(Id, alpha)); } }
     public global::Rune.El Dissolve() { { return new global::Rune.El(N.rune_gen_el_dissolve(Id)); } }
     public global::Rune.El Cache() { { return new global::Rune.El(N.rune_gen_el_cache(Id)); } }
     public global::Rune.El CacheKey(ulong key) { { return new global::Rune.El(N.rune_gen_el_cache_key(Id, key)); } }
@@ -3655,6 +3659,7 @@ public readonly unsafe partial struct Loader
     public static global::Rune.Loader CreateDefault() => new(N.rune_gen_loader_default());
     public static global::Rune.Loader New() { { return new global::Rune.Loader(N.rune_gen_loader_new()); } }
     public global::Rune.Loader Size(float s) { { return new global::Rune.Loader(N.rune_gen_loader_size(O, s)); } }
+    public global::Rune.Loader Color(global::Rune.Color c) { { return new global::Rune.Loader(N.rune_gen_loader_color(O, c)); } }
     public global::Rune.El Build(global::Rune.Kit k) { { return new global::Rune.El(N.rune_gen_loader_build(O, k.P)); } }
 }
 public readonly unsafe partial struct LocalTime
@@ -10244,6 +10249,8 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern void rune_gen_anchor_field_set_fit(nint h, bool v);
     [DllImport(Lib)] public static extern bool rune_gen_anchor_field_get_unscaled(nint h);
     [DllImport(Lib)] public static extern void rune_gen_anchor_field_set_unscaled(nint h, bool v);
+    [DllImport(Lib)] public static extern bool rune_gen_anchor_field_get_round(nint h);
+    [DllImport(Lib)] public static extern void rune_gen_anchor_field_set_round(nint h, bool v);
     [DllImport(Lib)] public static extern void rune_gen_anim_free(nint h);
     [DllImport(Lib)] public static extern nint rune_gen_anim_field_get_curve(nint h);
     [DllImport(Lib)] public static extern void rune_gen_anim_field_set_curve(nint h, nint v);
@@ -13476,6 +13483,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_el_anchored(uint id, byte* p_key_p, nuint p_key_l, global::Rune.Side p_side, global::Rune.Align p_align, float p_gap);
     [DllImport(Lib)] public static extern uint rune_gen_el_anchored_fit(uint id, byte* p_key_p, nuint p_key_l, global::Rune.Side p_side, global::Rune.Align p_align, float p_gap);
     [DllImport(Lib)] public static extern uint rune_gen_el_anchored_unscaled(uint id);
+    [DllImport(Lib)] public static extern uint rune_gen_el_anchored_round(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_system_material(uint id, global::Rune.SystemMaterial p_material);
     [DllImport(Lib)] public static extern uint rune_gen_el_backdrop_blur(uint id, float p_sigma);
     [DllImport(Lib)] public static extern uint rune_gen_el_child_exit(uint id, nint p_t);
@@ -13678,6 +13686,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_el_continuous_corners(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_corners(uint id, float p_r_0, float p_r_1, float p_r_2, float p_r_3);
     [DllImport(Lib)] public static extern uint rune_gen_el_border(uint id, float p_width, global::Rune.Color p_c);
+    [DllImport(Lib)] public static extern uint rune_gen_el_border_sides(uint id, float p_widths_0, float p_widths_1, float p_widths_2, float p_widths_3, global::Rune.Color p_c);
     [DllImport(Lib)] public static extern uint rune_gen_el_border_gradient(uint id, float p_width, global::Rune.Color p_top, global::Rune.Color p_bottom);
     [DllImport(Lib)] public static extern uint rune_gen_el_border_dash(uint id, float p_dash, float p_gap);
     [DllImport(Lib)] public static extern uint rune_gen_el_border_dash_phase(uint id, float p_phase);
@@ -13694,6 +13703,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern uint rune_gen_el_blur(uint id, float p_sigma);
     [DllImport(Lib)] public static extern uint rune_gen_el_blur_motion(uint id, nint p_anim);
     [DllImport(Lib)] public static extern uint rune_gen_el_dim(uint id, float p_alpha);
+    [DllImport(Lib)] public static extern uint rune_gen_el_layer_opacity(uint id, float p_alpha);
     [DllImport(Lib)] public static extern uint rune_gen_el_dissolve(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_cache(uint id);
     [DllImport(Lib)] public static extern uint rune_gen_el_cache_key(uint id, ulong p_key);
@@ -14144,6 +14154,7 @@ internal static unsafe partial class N
     [DllImport(Lib)] public static extern bool rune_gen_livetext_set(nint h, byte* p_text_p, nuint p_text_l);
     [DllImport(Lib)] public static extern nint rune_gen_loader_new();
     [DllImport(Lib)] public static extern nint rune_gen_loader_size(nint h, float p_s);
+    [DllImport(Lib)] public static extern nint rune_gen_loader_color(nint h, global::Rune.Color p_c);
     [DllImport(Lib)] public static extern uint rune_gen_loader_build(nint h, nint p_k);
     [DllImport(Lib)] public static extern nint rune_gen_localtime_at(long p_epoch_ms);
     [DllImport(Lib)] public static extern nint rune_gen_localtime_at_offset(long p_epoch_ms, int p_offset);

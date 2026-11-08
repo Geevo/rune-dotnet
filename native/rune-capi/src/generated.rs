@@ -34,6 +34,8 @@ fn to_align(v: i32) -> rune::Align { match v { 0 => rune::Align::Start, 1 => run
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_anchor_field_set_fit(h: *mut c_void, v: bool) { (*(h as *mut rune::Anchor)).fit = v; }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_anchor_field_get_unscaled(h: *mut c_void) -> bool { (*(h as *mut rune::Anchor)).unscaled }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_anchor_field_set_unscaled(h: *mut c_void, v: bool) { (*(h as *mut rune::Anchor)).unscaled = v; }
+#[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_anchor_field_get_round(h: *mut c_void) -> bool { (*(h as *mut rune::Anchor)).round }
+#[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_anchor_field_set_round(h: *mut c_void, v: bool) { (*(h as *mut rune::Anchor)).round = v; }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_anim_free(h: *mut c_void) { drop(unown::<rune::Anim>(h)); }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_anim_field_get_curve(h: *mut c_void) -> *mut c_void { &mut (*(h as *mut rune::Anim)).curve as *mut _ as *mut c_void }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_anim_field_set_curve(h: *mut c_void, v: *mut c_void) { (*(h as *mut rune::Anim)).curve = unown::<rune::Curve>(v); }
@@ -3568,6 +3570,7 @@ static CB_32: OnceLock<extern "C" fn(usize, usize, *mut c_void, *mut c_void) -> 
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_anchored(id: u32, p_key_p: *const u8, p_key_l: usize, p_side: i32, p_align: i32, p_gap: f32) -> u32 { let a_key = utf8(p_key_p, p_key_l).to_owned(); let a_side = to_side(p_side); let a_align = to_align(p_align); let a_gap = p_gap; edit(id, |e| e.anchored(a_key, a_side, a_align, a_gap)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_anchored_fit(id: u32, p_key_p: *const u8, p_key_l: usize, p_side: i32, p_align: i32, p_gap: f32) -> u32 { let a_key = utf8(p_key_p, p_key_l).to_owned(); let a_side = to_side(p_side); let a_align = to_align(p_align); let a_gap = p_gap; edit(id, |e| e.anchored_fit(a_key, a_side, a_align, a_gap)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_anchored_unscaled(id: u32) -> u32 { edit(id, |e| e.anchored_unscaled()) }
+#[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_anchored_round(id: u32) -> u32 { edit(id, |e| e.anchored_round()) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_system_material(id: u32, p_material: i32) -> u32 { let a_material = to_systemmaterial(p_material); edit(id, |e| e.system_material(a_material)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_backdrop_blur(id: u32, p_sigma: f32) -> u32 { let a_sigma = p_sigma; edit(id, |e| e.backdrop_blur(a_sigma)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_child_exit(id: u32, p_t: *mut c_void) -> u32 { let a_t = unown::<rune::Transition>(p_t); edit(id, |e| e.child_exit(a_t)) }
@@ -3791,6 +3794,7 @@ static CB_53: OnceLock<extern "C" fn(usize, usize, *const u8, usize) -> bool> = 
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_continuous_corners(id: u32) -> u32 { edit(id, |e| e.continuous_corners()) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_corners(id: u32, p_r_0: f32, p_r_1: f32, p_r_2: f32, p_r_3: f32) -> u32 { let a_r = [p_r_0, p_r_1, p_r_2, p_r_3]; edit(id, |e| e.corners(a_r)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_border(id: u32, p_width: f32, p_c: R_color) -> u32 { let a_width = p_width; let a_c = rune::Color::from(p_c); edit(id, |e| e.border(a_width, a_c)) }
+#[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_border_sides(id: u32, p_widths_0: f32, p_widths_1: f32, p_widths_2: f32, p_widths_3: f32, p_c: R_color) -> u32 { let a_widths = [p_widths_0, p_widths_1, p_widths_2, p_widths_3]; let a_c = rune::Color::from(p_c); edit(id, |e| e.border_sides(a_widths, a_c)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_border_gradient(id: u32, p_width: f32, p_top: R_color, p_bottom: R_color) -> u32 { let a_width = p_width; let a_top = rune::Color::from(p_top); let a_bottom = rune::Color::from(p_bottom); edit(id, |e| e.border_gradient(a_width, a_top, a_bottom)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_border_dash(id: u32, p_dash: f32, p_gap: f32) -> u32 { let a_dash = p_dash; let a_gap = p_gap; edit(id, |e| e.border_dash(a_dash, a_gap)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_border_dash_phase(id: u32, p_phase: f32) -> u32 { let a_phase = p_phase; edit(id, |e| e.border_dash_phase(a_phase)) }
@@ -3807,6 +3811,7 @@ static CB_53: OnceLock<extern "C" fn(usize, usize, *const u8, usize) -> bool> = 
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_blur(id: u32, p_sigma: f32) -> u32 { let a_sigma = p_sigma; edit(id, |e| e.blur(a_sigma)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_blur_motion(id: u32, p_anim: *mut c_void) -> u32 { let a_anim = unown::<rune::Anim>(p_anim); edit(id, |e| e.blur_motion(a_anim)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_dim(id: u32, p_alpha: f32) -> u32 { let a_alpha = p_alpha; edit(id, |e| e.dim(a_alpha)) }
+#[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_layer_opacity(id: u32, p_alpha: f32) -> u32 { let a_alpha = p_alpha; edit(id, |e| e.layer_opacity(a_alpha)) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_dissolve(id: u32) -> u32 { edit(id, |e| e.dissolve()) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_cache(id: u32) -> u32 { edit(id, |e| e.cache()) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_el_cache_key(id: u32, p_key: u64) -> u32 { let a_key = p_key; edit(id, |e| e.cache_key(a_key)) }
@@ -4265,6 +4270,7 @@ fn fp_11(i: u32) -> fn(&mut Host) -> &mut rune::TextEdit { fn_slots!(i, fp_11_at
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_livetext_set(h: *mut c_void, p_text_p: *const u8, p_text_l: usize) -> bool { let a_text = utf8(p_text_p, p_text_l).to_owned(); let v = (&*(h as *const rune::LiveText)).set(a_text); v }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_loader_new() -> *mut c_void { let v = rune_kit::Loader::new(); own(v) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_loader_size(h: *mut c_void, p_s: f32) -> *mut c_void { let a_s = p_s; let v = unown::<rune_kit::Loader>(h).size(a_s); own(v) }
+#[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_loader_color(h: *mut c_void, p_c: R_color) -> *mut c_void { let a_c = rune::Color::from(p_c); let v = unown::<rune_kit::Loader>(h).color(a_c); own(v) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_loader_build(h: *mut c_void, p_k: *mut c_void) -> u32 { let a_k = &*(p_k as *const rune_kit::Kit); let v = unown::<rune_kit::Loader>(h).build(a_k); put(v) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_localtime_at(p_epoch_ms: i64) -> *mut c_void { let a_epoch_ms = p_epoch_ms; let v = rune::LocalTime::at(a_epoch_ms); own(v) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_localtime_at_offset(p_epoch_ms: i64, p_offset: i32) -> *mut c_void { let a_epoch_ms = p_epoch_ms; let a_offset = p_offset; let v = rune::LocalTime::at_offset(a_epoch_ms, a_offset); own(v) }
