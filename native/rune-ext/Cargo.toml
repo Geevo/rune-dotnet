@@ -12,6 +12,7 @@ name = "rune_ext"
 rune = { path = "../../rune/crates/rune", default-features = false }
 rune-motion = { path = "../../rune/crates/rune-motion" }
 rune-kit = { path = "../../rune/crates/rune-kit" }
+rune-highlights = { path = "../../rune/crates/rune-highlights" }
 wgpu = { version = "~30.0.1", default-features = false }
 parley = { version = "0.12", default-features = false }
 serde_json = { version = "1", default-features = false, features = ["std"] }

@@ -279,6 +279,7 @@ sealed partial class Generator
         Value v => v.T.RustType,
         Obj o => o.T.RustType,
         Element => "El",
+        Managed { Ref: false } => "ManagedFn",
         Handle h => $"&{(h.Mut ? "mut " : "")}{h.T.RustType}",
         Ref r => "&" + RustT(r.Inner),
         Wire w => RustT(w.Inner),
@@ -330,6 +331,9 @@ sealed partial class Generator
                 return byRef ? throw new Skip("borrowed element") : $"w.raw(&put({v}));";
             case Obj o:
                 return byRef ? $"w.raw(&ptr_of({v}));" : $"w.raw(&own({v}));";
+            // Only a borrow: C# finds the object while Rust still holds it. An owned one would be released first.
+            case Managed when byRef:
+                return $"w.raw(&{v}.id());";
             case Handle:
                 return $"w.raw(&ptr_of(&{(byRef ? "**" : "*")}{v}));";
             case Seq { Item: Prim } s when byRef || s.Mode != SeqMode.Vec:
@@ -376,6 +380,7 @@ sealed partial class Generator
         Value v => $"(*({r}.raw::<*const c_void>() as *const {v.T.RustType})).clone()",
         Element => $"*take({r}.raw::<u32>())",
         Obj o => $"unown::<{o.T.RustType}>({r}.raw::<*mut c_void>())",
+        Managed { Ref: false } => $"ManagedFn::new({r}.raw::<usize>())",
         Handle { Mut: true } h => $"&mut *({r}.raw::<*mut c_void>() as *mut {h.T.RustType})",
         Handle h => $"&*({r}.raw::<*mut c_void>() as *const {h.T.RustType})",
         Seq { Mode: SeqMode.Vec } s => DecList(s.Item, r),
@@ -415,6 +420,8 @@ sealed partial class Generator
                 return $"{w}.Raw<uint>({v}.Id); ";
             case Obj:
                 return $"{w}.Raw<nint>({v}.O); ";
+            case Managed:
+                return $"{w}.Raw<nint>(Interop.Keep({v})); ";
             case Handle:
                 return $"{w}.Raw<nint>({v}.P); ";
             case Seq { Item: Prim p }:
@@ -447,6 +454,7 @@ sealed partial class Generator
             Element => $"new global::Rune.El({q}.Raw<uint>())",
             Handle => $"new {t.CsType}({q}.Raw<nint>(), {q}.Scope)",
             Obj => $"new {t.CsType}({q}.Raw<nint>())",
+            Managed => $"Interop.Target({q}.Raw<nint>())",
             Seq { Item: Prim p } => $"{q}.Prims<{p.Cs}>()",
             Seq s => $"{q}.List<{Wire.Data(s.Item)}>(static {inner} => {CsDec(s.Item, inner)})",
             Flat f => "(" + string.Join(", ", f.Items.Select(i => CsDec(i, q))) + ")",

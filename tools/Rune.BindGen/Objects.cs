@@ -197,7 +197,7 @@ sealed partial class Generator
                 }
                 var ffi = ps.SelectMany(p => FfiParams(p.Ty, p.P)).ToList();
                 var values = ps.Select(p => RustArg(p.Ty, p.P)).ToList();
-                var ctor = kind.ValueKind != JsonValueKind.Object ? $"{t.RustPath}::{name}"
+                var ctor = kind.ValueKind != JsonValueKind.Object ? $"{(t.Instantiated ? $"<{t.RustType}>" : t.RustPath)}::{name}"
                     : named ? $"{t.RustPath}::{name} {{ {string.Join(", ", ps.Select((p, i) => $"{RawIdent(fields[i].Name)}: {values[i]}"))} }}"
                     : $"{(t.Instantiated ? $"<{t.RustType}>" : t.RustPath)}::{name}({string.Join(", ", values)})";
                 var lets = string.Concat(ps.Where(p => p.Ty is Closure).Select(p => $"let {p.P}_h = ManagedFn::new({p.P}); ")) + string.Concat(ps.Where(p => p.Ty is Wire).Select(p => WireLet(p.P)));
@@ -298,7 +298,7 @@ sealed partial class Generator
             case Obj o:
                 (rustType, csType, write, read, csResult) = ("*mut c_void", "nint", $"v as *const _ as *mut c_void", $"new {o.CsType}(o, _s)", o.CsType);
                 break;
-            case Prim or Value { T.Kind: Kind.Enum or Kind.Record }:
+            case Prim or Value { T.Kind: Kind.Enum or Kind.Record } or Managed:
                 var (rt, ct, conv, wrap) = Scalar(ty);
                 (rustType, csType, write, read, csResult) = (rt, ct, conv("(*v)"), wrap("o"), ty.CsType);
                 break;

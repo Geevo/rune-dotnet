@@ -56,7 +56,7 @@ sealed partial class Generator
         foreach (var (doc, item, path, _) in _functions.Values.Where(f => f.RustPath.StartsWith("rune_ext::")))
         {
             var name = item.GetProperty("name").GetString()!;
-            if (_skipped.Any(s => s.Api.EndsWith(name) && s.Api.Contains("ext")))
+            if (_skipped.Any(s => s.Api == path))
             {
                 continue;
             }

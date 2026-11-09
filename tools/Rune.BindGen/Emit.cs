@@ -737,7 +737,8 @@ sealed partial class Generator
         if (output.ValueKind != JsonValueKind.Null && !(output.TryGetProperty("tuple", out var unit) && unit.GetArrayLength() == 0))
         {
             // `-> &mut Self` hands back the receiver. An owned `Self` from `&self` is a new value (`Cx::retype`).
-            if (recv is Recv.HandleMut or Recv.HandleRef && output.TryGetProperty("borrowed_ref", out _) && IsSelf(doc, output, owner!))
+            // An element's in-place builders (`El::set_pt`) edit it in its slot, so they hand back the same id.
+            if (recv is Recv.HandleMut or Recv.HandleRef or Recv.ElRef && output.TryGetProperty("borrowed_ref", out _) && IsSelf(doc, output, owner!))
             {
                 fluent = true;
             }

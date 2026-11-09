@@ -9,7 +9,7 @@ sealed partial class Generator
     const string HostKey = "Host", ManagedKey = "Managed", FileNodeKey = "rune_kit::tree::file_tree::FileNode";
     // Unbounded in Rust, but their methods need `Animatable`.
     static readonly HashSet<string> AnimatableContainers = ["Prop", "Keyframes", "Keyframe", "Release"];
-    static readonly HashSet<(string, string)> OpaqueParams = [("TreeModel", "T"), ("FileNode", "D"), ("Latest", "T"), ("Tree", "T")];
+    static readonly HashSet<(string, string)> OpaqueParams = [("TreeModel", "T"), ("FileNode", "D"), ("Latest", "T"), ("Tree", "T"), ("Effects", "E"), ("EffectsIter", "E"), ("ToastStack", "O"), ("ToastEntry", "O"), ("ToastEvent", "O")];
 
     static readonly System.Text.RegularExpressions.Regex ContainerArg = new(@"""path"":\s*""[^""]*\b(Prop|Keyframes|Keyframe|Release)""");
 

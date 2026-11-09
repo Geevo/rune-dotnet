@@ -492,6 +492,17 @@ sealed partial class Generator(List<Doc> docs)
                 return new Opt(inner);
             case "Vec":
                 return MakeSeq(Map(doc, FirstArg(rp), ctx, inClosure), SeqMode.Vec);
+            // A state machine's effects (`ComboboxState::step`) reach C# as an array of them. `Effects<ManagedFn>`
+            // is the type itself, for C# machines.
+            case "Effects" when Map(doc, FirstArg(rp), ctx, inClosure) is not Managed and var effect:
+                var effects = $"rune::machine::Effects<{RustT(effect)}>";
+                return new Wire(new Adapt(new Seq(effect, SeqMode.Vec), effects, Wire.Data(effect) + "[]",
+                    x => $"{{ let mut e_ = {effects}::none(); e_.extend({x}); e_ }}",
+                    (v, r) => ($"{(r ? $"{v}.clone()" : v)}.into_iter().collect::<Vec<_>>()", false), c => c, c => c));
+            // What's left of a list being iterated (`EffectsIter::Many`).
+            case "IntoIter" when Map(doc, FirstArg(rp), ctx, inClosure) is var left:
+                return new Wire(new Adapt(new Seq(left, SeqMode.Vec), $"std::vec::IntoIter<{RustT(left)}>", Wire.Data(left) + "[]",
+                    x => $"{x}.into_iter()", (v, r) => r ? ($"{v}.as_slice()", true) : ($"{v}.collect::<Vec<_>>()", false), c => c, c => c));
         }
         if (Lookup(doc, rp, ctx) is { } t)
         {

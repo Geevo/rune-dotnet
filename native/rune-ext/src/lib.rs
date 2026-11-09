@@ -491,3 +491,26 @@ pub fn app_dirs_from_env(app_id: &str, var: impl Fn(&str) -> Option<String>) -> 
 pub fn home_from(var: impl Fn(&str) -> Option<String>) -> Option<PathBuf> {
     rune::dirs::home_from(|name| var(name).map(Into::into))
 }
+
+/// Rune sorts `ids` in place, which no caller sees, so they're taken by value. covers: AnimationStore::delay
+pub fn animation_store_delay(store: &mut rune_motion::AnimationStore, mut ids: Vec<rune_motion::TrackId>, secs: f64) {
+    store.delay(&mut ids, secs);
+}
+
+/// The kind a lexer token is coloured as, with the token by its capture name (`keyword.control`),
+/// as `rune_highlights` names it. `None` for a name it doesn't know. covers: rune_kit::syntax::kind
+pub fn syntax_kind(token: &str) -> Option<rune_kit::syntax::Syntax> {
+    rune_highlights::Token::from_name(token).and_then(rune_kit::syntax::kind)
+}
+
+/// The icon `swap` returns must last as long as the app, as the icons of Rune's own sets do.
+/// covers: rune::text::set_icon_swap
+pub fn set_icon_swap(swap: fn(&rune::text::Icon) -> Option<&rune::text::Icon>) {
+    type Swap = fn(&rune::text::Icon) -> Option<&'static rune::text::Icon>;
+    // SAFETY: only the returned borrow's lifetime changes, which the caller promises above.
+    rune::text::set_icon_swap(Some(unsafe { std::mem::transmute::<fn(&rune::text::Icon) -> Option<&rune::text::Icon>, Swap>(swap) }));
+}
+pub fn clear_icon_swap() { rune::text::set_icon_swap(None); }
+/// covers: rune::text::set_icon_swap_size
+pub fn set_icon_swap_size(size: fn(f32) -> f32) { rune::text::set_icon_swap_size(Some(size)); }
+pub fn clear_icon_swap_size() { rune::text::set_icon_swap_size(None); }
