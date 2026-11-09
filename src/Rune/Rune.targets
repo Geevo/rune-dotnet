@@ -65,7 +65,7 @@
       <LinkerArg Include="-framework AppKit;-framework ApplicationServices;-framework AVFoundation;-framework Carbon" />
       <LinkerArg Include="-framework CoreAudio;-framework CoreFoundation;-framework CoreGraphics;-framework CoreMedia" />
       <LinkerArg Include="-framework CoreServices;-framework CoreVideo;-framework Foundation;-framework IOSurface" />
-      <LinkerArg Include="-framework Metal;-framework QuartzCore;-lobjc;-liconv" />
+      <LinkerArg Include="-framework Metal;-framework QuartzCore;-framework UserNotifications;-lobjc;-liconv" />
     </ItemGroup>
     <ItemGroup Condition="'$(RuneIsWindows)' == 'true'">
       <NativeLibrary Include="user32.lib;shell32.lib;gdi32.lib;advapi32.lib;ntdll.lib;userenv.lib;ws2_32.lib;dbghelp.lib" />

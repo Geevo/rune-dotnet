@@ -57,6 +57,7 @@ path = "src/twins/texts_rust.rs"
 rune = { path = "../../rune/crates/rune", default-features = false }
 rune-motion = { path = "../../rune/crates/rune-motion" }
 rune-kit = { path = "../../rune/crates/rune-kit" }
+rune-notify = { path = "../../rune/crates/rune-notify" }
 rune-ext = { path = "../rune-ext" }
 wgpu = { version = "~30.0.1", default-features = false }
 parley = { version = "0.12", default-features = false }

@@ -62,10 +62,10 @@ static void Write(string rustPath, string csPath, string reportPath, string rust
 static string[] Rustdoc(string target)
 {
     var doc = $"target/doc-json/{target}/doc";
-    Cargo("rune", "target/doc-json", target, "-p", "rune", "-p", "rune-kit", "-p", "rune-motion");
+    Cargo("rune", "target/doc-json", target, "-p", "rune", "-p", "rune-kit", "-p", "rune-motion", "-p", "rune-notify");
     Cargo("native/rune-ext", "target/doc-json-ext", target, "-p", "rune-ext");
     File.Copy($"target/doc-json-ext/{target}/doc/rune_ext.json", $"{doc}/rune_ext.json", overwrite: true);
-    return [$"{doc}/rune.json", $"{doc}/rune_motion.json", $"{doc}/rune_kit.json", $"{doc}/rune_ext.json"];
+    return [$"{doc}/rune.json", $"{doc}/rune_motion.json", $"{doc}/rune_kit.json", $"{doc}/rune_notify.json", $"{doc}/rune_ext.json"];
 }
 
 static string RepositoryRoot()

@@ -503,14 +503,33 @@ pub fn syntax_kind(token: &str) -> Option<rune_kit::syntax::Syntax> {
     rune_highlights::Token::from_name(token).and_then(rune_kit::syntax::kind)
 }
 
-/// The icon `swap` returns must last as long as the app, as the icons of Rune's own sets do.
+/// Rune keeps the icon a swap returns for as long as the app runs, so each one the C# swap hands
+/// back is copied once into a table that lives that long, and freeing the C# object later is safe.
 /// covers: rune::text::set_icon_swap
 pub fn set_icon_swap(swap: fn(&rune::text::Icon) -> Option<&rune::text::Icon>) {
-    type Swap = fn(&rune::text::Icon) -> Option<&'static rune::text::Icon>;
-    // SAFETY: only the returned borrow's lifetime changes, which the caller promises above.
-    rune::text::set_icon_swap(Some(unsafe { std::mem::transmute::<fn(&rune::text::Icon) -> Option<&rune::text::Icon>, Swap>(swap) }));
+    *ICON_SWAP.write().unwrap_or_else(std::sync::PoisonError::into_inner) = Some(swap);
+    rune::text::set_icon_swap(Some(swapped_icon));
 }
-pub fn clear_icon_swap() { rune::text::set_icon_swap(None); }
+
+static ICON_SWAP: std::sync::RwLock<Option<fn(&rune::text::Icon) -> Option<&rune::text::Icon>>> = std::sync::RwLock::new(None);
+
+fn swapped_icon(icon: &rune::text::Icon) -> Option<&'static rune::text::Icon> {
+    use rune::text::Icon;
+    type Kept = std::collections::HashMap<(&'static str, u32, &'static str), &'static Icon>;
+    static KEPT: std::sync::Mutex<Option<Kept>> = std::sync::Mutex::new(None);
+    let swap = (*ICON_SWAP.read().unwrap_or_else(std::sync::PoisonError::into_inner))?;
+    let to = swap(icon)?;
+    // An icon swapped for itself stays the same icon, which is how Rune tells it wasn't swapped.
+    if std::ptr::eq(to, icon) {
+        return None;
+    }
+    let mut kept = KEPT.lock().unwrap_or_else(std::sync::PoisonError::into_inner);
+    Some(*kept.get_or_insert_with(Default::default).entry((to.name, to.view.to_bits(), to.body)).or_insert_with(|| Box::leak(Box::new(Icon { name: to.name, view: to.view, body: to.body }))))
+}
+pub fn clear_icon_swap() {
+    rune::text::set_icon_swap(None);
+    *ICON_SWAP.write().unwrap_or_else(std::sync::PoisonError::into_inner) = None;
+}
 /// covers: rune::text::set_icon_swap_size
 pub fn set_icon_swap_size(size: fn(f32) -> f32) { rune::text::set_icon_swap_size(Some(size)); }
 pub fn clear_icon_swap_size() { rune::text::set_icon_swap_size(None); }

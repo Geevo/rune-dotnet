@@ -131,6 +131,44 @@ Check("poll ran", state.Polls > 0);
 runtime.Frame(0.016);
 Check("layout read", state.Width > 0f);
 Ext.RuntimeClearPoll(runtime);
+
+// The icon swap: what it returns is kept for Rune, and a swapped icon takes the swap's size
+var text = KitModule.FileIcon("a.txt");
+var code = KitModule.FileIcon("a.rs");
+Ext.SetIconSwap(icon => icon.Name == text.Name ? code : null);
+Ext.SetIconSwapSize(static size => size * 2f);
+float IconWidth(Icon icon)
+{
+    var measured = new State();
+    var icons = Runtime.New(measured, (state, context) =>
+    {
+        if (Ext.CxLayoutWith(context, "i", rect => rect.Item3) is float width)
+        {
+            state.Width = width;
+        }
+        return Row().Child(Ui.Icon(icon, 10f).Key("i"));
+    }, (320f, 200f), Env.New(true, 1f));
+    icons.Frame(0.016);
+    icons.Frame(0.016);
+    return measured.Width;
+}
+Check("swapped icon takes the swap size", IconWidth(text) == 20f);
+Check("icon the swap leaves alone keeps its size", IconWidth(code) == 10f);
+Ext.ClearIconSwap();
+Ext.ClearIconSwapSize();
+Check("cleared swap", IconWidth(text) == 10f);
+
+// Notifications do nothing where the platform has none, which includes Linux
+var notification = Notification.New("n1", "Title").Body("Body").Info("open", "inbox");
+if (OperatingSystem.IsLinux())
+{
+    Check("notifications unavailable", !Notify.Available());
+    Check("post refused", !Notify.Post(notification));
+}
+Notify.Remove(["n1"]);
+Notify.OnClick(static click => { });
+Check("not a notification link", Notify.ClickFromUrl("https://example.com") is null);
+notification.Free();
 Check("highlighter key", Highlighter.Builtin().Key("theme").ToString() != null);
 Check("number and byte keys", Highlighter.Builtin().Key(7).Key(7UL).Key(new byte[] { 1, 2 }).Key(new byte[0]).ToString() != null);
 runtime.TraceEvent(42);
