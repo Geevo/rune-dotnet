@@ -67,7 +67,7 @@ The Windows and macOS link settings in [`src/Rune/Rune.targets`](src/Rune/Rune.t
 
 ### Install from NuGet
 
-The [`RuneDotNet`](https://www.nuget.org/packages/RuneDotNet) package carries the native library for Linux x64, Windows x64 and macOS arm64, so there's no Rust to install. You need the [.NET 10 SDK](https://dotnet.microsoft.com/download) and the [NativeAOT prerequisites](https://learn.microsoft.com/dotnet/core/deploying/native-aot/#prerequisites) for your platform (`clang` and `zlib1g-dev` on Linux), plus `libxkbcommon` on Linux.
+The [`RuneDotNet`](https://www.nuget.org/packages/RuneDotNet) package carries the native library for Linux x64, Windows x64 and macOS arm64, so there's no Rust to install. You need the [.NET 10 or 11 SDK](https://dotnet.microsoft.com/download) and the [NativeAOT prerequisites](https://learn.microsoft.com/dotnet/core/deploying/native-aot/#prerequisites) for your platform (`clang` and `zlib1g-dev` on Linux), plus `libxkbcommon` on Linux.
 
 ```bash
 dotnet new console -n MyApp
@@ -98,7 +98,7 @@ out/MyApp
 
 #### Requirements
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/download), plus the [NativeAOT prerequisites](https://learn.microsoft.com/dotnet/core/deploying/native-aot/#prerequisites) for your platform. On Linux these are `clang` and `zlib1g-dev`.
+- [.NET 10 or 11 SDK](https://dotnet.microsoft.com/download), plus the [NativeAOT prerequisites](https://learn.microsoft.com/dotnet/core/deploying/native-aot/#prerequisites) for your platform. On Linux these are `clang` and `zlib1g-dev`.
 - [Rust](https://rustup.rs), with the toolchain Rune pins in its `rust-toolchain.toml`.
 - On Linux, `libxkbcommon` (`libxkbcommon-dev` on Debian and Ubuntu, `libxkbcommon-devel` on Fedora). If only the runtime library is installed, the build links against it directly.
 
@@ -123,6 +123,8 @@ dotnet publish -c Release -o ../../out/hello
 ```
 
 On Windows the library is `rune_capi.lib`. Samples build for the machine they're published on.
+
+The samples target `net10.0`. Add `-p:RuneTfm=net11.0` to build one, and the library with it, for .NET 11.
 
 Rune's headless tooling works unchanged from C#:
 

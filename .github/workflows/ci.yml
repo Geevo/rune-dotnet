@@ -10,8 +10,13 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        # The .NET 10 SDK building net10.0, and the .NET 11 SDK building everything as net11.0.
+        dotnet: ['10', '11']
+    name: build (${{ matrix.os }}, .NET ${{ matrix.dotnet }})
     runs-on: ${{ matrix.os }}
     timeout-minutes: 120
+    env:
+      RuneTfm: ${{ matrix.dotnet == '11' && 'net11.0' || '' }}
     steps:
       - uses: actions/checkout@v7
       # RUNE_COMMIT is the one place the Rune version lives.
@@ -24,7 +29,7 @@ jobs:
           path: rune
       - uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: 10.0.x
+          dotnet-version: ${{ matrix.dotnet }}.0.x
       - run: rustup update stable && rustup default stable
       - uses: actions/cache@v6
         with:
