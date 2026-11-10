@@ -1113,6 +1113,13 @@ sealed partial class Generator
                 args.Add($"{value} != null");
                 CsArg(o.Inner, n, $"({value} ?? \"\")", pre, fixes, args);
                 break;
+            // An empty optional object has no handle to read: a default struct's would throw.
+            case Opt { Inner: Obj or Handle or Element or Value { T.Kind: Kind.Interned } } o:
+                args.Add($"{value}.HasValue");
+                var optArgs = new List<string>();
+                CsArg(o.Inner, n, $"{value}.GetValueOrDefault()", pre, fixes, optArgs);
+                args.AddRange(optArgs.Select(a => $"{value}.HasValue ? {a} : default"));
+                break;
             case Opt o:
                 args.Add($"{value}.HasValue");
                 CsArg(o.Inner, n, $"{value}.GetValueOrDefault()", pre, fixes, args);

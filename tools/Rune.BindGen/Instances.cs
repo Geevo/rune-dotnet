@@ -9,6 +9,8 @@ sealed partial class Generator
     const string HostKey = "Host", ManagedKey = "Managed", FileNodeKey = "rune_kit::tree::file_tree::FileNode";
     // Unbounded in Rust, but their methods need `Animatable`.
     static readonly HashSet<string> AnimatableContainers = ["Prop", "Keyframes", "Keyframe", "Release"];
+    // Unbounded in Rust, but `LineSelection::step` needs `LinePoint`: a code view's line or a diff's.
+    static readonly HashSet<string> LinePointContainers = ["Lines", "LineSelection", "LineEvent", "LineEffect"];
     static readonly HashSet<(string, string)> OpaqueParams = [("TreeModel", "T"), ("FileNode", "D"), ("Latest", "T"), ("Tree", "T"), ("Effects", "E"), ("EffectsIter", "E"), ("ToastStack", "O"), ("ToastEntry", "O"), ("ToastEvent", "O")];
 
     static readonly System.Text.RegularExpressions.Regex ContainerArg = new(@"""path"":\s*""[^""]*\b(Prop|Keyframes|Keyframe|Release)""");
@@ -44,6 +46,7 @@ sealed partial class Generator
     {
         _implementers["Animatable"] = ["f32"];
         _implementers["LiveValue"] = ["f32", "[f32; 2]", "[f32; 4]"];
+        _implementers["LinePoint"] = ["u32"];
         foreach (var t in _types.Values)
         {
             var inner = t.Item.GetProperty("inner");
@@ -79,6 +82,10 @@ sealed partial class Generator
         if (bounds.Contains("Animatable") || AnimatableContainers.Contains(t.Short))
         {
             return _implementers["Animatable"];
+        }
+        if (bounds.Contains("LinePoint") || LinePointContainers.Contains(t.Short))
+        {
+            return _implementers["LinePoint"];
         }
         if (bounds.Contains("LiveValue"))
         {

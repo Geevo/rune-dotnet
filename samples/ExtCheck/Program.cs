@@ -166,6 +166,13 @@ Ext.ToastStackEntriesMut(toasts, static entry => entry.Options = "changed");
 Check("toast entries changed in place", toasts.Entries() is [{ Options: "changed" }]);
 toasts.Free();
 
+// A line selection on a code view: a click on a line's code selects that line, and the gesture's end is heard
+var lines = LineSelectionU32.Idle(null);
+lines.Step(LineEventU32.Press(3, Column.Text, false), static at => at);
+var ended = lines.Step(LineEventU32.Release(), static at => at);
+Check("line selected by a click", lines.Selected() is { Start: 3, End: 3 } && ended.Length == 1 && !lines.Tracking());
+lines.Free();
+
 // Notifications do nothing where the platform has none, which includes Linux
 var notification = Notification.New("n1", "Title").Body("Body").Info("open", "inbox");
 if (OperatingSystem.IsLinux())
