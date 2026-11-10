@@ -81,6 +81,10 @@ Case("texts_rust", "texts", "script", "--script", $"{V}/texts.json", "--snap", "
 // Misuse must end in a managed exception, not a crash.
 Hazard("held-key", "borrowed by a callback");
 Hazard("default-object", "default struct");
+Hazard("el-twice", "RunePanicException: element already consumed");
+// A panic, or a callback's exception, comes back to the C# that called Rust, which can catch it.
+Survives("throw-caught", "caught InvalidOperationException: from the view");
+Survives("panic-recovered", "recovered: element already consumed", "recovered: object already consumed");
 
 // The adapters, through a real frame, device and worker thread.
 Adapters("adapters", "--gpu", "--compositor", $"{D}/compositor.png");
@@ -164,6 +168,23 @@ void Hazard(string name, string expected)
     {
         fail++;
         Console.WriteLine($"FAIL hazards/{name}: exit {run.Exit}");
+    }
+}
+
+void Survives(string name, params string[] expected)
+{
+    var run = Run($"out/hazards/hazards{exe}", ["--snap", $"{D}/hazard.png"], name, seconds: 30);
+    var text = Encoding.UTF8.GetString(run.Out) + Encoding.UTF8.GetString(run.Err);
+    if (run.Exit == 0 && !run.TimedOut && expected.All(text.Contains))
+    {
+        pass++;
+        Console.WriteLine($"ok   hazards/{name}");
+    }
+    else
+    {
+        fail++;
+        Console.WriteLine($"FAIL hazards/{name}: exit {run.Exit}");
+        Console.WriteLine(text);
     }
 }
 

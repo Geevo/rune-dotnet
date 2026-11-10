@@ -48,7 +48,7 @@ That's Rune's `examples/hello` in C# ([`samples/Hello`](samples/Hello/Program.cs
 - **Generated, not hand-written.** [`tools/Rune.BindGen`](tools/Rune.BindGen) is a C# program that reads Rune's rustdoc JSON and writes both sides: the Rust C ABI shim and the C# API. Output is reproducible, and generation fails if anything public goes unbound, so an upstream change can't be silently missed.
 - **Checked against Rust.** Every sample except the gallery has a Rust twin. [`tools/Rune.Verify`](tools/Rune.Verify) runs both through Rune's headless tooling with the same scripted input and compares output byte for byte.
 - **Idiomatic C#.** Fluent builders, delegates for closures, `ReadOnlySpan<T>` for slices, `TimeSpan`, `Task`-returning file dialogs, and exceptions for Rust errors.
-- **Safe by default.** Use-after-free, use-after-consume and escaping borrowed references throw or abort cleanly instead of corrupting memory. [`samples/Hazards`](samples/Hazards/Program.cs) shows each case.
+- **Safe by default.** Use-after-free, use-after-consume and escaping borrowed references throw instead of corrupting memory. A Rust panic becomes a catchable `RunePanicException`, and an exception thrown in a callback comes out of the call that led to it, such as `App.Run`. [`samples/Hazards`](samples/Hazards/Program.cs) shows each case.
 - **Cross-platform tooling.** Generation and verification are plain .NET programs with no shell scripts.
 
 ## Status
@@ -170,10 +170,11 @@ Samples:
 ## How Rust maps to C#
 
 - Plain structs become record structs, and plain enums become enums.
-- Other non-generic types become owned objects. A method taking `self` consumes the object, and `Free()` drops one that nothing consumed. Using a consumed object aborts the process.
+- Other non-generic types become owned objects. A method taking `self` consumes the object, and `Free()` drops one that nothing consumed. Using a consumed object throws `RunePanicException`.
 - Data enums have `Which`, which returns a nested `Case` enum, and `AsVariant()` readers that return null for other variants.
 - Objects read from a field or variant are borrowed: they last as long as their owner. Calling `Free()` on one, or passing it where Rune takes ownership, throws `InvalidOperationException`. A `motion_gate::Run` gives up its recording through `Ext.GateRecording`.
 - Objects a callback receives by reference, and anything read from them, last until the callback returns. Using one later throws `InvalidOperationException`, as does using a `default` object. These checks need a wider handle than Rust sees, so a handle is 16 bytes in C#. Never reinterpret one as a pointer.
+- Every call into Rust catches a panic and throws it as `RunePanicException` once Rust has unwound. Whatever the call consumed is gone, but the process goes on. An exception thrown in a callback unwinds Rust the same way and is rethrown, with its stack trace, from the C# call that led into Rust. A callback on a thread Rune started has no such call, so an exception there still ends the process.
 - `impl Fn` becomes a delegate, `Vec`, slices and iterators become `ReadOnlySpan<T>`, and `char` becomes `System.Text.Rune`.
 - Generic types have no C form, so each is bound at concrete instantiations:
   - State parameters collapse to one `Host` type. `Runtime<S>` is `Runtime`, and methods that touch the state are generic in C#.

@@ -677,7 +677,7 @@ sealed partial class Generator
                     throw new Skip("closure argument shape");
             }
         }
-        var call = $"(CB_{id}.get().expect(\"callbacks registered\"))({string.Join(", ", args)})";
+        var call = $"after_cb((CB_{id}.get().expect(\"callbacks registered\"))({string.Join(", ", args)}))";
         if (c.Ret is Handle ret)
         {
             return ret.Mut ? $"tie_mut(move |{string.Join(", ", ps)}| {{ {pre}let r = {call}; unsafe {{ &mut *(r as *mut {ret.T.RustType}) }} }})"

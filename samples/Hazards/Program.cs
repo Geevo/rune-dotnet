@@ -6,7 +6,16 @@ using static Rune.Ui;
 
 var mode = Environment.GetEnvironmentVariable("HAZ") ?? "";
 
-App.Run(new AppSpec<State>("Hazards", (300f, 200f), () => new State(), (state, context) => View(state, context, mode))
+try
+{
+    Run();
+}
+catch (Exception e) when (mode == "throw-caught")
+{
+    Console.Error.WriteLine($"caught {e.GetType().Name}: {e.Message}");
+}
+
+void Run() => App.Run(new AppSpec<State>("Hazards", (300f, 200f), () => new State(), (state, context) => View(state, context, mode))
 {
     OnKey = (state, keyEvent, tx) =>
     {
@@ -113,7 +122,32 @@ static El View(State state, Cx context, string mode)
             root = root.Child(Canvas(Shape.New().FillPath(none, Color.White)));
             break;
         case "throw":
+        case "throw-caught":
             throw new InvalidOperationException("from the view");
+        case "panic-recovered":
+            // The panic unwinds Rust back to this call, so the view goes on without it.
+            var once = Text("once");
+            root = root.Child(once);
+            try
+            {
+                Col().Child(once);
+            }
+            catch (RunePanicException e)
+            {
+                Console.Error.WriteLine($"recovered: {e.Message}");
+            }
+            var freed = Path.New();
+            freed.Free();
+            try
+            {
+                freed.Free();
+            }
+            catch (RunePanicException e)
+            {
+                Console.Error.WriteLine($"recovered: {e.Message}");
+            }
+            Path.New().Free();
+            break;
         case "off-thread":
             El made = default;
             var thread = new System.Threading.Thread(() => made = Text("other thread"));

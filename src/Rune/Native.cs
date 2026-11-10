@@ -51,6 +51,9 @@ internal static unsafe partial class Native
     [DllImport(Lib)] public static extern void rune_set_equals(delegate* unmanaged<nint, nint, byte> equals);
     [DllImport(Lib)] public static extern uint rune_scene_limit();
     [DllImport(Lib)] public static extern uint rune_selftest_unwind();
+    [DllImport(Lib)] public static extern void* rune_pending();
+    [DllImport(Lib)] public static extern uint rune_take_failure(Utf8Ref* message);
+    [DllImport(Lib)] public static extern bool rune_fail_callback();
     [DllImport(Lib)] public static extern void rune_waker_wake(nint waker);
     [DllImport(Lib)] public static extern nint rune_waker_clone(nint waker);
     [DllImport(Lib)] public static extern void rune_waker_free(nint waker);

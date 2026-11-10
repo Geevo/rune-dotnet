@@ -7,6 +7,12 @@ using System.Threading;
 
 namespace Rune;
 
+/// <summary>
+/// A Rust panic inside Rune, such as a broken invariant or a misused builder. Rust unwound back to
+/// the call, so the process goes on; what the call consumed is gone.
+/// </summary>
+public sealed class RunePanicException(string message) : Exception(message);
+
 /// <summary>An element under construction. Valid inside the view that built it; attaching it as a child consumes it.</summary>
 public readonly unsafe partial struct El
 {
@@ -37,6 +43,54 @@ internal static unsafe class Interop
     }
 
     public static void Leave() => s_depth--;
+
+    // Rust's count of failed exports not yet thrown, on any thread; see `guard` in lib.rs.
+    static readonly uint* s_pending = (uint*)Native.rune_pending();
+    // The exception a callback on this thread threw, held while Rust unwinds back to the export.
+    [ThreadStatic] static System.Runtime.ExceptionServices.ExceptionDispatchInfo? s_thrown;
+
+    /// <summary>Throws what the export just called recorded: a Rust panic, or a callback's exception.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void Rethrow()
+    {
+        if (Volatile.Read(ref *s_pending) != 0)
+        {
+            Raise();
+        }
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    static void Raise()
+    {
+        Utf8Ref message;
+        switch (Native.rune_take_failure(&message))
+        {
+            case 0:
+                return;   // Another thread's, which that thread throws.
+            case 1:
+                var thrown = s_thrown;
+                s_thrown = null;
+                thrown?.Throw();
+                throw new RunePanicException("A Rune callback failed.");
+            default:
+                throw new RunePanicException(FromUtf8(message));
+        }
+    }
+
+    /// <summary>
+    /// Holds a callback's exception for the export below it to throw. False when there's none to
+    /// unwind to, as on a thread Rune started.
+    /// </summary>
+    public static bool Unwind(Exception e)
+    {
+        s_thrown = System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(e);
+        if (Native.rune_fail_callback())
+        {
+            return true;
+        }
+        s_thrown = null;
+        return false;
+    }
 
     /// <summary>The scope of a handle into another object, such as a field: it lives as long as that object.</summary>
     public const uint Lent = uint.MaxValue;
@@ -128,9 +182,9 @@ public readonly struct Waker
     internal nint O => P;
     internal Waker(nint p) => _p = p;
 
-    public void Wake() => Native.rune_waker_wake(P);
-    public Waker Clone() => new(Native.rune_waker_clone(P));
-    public void Free() => Native.rune_waker_free(P);
+    public void Wake() { Native.rune_waker_wake(P); Interop.Rethrow(); }
+    public Waker Clone() { var w = new Waker(Native.rune_waker_clone(P)); Interop.Rethrow(); return w; }
+    public void Free() { Native.rune_waker_free(P); Interop.Rethrow(); }
 }
 
 public sealed class AppSpec<S>(string title, (float W, float H) size, Func<S> init, Func<S, Cx, El> view) where S : class
@@ -164,7 +218,11 @@ public readonly unsafe partial struct App
     private static Func<object, KeyEvent, Tx, bool>? s_onKey;
 
     /// <summary>Must run on the process's main thread: macOS and Wayland event loops expect it.</summary>
-    public static void Run<S>(AppSpec<S> spec) where S : class => Native.rune_run(Build(spec).P);
+    public static void Run<S>(AppSpec<S> spec) where S : class
+    {
+        Native.rune_run(Build(spec).P);
+        Interop.Rethrow();
+    }
 
     /// <summary>The native spec, for hosts that drive Rune themselves through `App` or `Runtime`.</summary>
     public static AppSpec Build<S>(AppSpec<S> spec) where S : class
@@ -239,9 +297,14 @@ public readonly unsafe partial struct App
 
     internal static object StateOf(nint handle) => GCHandle.FromIntPtr(handle).Target!;
 
-    // An exception can't cross into Rust: report it and stop, as an unhandled exception would.
+    // An exception can't cross Rust frames. It waits while Rust unwinds to the export C# called,
+    // which throws it. A callback on a thread Rune started has no such export: report it and stop.
     internal static void Fatal(Exception e)
     {
+        if (Interop.Unwind(e))
+        {
+            return;
+        }
         Console.Error.WriteLine(e);
         Environment.FailFast("Unhandled exception in a Rune callback.");
     }

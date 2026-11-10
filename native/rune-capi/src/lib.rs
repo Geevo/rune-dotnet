@@ -9,7 +9,9 @@
 use std::cell::{Cell, RefCell};
 use std::collections::{HashMap, HashSet};
 use std::ffi::c_void;
-use std::sync::OnceLock;
+use std::panic::AssertUnwindSafe;
+use std::sync::{OnceLock, PoisonError};
+use std::sync::atomic::{AtomicU32, Ordering};
 
 use rune::{AppSpec, Cx, El, KeyEvent, Tx, Waker};
 
@@ -62,6 +64,93 @@ fn host() -> &'static Callbacks {
     CALLBACKS.get().expect("rune_run sets the callbacks first")
 }
 
+/// The payload that unwinds Rust frames when a C# callback threw: the exception itself waits in C#.
+struct CallbackFailed;
+
+/// What a failed export left for C#: the exception C# stashed, or a Rust panic and its message.
+const FAILED_CALLBACK: u32 = 1;
+const FAILED_PANIC: u32 = 2;
+
+thread_local! {
+    // Exports on this thread's stack, so a callback knows whether there is one to unwind to.
+    static EXPORTS: Cell<u32> = const { Cell::new(0) };
+    static CALLBACK_FAILED: Cell<bool> = const { Cell::new(false) };
+    static FAILURE: RefCell<Option<(u32, String)>> = const { RefCell::new(None) };
+}
+
+/// Failures not yet taken, on any thread. C# reads it after every call, so the usual case is one load.
+static PENDING: AtomicU32 = AtomicU32::new(0);
+
+/// Runs an export's body. A panic, or a C# exception from a callback inside it, can't unwind
+/// through C#: it's recorded for C# to throw once the export returns zeroed.
+pub(crate) fn guard<R>(body: impl FnOnce() -> R) -> R {
+    struct Exit;
+    impl Drop for Exit {
+        fn drop(&mut self) {
+            EXPORTS.set(EXPORTS.get() - 1);
+        }
+    }
+    EXPORTS.set(EXPORTS.get() + 1);
+    let exit = Exit;
+    let result = std::panic::catch_unwind(AssertUnwindSafe(body));
+    drop(exit);
+    // A callback failure wins: anything panicking after it is fallout from the defaults it returned.
+    let failure = match result {
+        Ok(value) if !CALLBACK_FAILED.get() => return value,
+        Ok(_) => (FAILED_CALLBACK, String::new()),
+        Err(_) if CALLBACK_FAILED.get() => (FAILED_CALLBACK, String::new()),
+        Err(payload) => (FAILED_PANIC, panic_message(payload)),
+    };
+    CALLBACK_FAILED.set(false);
+    if FAILURE.replace(Some(failure)).is_none() {
+        PENDING.fetch_add(1, Ordering::Release);
+    }
+    // SAFETY: exports return integers, floats, bools, raw pointers and `repr(C)` records of them.
+    unsafe { std::mem::zeroed() }
+}
+
+fn panic_message(payload: Box<dyn std::any::Any + Send>) -> String {
+    match payload.downcast::<String>() {
+        Ok(s) => *s,
+        Err(payload) => payload.downcast_ref::<&str>().map_or("Rust panicked with a non-string payload", |s| s).to_owned(),
+    }
+}
+
+/// Returns a C# callback's result, unwinding to the export if the callback threw.
+pub(crate) fn after_cb<R>(result: R) -> R {
+    // Already unwinding, as from a drop calling back into C#: the unwind under way carries it.
+    if CALLBACK_FAILED.get() && !std::thread::panicking() {
+        std::panic::resume_unwind(Box::new(CallbackFailed));
+    }
+    result
+}
+
+/// The count of untaken failures, which C# polls after each call.
+#[unsafe(no_mangle)]
+pub extern "C" fn rune_pending() -> *const AtomicU32 {
+    &PENDING
+}
+
+/// Takes this thread's failure: 0 for none, else its kind, with a panic's message in `message`.
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn rune_take_failure(message: *mut Utf8) -> u32 {
+    let Some((kind, text)) = FAILURE.take() else {
+        return 0;
+    };
+    PENDING.fetch_sub(1, Ordering::Release);
+    // SAFETY: `message` is a live out-parameter.
+    unsafe { *message = ret_str(&text) };
+    kind
+}
+
+/// Called by a C# callback that threw, before it returns. False when no export is on this thread's
+/// stack, as on a thread Rune started, so there's nowhere to unwind to.
+#[unsafe(no_mangle)]
+pub extern "C" fn rune_fail_callback() -> bool {
+    CALLBACK_FAILED.set(true);
+    EXPORTS.get() > 0
+}
+
 /// A closure passed through here gets the `for<'a> Fn(&'a mut A) -> &'a mut R` signature a `let` would lose.
 fn tie_mut<A, R, F: for<'a> Fn(&'a mut A) -> &'a mut R>(f: F) -> F {
     f
@@ -90,15 +179,21 @@ thread_local! {
 
 /// Runs a view: its elements live until the outermost view returns, as nested views share the slab.
 fn view_scope(view: impl FnOnce() -> u32) -> El {
-    DEPTH.set(DEPTH.get() + 1);
-    let root = view();
-    let el = *take(root);
-    DEPTH.set(DEPTH.get() - 1);
-    if DEPTH.get() == 0 {
-        SLAB.with_borrow_mut(Vec::clear);
-        ERA.set(ERA.get() % LAST_ERA + 1);
+    // Ends the scope on unwind too, so a view that failed doesn't leave the slab open.
+    struct Scope;
+    impl Drop for Scope {
+        fn drop(&mut self) {
+            DEPTH.set(DEPTH.get() - 1);
+            if DEPTH.get() == 0 {
+                SLAB.with_borrow_mut(Vec::clear);
+                ERA.set(ERA.get() % LAST_ERA + 1);
+            }
+        }
     }
-    el
+    DEPTH.set(DEPTH.get() + 1);
+    let _scope = Scope;
+    let root = view();
+    *take(root)
 }
 
 fn slot(id: u32) -> usize {
@@ -170,7 +265,7 @@ unsafe fn utf8<'a>(ptr: *const u8, len: usize) -> &'a str {
 /// Rune keeps roles as `&'static str`; each distinct string is leaked once.
 fn intern(s: &str) -> &'static str {
     static NAMES: OnceLock<std::sync::Mutex<HashSet<&'static str>>> = OnceLock::new();
-    let mut names = NAMES.get_or_init(Default::default).lock().unwrap();
+    let mut names = NAMES.get_or_init(Default::default).lock().unwrap_or_else(PoisonError::into_inner);
     if let Some(found) = names.get(s) {
         return found;
     }
@@ -180,28 +275,28 @@ fn intern(s: &str) -> &'static str {
 }
 
 fn view(s: &Host, cx: &mut Cx<Host>) -> El {
-    view_scope(|| (host().view)(s.state, cx as *mut Cx<Host> as *mut c_void))
+    view_scope(|| after_cb((host().view)(s.state, cx as *mut Cx<Host> as *mut c_void)))
 }
 
 fn init() -> Host {
-    Host { state: (host().init)() }
+    Host { state: after_cb((host().init)()) }
 }
 
 fn setup(s: &mut Host, waker: Waker) {
-    (host().setup.expect("only set when present"))(s.state, own(waker));
+    after_cb((host().setup.expect("only set when present"))(s.state, own(waker)));
 }
 
 fn poll(s: &mut Host, seconds: f64, tx: &mut Tx) -> bool {
-    (host().poll.expect("only set when present"))(s.state, seconds, tx as *mut Tx as *mut c_void)
+    after_cb((host().poll.expect("only set when present"))(s.state, seconds, tx as *mut Tx as *mut c_void))
 }
 
 fn on_key(s: &mut Host, event: &KeyEvent, tx: &mut Tx) -> bool {
-    (host().on_key.expect("only set when present"))(s.state, event as *const KeyEvent as *const c_void, tx as *mut Tx as *mut c_void)
+    after_cb((host().on_key.expect("only set when present"))(s.state, event as *const KeyEvent as *const c_void, tx as *mut Tx as *mut c_void))
 }
 
 /// `AppSpec::scenes` takes plain fn pointers, so each slot is its own monomorphised trampoline.
 fn scene<const I: u32>(s: &mut Host) {
-    (host().scene)(I, s.state);
+    after_cb((host().scene)(I, s.state));
 }
 
 const SCENES: [fn(&mut Host); 16] = [
@@ -254,12 +349,13 @@ fn own<T>(value: T) -> *mut c_void {
     } else {
         Box::into_raw(Box::new(value)) as *mut c_void
     };
-    LIVE.lock().unwrap().get_or_insert_default().insert(ptr as usize, std::any::type_name::<T>());
+    LIVE.lock().unwrap_or_else(PoisonError::into_inner).get_or_insert_default().insert(ptr as usize, std::any::type_name::<T>());
     ptr
 }
 
 unsafe fn unown<T>(ptr: *mut c_void) -> T {
-    let mut live = LIVE.lock().unwrap();
+    // A panic below unwinds to the export; the set stays consistent, so a poisoned lock is still good.
+    let mut live = LIVE.lock().unwrap_or_else(PoisonError::into_inner);
     let live = live.get_or_insert_default();
     match live.get(&(ptr as usize)) {
         Some(&ty) if ty == std::any::type_name::<T>() => live.remove(&(ptr as usize)),
@@ -357,7 +453,7 @@ pub extern "C" fn rune_scene_limit() -> u32 {
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn rune_run(spec: *mut c_void) {
     // SAFETY: `spec` came from `rune_build_spec`.
-    rune::run(unsafe { unown::<AppSpec<Host>>(spec) });
+    guard(|| rune::run(unsafe { unown::<AppSpec<Host>>(spec) }));
 }
 
 /// Panics and catches inside Rust, as Rune's image decoder and present worker do. Returns 1 when
@@ -375,17 +471,17 @@ pub extern "C" fn rune_selftest_unwind() -> u32 {
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn rune_waker_wake(waker: *const c_void) {
     // SAFETY: `waker` came from `own::<Waker>` and hasn't been consumed.
-    (unsafe { &*(waker as *const Waker) })();
+    guard(|| (unsafe { &*(waker as *const Waker) })());
 }
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn rune_waker_clone(waker: *const c_void) -> *mut c_void {
     // SAFETY: as in `rune_waker_wake`.
-    own(unsafe { &*(waker as *const Waker) }.clone())
+    guard(|| own(unsafe { &*(waker as *const Waker) }.clone()))
 }
 
 #[unsafe(no_mangle)]
 pub unsafe extern "C" fn rune_waker_free(waker: *mut c_void) {
     // SAFETY: as in `rune_waker_wake`.
-    drop(unsafe { unown::<Waker>(waker) });
+    guard(|| drop(unsafe { unown::<Waker>(waker) }));
 }

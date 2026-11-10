@@ -54,8 +54,8 @@ static Generator Generate(IEnumerable<string> json)
 
 static void Write(string rustPath, string csPath, string reportPath, string rust, string cs, string report)
 {
-    File.WriteAllText(rustPath, rust.ReplaceLineEndings("\n"));
-    File.WriteAllText(csPath, cs.ReplaceLineEndings("\n"));
+    File.WriteAllText(rustPath, Guards.Rust(rust.ReplaceLineEndings("\n")));
+    File.WriteAllText(csPath, Guards.CSharp(cs.ReplaceLineEndings("\n")));
     File.WriteAllText(reportPath, report.ReplaceLineEndings("\n"));
 }
 
