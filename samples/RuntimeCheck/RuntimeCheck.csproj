@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <AssemblyName>runtimecheck</AssemblyName>
     <RuntimeIdentifier>$(NETCoreSdkPortableRuntimeIdentifier)</RuntimeIdentifier>
+    <RuntimeFrameworkVersion Condition="'$(RuneTfm)' == ''">10.0.15</RuntimeFrameworkVersion>
     <SelfContained>true</SelfContained>
     <PublishAot>true</PublishAot>
     <!-- Size. None of these change Rune's behaviour. -->
@@ -20,8 +21,9 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../src/Rune/Rune.csproj" />
-    <!-- The SDK's default 10.0.12 ILCompiler carries a high-severity advisory (GHSA-p3jp-9v83-76w9). -->
-    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="10.0.14" Condition="'$(RuneTfm)' == ''" />
+    <!-- The SDK's default ILCompiler can be one with a high-severity advisory (GHSA-p3jp-9v83-76w9).
+         RuntimeFrameworkVersion keeps the runtime packs at the same version, or publish finds no NativeAOT pack. -->
+    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="10.0.15" Condition="'$(RuneTfm)' == ''" />
   </ItemGroup>
   <Import Project="../../src/Rune/Rune.targets" />
 </Project>
