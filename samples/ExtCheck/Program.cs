@@ -158,6 +158,14 @@ Ext.ClearIconSwap();
 Ext.ClearIconSwapSize();
 Check("cleared swap", IconWidth(text) == 10f);
 
+// A build run as the next one hands back what it returns, and a toast stack's entries change in place
+Check("as next build", Ext.AsNextBuild(static () => 7) is 7);
+var toasts = ToastStack.CreateDefault();
+toasts.Step(ToastEvent.Shown("saved", "first", 4.0, 0.0));
+Ext.ToastStackEntriesMut(toasts, static entry => entry.Options = "changed");
+Check("toast entries changed in place", toasts.Entries() is [{ Options: "changed" }]);
+toasts.Free();
+
 // Notifications do nothing where the platform has none, which includes Linux
 var notification = Notification.New("n1", "Title").Body("Body").Info("open", "inbox");
 if (OperatingSystem.IsLinux())

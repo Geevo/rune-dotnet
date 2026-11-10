@@ -189,6 +189,14 @@ pub fn memo_window_layout_with(key: &str, f: impl Fn([f32; 4]) -> ManagedFn + 's
 pub fn memo_snapshot(key: &str, value: &ManagedFn) -> ManagedFn { (*rune::memo::snapshot(key, value)).clone() }
 /// covers: rune::theme::with_blend
 pub fn with_blend(srgb: bool, f: impl FnOnce() -> ManagedFn) -> ManagedFn { rune::theme::with_blend(srgb, f) }
+/// covers: rune::memo::as_next_build
+pub fn as_next_build(f: impl FnOnce() -> ManagedFn) -> ManagedFn { rune::memo::as_next_build(f) }
+/// Each entry in turn, oldest first, to change in place. covers: ToastStack::entries_mut
+pub fn toast_stack_entries_mut(stack: &mut rune_kit::ToastStack<ManagedFn>, mut each: impl FnMut(&mut rune_kit::ToastEntry<ManagedFn>)) {
+    for entry in stack.entries_mut() {
+        each(entry);
+    }
+}
 /// covers: Latest::request
 pub fn latest_request(latest: &rune::Latest<ManagedFn>, input: ManagedFn, work: impl FnOnce(ManagedFn) -> ManagedFn + Send + 'static) { latest.request(input, work) }
 /// `keep` says whether a result counts; one it refuses is `None` to Rune. covers: Latest::request_opt

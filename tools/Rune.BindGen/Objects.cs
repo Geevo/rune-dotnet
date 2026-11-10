@@ -197,9 +197,9 @@ sealed partial class Generator
                 }
                 var ffi = ps.SelectMany(p => FfiParams(p.Ty, p.P)).ToList();
                 var values = ps.Select(p => RustArg(p.Ty, p.P)).ToList();
-                var ctor = kind.ValueKind != JsonValueKind.Object ? $"{(t.Instantiated ? $"<{t.RustType}>" : t.RustPath)}::{name}"
-                    : named ? $"{t.RustPath}::{name} {{ {string.Join(", ", ps.Select((p, i) => $"{RawIdent(fields[i].Name)}: {values[i]}"))} }}"
-                    : $"{(t.Instantiated ? $"<{t.RustType}>" : t.RustPath)}::{name}({string.Join(", ", values)})";
+                var ctor = kind.ValueKind != JsonValueKind.Object ? $"{t.RustExprPath}::{name}"
+                    : named ? $"{t.RustExprPath}::{name} {{ {string.Join(", ", ps.Select((p, i) => $"{RawIdent(fields[i].Name)}: {values[i]}"))} }}"
+                    : $"{t.RustExprPath}::{name}({string.Join(", ", values)})";
                 var lets = string.Concat(ps.Where(p => p.Ty is Closure).Select(p => $"let {p.P}_h = ManagedFn::new({p.P}); ")) + string.Concat(ps.Where(p => p.Ty is Wire).Select(p => WireLet(p.P)));
                 var sym = $"rune_gen_{t.Sym}_new_{Names.Ident(name)}";
                 _rs.AppendLine($"#[unsafe(no_mangle)] pub unsafe extern \"C\" fn {sym}({string.Join(", ", ffi.Select(x => $"{x.Name}: {x.Rust}"))}) -> *mut c_void {{ {lets}own({ctor}) }}");

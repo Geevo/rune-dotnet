@@ -42,8 +42,11 @@ sealed class TypeInfo(string canon, Doc doc, JsonElement item, string rustPath)
     public string Base = canon;
     public string Short => RustPath.Split("::")[^1];
     public string Sym => CsName.ToLowerInvariant();
-    public string RustType => !Instantiated ? RustPath
-        : $"{RustPath}<{string.Join(", ", Enumerable.Repeat("'_", Lifetimes).Concat(Args.Select(a => a.Rust)))}>";
+    public string RustType => !Instantiated ? RustPath : $"{RustPath}<{RustArgs}>";
+    /// <summary>The type in expression position, its arguments spelled out (`ToastEvent::<ManagedFn>`),
+    /// so a variant built from it never leaves them to inference.</summary>
+    public string RustExprPath => !Instantiated ? RustPath : $"{RustPath}::<{RustArgs}>";
+    string RustArgs => string.Join(", ", Enumerable.Repeat("'_", Lifetimes).Concat(Args.Select(a => a.Rust)));
     public string Cs => "global::Rune." + CsName;
 }
 
