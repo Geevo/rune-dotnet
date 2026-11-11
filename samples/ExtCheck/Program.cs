@@ -154,6 +154,26 @@ runtime.Frame(0.016);
 Check("layout read", state.Width > 0f);
 Ext.RuntimeClearPoll(runtime);
 
+// A laid-out frame paints on the CPU into pixels Rust keeps, cleared to the colour asked for
+var cpuPixels = CpuPixels.New(64 * 32 * 4);
+var cpuTarget = Ext.CpuTarget(cpuPixels, 64, 32);
+var cpuScene = Ext.CpuBootScene(runtime, (64u, 32u), (0f, 0f, 1f, 1f));
+var cpuReport = RenderCpuBoot.Paint(cpuScene, cpuTarget, 2);
+var cpuBytes = cpuPixels.Bytes();
+Check("cpu paint", cpuReport.Tiles > 0 && cpuBytes.Length == 64 * 32 * 4 && cpuBytes[0] == 255 && cpuBytes[2] == 0 && cpuBytes[3] == 255);
+try
+{
+    RenderCpuBoot.Paint(cpuScene, Ext.CpuTarget(cpuPixels, 32, 32), 1);
+    Check("cpu paint refuses a target of another size", false);
+}
+catch (Exception)
+{
+    Check("cpu paint refuses a target of another size", true);
+}
+cpuScene.Free();
+cpuTarget.Free();
+cpuPixels.Free();
+
 // The icon swap: what it returns is kept for Rune, and a swapped icon takes the swap's size
 var text = KitModule.FileIcon("a.txt");
 var code = KitModule.FileIcon("a.rs");

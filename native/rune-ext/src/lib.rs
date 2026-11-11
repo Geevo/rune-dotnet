@@ -11,6 +11,7 @@ use std::task::{Context, Poll, Wake, Waker as TaskWaker};
 use rune::compose::{Compositor, Frame};
 use rune::motion_gate::{Allow, AllowRow, Cell, Job, Recording};
 use rune::prefs::{Prefs, PrefsError};
+use rune::render::cpu_boot::{Scene, Target};
 use rune::render::{EffectPhase, EffectSite, Renderer};
 use rune::{App, AppSpec, ConfiguredOverlay, Cx, El, FileDialogError, FileDialogOptions, FileDialogs, KeyEvent, NativeSurface, OverlaySpec, Runtime, ShortcutError, Tx, Waker};
 use rune_kit::shell::RowStatus;
@@ -425,6 +426,30 @@ pub fn renderer_draw_target_range_with(r: &Renderer, encoder: &mut wgpu::Command
 pub fn renderer_upload_images<S: 'static>(r: &mut Renderer, device: &wgpu::Device, queue: &wgpu::Queue, rt: &mut Runtime<S>) {
     r.upload_images(device, queue, &mut rt.images);
 }
+
+/// A frame's CPU scene, from the `Runtime` that laid it out: `ImageAtlas` is in a private module,
+/// so C# can't name the atlases `Scene::new` borrows. Paint it before the runtime changes.
+/// covers: Scene::new
+pub fn cpu_boot_scene<S: 'static>(rt: &Runtime<S>, size: (u32, u32), clear: [f32; 4]) -> Scene<'_> {
+    Scene::new(&rt.instances, &rt.text.atlas, &rt.images, size, clear)
+}
+
+/// The bytes a CPU paint writes into, kept on the Rust side: C# has no `&mut [u8]` to lend a `Target`.
+pub struct CpuPixels(Vec<u8>);
+
+impl CpuPixels {
+    /// `len` zeroed bytes.
+    pub fn new(len: usize) -> Self { CpuPixels(vec![0; len]) }
+    /// A copy of the bytes.
+    pub fn bytes(&self) -> Vec<u8> { self.0.clone() }
+    pub fn len(&self) -> usize { self.0.len() }
+    pub fn is_empty(&self) -> bool { self.0.is_empty() }
+}
+
+/// A target of tightly packed rows over `pixels`. covers: Target::new
+pub fn cpu_target(pixels: &mut CpuPixels, width: u32, height: u32) -> Target<'_> { Target::new(&mut pixels.0, width, height) }
+/// A target over `pixels` with rows `stride` bytes apart. covers: Target::with_stride
+pub fn cpu_target_with_stride(pixels: &mut CpuPixels, width: u32, height: u32, stride: usize) -> Target<'_> { Target::with_stride(&mut pixels.0, width, height, stride) }
 
 // Motion gate
 
