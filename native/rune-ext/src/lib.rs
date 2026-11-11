@@ -197,6 +197,26 @@ pub fn toast_stack_entries_mut(stack: &mut rune_kit::ToastStack<ManagedFn>, mut 
         each(entry);
     }
 }
+/// The sending end of a channel that `serve` drains. A clone sends to the same server, which stops
+/// once every sender is dropped.
+#[derive(Clone)]
+pub struct ServeSender(std::sync::mpsc::Sender<ManagedFn>);
+
+impl ServeSender {
+    /// Queues `message` for the server. False once the server has stopped.
+    pub fn send(&self, message: ManagedFn) -> bool {
+        self.0.send(message).is_ok()
+    }
+}
+
+/// Serves a new channel off the UI thread: `each` takes every message in order until it returns
+/// false or every sender is dropped. covers: rune::task::serve
+pub fn serve(name: String, mut each: impl FnMut(ManagedFn) -> bool + Send + 'static) -> io::Result<ServeSender> {
+    let (tx, rx) = std::sync::mpsc::channel();
+    rune::task::serve(name, rx, move |message| if each(message) { std::ops::ControlFlow::Continue(()) } else { std::ops::ControlFlow::Break(()) })?;
+    Ok(ServeSender(tx))
+}
+
 /// covers: Latest::request
 pub fn latest_request(latest: &rune::Latest<ManagedFn>, input: ManagedFn, work: impl FnOnce(ManagedFn) -> ManagedFn + Send + 'static) { latest.request(input, work) }
 /// `keep` says whether a result counts; one it refuses is `None` to Rune. covers: Latest::request_opt

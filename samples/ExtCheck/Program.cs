@@ -89,6 +89,28 @@ Ext.LatestRequestIfChanged(latest, new string("same".AsSpan()), key =>
 });
 Thread.Sleep(50);
 Check("equal keys use C# Equals", ran == 1);
+// serve: messages arrive in order on Rune's thread, and false stops the server.
+var served = new System.Collections.Concurrent.BlockingCollection<int>();
+var serveSender = Ext.Serve("extcheck-serve", message =>
+{
+    served.Add((int)message);
+    return (int)message < 3;
+});
+Check("serve sends", serveSender.Send(1) && serveSender.Send(2) && serveSender.Send(3));
+var order3 = new List<int>();
+while (order3.Count < 3 && served.TryTake(out var servedItem, TimeSpan.FromSeconds(5)))
+{
+    order3.Add(servedItem);
+}
+Check("serve order", order3.SequenceEqual(new[] { 1, 2, 3 }));
+var stopped = false;
+for (int tries = 0; tries < 100 && !stopped; tries++)
+{
+    stopped = !serveSender.Send(4);
+    System.Threading.Thread.Sleep(10);
+}
+Check("serve stops on false", stopped && served.Count == 0);
+serveSender.Free();
 Ext.LatestRequestOpt(latest, 1, key => key, result => false);
 Thread.Sleep(50);
 Check("refused result", latest.Take() is null);

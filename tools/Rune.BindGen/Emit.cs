@@ -66,6 +66,11 @@ sealed partial class Generator
         {
             _memberNames[cls] = names = [];
         }
+        // C# forbids a member named as its type, as a module's function can be (`rune::marks::marks`).
+        if (name == cls)
+        {
+            name += "_";
+        }
         while (!names.Add(name))
         {
             name += "_";
