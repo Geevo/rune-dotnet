@@ -11305,6 +11305,7 @@ public static unsafe partial class Ui
     public static global::Rune.Color Oklcha(float l, float c, float h, float a) { { return N.rune_gen_rune__oklcha(l, c, h, a); } }
     public static void OnGpu(global::System.Action<global::Rune.GpuEvent> f) { { N.rune_gen_rune__on_gpu(Interop.Keep(f)); } }
     public static global::Rune.WindowHandle OpenWindow(global::Rune.WindowSpec spec) { { return new global::Rune.WindowHandle(N.rune_gen_rune__open_window(spec.O)); } }
+    public static void OrderlyExit() { { N.rune_gen_rune__orderly_exit(); } }
     public static bool PopupMenuSupported() { { return N.rune_gen_rune__popup_menu_supported(); } }
     public static void PrewarmGpu() { { N.rune_gen_rune__prewarm_gpu(); } }
     public static void PrewarmGpuOn(global::Rune.GpuBackend backend) { { N.rune_gen_rune__prewarm_gpu_on(backend); } }
@@ -24349,6 +24350,8 @@ internal static unsafe partial class N
     public static void rune_gen_rune__on_gpu(nint p_f) { rune_gen_rune__on_gpu__(p_f); Interop.Rethrow(); }
     [DllImport(Lib, EntryPoint = "rune_gen_rune__open_window")] static extern nint rune_gen_rune__open_window__(nint p_spec);
     public static nint rune_gen_rune__open_window(nint p_spec) { var r = rune_gen_rune__open_window__(p_spec); Interop.Rethrow(); return r; }
+    [DllImport(Lib, EntryPoint = "rune_gen_rune__orderly_exit")] static extern void rune_gen_rune__orderly_exit__();
+    public static void rune_gen_rune__orderly_exit() { rune_gen_rune__orderly_exit__(); Interop.Rethrow(); }
     [DllImport(Lib, EntryPoint = "rune_gen_rune__playground__slug")] static extern Utf8Ref rune_gen_rune__playground__slug__(byte* p_path_p, nuint p_path_l);
     public static Utf8Ref rune_gen_rune__playground__slug(byte* p_path_p, nuint p_path_l) { var r = rune_gen_rune__playground__slug__(p_path_p, p_path_l); Interop.Rethrow(); return r; }
     [DllImport(Lib, EntryPoint = "rune_gen_rune__popup_menu_supported")] static extern bool rune_gen_rune__popup_menu_supported__();

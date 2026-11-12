@@ -6909,6 +6909,7 @@ static CB_111: OnceLock<extern "C" fn(usize, i32) -> ()> = OnceLock::new();
 #[unsafe(no_mangle)] pub extern "C" fn rune_gen_cb_111(f: extern "C" fn(usize, i32) -> ()) { let _ = CB_111.set(f); }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_rune__on_gpu(p_f: usize) { guard(|| unsafe { let p_f_h = ManagedFn::new(p_f); let a_f = move |a0: rune::GpuEvent| { after_cb((CB_111.get().expect("callbacks registered"))(p_f_h.id(), from_gpuevent(&a0))); }; rune::on_gpu(a_f); }) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_rune__open_window(p_spec: *mut c_void) -> *mut c_void { guard(|| unsafe { let a_spec = unown::<rune::WindowSpec<Host>>(p_spec); let v = rune::open_window(a_spec); own(v) }) }
+#[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_rune__orderly_exit() { guard(|| unsafe { rune::orderly_exit(); }) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_rune__playground__slug(p_path_p: *const u8, p_path_l: usize) -> Utf8 { guard(|| unsafe { let a_path = utf8(p_path_p, p_path_l); let v = rune::playground::slug(a_path); ret_str(&v) }) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_rune__popup_menu_supported() -> bool { guard(|| unsafe { let v = rune::popup_menu_supported(); v }) }
 #[unsafe(no_mangle)] pub unsafe extern "C" fn rune_gen_rune__prewarm_gpu() { guard(|| unsafe { rune::prewarm_gpu(); }) }

@@ -44,7 +44,7 @@ That's Rune's `examples/hello` in C# ([`samples/Hello`](samples/Hello/Program.cs
 
 ## Highlights
 
-- **All of Rune's public API is bound.** 5,304 of 5,304 items, including rune-kit and rune-notify, across 452 object types and 142 closure shapes. [COVERAGE.md](native/rune-capi/COVERAGE.md) lists every item and how it's reached.
+- **All of Rune's public API is bound.** 5,305 of 5,305 items, including rune-kit and rune-notify, across 452 object types and 142 closure shapes. [COVERAGE.md](native/rune-capi/COVERAGE.md) lists every item and how it's reached.
 - **Generated, not hand-written.** [`tools/Rune.BindGen`](tools/Rune.BindGen) is a C# program that reads Rune's rustdoc JSON and writes both sides: the Rust C ABI shim and the C# API. Output is reproducible, and generation fails if anything public goes unbound, so an upstream change can't be silently missed.
 - **Checked against Rust.** Every sample except the gallery has a Rust twin. [`tools/Rune.Verify`](tools/Rune.Verify) runs both through Rune's headless tooling with the same scripted input and compares output byte for byte.
 - **Idiomatic C#.** Fluent builders, delegates for closures, `ReadOnlySpan<T>` for slices, `TimeSpan`, `Task`-returning file dialogs, and exceptions for Rust errors.
@@ -254,7 +254,7 @@ A release bumps `<Version>` in `src/Rune/Rune.csproj` and both `Cargo.toml` file
 
 - Fat LTO peaks at about 2.5 GB per binary, and a plain `cargo build --release` links every twin at once, which can exhaust memory. Build them one at a time with `cargo build --release --bin NAME -j2`.
 - Without the xkbcommon development package there's no `libxkbcommon.so` to link against. Cargo then links `target/linkshim/libxkbcommon.so` to the runtime library, `libxkbcommon.so.0`, and an app's publish does the same under its `obj/` folder.
-- For a smaller build without accessibility, D-Bus services, SVG or Ogg audio:
+- For a smaller build without accessibility, D-Bus services, SVG, Ogg audio or the headless tooling (`--snap`, `--tree`, `--script`):
 
   ```bash
   (cd native/rune-capi && cargo build --release --lib --no-default-features --target-dir ../../target/slim)
