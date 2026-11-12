@@ -17,3 +17,11 @@ wgpu = { version = "~30.0.1", default-features = false }
 parley = { version = "0.12", default-features = false }
 serde_json = { version = "1", default-features = false, features = ["std"] }
 image = { version = "0.25", default-features = false }
+
+# Rune's vendored crates, as its own workspace patches them: a dependency's [patch] doesn't reach
+# the workspace that depends on it, and Rune calls functions only the vendored copies have.
+[patch.crates-io]
+wgpu-hal = { path = "../../rune/vendor/wgpu-hal" }
+winit = { path = "../../rune/vendor/winit" }
+parley_engine = { path = "../../rune/vendor/parley_engine" }
+accesskit_windows = { path = "../../rune/vendor/accesskit_windows" }

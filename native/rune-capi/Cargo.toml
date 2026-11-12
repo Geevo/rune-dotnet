@@ -73,6 +73,14 @@ full = ["rune/accessibility", "rune/dbus", "rune/embedded-fonts", "rune/metal-ba
 
 [workspace]
 
+# Rune's vendored crates, as its own workspace patches them: a dependency's [patch] doesn't reach
+# the workspace that depends on it, and Rune calls functions only the vendored copies have.
+[patch.crates-io]
+wgpu-hal = { path = "../../rune/vendor/wgpu-hal" }
+winit = { path = "../../rune/vendor/winit" }
+parley_engine = { path = "../../rune/vendor/parley_engine" }
+accesskit_windows = { path = "../../rune/vendor/accesskit_windows" }
+
 # panic stays "unwind": Rune catches panics internally (image decode, the present worker).
 [profile.release]
 opt-level = "s"
