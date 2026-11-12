@@ -43,8 +43,33 @@ sealed partial class Generator
             {
                 continue;
             }
-            var tr = item.GetProperty("inner").GetProperty("impl").GetProperty("trait");
+            var impl = item.GetProperty("inner").GetProperty("impl");
+            var tr = impl.GetProperty("trait");
             if (tr.ValueKind == JsonValueKind.Object && tr.GetProperty("path").GetString()!.EndsWith("Default"))
+            {
+                // Host implements no traits, so `impl<T: Default> Default for Tracked<T>` doesn't hold for Tracked<Host>.
+                return !(t.RustType.Contains("Host") && BoundsTypeParam(impl.GetProperty("generics")));
+            }
+        }
+        return false;
+    }
+
+    /// <summary>Whether an impl asks a type parameter for a trait beyond the auto traits Host has.</summary>
+    static bool BoundsTypeParam(JsonElement generics)
+    {
+        static bool Real(JsonElement bounds) => bounds.EnumerateArray().Any(b =>
+            b.TryGetProperty("trait_bound", out var tb)
+            && tb.GetProperty("trait").GetProperty("path").GetString()!.Split("::")[^1] is not ("Send" or "Sync" or "Sized" or "Unpin"));
+        foreach (var p in generics.GetProperty("params").EnumerateArray())
+        {
+            if (p.GetProperty("kind").TryGetProperty("type", out var ty) && Real(ty.GetProperty("bounds")))
+            {
+                return true;
+            }
+        }
+        foreach (var w in generics.GetProperty("where_predicates").EnumerateArray())
+        {
+            if (w.TryGetProperty("bound_predicate", out var bp) && Real(bp.GetProperty("bounds")))
             {
                 return true;
             }
