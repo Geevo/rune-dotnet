@@ -192,6 +192,12 @@ pub fn memo_snapshot(key: &str, value: &ManagedFn) -> ManagedFn { (*rune::memo::
 pub fn with_blend(srgb: bool, f: impl FnOnce() -> ManagedFn) -> ManagedFn { rune::theme::with_blend(srgb, f) }
 /// covers: rune::memo::as_next_build
 pub fn as_next_build(f: impl FnOnce() -> ManagedFn) -> ManagedFn { rune::memo::as_next_build(f) }
+/// The value, counted as read by the region or `tracked_reads` building around the call (`Deref`).
+pub fn tracked_get(t: &rune::Tracked<ManagedFn>) -> ManagedFn { (**t).clone() }
+/// Replaces the value, so a region that read it builds again (`DerefMut`).
+pub fn tracked_set(t: &mut rune::Tracked<ManagedFn>, value: ManagedFn) { **t = value; }
+/// The Tracked values `f` read; C# keeps what `f` makes in a variable it captures. covers: rune::tracked_reads
+pub fn tracked_reads(f: impl FnOnce()) -> rune::Reads { rune::tracked_reads(f).1 }
 /// Each entry in turn, oldest first, to change in place. covers: ToastStack::entries_mut
 pub fn toast_stack_entries_mut(stack: &mut rune_kit::ToastStack<ManagedFn>, mut each: impl FnMut(&mut rune_kit::ToastEntry<ManagedFn>)) {
     for entry in stack.entries_mut() {

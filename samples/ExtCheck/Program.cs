@@ -200,6 +200,19 @@ Ext.ClearIconSwap();
 Ext.ClearIconSwapSize();
 Check("cleared swap", IconWidth(text) == 10f);
 
+// Tracked: a read through TrackedGet is recorded, a peek through Untracked isn't, and a set changes what was read
+var tracked = Tracked.New("first");
+string? trackedSeen = null;
+var reads = Ext.TrackedReads(() => trackedSeen = (string)Ext.TrackedGet(tracked));
+var peeks = Ext.TrackedReads(() => Tracked.Untracked(tracked));
+Check("tracked read", trackedSeen == "first" && !reads.Changed());
+Ext.TrackedSet(tracked, "second");
+Check("tracked set", reads.Changed() && (string)Tracked.Untracked(tracked) == "second" && Tracked.Version(tracked) > 0);
+Check("untracked peek records nothing", !peeks.Changed());
+reads.Free();
+peeks.Free();
+tracked.Free();
+
 // A build run as the next one hands back what it returns, and a toast stack's entries change in place
 Check("as next build", Ext.AsNextBuild(static () => 7) is 7);
 var toasts = ToastStack.CreateDefault();

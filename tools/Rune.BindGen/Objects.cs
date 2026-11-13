@@ -47,19 +47,24 @@ sealed partial class Generator
             var tr = impl.GetProperty("trait");
             if (tr.ValueKind == JsonValueKind.Object && tr.GetProperty("path").GetString()!.EndsWith("Default"))
             {
-                // Host implements no traits, so `impl<T: Default> Default for Tracked<T>` doesn't hold for Tracked<Host>.
-                return !(t.RustType.Contains("Host") && BoundsTypeParam(impl.GetProperty("generics")));
+                // Host implements no traits and ManagedFn only Clone and PartialEq, so
+                // `impl<T: Default> Default for Tracked<T>` holds for neither.
+                var has = t.RustType.Contains("ManagedFn") ? ManagedTraits : t.RustType.Contains("Host") ? AutoTraits : null;
+                return has is null || !BoundsTypeParam(impl.GetProperty("generics"), has);
             }
         }
         return false;
     }
 
-    /// <summary>Whether an impl asks a type parameter for a trait beyond the auto traits Host has.</summary>
-    static bool BoundsTypeParam(JsonElement generics)
+    static readonly HashSet<string> AutoTraits = ["Send", "Sync", "Sized", "Unpin"];
+    static readonly HashSet<string> ManagedTraits = ["Send", "Sync", "Sized", "Unpin", "Clone", "PartialEq"];
+
+    /// <summary>Whether an impl asks a type parameter for a trait outside <paramref name="has"/>.</summary>
+    static bool BoundsTypeParam(JsonElement generics, HashSet<string> has)
     {
-        static bool Real(JsonElement bounds) => bounds.EnumerateArray().Any(b =>
+        bool Real(JsonElement bounds) => bounds.EnumerateArray().Any(b =>
             b.TryGetProperty("trait_bound", out var tb)
-            && tb.GetProperty("trait").GetProperty("path").GetString()!.Split("::")[^1] is not ("Send" or "Sync" or "Sized" or "Unpin"));
+            && !has.Contains(tb.GetProperty("trait").GetProperty("path").GetString()!.Split("::")[^1]));
         foreach (var p in generics.GetProperty("params").EnumerateArray())
         {
             if (p.GetProperty("kind").TryGetProperty("type", out var ty) && Real(ty.GetProperty("bounds")))

@@ -11,7 +11,7 @@ sealed partial class Generator
     static readonly HashSet<string> AnimatableContainers = ["Prop", "Keyframes", "Keyframe", "Release"];
     // Unbounded in Rust, but `LineSelection::step` needs `LinePoint`: a code view's line or a diff's.
     static readonly HashSet<string> LinePointContainers = ["Lines", "LineSelection", "LineEvent", "LineEffect"];
-    static readonly HashSet<(string, string)> OpaqueParams = [("TreeModel", "T"), ("FileNode", "D"), ("Latest", "T"), ("Tree", "T"), ("Effects", "E"), ("EffectsIter", "E"), ("ToastStack", "O"), ("ToastEntry", "O"), ("ToastEvent", "O")];
+    static readonly HashSet<(string, string)> OpaqueParams = [("TreeModel", "T"), ("FileNode", "D"), ("Latest", "T"), ("Tree", "T"), ("Effects", "E"), ("EffectsIter", "E"), ("ToastStack", "O"), ("ToastEntry", "O"), ("ToastEvent", "O"), ("Tracked", "T")];
 
     static readonly System.Text.RegularExpressions.Regex ContainerArg = new(@"""path"":\s*""[^""]*\b(Prop|Keyframes|Keyframe|Release)""");
 
