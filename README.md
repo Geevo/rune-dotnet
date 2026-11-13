@@ -255,7 +255,7 @@ A release bumps `<Version>` in `src/Rune/Rune.csproj` and both `Cargo.toml` file
 
 - Fat LTO peaks at about 2.5 GB per binary, and a plain `cargo build --release` links every twin at once, which can exhaust memory. Build them one at a time with `cargo build --release --bin NAME -j2`.
 - Without the xkbcommon development package there's no `libxkbcommon.so` to link against. Cargo then links `target/linkshim/libxkbcommon.so` to the runtime library, `libxkbcommon.so.0`, and an app's publish does the same under its `obj/` folder.
-- For a smaller build without accessibility, D-Bus services, SVG, Ogg audio or the headless tooling (`--snap`, `--tree`, `--script`):
+- For a smaller build without accessibility, D-Bus services, SVG, Ogg audio or the headless tooling (`--snap`, `--tree`, `--script`, and the `--keys` and `--pointer` overlays):
 
   ```bash
   (cd native/rune-capi && cargo build --release --lib --no-default-features --target-dir ../../target/slim)

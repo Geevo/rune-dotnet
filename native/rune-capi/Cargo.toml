@@ -65,13 +65,14 @@ serde_json = { version = "1", default-features = false, features = ["std"] }
 image = { version = "0.25", default-features = false }
 zeroize = { version = "1.8", default-features = false, features = ["alloc"] }
 
-# `full` is Rune's own default set, so the wrapper behaves like a plain Rust app, plus `tooling`:
-# Rune's release builds link `--snap`, `--tree`, `--script` and the other headless runs only with it,
-# and C# apps and Rune.Verify use them (about 3.5 MB).
+# `full` is Rune's own default set, so the wrapper behaves like a plain Rust app, plus `keys-overlay`
+# (which brings `tooling`): Rune's release builds link `--snap`, `--tree`, `--script` and the other
+# headless runs only with `tooling` (about 3.5 MB), and the `--keys` and `--pointer` overlays only with
+# `keys-overlay` (about 1.5 MB more), so C# apps get the arguments a debug Rust build has.
 # `--no-default-features` drops accessibility, D-Bus services, SVG, Ogg audio and the tooling to save size.
 [features]
 default = ["full"]
-full = ["rune/accessibility", "rune/dbus", "rune/embedded-fonts", "rune/metal-backend", "rune/ogg-audio", "rune/svg", "rune/tooling"]
+full = ["rune/accessibility", "rune/dbus", "rune/embedded-fonts", "rune/metal-backend", "rune/ogg-audio", "rune/svg", "rune/keys-overlay"]
 
 [workspace]
 

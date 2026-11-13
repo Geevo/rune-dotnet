@@ -39,6 +39,9 @@ Case("kit_rust", "kitcheck", "clicks", "--script", $"{V}/kit-clicks.json", "--sn
 
 Case("spec_rust", "speccheck", "snap", "--snap", "@PNG");
 Case("spec_rust", "speccheck", "keys", "--script", $"{V}/spec-keys.json", "--snap", "@PNG", "--tree", "@TREE");
+// The overlays are linked only with `keys-overlay`; without it both sides fail alike, so check they drew.
+Case("spec_rust", "speccheck", "overlay", "--script", $"{V}/spec-keys.json", "--snap", "@PNG", "--keys", "--pointer");
+Differs("speccheck/overlay draws", $"{D}/speccheck-overlay-cs.png", $"{D}/speccheck-keys-cs.png");
 
 Case("gen_rust", "gencheck", "stdout");
 Case("gen_rust", "gencheck", "app", "--snap", "@PNG");
@@ -151,6 +154,20 @@ void Case(string rust, string cs, string label, params string[] args)
     {
         fail++;
         Console.WriteLine($"FAIL {cs}/{label}: {string.Join(' ', bad)}");
+    }
+}
+
+void Differs(string label, string a, string b)
+{
+    if (File.Exists(a) && File.Exists(b) && !File.ReadAllBytes(a).AsSpan().SequenceEqual(File.ReadAllBytes(b)))
+    {
+        pass++;
+        Console.WriteLine($"ok   {label}");
+    }
+    else
+    {
+        fail++;
+        Console.WriteLine($"FAIL {label}: {(File.Exists(a) ? "same as " + b : "no " + a)}");
     }
 }
 
