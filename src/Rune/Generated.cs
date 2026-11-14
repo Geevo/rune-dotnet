@@ -1581,6 +1581,7 @@ public readonly unsafe partial struct Cx
     public bool HoverNone() { { return N.rune_gen_cx_hover_none(P); } }
     public bool TouchControls() { { return N.rune_gen_cx_touch_controls(P); } }
     public global::Rune.SystemContrast? SystemContrast() { global::Rune.SystemContrast o0; { return N.rune_gen_cx_system_contrast(P, &o0) ? o0 : null; } }
+    public bool SystemIncreasedContrast() { { return N.rune_gen_cx_system_increased_contrast(P); } }
     public bool SystemReducedMotion() { { return N.rune_gen_cx_system_reduced_motion(P); } }
     public global::Rune.ScrollBars ScrollBars() { { return N.rune_gen_cx_scroll_bars(P); } }
     public bool OverlayScrollBars() { { return N.rune_gen_cx_overlay_scroll_bars(P); } }
@@ -1604,6 +1605,7 @@ public readonly unsafe partial struct Cycle
     public (float, float)[] Stops { get => WireReader.Read<(float, float)[]>(N.rune_gen_cycle_field_get_stops(P), static q224 => q224.List<(float, float)>(static q225 => (q225.Raw<float>(), q225.Raw<float>()))); set { var value__1w = new WireWriter(); value__1w.Len(value.Length); foreach (var e229 in value) { value__1w.Raw<float>(e229.Item1); value__1w.Raw<float>(e229.Item2); } byte[] value__1b = value__1w.ToArray(); fixed (byte* value__1p = value__1b) { N.rune_gen_cycle_field_set_stops(P, value__1p, (nuint)value__1b.Length); } } }
     public float Still { get => N.rune_gen_cycle_field_get_still(P); set { { N.rune_gen_cycle_field_set_still(P, value); } } }
     public float Fps { get => N.rune_gen_cycle_field_get_fps(P); set { { N.rune_gen_cycle_field_set_fps(P, value); } } }
+    public static float DisplayRate => N.rune_gen_const_rune__cycle__display_rate();
     public float Sample(double t) { { return N.rune_gen_cycle_sample(P, t); } }
 }
 [StructLayout(LayoutKind.Sequential)] public unsafe partial record struct Decay(float Rate)
@@ -6844,6 +6846,7 @@ public readonly unsafe partial struct Runtime
     public void SetFullKeyboardAccess(bool on) { { N.rune_gen_runtime_set_full_keyboard_access(P, on); } }
     public void SetTabVisitsControls(bool on) { { N.rune_gen_runtime_set_tab_visits_controls(P, on); } }
     public void SetSystemContrast(global::Rune.SystemContrast? contrast) { { N.rune_gen_runtime_set_system_contrast(P, contrast.HasValue, contrast.GetValueOrDefault()); } }
+    public void SetSystemIncreasedContrast(bool on) { { N.rune_gen_runtime_set_system_increased_contrast(P, on); } }
     public void SetSystemReducedMotion(bool reduced) { { N.rune_gen_runtime_set_system_reduced_motion(P, reduced); } }
     public bool SystemReducedMotion() { { return N.rune_gen_runtime_system_reduced_motion(P); } }
     public void SetSystemScrollBars(global::Rune.ScrollBars bars) { { N.rune_gen_runtime_set_system_scroll_bars(P, bars); } }
@@ -18737,6 +18740,8 @@ internal static unsafe partial class N
     public static bool rune_gen_cx_touch_controls(nint h) { var r = rune_gen_cx_touch_controls__(h); Interop.Rethrow(); return r; }
     [DllImport(Lib, EntryPoint = "rune_gen_cx_system_contrast")] static extern bool rune_gen_cx_system_contrast__(nint h, global::Rune.SystemContrast* o0);
     public static bool rune_gen_cx_system_contrast(nint h, global::Rune.SystemContrast* o0) { var r = rune_gen_cx_system_contrast__(h, o0); Interop.Rethrow(); return r; }
+    [DllImport(Lib, EntryPoint = "rune_gen_cx_system_increased_contrast")] static extern bool rune_gen_cx_system_increased_contrast__(nint h);
+    public static bool rune_gen_cx_system_increased_contrast(nint h) { var r = rune_gen_cx_system_increased_contrast__(h); Interop.Rethrow(); return r; }
     [DllImport(Lib, EntryPoint = "rune_gen_cx_system_reduced_motion")] static extern bool rune_gen_cx_system_reduced_motion__(nint h);
     public static bool rune_gen_cx_system_reduced_motion(nint h) { var r = rune_gen_cx_system_reduced_motion__(h); Interop.Rethrow(); return r; }
     [DllImport(Lib, EntryPoint = "rune_gen_cx_scroll_bars")] static extern global::Rune.ScrollBars rune_gen_cx_scroll_bars__(nint h);
@@ -18753,6 +18758,8 @@ internal static unsafe partial class N
     public static void rune_gen_cx_zoom(nint h, float p_k) { rune_gen_cx_zoom__(h, p_k); Interop.Rethrow(); }
     [DllImport(Lib, EntryPoint = "rune_gen_cx_caret")] static extern bool rune_gen_cx_caret__(nint h, byte* p_key_p, nuint p_key_l, float* o0, float* o1, float* o2, float* o3);
     public static bool rune_gen_cx_caret(nint h, byte* p_key_p, nuint p_key_l, float* o0, float* o1, float* o2, float* o3) { var r = rune_gen_cx_caret__(h, p_key_p, p_key_l, o0, o1, o2, o3); Interop.Rethrow(); return r; }
+    [DllImport(Lib, EntryPoint = "rune_gen_const_rune__cycle__display_rate")] static extern float rune_gen_const_rune__cycle__display_rate__();
+    public static float rune_gen_const_rune__cycle__display_rate() { var r = rune_gen_const_rune__cycle__display_rate__(); Interop.Rethrow(); return r; }
     [DllImport(Lib, EntryPoint = "rune_gen_cycle_sample")] static extern float rune_gen_cycle_sample__(nint h, double p_t);
     public static float rune_gen_cycle_sample(nint h, double p_t) { var r = rune_gen_cycle_sample__(h, p_t); Interop.Rethrow(); return r; }
     [DllImport(Lib, EntryPoint = "rune_gen_const_rune__decay__ios_normal")] static extern global::Rune.Decay rune_gen_const_rune__decay__ios_normal__();
@@ -21901,6 +21908,8 @@ internal static unsafe partial class N
     public static void rune_gen_runtime_set_tab_visits_controls(nint h, bool p_on) { rune_gen_runtime_set_tab_visits_controls__(h, p_on); Interop.Rethrow(); }
     [DllImport(Lib, EntryPoint = "rune_gen_runtime_set_system_contrast")] static extern void rune_gen_runtime_set_system_contrast__(nint h, bool p_contrast_has, global::Rune.SystemContrast p_contrast);
     public static void rune_gen_runtime_set_system_contrast(nint h, bool p_contrast_has, global::Rune.SystemContrast p_contrast) { rune_gen_runtime_set_system_contrast__(h, p_contrast_has, p_contrast); Interop.Rethrow(); }
+    [DllImport(Lib, EntryPoint = "rune_gen_runtime_set_system_increased_contrast")] static extern void rune_gen_runtime_set_system_increased_contrast__(nint h, bool p_on);
+    public static void rune_gen_runtime_set_system_increased_contrast(nint h, bool p_on) { rune_gen_runtime_set_system_increased_contrast__(h, p_on); Interop.Rethrow(); }
     [DllImport(Lib, EntryPoint = "rune_gen_runtime_set_system_reduced_motion")] static extern void rune_gen_runtime_set_system_reduced_motion__(nint h, bool p_reduced);
     public static void rune_gen_runtime_set_system_reduced_motion(nint h, bool p_reduced) { rune_gen_runtime_set_system_reduced_motion__(h, p_reduced); Interop.Rethrow(); }
     [DllImport(Lib, EntryPoint = "rune_gen_runtime_system_reduced_motion")] static extern bool rune_gen_runtime_system_reduced_motion__(nint h);
