@@ -9590,6 +9590,7 @@ public readonly unsafe partial struct Tx
     public void CenterWindow() { { N.rune_gen_tx_center_window(P); } }
     public void Blur() { { N.rune_gen_tx_blur(P); } }
     public void Focus(string key, bool ring) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { N.rune_gen_tx_focus(P, key__1p, (nuint)key__1b.Length, ring); } }
+    public void FocusWhenShown(string key, bool ring) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { N.rune_gen_tx_focus_when_shown(P, key__1p, (nuint)key__1b.Length, ring); } }
     public void ReturnFocus(string key, bool ring) { byte[] key__1b = Interop.Utf8(key); fixed (byte* key__1p = key__1b) { N.rune_gen_tx_return_focus(P, key__1p, (nuint)key__1b.Length, ring); } }
     public bool AssistiveTechnology() { { return N.rune_gen_tx_assistive_technology(P); } }
     public bool FocusVisible() { { return N.rune_gen_tx_focus_visible(P); } }
@@ -24133,6 +24134,8 @@ internal static unsafe partial class N
     public static void rune_gen_tx_blur(nint h) { rune_gen_tx_blur__(h); Interop.Rethrow(); }
     [DllImport(Lib, EntryPoint = "rune_gen_tx_focus")] static extern void rune_gen_tx_focus__(nint h, byte* p_key_p, nuint p_key_l, bool p_ring);
     public static void rune_gen_tx_focus(nint h, byte* p_key_p, nuint p_key_l, bool p_ring) { rune_gen_tx_focus__(h, p_key_p, p_key_l, p_ring); Interop.Rethrow(); }
+    [DllImport(Lib, EntryPoint = "rune_gen_tx_focus_when_shown")] static extern void rune_gen_tx_focus_when_shown__(nint h, byte* p_key_p, nuint p_key_l, bool p_ring);
+    public static void rune_gen_tx_focus_when_shown(nint h, byte* p_key_p, nuint p_key_l, bool p_ring) { rune_gen_tx_focus_when_shown__(h, p_key_p, p_key_l, p_ring); Interop.Rethrow(); }
     [DllImport(Lib, EntryPoint = "rune_gen_tx_return_focus")] static extern void rune_gen_tx_return_focus__(nint h, byte* p_key_p, nuint p_key_l, bool p_ring);
     public static void rune_gen_tx_return_focus(nint h, byte* p_key_p, nuint p_key_l, bool p_ring) { rune_gen_tx_return_focus__(h, p_key_p, p_key_l, p_ring); Interop.Rethrow(); }
     [DllImport(Lib, EntryPoint = "rune_gen_tx_assistive_technology")] static extern bool rune_gen_tx_assistive_technology__(nint h);
