@@ -111,6 +111,23 @@ for (int tries = 0; tries < 100 && !stopped; tries++)
 }
 Check("serve stops on false", stopped && served.Count == 0);
 serveSender.Free();
+// queue: the same, on a worker it borrows only while messages wait.
+var queued = new System.Collections.Concurrent.BlockingCollection<int>();
+var queue = Ext.TaskQueue("extcheck-queue", message =>
+{
+    queued.Add((int)message);
+    return true;
+});
+queue.Send(1);
+queue.Send(2);
+queue.Send(3);
+var queueOrder = new List<int>();
+while (queueOrder.Count < 3 && queued.TryTake(out var queuedItem, TimeSpan.FromSeconds(5)))
+{
+    queueOrder.Add(queuedItem);
+}
+Check("queue order", queueOrder.SequenceEqual(new[] { 1, 2, 3 }));
+queue.Free();
 Ext.LatestRequestOpt(latest, 1, key => key, result => false);
 Thread.Sleep(50);
 Check("refused result", latest.Take() is null);

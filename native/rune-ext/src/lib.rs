@@ -224,6 +224,12 @@ pub fn serve(name: String, mut each: impl FnMut(ManagedFn) -> bool + Send + 'sta
     Ok(ServeSender(tx))
 }
 
+/// A serial service: `each` takes every message sent to the queue, in order, one at a time, on a task
+/// worker it borrows only while messages wait, until it returns false. covers: rune::task::queue
+pub fn task_queue(name: String, mut each: impl FnMut(ManagedFn) -> bool + Send + 'static) -> rune::task::Queue<ManagedFn> {
+    rune::task::queue(name, move |message| if each(message) { std::ops::ControlFlow::Continue(()) } else { std::ops::ControlFlow::Break(()) })
+}
+
 /// covers: Latest::request
 pub fn latest_request(latest: &rune::Latest<ManagedFn>, input: ManagedFn, work: impl FnOnce(ManagedFn) -> ManagedFn + Send + 'static) { latest.request(input, work) }
 /// `keep` says whether a result counts; one it refuses is `None` to Rune. covers: Latest::request_opt
