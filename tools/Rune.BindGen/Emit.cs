@@ -11,6 +11,13 @@ sealed partial class Generator
     Dictionary<string, List<string>> _members = [];
     Dictionary<string, HashSet<string>> _memberNames = [];
     Dictionary<string, int> _shapes = [];
+    int _freshShapes, _freshPools;
+
+    /// <summary>Numbers to reuse for closure shapes and fn pools, so a second platform's run agrees with the first on shared ones and numbers its own after them.</summary>
+    public Dictionary<string, int> ShapeHints { get; init; } = [];
+    public Dictionary<string, int> PoolHints { get; init; } = [];
+    public IReadOnlyDictionary<string, int> Shapes => _shapes;
+    public IReadOnlyDictionary<string, int> PoolNumbers => _pools.ToDictionary(p => p.Key, p => int.Parse(p.Value[3..]));
     List<(string Api, string Reason)> _skipped = [];
     int _bound;
 
@@ -23,6 +30,7 @@ sealed partial class Generator
         _members = [];
         _memberNames = [];
         _shapes = [];
+        _freshShapes = _freshPools = 0;
         _skipped = [];
         _bound = 0;
         _pools.Clear();
@@ -480,7 +488,7 @@ sealed partial class Generator
         {
             return id;
         }
-        id = _shapes.Count;
+        id = ShapeHints.TryGetValue(key, out var hinted) ? hinted : ShapeHints.Count + _freshShapes++;
         var ps = new List<string> { "nint h" };
         var args = new List<string>();
         var borrows = false;
@@ -590,7 +598,7 @@ sealed partial class Generator
         {
             return name;
         }
-        name = $"fp_{_pools.Count}";
+        name = $"fp_{(PoolHints.TryGetValue(type, out var pooled) ? pooled : PoolHints.Count + _freshPools++)}";
         var made = RustClosure(c, "h", $"{name.ToUpperInvariant()}[I].load(std::sync::atomic::Ordering::Relaxed)");
         _rs.AppendLine($"static {name.ToUpperInvariant()}: [std::sync::atomic::AtomicUsize; FN_SLOTS] = [const {{ std::sync::atomic::AtomicUsize::new(0) }}; FN_SLOTS];");
         _rs.AppendLine($"#[allow(unused_unsafe)] fn {name}_at<const I: usize>() -> {type} {{ unsafe {{ {made} }} }}");
@@ -1185,7 +1193,7 @@ sealed partial class Generator
             }
             cs.AppendLine($"public static unsafe partial class {cls}\n{{").AppendJoin('\n', members).AppendLine("\n}");
         }
-        cs.AppendLine("internal static unsafe class Callbacks\n{\n    public static void Register()\n    {").Append(_register).AppendLine("    }\n").Append(_trampolines).AppendLine("}");
+        cs.AppendLine("internal static unsafe partial class Callbacks\n{\n    public static void Register()\n    {").Append(_register).AppendLine("        if (global::System.OperatingSystem.IsLinux())\n        {\n            RegisterLinux();\n        }\n    }\n\n    static partial void RegisterLinux();\n").Append(_trampolines).AppendLine("}");
         cs.AppendLine("internal static unsafe partial class N\n{\n    private const string Lib = \"rune_capi\";").Append(_native).AppendLine("}");
         CSharp = cs.ToString();
 

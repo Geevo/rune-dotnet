@@ -44,7 +44,7 @@ That's Rune's `examples/hello` in C# ([`samples/Hello`](samples/Hello/Program.cs
 
 ## Highlights
 
-- **All of Rune's public API is bound.** 5,365 of 5,365 items, including rune-kit and rune-notify, across 457 object types and 144 closure shapes. [COVERAGE.md](native/rune-capi/COVERAGE.md) lists every item and how it's reached.
+- **All of Rune's public API is bound.** 5,379 of 5,379 items on macOS (5,376 of 5,376 on Linux and Windows, plus Linux's dmabuf import), including rune-kit and rune-notify, across 458 object types and 145 closure shapes. [COVERAGE.md](native/rune-capi/COVERAGE.md) lists every item and how it's reached.
 - **Generated, not hand-written.** [`tools/Rune.BindGen`](tools/Rune.BindGen) is a C# program that reads Rune's rustdoc JSON and writes both sides: the Rust C ABI shim and the C# API. Output is reproducible, and generation fails if anything public goes unbound, so an upstream change can't be silently missed.
 - **Checked against Rust.** Every sample except the gallery has a Rust twin. [`tools/Rune.Verify`](tools/Rune.Verify) runs both through Rune's headless tooling with the same scripted input and compares output byte for byte.
 - **Idiomatic C#.** Fluent builders, delegates for closures, `ReadOnlySpan<T>` for slices, `TimeSpan`, `Task`-returning file dialogs, and exceptions for Rust errors.
@@ -195,6 +195,7 @@ Samples:
 - `OsString` becomes `string`. `Ext.AppDirsFromEnv` and `Ext.HomeFrom` take a lookup that returns a variable's value or null.
 - `AppSpec.SetScenes` takes every scene at once and leaks one copy of the list, because `AppSpec.scenes` is `'static`.
 - `ImageAtlas` is in a private Rune module, so C# reaches it only through a runtime: `Ext.RendererUploadImages(..., runtime)`, and `Ext.CpuBootScene(runtime, size, clear)` for the CPU renderer's scene.
+- Linux's dmabuf import (`Dmabuf`, `DmabufBuffer`, `NativeSurfaceLinux`, `NativeSurface.PushDmabuf`) lives in `Generated.Linux.cs` and is marked `[SupportedOSPlatform("linux")]`. `Ext.DmabufPlaneFromFd` and `Ext.DmabufOnRead` cover the file descriptor and the read callback.
 - `Ext.Serve` and `Ext.TaskQueue` run a C# handler for each message, in order, off the UI thread. The handler returns false to stop, where Rust returns `ControlFlow::Break`. `Serve` keeps a thread waiting, while a `Queue` borrows a task worker only while messages wait.
 - `Tracked` holds a C# object. Rust reads and writes it through `Deref`, which C# has no member for, so `Ext.TrackedGet(t)` is a recorded read and `Ext.TrackedSet(t, value)` a change. `Ext.TrackedReads(() => ...)` returns what the action read, and the action keeps any result in a variable it captures.
 - The CPU renderer writes into bytes Rust keeps (`CpuPixels`), since C# has no `&mut [u8]` to lend: `Ext.CpuTarget(pixels, width, height)` makes the `Target`, and `pixels.Bytes()` copies the result out.

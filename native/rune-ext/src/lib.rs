@@ -547,6 +547,24 @@ pub fn pixel_buffer_from_iosurface(raw: usize, color: rune::native_surface::Colo
     unsafe { rune::native_surface::macos::PixelBuffer::from_iosurface(raw as *mut std::ffi::c_void, color) }
 }
 
+// Linux dmabufs. A file descriptor is a number to C#.
+
+/// A plane over `fd`, which the plane owns from here: it closes the descriptor when it drops, so
+/// the caller must not use or close it again. covers: DmabufPlane.fd
+#[cfg(target_os = "linux")]
+pub fn dmabuf_plane_from_fd(fd: i32, offset: u32, stride: u32, modifier: u64) -> rune::native_surface::linux::DmabufPlane {
+    use std::os::fd::FromRawFd;
+    // SAFETY: the caller hands over an open descriptor it no longer uses, which is what `OwnedFd` asks for.
+    rune::native_surface::linux::DmabufPlane { fd: unsafe { std::os::fd::OwnedFd::from_raw_fd(fd) }, offset, stride, modifier }
+}
+
+/// `f` gets null once Rune's GPU has read the frame, or why it couldn't. It runs on a thread of Rune's.
+/// covers: Dmabuf::on_read
+#[cfg(target_os = "linux")]
+pub fn dmabuf_on_read(frame: rune::native_surface::linux::Dmabuf, f: impl FnOnce(Option<String>) + Send + 'static) -> rune::native_surface::linux::Dmabuf {
+    frame.on_read(move |read| f(read.err()))
+}
+
 /// The environment as strings: a variable that isn't valid UTF-8 reads as unset. covers: AppDirs::from_env
 pub fn app_dirs_from_env(app_id: &str, var: impl Fn(&str) -> Option<String>) -> Option<rune::dirs::AppDirs> {
     rune::dirs::AppDirs::from_env(app_id, |name| var(name).map(Into::into))

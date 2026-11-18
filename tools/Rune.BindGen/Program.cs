@@ -24,15 +24,19 @@ if (args.Length > 0)
 }
 
 // rustdoc drops other platforms' `cfg` items, so fixed targets keep the output the same on every host.
-var linux = Generate(Rustdoc("x86_64-unknown-linux-gnu"));
 var mac = Generate(Rustdoc("aarch64-apple-darwin"));
-var macOnly = Platforms.MacOnly(linux.Rust.ReplaceLineEndings("\n"), mac.Rust.ReplaceLineEndings("\n"));
-var gated = macOnly.ToHashSet();
-var report = mac.Report.ReplaceLineEndings("\n") + $"\n## macOS only\n\n{macOnly.Length} exported functions, gated in Rust and marked `[SupportedOSPlatform(\"macos\")]` in C#:\n\n"
-    + string.Concat(macOnly.Select(s => $"- `{s}`\n"));
+var linux = Generate(Rustdoc("x86_64-unknown-linux-gnu"), mac);
+var (macOnly, linuxOnly) = Platforms.Only(linux.Rust.ReplaceLineEndings("\n"), mac.Rust.ReplaceLineEndings("\n"));
+var macGate = macOnly.ToHashSet();
+var linuxGate = linuxOnly.ToHashSet();
+static string Section(string os, string[] symbols) => $"\n## {os} only\n\n{symbols.Length} exported functions, gated in Rust and marked `[SupportedOSPlatform(\"{os.ToLowerInvariant()}\")]` in C#:\n\n"
+    + string.Concat(symbols.Select(s => $"- `{s}`\n"));
+var report = mac.Report.ReplaceLineEndings("\n") + Section("macOS", macOnly) + Section("Linux", linuxOnly);
 Write("native/rune-capi/src/generated.rs", "src/Rune/Generated.cs", "native/rune-capi/COVERAGE.md",
-    Platforms.GateRust(mac.Rust.ReplaceLineEndings("\n"), gated), Platforms.GateCSharp(mac.CSharp.ReplaceLineEndings("\n"), gated), report);
-Console.WriteLine($"{mac.Summary}, {macOnly.Length} symbols macOS only");
+    Platforms.GateRust(mac.Rust.ReplaceLineEndings("\n"), macGate, "macos") + Platforms.LinuxRust(linux.Rust.ReplaceLineEndings("\n"), linuxGate),
+    Platforms.GateCSharp(mac.CSharp.ReplaceLineEndings("\n"), macGate, "macos"), report);
+File.WriteAllText("src/Rune/Generated.Linux.cs", Guards.CSharp(Platforms.LinuxCSharp(linux.CSharp.ReplaceLineEndings("\n"), mac.CSharp.ReplaceLineEndings("\n"), linuxGate)));
+Console.WriteLine($"{mac.Summary}, {macOnly.Length} symbols macOS only; Linux {linux.Summary}, {linuxOnly.Length} symbols Linux only; {mac.Shapes.Keys.Union(linux.Shapes.Keys).Count()} closure shapes in all");
 return Math.Max(Unbound(linux), Unbound(mac));
 
 // Output is still written, so the report shows the same list. Anything here needs a mapping or an adapter.
@@ -45,9 +49,9 @@ static int Unbound(Generator gen)
     return gen.Skipped.Any() ? 1 : 0;
 }
 
-static Generator Generate(IEnumerable<string> json)
+static Generator Generate(IEnumerable<string> json, Generator? first = null)
 {
-    var gen = new Generator(json.Select(Doc.Load).ToList());
+    var gen = new Generator(json.Select(Doc.Load).ToList()) { ShapeHints = first is null ? [] : new(first.Shapes), PoolHints = first is null ? [] : new(first.PoolNumbers) };
     gen.Run();
     return gen;
 }
@@ -90,6 +94,11 @@ static void Cargo(string crateDir, string targetDir, string target, params strin
     start.Environment["CARGO_TARGET_DIR"] = Path.GetFullPath(targetDir);
     start.Environment["RUSTC_BOOTSTRAP"] = "1";
     start.Environment["CARGO_FEATURE_PURE"] = "1";   // blake3 would otherwise want a C compiler for the target
+    if (target.EndsWith("apple-darwin") && !OperatingSystem.IsMacOS())
+    {
+        // psm assembles its stack switching for the target; the host's gcc doesn't take Apple's flags, clang does.
+        start.Environment[$"CC_{target.Replace('-', '_')}"] = "clang";
+    }
     start.Environment["RUSTDOCFLAGS"] = "-Z unstable-options --output-format json";
     using var cargo = Process.Start(start)!;
     cargo.WaitForExit();
