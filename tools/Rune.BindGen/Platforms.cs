@@ -29,8 +29,14 @@ static partial class Platforms
         RustSymbol().Match(line) is { Success: true } m && only.Contains(m.Groups[1].Value) ? RustGate(os) + line : line));
 
     /// <summary>The exports only the Linux build has, to follow the macOS ones.</summary>
-    public static string LinuxRust(string linuxRust, IReadOnlySet<string> linuxOnly) =>
-        "\n" + string.Join('\n', linuxRust.Split('\n').Where(line => RustSymbol().Match(line) is { Success: true } m && linuxOnly.Contains(m.Groups[1].Value)).Select(line => RustGate("linux") + line));
+    public static string LinuxRust(string linuxRust, IReadOnlySet<string> linuxOnly)
+    {
+        // A callback shape's slot is a static beside its export, so it comes along with it.
+        var slots = linuxOnly.Select(x => Regex.Match(x, @"^rune_gen_cb_(\d+)$")).Where(m => m.Success).Select(m => $"static CB_{m.Groups[1].Value}:").ToList();
+        return "\n" + string.Join('\n', linuxRust.Split('\n')
+            .Where(line => RustSymbol().Match(line) is { Success: true } m && linuxOnly.Contains(m.Groups[1].Value) || slots.Any(line.StartsWith))
+            .Select(line => RustGate("linux") + line));
+    }
 
     [GeneratedRegex(@"\brune_gen_\w+")] private static partial Regex AnySymbol();
 
