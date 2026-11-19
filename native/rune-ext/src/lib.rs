@@ -136,6 +136,17 @@ pub fn app_compositor<S: 'static>(
     app.compositor(Closures { features, render, animating, summary, state: std::marker::PhantomData })
 }
 
+/// covers: WindowSpec::compositor
+pub fn window_compositor<S: 'static>(
+    spec: rune::WindowSpec<S>,
+    features: impl Fn() -> wgpu::Features + 'static,
+    render: impl FnMut(&mut Frame<'_, S>) + 'static,
+    animating: impl Fn() -> bool + 'static,
+    summary: impl FnMut(&wgpu::Device) -> Option<String> + 'static,
+) -> rune::WindowSpec<S> {
+    spec.compositor(Closures { features, render, animating, summary, state: std::marker::PhantomData })
+}
+
 /// covers: ConfiguredOverlay::compositor
 pub fn overlay_compositor<S: 'static>(
     overlay: ConfiguredOverlay<S>,

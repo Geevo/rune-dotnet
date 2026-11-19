@@ -26,7 +26,7 @@ namespace Rune;
     internal DmabufBuffer(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public void Free() => N.rune_gen_dmabufbuffer_free(O);
-    [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public static global::Rune.DmabufBuffer New(global::Rune.DmabufPlane plane, (uint, uint) size, uint fourcc) { { return WireReader.Read<global::Rune.DmabufBuffer>(N.rune_gen_dmabufbuffer_new(plane.O, size.Item1, size.Item2, fourcc), static q2221 => q2221.Checked<global::Rune.DmabufBuffer>(static q2222 => new global::Rune.DmabufBuffer(q2222.Raw<nint>()))); } }
+    [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public static global::Rune.DmabufBuffer New(global::Rune.DmabufPlane plane, (uint, uint) size, uint fourcc) { { return WireReader.Read<global::Rune.DmabufBuffer>(N.rune_gen_dmabufbuffer_new(plane.O, size.Item1, size.Item2, fourcc), static q2224 => q2224.Checked<global::Rune.DmabufBuffer>(static q2225 => new global::Rune.DmabufBuffer(q2225.Raw<nint>()))); } }
 }
 
 [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public readonly unsafe partial struct DmabufPlane
@@ -93,10 +93,10 @@ internal static unsafe partial class Callbacks
 {
     static partial void RegisterLinux()
     {
-        N.rune_gen_cb_144(&Cb144);
+        N.rune_gen_cb_145(&Cb145);
     }
 
-    [UnmanagedCallersOnly] static void Cb144(nint h, byte* a0p, nuint a0l) { try { ((global::System.Action<string?>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<string?>(a0p, a0l, static q3668 => (q3668.Tag() ? q3668.Str() : (string?)null))); } catch (global::System.Exception e) { App.Fatal(e); } }
+    [UnmanagedCallersOnly] static void Cb145(nint h, byte* a0p, nuint a0l) { try { ((global::System.Action<string?>)GCHandle.FromIntPtr(h).Target!)(WireReader.Read<string?>(a0p, a0l, static q3671 => (q3671.Tag() ? q3671.Str() : (string?)null))); } catch (global::System.Exception e) { App.Fatal(e); } }
 }
 
 internal static unsafe partial class N
@@ -133,7 +133,7 @@ internal static unsafe partial class N
     public static Utf8Ref rune_gen_nativesurface_push_dmabuf(nint h, nint p_frame, ulong p_frame_id) { var r = rune_gen_nativesurface_push_dmabuf__(h, p_frame, p_frame_id); Interop.Rethrow(); return r; }
     [DllImport(Lib, EntryPoint = "rune_gen_rune__native_surface__linux__import_target")] static extern bool rune_gen_rune__native_surface__linux__import_target__(nint* o0);
     public static bool rune_gen_rune__native_surface__linux__import_target(nint* o0) { var r = rune_gen_rune__native_surface__linux__import_target__(o0); Interop.Rethrow(); return r; }
-    [DllImport(Lib)] public static extern void rune_gen_cb_144(delegate* unmanaged<nint, byte*, nuint, void> f);
+    [DllImport(Lib)] public static extern void rune_gen_cb_145(delegate* unmanaged<nint, byte*, nuint, void> f);
     [DllImport(Lib, EntryPoint = "rune_gen_rune_ext__dmabuf_on_read")] static extern nint rune_gen_rune_ext__dmabuf_on_read__(nint p_frame, nint p_f);
     public static nint rune_gen_rune_ext__dmabuf_on_read(nint p_frame, nint p_f) { var r = rune_gen_rune_ext__dmabuf_on_read__(p_frame, p_f); Interop.Rethrow(); return r; }
     [DllImport(Lib, EntryPoint = "rune_gen_rune_ext__dmabuf_plane_from_fd")] static extern nint rune_gen_rune_ext__dmabuf_plane_from_fd__(int p_fd, uint p_offset, uint p_stride, ulong p_modifier);

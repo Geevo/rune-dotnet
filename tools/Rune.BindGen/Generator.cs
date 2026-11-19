@@ -13,6 +13,8 @@ sealed partial class Generator(List<Doc> docs)
     static readonly HashSet<string> Denied = [.. File.Exists(DenyFile) ? File.ReadAllLines(DenyFile).Select(l => l.Split('#')[0].Trim()).Where(l => l != "") : []];
     const string DenyFile = "tools/Rune.BindGen/deny.txt";
 
+    static readonly HashSet<string> Split = ["rune_core", "rune_edit", "rune_gpu", "rune_image", "rune_media", "rune_spell", "rune_text"];
+
     readonly Dictionary<string, TypeInfo> _types = [];
     readonly Dictionary<string, (Doc Doc, JsonElement Item, string RustPath, string Module)> _functions = [];
     readonly Dictionary<string, (Doc Doc, JsonElement Item, string RustPath, string Module)> _constants = [];
@@ -25,7 +27,8 @@ sealed partial class Generator(List<Doc> docs)
     {
         var main = docs[0];
         Walk(main, main.Item(main.Root)!.Value, main.Crate, "");
-        foreach (var other in docs.Skip(1))
+        // Rune's own split-out crates are reached through `rune`'s re-exports, under the paths apps use.
+        foreach (var other in docs.Skip(1).Where(d => !Split.Contains(d.Crate)))
         {
             Walk(other, other.Item(other.Root)!.Value, other.Crate, other.Crate.Replace("rune_", ""));
         }
@@ -86,7 +89,7 @@ sealed partial class Generator(List<Doc> docs)
             {
                 return;
             }
-            if (Resolve(doc, use.GetProperty("id").GetInt32()) is not var (tdoc, target))
+            if (Resolve(doc, use.GetProperty("id").GetInt32()) is not var (tdoc, target) || Hidden(target))
             {
                 return;
             }

@@ -66,10 +66,11 @@ static void Write(string rustPath, string csPath, string reportPath, string rust
 static string[] Rustdoc(string target)
 {
     var doc = $"target/doc-json/{target}/doc";
-    Cargo("rune", "target/doc-json", target, "-p", "rune", "-p", "rune-kit", "-p", "rune-motion", "-p", "rune-notify");
+    Cargo("rune", "target/doc-json", target, "-p", "rune", "-p", "rune-kit", "-p", "rune-motion", "-p", "rune-notify",
+        "-p", "rune-core", "-p", "rune-edit", "-p", "rune-gpu", "-p", "rune-image", "-p", "rune-media", "-p", "rune-spell", "-p", "rune-text");
     Cargo("native/rune-ext", "target/doc-json-ext", target, "-p", "rune-ext");
     File.Copy($"target/doc-json-ext/{target}/doc/rune_ext.json", $"{doc}/rune_ext.json", overwrite: true);
-    return [$"{doc}/rune.json", $"{doc}/rune_motion.json", $"{doc}/rune_kit.json", $"{doc}/rune_notify.json", $"{doc}/rune_ext.json"];
+    return [$"{doc}/rune.json", $"{doc}/rune_motion.json", $"{doc}/rune_kit.json", $"{doc}/rune_notify.json", $"{doc}/rune_core.json", $"{doc}/rune_edit.json", $"{doc}/rune_gpu.json", $"{doc}/rune_image.json", $"{doc}/rune_media.json", $"{doc}/rune_spell.json", $"{doc}/rune_text.json", $"{doc}/rune_ext.json"];
 }
 
 static string RepositoryRoot()
@@ -99,7 +100,7 @@ static void Cargo(string crateDir, string targetDir, string target, params strin
         // psm assembles its stack switching for the target; the host's gcc doesn't take Apple's flags, clang does.
         start.Environment[$"CC_{target.Replace('-', '_')}"] = "clang";
     }
-    start.Environment["RUSTDOCFLAGS"] = "-Z unstable-options --output-format json";
+    start.Environment["RUSTDOCFLAGS"] = "-Z unstable-options --output-format json --document-hidden-items";
     using var cargo = Process.Start(start)!;
     cargo.WaitForExit();
     if (cargo.ExitCode != 0)

@@ -26,3 +26,4 @@ winit = { path = "../../rune/vendor/winit" }
 parley_engine = { path = "../../rune/vendor/parley_engine" }
 accesskit_windows = { path = "../../rune/vendor/accesskit_windows" }
 accesskit_macos = { path = "../../rune/vendor/accesskit_macos" }
+sctk-adwaita = { path = "../../rune/vendor/sctk-adwaita" }

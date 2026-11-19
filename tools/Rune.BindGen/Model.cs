@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Rune.BindGen;
 
@@ -7,8 +8,70 @@ sealed record Doc(string Crate, JsonElement Index, JsonElement Paths, int Root)
 {
     public static Doc Load(string path)
     {
-        var root = JsonDocument.Parse(File.ReadAllBytes(path)).RootElement;
+        var root = Unhidden(File.ReadAllBytes(path)).RootElement;
         return new(Path.GetFileNameWithoutExtension(path), root.GetProperty("index"), root.GetProperty("paths"), root.GetProperty("root").GetInt32());
+    }
+
+    /// <summary>rustdoc is run with hidden items on, to see through `#[doc(hidden)]` modules that publicly re-export; hidden
+    /// fields and variants are put back as stripped, as rustdoc leaves them without it.</summary>
+    static JsonDocument Unhidden(byte[] bytes)
+    {
+        var node = JsonNode.Parse(bytes)!;
+        var index = node["index"]!.AsObject();
+        bool Hidden(JsonNode? id) => id is not null && index[id.ToString()] is { } it && it["attrs"]!.ToJsonString().Contains("doc(hidden)");
+        void Strip(JsonArray ids)
+        {
+            for (int i = ids.Count - 1; i >= 0; i--)
+            {
+                if (Hidden(ids[i]))
+                {
+                    ids[i] = null;
+                }
+            }
+        }
+        foreach (var (_, item) in index)
+        {
+            var inner = item!["inner"]!.AsObject();
+            if ((inner["struct"] as JsonObject)?["kind"] is JsonObject { } sk && sk["plain"] is JsonObject plain)
+            {
+                var fields = plain["fields"]!.AsArray();
+                if (fields.Any(f => Hidden(f)))
+                {
+                    plain["has_stripped_fields"] = true;
+                    var kept = fields.Where(f => !Hidden(f)).Select(f => f!.DeepClone()).ToList();
+                    fields.Clear();
+                    foreach (var f in kept)
+                    {
+                        fields.Add(f);
+                    }
+                }
+            }
+            else if (inner["enum"] is JsonObject en)
+            {
+                var variants = en["variants"]!.AsArray();
+                var kept = variants.Where(v => !Hidden(v)).Select(v => v!.DeepClone()).ToList();
+                if (kept.Count != variants.Count)
+                {
+                    variants.Clear();
+                    foreach (var v in kept)
+                    {
+                        variants.Add(v);
+                    }
+                }
+            }
+            else if ((inner["variant"] as JsonObject)?["kind"] is JsonObject kind)
+            {
+                if (kind["struct"]?["fields"] is JsonArray named)
+                {
+                    Strip(named);
+                }
+                if (kind["tuple"] is JsonArray tuple)
+                {
+                    Strip(tuple);
+                }
+            }
+        }
+        return JsonDocument.Parse(node.ToJsonString());
     }
 
     public JsonElement? Item(int id) => Index.TryGetProperty(id.ToString(), out var item) ? item : null;
