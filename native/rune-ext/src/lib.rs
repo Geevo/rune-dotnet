@@ -136,6 +136,15 @@ pub fn app_compositor<S: 'static>(
     app.compositor(Closures { features, render, animating, summary, state: std::marker::PhantomData })
 }
 
+/// covers: rune::env::var_os
+pub fn env_var_os(name: &str) -> Option<String> { rune::env::var_os(name).map(|v| v.to_string_lossy().into_owned()) }
+
+/// The wall clock as the time since the Unix epoch, which C# adds to `DateTime.UnixEpoch`.
+/// covers: rune::time::system_now
+pub fn system_now() -> std::time::Duration {
+    rune::time::system_now().duration_since(std::time::UNIX_EPOCH).unwrap_or_default()
+}
+
 /// covers: WindowSpec::compositor
 pub fn window_compositor<S: 'static>(
     spec: rune::WindowSpec<S>,

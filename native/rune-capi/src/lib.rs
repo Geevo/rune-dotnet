@@ -341,8 +341,9 @@ static LIVE: std::sync::Mutex<Option<HashMap<usize, &'static str>>> = std::sync:
 
 fn own<T>(value: T) -> *mut c_void {
     // Every box of a zero-sized type shares one address, which LIVE could not tell apart, so those
-    // get a word of their own. `Tray` is zero-sized in a build without D-Bus.
-    const { assert!(align_of::<T>() <= align_of::<u64>()) };
+    // get a word of their own. `Tray` is zero-sized in a build without D-Bus. A sized value gets its
+    // own alignment from its box, as `Runtime` needs now it is over-aligned.
+    const { assert!(size_of::<T>() != 0 || align_of::<T>() <= align_of::<u64>()) };
     let ptr = if size_of::<T>() == 0 {
         std::mem::forget(value);
         Box::into_raw(Box::new(0u64)) as *mut c_void
