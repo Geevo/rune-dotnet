@@ -636,3 +636,10 @@ pub fn clear_icon_swap() {
 /// covers: rune::text::set_icon_swap_size
 pub fn set_icon_swap_size(size: fn(f32) -> f32) { rune::text::set_icon_swap_size(Some(size)); }
 pub fn clear_icon_swap_size() { rune::text::set_icon_swap_size(None); }
+
+/// The arguments a relaunch keeps, with the ones that drive input or act for the person dropped.
+/// covers: rune::without_relaunch_drops
+pub fn without_relaunch_drops(args: Vec<String>) -> Vec<String> {
+    rune::without_relaunch_drops(args.into_iter().map(std::ffi::OsString::from).collect())
+        .into_iter().map(|a| a.to_string_lossy().into_owned()).collect()
+}
