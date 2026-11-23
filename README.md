@@ -44,7 +44,7 @@ That's Rune's `examples/hello` in C# ([`samples/Hello`](samples/Hello/Program.cs
 
 ## Highlights
 
-- **All of Rune's public API is bound.** 5,458 of 5,458 items on macOS (5,455 of 5,455 on Linux and Windows, plus Linux's dmabuf import), including rune-kit and rune-notify, across 460 object types and 147 closure shapes. [COVERAGE.md](native/rune-capi/COVERAGE.md) lists every item and how it's reached.
+- **All of Rune's public API is bound.** 5,473 of 5,473 items on macOS (5,470 of 5,470 on Linux and Windows, plus Linux's dmabuf import), including rune-kit and rune-notify, across 461 object types and 148 closure shapes. [COVERAGE.md](native/rune-capi/COVERAGE.md) lists every item and how it's reached.
 - **Generated, not hand-written.** [`tools/Rune.BindGen`](tools/Rune.BindGen) is a C# program that reads Rune's rustdoc JSON and writes both sides: the Rust C ABI shim and the C# API. Output is reproducible, and generation fails if anything public goes unbound, so an upstream change can't be silently missed.
 - **Checked against Rust.** Every sample except the gallery has a Rust twin. [`tools/Rune.Verify`](tools/Rune.Verify) runs both through Rune's headless tooling with the same scripted input and compares output byte for byte.
 - **Idiomatic C#.** Fluent builders, delegates for closures, `ReadOnlySpan<T>` for slices, `TimeSpan`, `Task`-returning file dialogs, and exceptions for Rust errors.
