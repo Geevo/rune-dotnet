@@ -143,6 +143,12 @@ void Case(string rust, string cs, string label, params string[] args)
         else
         {
             bad.Add(e);
+            if (File.Exists(rf) && File.Exists(cf))
+            {
+                var (rb, cb) = (File.ReadAllBytes(rf), File.ReadAllBytes(cf));
+                var first = Enumerable.Range(0, Math.Min(rb.Length, cb.Length)).Cast<int?>().FirstOrDefault(i => rb[i!.Value] != cb[i.Value]);
+                Console.WriteLine($"     {e}: rust {rb.Length} bytes, cs {cb.Length} bytes, first difference at {first?.ToString() ?? "end"}");
+            }
         }
     }
     if (bad.Count == 0)

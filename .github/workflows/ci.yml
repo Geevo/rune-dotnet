@@ -45,6 +45,12 @@ jobs:
         run: xvfb-run -a dotnet run -c Release --project tools/Rune.Verify -- --build --window
       - if: runner.os != 'Linux'
         run: dotnet run -c Release --project tools/Rune.Verify -- --build --window
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-run-${{ matrix.os }}-${{ matrix.dotnet }}
+          path: out/verify/run
+          if-no-files-found: ignore
 
   # The bindings must match Rune, and nothing may go unbound. Generation exits non-zero if it does.
   generate:
