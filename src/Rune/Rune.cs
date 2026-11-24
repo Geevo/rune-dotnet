@@ -198,8 +198,8 @@ public sealed class AppSpec<S>(string title, (float W, float H) size, Func<S> in
     public (float W, float H)? MinSize { get; init; }
     /// <summary>Font files replacing the built-in Inter; empty keeps it.</summary>
     public byte[][] Fonts { get; init; } = [];
-    /// <summary>The sans and mono family names, as CSS lists.</summary>
-    public (string Sans, string Mono) Families { get; init; } = ("Inter", "Inter");
+    /// <summary>The sans and mono family names, as CSS lists. The default mono is `ui-monospace`, the installed system monospace font, as Rune's own default is.</summary>
+    public (string Sans, string Mono) Families { get; init; } = ("Inter", "ui-monospace");
     /// <summary>Called once with a waker other threads use when new data arrives.</summary>
     public Action<S, Waker>? Setup { get; init; }
     /// <summary>Called at the start of every frame with seconds since start; true when state changed.</summary>

@@ -351,6 +351,13 @@ fn outcome(result: Result<Option<PathBuf>, FileDialogError>) -> (Option<String>,
     }
 }
 
+fn outcome_many(result: Result<Option<Vec<PathBuf>>, FileDialogError>) -> (Option<Vec<String>>, Option<String>) {
+    match result {
+        Ok(paths) => (paths.map(|ps| ps.into_iter().map(|p| p.to_string_lossy().into_owned()).collect()), None),
+        Err(e) => (None, Some(e.to_string())),
+    }
+}
+
 /// A C# delegate, which any thread may call and drop.
 struct Anywhere<T>(T);
 // SAFETY: `T` only ever holds a `ManagedFn`, whose target is a GC handle.
@@ -386,6 +393,15 @@ pub fn dialogs_save(dialogs: &FileDialogs, options: FileDialogOptions, done: imp
     let dialogs = dialogs.clone();
     in_background(move || async move { dialogs.save(options).await }, done);
 }
+/// Returns at once and calls `done` on another thread: the chosen paths, or null for a cancel, then the error text. covers: FileDialogs::open_files
+pub fn dialogs_open_files(dialogs: &FileDialogs, options: FileDialogOptions, done: impl FnOnce(Option<Vec<String>>, Option<String>) + 'static) {
+    let dialogs = dialogs.clone();
+    let done = Anywhere(done);
+    std::thread::spawn(move || {
+        let (paths, error) = outcome_many(block_on(async move { dialogs.open_files(options).await }));
+        done.take()(paths, error);
+    });
+}
 /// Returns at once and calls `done` on another thread. covers: FileDialogs::open_folder
 pub fn dialogs_open_folder(dialogs: &FileDialogs, options: FileDialogOptions, done: impl FnOnce(Option<String>, Option<String>) + 'static) {
     let dialogs = dialogs.clone();
@@ -401,6 +417,13 @@ fn answer<S>(on_answer: impl FnOnce(&mut S, Option<String>, Option<String>, &mut
 
 /// `on_answer` gets the path, or null for a cancel, then the error text. covers: Tx::open_file
 pub fn tx_open_file<S: 'static>(tx: &mut Tx, options: FileDialogOptions, on_answer: impl FnOnce(&mut S, Option<String>, Option<String>, &mut Tx) + 'static) { tx.open_file(options, answer(on_answer)) }
+/// `on_answer` gets the paths, or null for a cancel, then the error text. covers: Tx::open_files
+pub fn tx_open_files<S: 'static>(tx: &mut Tx, options: FileDialogOptions, on_answer: impl FnOnce(&mut S, Option<Vec<String>>, Option<String>, &mut Tx) + 'static) {
+    tx.open_files(options, move |s, result, tx| {
+        let (paths, error) = outcome_many(result);
+        on_answer(s, paths, error, tx);
+    })
+}
 /// covers: Tx::save_file
 pub fn tx_save_file<S: 'static>(tx: &mut Tx, options: FileDialogOptions, on_answer: impl FnOnce(&mut S, Option<String>, Option<String>, &mut Tx) + 'static) { tx.save_file(options, answer(on_answer)) }
 /// covers: Tx::open_folder
@@ -643,3 +666,9 @@ pub fn without_relaunch_drops(args: Vec<String>) -> Vec<String> {
     rune::without_relaunch_drops(args.into_iter().map(std::ffi::OsString::from).collect())
         .into_iter().map(|a| a.to_string_lossy().into_owned()).collect()
 }
+
+/// Sets the inclusive minimum and maximum values. covers: Slider::range
+pub fn slider_range(slider: rune_kit::Slider, min: f32, max: f32) -> rune_kit::Slider { slider.range(min..=max) }
+
+/// The image's width, height and RGBA bytes, or null while it holds none. covers: Pixels::with_rgba
+pub fn pixels_rgba(pixels: &rune::Pixels) -> Option<(u32, u32, Vec<u8>)> { pixels.with_rgba(|w, h, rgba| (w, h, rgba.to_vec())) }

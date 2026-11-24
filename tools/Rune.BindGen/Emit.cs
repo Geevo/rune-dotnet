@@ -76,6 +76,11 @@ sealed partial class Generator
         if (!_memberNames.TryGetValue(cls, out var names))
         {
             _memberNames[cls] = names = [];
+            // A record struct's fields are its members too (`ScrollSpec.StickBottom` and `ScrollSpec::stick_bottom()`).
+            foreach (var type in _types.Values.Where(t => t.CsName == cls && t.Fields is not null))
+            {
+                names.UnionWith(type.Fields.Select(f => f.Cs));
+            }
         }
         // C# forbids a member named as its type, as a module's function can be (`rune::marks::marks`).
         if (name == cls)

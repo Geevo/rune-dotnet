@@ -1129,8 +1129,6 @@ dependencies = [
 [[package]]
 name = "naga"
 version = "30.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a616d2fb8c89516ac2723a581f69d6c18576046bed761bd6b305e5618e6ae130"
 dependencies = [
  "arrayvec",
  "bit-set",
@@ -2138,6 +2136,7 @@ dependencies = [
  "blake3",
  "image",
  "js-sys",
+ "moxcms",
  "objc2 0.6.5",
  "objc2-foundation 0.3.2",
  "rune-core",
@@ -3697,6 +3696,10 @@ checksum = "27bc9d5b815bc103f142aa054f561d9187d191692ec7c2d1e2b4737f8dbd7296"
 dependencies = [
  "zune-core",
 ]
+
+[[patch.unused]]
+name = "accesskit_atspi_common"
+version = "0.21.1"
 
 [[patch.unused]]
 name = "accesskit_macos"
