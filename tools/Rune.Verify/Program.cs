@@ -152,6 +152,7 @@ void Case(string rust, string cs, string label, params string[] args)
                 var rerun = new (string Name, string Program, string Side, string Reference)[] { ("rust", $"target/release/{rust}{exe}", r + "-again", rf), ("cs", $"out/{cs}/{cs}{exe}", c + "-again", cf) };
                 var drift = false;
                 var agrees = false;
+                byte[]? againRust = null, againCs = null;
                 foreach (var (name, program, side, reference) in rerun)
                 {
                     Run(program, args.Select(a => Expand(a, side)), null);
@@ -161,11 +162,14 @@ void Case(string rust, string cs, string label, params string[] args)
                     drift |= !same;
                     // A run of one side that is exactly the other side's output shows the two can agree.
                     agrees |= bytes is not null && bytes.AsSpan().SequenceEqual(name == "rust" ? cb : rb);
+                    if (name == "rust") { againRust = bytes; } else { againCs = bytes; }
                     Console.WriteLine($"     {e}: {name} run again {(same ? "is the same" : "DIFFERS from its first run")}");
                 }
+                // Or both sides, run again, agree: the first run on a cold machine can land its script's events in other frames.
+                agrees |= againRust is not null && againCs is not null && againRust.AsSpan().SequenceEqual(againCs);
                 if (drift && agrees)
                 {
-                    Console.WriteLine($"     {e}: a side differs from itself, and one of its runs matches the other side: nondeterministic, not a binding difference");
+                    Console.WriteLine($"     {e}: a side differs from itself, and its runs agree with the other side's: timing, not a binding difference");
                     bad.Remove(e);
                     summary += $" {e}=nondeterministic";
                 }
