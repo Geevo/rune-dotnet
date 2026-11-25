@@ -148,6 +148,15 @@ void Case(string rust, string cs, string label, params string[] args)
                 var (rb, cb) = (File.ReadAllBytes(rf), File.ReadAllBytes(cf));
                 var first = Enumerable.Range(0, Math.Min(rb.Length, cb.Length)).Cast<int?>().FirstOrDefault(i => rb[i!.Value] != cb[i.Value]);
                 Console.WriteLine($"     {e}: rust {rb.Length} bytes, cs {cb.Length} bytes, first difference at {first?.ToString() ?? "end"}");
+                // Each side once more: a side that differs from itself is nondeterministic, not wrong.
+                var rerun = new (string Name, string Program, string Side, string Reference)[] { ("rust", $"target/release/{rust}{exe}", r + "-again", rf), ("cs", $"out/{cs}/{cs}{exe}", c + "-again", cf) };
+                foreach (var (name, program, side, reference) in rerun)
+                {
+                    Run(program, args.Select(a => Expand(a, side)), null);
+                    var again = $"{side}.{e}";
+                    var same = File.Exists(again) && File.ReadAllBytes(again).AsSpan().SequenceEqual(File.ReadAllBytes(reference));
+                    Console.WriteLine($"     {e}: {name} run again {(same ? "is the same" : "DIFFERS from its first run")}");
+                }
             }
         }
     }
