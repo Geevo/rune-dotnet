@@ -314,7 +314,7 @@ sealed partial class Generator
     {
         var ty = Map(t.Doc, type, new Ctx(null, t));
         var suffix = count == 1 ? "" : "_" + Names.Ident(field);
-        var sym = $"rune_gen_{t.Sym}_as_{Names.Ident(variant)}{suffix}";
+        var sym = $"rune_gen_{t.Sym}_variant_{Names.Ident(variant)}{suffix}";
         var pattern = named
             ? $"{t.RustPath}::{variant} {{ {RawIdent(field)}: v, .. }}"
             : $"{t.RustPath}::{variant}({string.Concat(Enumerable.Repeat("_, ", index))}v, ..)";

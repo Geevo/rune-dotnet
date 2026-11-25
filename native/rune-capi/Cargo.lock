@@ -2598,11 +2598,13 @@ dependencies = [
  "wayland-backend",
  "wayland-client",
  "wayland-protocols",
+ "wayland-protocols-plasma",
  "wayland-protocols-wlr",
  "web-sys",
  "wgpu",
  "windows",
  "windows-core",
+ "windows-registry",
  "windows-sys 0.61.2",
  "winit",
  "x11rb",
@@ -2772,11 +2774,15 @@ version = "0.1.0"
 name = "rune-notify"
 version = "0.0.1"
 dependencies = [
+ "async-channel",
+ "async-io",
  "block2 0.6.2",
+ "futures-lite",
  "objc2 0.6.5",
  "windows",
  "windows-core",
  "windows-registry",
+ "zbus",
 ]
 
 [[package]]

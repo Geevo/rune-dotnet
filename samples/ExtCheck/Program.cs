@@ -245,12 +245,12 @@ var ended = lines.Step(LineEventU32.Release(), static at => at);
 Check("line selected by a click", lines.Selected() is { Start: 3, End: 3 } && ended.Length == 1 && !lines.Tracking());
 lines.Free();
 
-// Notifications do nothing where the platform has none, which includes Linux
+// Notifications are posted only where the platform has a way to: Linux needs a notification server on the session bus
 var notification = Notification.New("n1", "Title").Body("Body").Info("open", "inbox");
 if (OperatingSystem.IsLinux())
 {
-    Check("notifications unavailable", !Notify.Available());
-    Check("post refused", !Notify.Post(notification));
+    var available = Notify.Available();
+    Check("post follows availability", Notify.Post(notification) == available);
 }
 Notify.Remove(["n1"]);
 Notify.OnClick(static click => { });

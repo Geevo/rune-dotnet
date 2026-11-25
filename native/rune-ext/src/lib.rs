@@ -672,3 +672,50 @@ pub fn slider_range(slider: rune_kit::Slider, min: f32, max: f32) -> rune_kit::S
 
 /// The image's width, height and RGBA bytes, or null while it holds none. covers: Pixels::with_rgba
 pub fn pixels_rgba(pixels: &rune::Pixels) -> Option<(u32, u32, Vec<u8>)> { pixels.with_rgba(|w, h, rgba| (w, h, rgba.to_vec())) }
+
+/// covers: WindowHandle::with_raw_display_handle
+pub fn window_with_raw_display_handle(window: &rune::WindowHandle, f: impl for<'a> FnOnce(&rune::raw_window_handle::DisplayHandle<'a>)) -> Result<(), String> {
+    window.with_raw_display_handle(|handle| f(&handle))
+}
+
+/// `on_result` gets null when the link opened, or why it didn't. covers: Tx::open_url_then
+pub fn tx_open_url_then<S: 'static>(tx: &mut Tx, url: &str, on_result: impl FnOnce(&mut S, Option<rune::OpenUrlError>, &mut Tx) + 'static) -> Result<(), rune::OpenUrlError> {
+    tx.open_url_then(url, move |s: &mut S, result, tx| on_result(s, result.err(), tx))
+}
+/// `on_result` gets null when the link opened, or why it didn't. covers: Tx::open_url_same_tab_then
+pub fn tx_open_url_same_tab_then<S: 'static>(tx: &mut Tx, url: &str, on_result: impl FnOnce(&mut S, Option<rune::OpenUrlError>, &mut Tx) + 'static) -> Result<(), rune::OpenUrlError> {
+    tx.open_url_same_tab_then(url, move |s: &mut S, result, tx| on_result(s, result.err(), tx))
+}
+
+/// The schemes the app opens as links. covers: rune::url_schemes
+pub fn url_schemes(schemes: Vec<String>) { rune::url_schemes(schemes) }
+
+/// Sets the order the columns show in. covers: TableState::set_column_order
+pub fn table_set_column_order(state: &mut rune_kit::TableState, order: Vec<String>) { state.set_column_order(order) }
+
+/// A text tag on the element, which a pick finds again. covers: El::data
+pub fn el_data(el: El, tag: String) -> El { el.data(Tag(tag)) }
+/// The text tag set with `el_data`, or null. covers: Picked::data
+pub fn picked_data(picked: &rune::Picked) -> Option<String> { picked.data::<Tag>().map(|t| t.0.clone()) }
+struct Tag(String);
+
+struct ItemClosures<V, K, B, P> { version: V, keys: K, build: B, priority: P, budget: Option<usize> }
+impl<V: Fn() -> u64 + 'static, K: Fn() -> Vec<String> + 'static, B: Fn(&str) -> El + 'static, P: Fn(&str) -> f32 + 'static> rune::VirtualItems for ItemClosures<V, K, B, P> {
+    fn version(&self) -> u64 { (self.version)() }
+    fn keys(&self) -> Vec<String> { (self.keys)() }
+    fn build(&self, key: &str) -> El { (self.build)(key) }
+    fn mount_budget(&self) -> Option<usize> { self.budget }
+    fn mount_priority(&self, key: &str) -> f32 { (self.priority)(key) }
+}
+/// Fills the element with keyed items the app windows. `budget` caps the items mounted per frame (0 for no cap).
+/// covers: El::virtual_items
+pub fn el_virtual_items(
+    el: El,
+    version: impl Fn() -> u64 + 'static,
+    keys: impl Fn() -> Vec<String> + 'static,
+    build: impl Fn(&str) -> El + 'static,
+    priority: impl Fn(&str) -> f32 + 'static,
+    budget: u32,
+) -> El {
+    el.virtual_items(std::rc::Rc::new(ItemClosures { version, keys, build, priority, budget: (budget > 0).then_some(budget as usize) }))
+}

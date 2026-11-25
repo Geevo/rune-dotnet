@@ -35,6 +35,7 @@ sealed partial class Generator
         ["LoadOp"] = new("wgpu::LoadOp<wgpu::Color>", "WgpuLoadOp"),
         ["ActionData"] = new("rune::accesskit::ActionData", "AccessKitActionData"),
         ["WindowHandle"] = new("rune::raw_window_handle::WindowHandle<'_>", "RawWindowHandle"),
+        ["DisplayHandle"] = new("rune::raw_window_handle::DisplayHandle<'_>", "RawDisplayHandle"),
     };
 
     static readonly Dictionary<string, string[]> ExternalVariants = File.ReadAllLines(
