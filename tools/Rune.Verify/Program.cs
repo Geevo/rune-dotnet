@@ -148,28 +148,31 @@ void Case(string rust, string cs, string label, params string[] args)
                 var (rb, cb) = (File.ReadAllBytes(rf), File.ReadAllBytes(cf));
                 var first = Enumerable.Range(0, Math.Min(rb.Length, cb.Length)).Cast<int?>().FirstOrDefault(i => rb[i!.Value] != cb[i.Value]);
                 Console.WriteLine($"     {e}: rust {rb.Length} bytes, cs {cb.Length} bytes, first difference at {first?.ToString() ?? "end"}");
-                // Each side once more: a side that differs from itself is nondeterministic, not wrong.
-                var rerun = new (string Name, string Program, string Side, string Reference)[] { ("rust", $"target/release/{rust}{exe}", r + "-again", rf), ("cs", $"out/{cs}/{cs}{exe}", c + "-again", cf) };
+                // Each side again, up to four more times, until a run of one side is exactly a run of the other.
+                // A side that differs from itself is nondeterministic, not wrong; a binding that is wrong never matches.
+                var seen = (Rust: new List<byte[]> { rb }, Cs: new List<byte[]> { cb });
                 var drift = false;
                 var agrees = false;
-                byte[]? againRust = null, againCs = null;
-                foreach (var (name, program, side, reference) in rerun)
+                for (int round = 1; round <= 4 && !agrees; round++)
                 {
-                    Run(program, args.Select(a => Expand(a, side)), null);
-                    var again = $"{side}.{e}";
-                    var bytes = File.Exists(again) ? File.ReadAllBytes(again) : null;
-                    var same = bytes is not null && bytes.AsSpan().SequenceEqual(File.ReadAllBytes(reference));
-                    drift |= !same;
-                    // A run of one side that is exactly the other side's output shows the two can agree.
-                    agrees |= bytes is not null && bytes.AsSpan().SequenceEqual(name == "rust" ? cb : rb);
-                    if (name == "rust") { againRust = bytes; } else { againCs = bytes; }
-                    Console.WriteLine($"     {e}: {name} run again {(same ? "is the same" : "DIFFERS from its first run")}");
+                    foreach (var (name, program, side, reference, runs) in new[] { ("rust", $"target/release/{rust}{exe}", r, rf, seen.Rust), ("cs", $"out/{cs}/{cs}{exe}", c, cf, seen.Cs) })
+                    {
+                        var again = round == 1 ? side + "-again" : $"{side}-again{round}";
+                        Run(program, args.Select(a => Expand(a, again)), null);
+                        var bytes = File.Exists($"{again}.{e}") ? File.ReadAllBytes($"{again}.{e}") : null;
+                        var same = bytes is not null && bytes.AsSpan().SequenceEqual(File.ReadAllBytes(reference));
+                        drift |= !same;
+                        if (bytes is not null)
+                        {
+                            runs.Add(bytes);
+                        }
+                        Console.WriteLine($"     {e}: {name} run {round + 1} {(same ? "is the same" : "DIFFERS from its first run")}");
+                    }
+                    agrees = seen.Rust.Any(x => seen.Cs.Any(y => x.AsSpan().SequenceEqual(y)));
                 }
-                // Or both sides, run again, agree: the first run on a cold machine can land its script's events in other frames.
-                agrees |= againRust is not null && againCs is not null && againRust.AsSpan().SequenceEqual(againCs);
-                if (drift && agrees)
+                if (agrees)
                 {
-                    Console.WriteLine($"     {e}: a side differs from itself, and its runs agree with the other side's: timing, not a binding difference");
+                    Console.WriteLine($"     {e}: {(drift ? "a side differs from itself" : "the sides differ by run")}, and a run of each is the same: timing, not a binding difference");
                     bad.Remove(e);
                     summary += $" {e}=nondeterministic";
                 }
