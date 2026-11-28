@@ -53,15 +53,15 @@ That's Rune's `examples/hello` in C# ([`samples/Hello`](samples/Hello/Program.cs
 
 ## Status
 
-Rune is in active development, and these bindings track one upstream commit, pinned in [`RUNE_COMMIT`](RUNE_COMMIT). Releases are tagged `vX.Y.Z`, and each release notes the Rune commit it binds.
+Rune is in active development and has no releases, so these bindings track one upstream commit, pinned in [`RUNE_COMMIT`](RUNE_COMMIT).
 
 | | Linux x64 | Windows x64 | macOS arm64 |
 |---|---|---|---|
 | Native shim builds | Yes | Yes, cross-compiled | Yes, cross-compiled |
-| Linked and run | Yes, every sample verified | Not yet tested | Not yet tested |
-| Platform-only API | None | None | 15 embedding APIs: `LayerHost`, `PixelBuffer`, `EmbedFrame`, `NativeSurface.Push`, `Embed.Prewarm` |
+| Linked and run | Yes, every sample verified | Yes, in CI | Yes, in CI |
+| Platform-only API | dmabuf import | None | Embedding: `LayerHost`, `PixelBuffer`, `EmbedFrame`, `NativeSurface.Push`, `Embed.Prewarm` |
 
-The Windows and macOS link settings in [`src/Rune/Rune.targets`](src/Rune/Rune.targets) come from rustc's list of native libraries. [CI](.github/workflows/ci.yml) links and runs everything on all three platforms. Reports and fixes from Windows and macOS users are very welcome.
+[CI](.github/workflows/ci.yml) links and verifies every sample on all three platforms, with .NET 10 and 11. The Windows and macOS link settings in [`src/Rune/Rune.targets`](src/Rune/Rune.targets) come from rustc's list of native libraries. Reports and fixes from Windows and macOS users are very welcome.
 
 ## Getting started
 
@@ -228,7 +228,7 @@ Generation needs the Linux and macOS targets for both your default toolchain and
 rustup target add x86_64-unknown-linux-gnu aarch64-apple-darwin
 ```
 
-To move to a newer Rune, put the new commit in `RUNE_COMMIT`, check it out in `rune/`, regenerate, and verify. CI reads the same file. Both tools refuse to run if `rune/` isn't at the pinned commit, or if `src/Rune/Rune.csproj`, `native/rune-capi/Cargo.toml` and `native/rune-ext/Cargo.toml` disagree on the version.
+To move to a newer Rune, put the new commit in `RUNE_COMMIT`, check it out in `rune/`, regenerate, and verify. CI reads the same file, and both tools refuse to run if `rune/` isn't at the pinned commit.
 
 ### Verifying
 
@@ -238,7 +238,7 @@ dotnet run -c Release --project tools/Rune.Verify -- --build
 
 This builds everything one link at a time, compares every sample with its Rust twin and runs the adapters. Both sides run on the same machine, so no reference output is stored. Leave out `--build` to reuse what's built. Add `--window` to also open a real window, which needs a display.
 
-### Packaging and releasing
+### Packaging
 
 To try the package locally, stage the native library under `artifacts/native/<rid>/`, pack, and publish `tests/PackageCheck` from it:
 
@@ -249,9 +249,9 @@ dotnet pack src/Rune -c Release -o artifacts/packages
 dotnet publish tests/PackageCheck -c Release -o out/packagecheck
 ```
 
-A local pack warns about the platforms it's missing. Delete `out/packagecheck-packages` before publishing a repack of the same version, or the old one is reused.
+A local pack warns about the platforms it's missing. Delete `out/packagecheck-packages` before publishing a repack, or the old package is reused.
 
-A release bumps `<Version>` in `src/Rune/Rune.csproj` and both `Cargo.toml` files (the tools refuse to run if they differ), then pushes a `vX.Y.Z` tag. The [release workflow](.github/workflows/release.yml) builds the native library on each platform, packs all three into one package, tests it in a fresh app on each platform, then pushes it to NuGet and creates a GitHub release. It publishes with NuGet's [Trusted Publishing](https://learn.microsoft.com/nuget/nuget-org/trusted-publishing), so there's no API key to store: it needs a policy on nuget.org for this repository, `release.yml` and the `nuget` environment, and a `NUGET_USER` repository variable holding the nuget.org user name. Run it by hand to build and test a package without publishing.
+The [release workflow](.github/workflows/release.yml) builds the native library on each platform, packs all three into one package and tests it in a fresh app on each platform. Run by hand, it stops there. It publishes to NuGet with [Trusted Publishing](https://learn.microsoft.com/nuget/nuget-org/trusted-publishing), so there's no API key to store: it needs a policy on nuget.org for this repository, `release.yml` and the `nuget` environment, and a `NUGET_USER` repository variable holding the nuget.org user name.
 
 ### Build notes
 
