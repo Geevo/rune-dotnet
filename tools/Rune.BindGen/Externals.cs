@@ -13,6 +13,7 @@ sealed partial class Generator
         ["CommandEncoder"] = new("wgpu::CommandEncoder", "WgpuCommandEncoder"),
         ["RenderPass"] = new("wgpu::RenderPass<'_>", "WgpuRenderPass"),
         ["TextureView"] = new("wgpu::TextureView", "WgpuTextureView"),
+        ["Texture"] = new("wgpu::Texture", "WgpuTexture"),
         ["TextureFormat"] = new("wgpu::TextureFormat", "WgpuTextureFormat", Copy: true),
         ["AstcBlock"] = new("wgpu::AstcBlock", "WgpuAstcBlock", Copy: true),
         ["AstcChannel"] = new("wgpu::AstcChannel", "WgpuAstcChannel", Copy: true),

@@ -26,7 +26,7 @@ namespace Rune;
     internal DmabufBuffer(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public void Free() => N.rune_gen_dmabufbuffer_free(O);
-    [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public static global::Rune.DmabufBuffer New(global::Rune.DmabufPlane plane, (uint, uint) size, uint fourcc) { { return WireReader.Read<global::Rune.DmabufBuffer>(N.rune_gen_dmabufbuffer_new(plane.O, size.Item1, size.Item2, fourcc), static q2617 => q2617.Checked<global::Rune.DmabufBuffer>(static q2618 => new global::Rune.DmabufBuffer(q2618.Raw<nint>()))); } }
+    [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public static global::Rune.DmabufBuffer New(global::Rune.DmabufPlane plane, (uint, uint) size, uint fourcc) { { return WireReader.Read<global::Rune.DmabufBuffer>(N.rune_gen_dmabufbuffer_new(plane.O, size.Item1, size.Item2, fourcc), static q2930 => q2930.Checked<global::Rune.DmabufBuffer>(static q2931 => new global::Rune.DmabufBuffer(q2931.Raw<nint>()))); } }
 }
 
 [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public readonly unsafe partial struct DmabufPlane
@@ -52,7 +52,7 @@ namespace Rune;
     internal ImportTarget(nint p, uint scope = 0) { _p = p; _s = scope; }
     /// <summary>Drops an object nothing consumed.</summary>
     [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public void Free() => N.rune_gen_importtarget_free(O);
-    [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public string? RenderNode { get => WireReader.Read<string?>(N.rune_gen_importtarget_field_get_render_node(P), static q941 => (q941.Tag() ? q941.Str() : (string?)null)); set { byte[] value__2b = Interop.Utf8((value ?? "")); fixed (byte* value__2p = value__2b) { N.rune_gen_importtarget_field_set_render_node(P, value != null, value__2p, (nuint)value__2b.Length); } } }
+    [global::System.Runtime.Versioning.SupportedOSPlatform("linux")] public string? RenderNode { get => WireReader.Read<string?>(N.rune_gen_importtarget_field_get_render_node(P), static q976 => (q976.Tag() ? q976.Str() : (string?)null)); set { byte[] value__2b = Interop.Utf8((value ?? "")); fixed (byte* value__2p = value__2b) { N.rune_gen_importtarget_field_set_render_node(P, value != null, value__2p, (nuint)value__2b.Length); } } }
 }
 
 public readonly unsafe partial struct NativeSurface

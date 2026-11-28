@@ -719,3 +719,179 @@ pub fn el_virtual_items(
 ) -> El {
     el.virtual_items(std::rc::Rc::new(ItemClosures { version, keys, build, priority, budget: (budget > 0).then_some(budget as usize) }))
 }
+
+// Rune 07bf8c5d
+
+/// Adds an overlay from any thread: `spec` and `state` run on the app's thread when it builds it.
+/// covers: AppHandle::overlay
+/// In C# the app's and the overlay's state are both managed objects, so one parameter stands for both.
+pub fn app_handle_overlay<S: 'static>(app: &rune::AppHandle<S>, spec: impl FnOnce() -> ConfiguredOverlay<S> + 'static, state: impl FnOnce() -> S + 'static) -> rune::OverlayHandle<S> {
+    let build = Anywhere((spec, state));
+    app.overlay(move || {
+        let (spec, state) = build.take();
+        (spec(), state())
+    })
+}
+
+/// The drag's other formats as MIME types and bytes, in the order they were added. covers: DragItem::custom_data
+pub fn drag_item_custom_data(item: &rune::DragItem) -> Vec<(String, Vec<u8>)> {
+    item.custom_data().map(|(mime, bytes)| (mime.to_owned(), bytes.to_vec())).collect()
+}
+
+fn handle_outcome<T>(result: Result<Option<T>, FileDialogError>) -> (Option<T>, Option<String>) {
+    match result {
+        Ok(v) => (v, None),
+        Err(e) => (None, Some(e.to_string())),
+    }
+}
+
+/// Returns at once and calls `done` on another thread: the file, or null for a cancel, then the error text. covers: FileDialogs::pick_file
+pub fn dialogs_pick_file(dialogs: &FileDialogs, options: FileDialogOptions, done: impl FnOnce(Option<rune::FileHandle>, Option<String>) + 'static) {
+    let (dialogs, done) = (dialogs.clone(), Anywhere(done));
+    std::thread::spawn(move || {
+        let (file, error) = handle_outcome(block_on(async move { dialogs.pick_file(options).await }));
+        done.take()(file, error);
+    });
+}
+/// Returns at once and calls `done` on another thread: the files, or null for a cancel, then the error text. covers: FileDialogs::pick_files
+pub fn dialogs_pick_files(dialogs: &FileDialogs, options: FileDialogOptions, done: impl FnOnce(Option<Vec<rune::FileHandle>>, Option<String>) + 'static) {
+    let (dialogs, done) = (dialogs.clone(), Anywhere(done));
+    std::thread::spawn(move || {
+        let (files, error) = handle_outcome(block_on(async move { dialogs.pick_files(options).await }));
+        done.take()(files, error);
+    });
+}
+/// Returns at once and calls `done` on another thread: the file, or null for a cancel, then the error text. covers: FileDialogs::pick_save_file
+pub fn dialogs_pick_save_file(dialogs: &FileDialogs, options: FileDialogOptions, done: impl FnOnce(Option<rune::FileHandle>, Option<String>) + 'static) {
+    let (dialogs, done) = (dialogs.clone(), Anywhere(done));
+    std::thread::spawn(move || {
+        let (file, error) = handle_outcome(block_on(async move { dialogs.pick_save_file(options).await }));
+        done.take()(file, error);
+    });
+}
+
+/// `on_answer` gets the file, or null for a cancel, then the error text. covers: Tx::pick_file
+pub fn tx_pick_file<S: 'static>(tx: &mut Tx, options: FileDialogOptions, on_answer: impl FnOnce(&mut S, Option<rune::FileHandle>, Option<String>, &mut Tx) + 'static) {
+    tx.pick_file(options, move |s, result, tx| {
+        let (file, error) = handle_outcome(result);
+        on_answer(s, file, error, tx);
+    })
+}
+/// `on_answer` gets the files, or null for a cancel, then the error text. covers: Tx::pick_files
+pub fn tx_pick_files<S: 'static>(tx: &mut Tx, options: FileDialogOptions, on_answer: impl FnOnce(&mut S, Option<Vec<rune::FileHandle>>, Option<String>, &mut Tx) + 'static) {
+    tx.pick_files(options, move |s, result, tx| {
+        let (files, error) = handle_outcome(result);
+        on_answer(s, files, error, tx);
+    })
+}
+/// `on_answer` gets the file, or null for a cancel, then the error text. covers: Tx::pick_save_file
+pub fn tx_pick_save_file<S: 'static>(tx: &mut Tx, options: FileDialogOptions, on_answer: impl FnOnce(&mut S, Option<rune::FileHandle>, Option<String>, &mut Tx) + 'static) {
+    tx.pick_save_file(options, move |s, result, tx| {
+        let (file, error) = handle_outcome(result);
+        on_answer(s, file, error, tx);
+    })
+}
+
+/// `on_result` gets null when the image was copied, or why it wasn't. covers: Tx::copy_image_then
+pub fn tx_copy_image_then<S: 'static>(tx: &mut Tx, image: &rune::Image, on_result: impl FnOnce(&mut S, Option<rune::CopyImageError>, &mut Tx) + 'static) {
+    tx.copy_image_then(image, move |s: &mut S, result, tx| on_result(s, result.err(), tx))
+}
+
+/// Returns at once and calls `done` on another thread with the file's bytes, or null and the error text. covers: FileHandle::read
+pub fn file_handle_read(file: &rune::FileHandle, done: impl FnOnce(Option<Vec<u8>>, Option<String>) + 'static) {
+    let (file, done) = (file.clone(), Anywhere(done));
+    std::thread::spawn(move || {
+        let (bytes, error) = match block_on(async move { file.read().await }) {
+            Ok(b) => (Some(b), None),
+            Err(e) => (None, Some(e.to_string())),
+        };
+        done.take()(bytes, error);
+    });
+}
+/// Returns at once and calls `done` on another thread with null once written, or the error text. covers: FileHandle::write
+pub fn file_handle_write(file: &rune::FileHandle, bytes: Vec<u8>, done: impl FnOnce(Option<String>) + 'static) {
+    let (file, done) = (file.clone(), Anywhere(done));
+    std::thread::spawn(move || {
+        let error = block_on(async move { file.write(&bytes).await }).err().map(|e| e.to_string());
+        done.take()(error);
+    });
+}
+
+/// A stream reading a [`rune::FileHandle`] from its start.
+pub struct FileReader(Box<dyn io::Read + Send>);
+impl FileReader {
+    /// Up to `max` more bytes, or none at the end.
+    pub fn read(&mut self, max: u32) -> io::Result<Vec<u8>> {
+        let mut buf = vec![0; max as usize];
+        let n = self.0.read(&mut buf)?;
+        buf.truncate(n);
+        Ok(buf)
+    }
+}
+/// A stream replacing a [`rune::FileHandle`]'s contents.
+pub struct FileWriter(Box<dyn Write + Send>);
+impl FileWriter {
+    /// Writes all of `bytes`.
+    pub fn write(&mut self, bytes: &[u8]) -> io::Result<()> { self.0.write_all(bytes) }
+    pub fn flush(&mut self) -> io::Result<()> { self.0.flush() }
+}
+/// covers: FileHandle::reader
+pub fn file_handle_reader(file: &rune::FileHandle) -> io::Result<FileReader> { file.reader().map(FileReader) }
+/// covers: FileHandle::writer
+pub fn file_handle_writer(file: &rune::FileHandle) -> io::Result<FileWriter> { file.writer().map(FileWriter) }
+
+/// C# delegates, which any thread may call and drop.
+struct Shared<T>(T);
+// SAFETY: `T` only holds generated closures over C# delegates, whose targets are GC handles.
+unsafe impl<T> Send for Shared<T> {}
+unsafe impl<T> Sync for Shared<T> {}
+
+struct Provider<R, W> { read: Shared<R>, write: std::sync::Arc<Shared<W>> }
+impl<R: Fn() -> Option<Vec<u8>>, W: Fn(Vec<u8>) -> Option<String> + 'static> rune::FileHandleProvider for Provider<R, W> {
+    fn reader(&self) -> io::Result<Box<dyn io::Read + Send>> {
+        let bytes = (self.read.0)().ok_or_else(|| io::Error::other("the file couldn't be read"))?;
+        Ok(Box::new(io::Cursor::new(bytes)))
+    }
+    fn writer(&self) -> io::Result<Box<dyn Write + Send>> {
+        Ok(Box::new(Collected { bytes: Vec::new(), dirty: false, write: std::sync::Arc::clone(&self.write) }))
+    }
+}
+
+/// Bytes a provider's writer holds until it is flushed or dropped.
+struct Collected<W: Fn(Vec<u8>) -> Option<String>> { bytes: Vec<u8>, dirty: bool, write: std::sync::Arc<Shared<W>> }
+impl<W: Fn(Vec<u8>) -> Option<String>> Write for Collected<W> {
+    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
+        self.bytes.extend_from_slice(buf);
+        self.dirty = true;
+        Ok(buf.len())
+    }
+    fn flush(&mut self) -> io::Result<()> {
+        if !self.dirty {
+            return Ok(());
+        }
+        self.dirty = false;
+        match (self.write.0)(self.bytes.clone()) {
+            None => Ok(()),
+            Some(error) => Err(io::Error::other(error)),
+        }
+    }
+}
+impl<W: Fn(Vec<u8>) -> Option<String>> Drop for Collected<W> {
+    fn drop(&mut self) { let _ = self.flush(); }
+}
+
+/// A file with no path, read and written through C#: `read` returns the whole file or null when it
+/// can't, and `write` gets the whole new contents and returns null or the error text.
+/// covers: FileHandle::from_provider
+pub fn file_handle_from_provider(name: String, read: impl Fn() -> Option<Vec<u8>> + 'static, write: impl Fn(Vec<u8>) -> Option<String> + 'static) -> rune::FileHandle {
+    rune::FileHandle::from_provider(name, Provider { read: Shared(read), write: std::sync::Arc::new(Shared(write)) })
+}
+
+/// A menu standing in for a native popup menu, resolving `request` when picked or closed.
+/// covers: Menu::from_popup_menu
+pub fn menu_from_popup_menu<S: 'static>(key: String, request: &rune::PopupMenuRequest, on_resolve: impl Fn(&mut S, Option<&str>, &mut Tx) + 'static) -> rune_kit::Menu {
+    rune_kit::Menu::from_popup_menu(key, request, on_resolve)
+}
+
+/// Sets the inclusive minimum and maximum values. covers: NumberField::range
+pub fn number_field_range(field: rune_kit::NumberField, min: f64, max: f64) -> rune_kit::NumberField { field.range(min..=max) }

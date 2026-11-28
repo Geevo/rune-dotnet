@@ -102,7 +102,7 @@ sealed partial class Generator
         // Its methods need `T: Copy`, which a state parameter isn't: one instantiation per metrics type.
         if (t.Short == "BySize")
         {
-            return [.. _types.Keys.Where(k => k.EndsWith("::ButtonMetrics") || k.EndsWith("::SwitchMetrics"))];
+            return [.. _types.Keys.Where(k => k.EndsWith("::ButtonMetrics") || k.EndsWith("::SwitchMetrics") || k.EndsWith("::IconButtonMetrics"))];
         }
         return bounds.All(b => b is "Send" or "Sync") ? [HostKey] : null;
     }
